@@ -132,7 +132,7 @@ label {
     padding-bottom: 54px;
 }
 
-    .welcome_txt h2 highlight {
+    div.welcome_txt h2 span.highlight {
         color: #f29634;
         display: block;
     }
