@@ -680,6 +680,7 @@ a:hover, a:focus, li:focus {
     -moz-transition: all 0.4s ease;
     -o-transition: all 0.4s ease;
     transition: all 0.4s ease;
+    right:0;
 }
 
 .hidemenu .aside {
@@ -707,9 +708,16 @@ a:hover, a:focus, li:focus {
     padding: 20px 0;
     height: 75px;
 }
+/* company logo edit  */
 
+.cmpny_logo {
+    float: left;
+    padding: 3px 20px 3px 0;
+}
+
+/* right menu  */
 .content_wrap {
-    padding-left: 270px;
+    padding-right: 270px;
     width: 100%;
     transition: all 0.4s ease 0s;
     -webkit-transition: all 0.4s ease;
@@ -717,9 +725,9 @@ a:hover, a:focus, li:focus {
     -o-transition: all 0.4s ease;
     transition: all 0.4s ease;
 }
-
+/* right menu  */
 .hidemenu .content_wrap {
-    padding-left: 0px;
+    padding-right: 0px;
 }
 
 .bgwhite {
@@ -731,7 +739,7 @@ a:hover, a:focus, li:focus {
     -o-transition: all 0.4s ease;
     transition: all 0.4s ease;
 }
-
+/* right menu  */
 .frame_header {
     background-color: #017db9;
     height: 75px;
@@ -739,8 +747,8 @@ a:hover, a:focus, li:focus {
     padding: 15px;
     position: fixed;
     top: 0;
-    left: 270px;
-    right: 0;
+    right: 270px;
+    left: 0;
     z-index: 9;
     transition: all 0.4s ease 0s;
     -webkit-transition: all 0.4s ease;
@@ -748,9 +756,9 @@ a:hover, a:focus, li:focus {
     -o-transition: all 0.4s ease;
     transition: all 0.4s ease;
 }
-
+/* right menu  */
 .hidemenu .frame_header {
-    left: 0;
+    right: 0;
 }
 
 .frame_header a {
