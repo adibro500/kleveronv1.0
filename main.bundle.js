@@ -2029,7 +2029,7 @@ var appRoutes = [
     { path: 'appcheck', component: __WEBPACK_IMPORTED_MODULE_31__createPage_templatecheck_component__["a" /* AppCheck */] },
 ];
 function createTranslateLoader(http) {
-    return new __WEBPACK_IMPORTED_MODULE_16__ngx_translate_http_loader__["a" /* TranslateHttpLoader */](http, 'http://localhost:3000/lang/', '.json');
+    return new __WEBPACK_IMPORTED_MODULE_16__ngx_translate_http_loader__["a" /* TranslateHttpLoader */](http, './assets/i18n/', '.json');
 }
 var AppModule = (function () {
     function AppModule() {
