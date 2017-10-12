@@ -1,10 +1,11 @@
-import { Component, Input, OnInit, AfterViewInit, DoCheck } from '@angular/core';
+import { Component, Input, OnInit, AfterViewInit, DoCheck, Inject } from '@angular/core';
 import { RlTagInputModule } from 'angular2-tag-input';
 import { Control } from "./Control";
 import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
 import { DragulaService } from 'ng2-dragula/ng2-dragula';
 import { DrakeStoreService, DroppableDirective } from "@swimlane/ngx-dnd/release";
 import { InputMasterService } from "./admin-input-master.service";
+import { DOCUMENT } from "@angular/common";
 declare var $: any;
 declare var perfectScrollbar: any;
 declare var height: any;
@@ -31,7 +32,8 @@ export class AdminInputMaster implements OnInit {
     newForm: FormGroup;
     // arrayControl = <FormArray>this.newForm.controls['formArray'];
 
-    constructor(public fb: FormBuilder, public con: Control, public ds: DrakeStoreService, private aimp: InputMasterService) {
+    constructor(public fb: FormBuilder, public con: Control, public ds: DrakeStoreService, private aimp: InputMasterService, @Inject(DOCUMENT) private document: any) {
+
 
         // this.dragdrop.setOptions('sixth-bag', {
         //     moves: function (el, container, handle) {
@@ -1760,20 +1762,21 @@ export class AdminInputMaster implements OnInit {
 
     }
 
-    pagehtml: string;
+    pagehtml: any;
     saveClick() {
         //console.log($("#contra").html());
-        // this.pagehtml = document.getElementById("contra").outerHTML.replace(/"/g, '\\"');
+        this.pagehtml = document.getElementById("contra").outerHTML.replace(/"/g, '\\"');
 
         console.log(this.pagehtml);
 
-        let myJson = {
-            "html": "<div class='happy'></div>"
-        }
-        this.aimp.putInputData(myJson);
+
+        this.aimp.putInputData({ "html": this.pagehtml });
         console.log("doneeee");
     }
     ngOnInit(): void {
+        // alert(this.document.getElementById("theme").getAttribute("href"));
+        // alert(this.document.getElementById("theme2").getAttribute("href"));
+
 
         $('.edit_btn').on('click', function () {
             alert($('.edit_btn').index(this));

@@ -1,6 +1,7 @@
-import { Component, OnInit, AfterViewInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy, Input, Inject } from '@angular/core';
 import { TranslateService } from "@ngx-translate/core";
 import { Observable } from "rxjs/Rx";
+import { DOCUMENT } from "@angular/platform-browser";
 declare var $: any;
 declare var perfectScrollbar: any;
 declare var height: any;
@@ -20,7 +21,7 @@ export class DashboardComponent implements OnDestroy, OnInit {
 
     hideIt = new Array<boolean>();
 
-    constructor(translate: TranslateService) {
+    constructor(translate: TranslateService, @Inject(DOCUMENT) private document: any) {
 
         Observable.interval(6000).subscribe(x => {
             translate.use(localStorage.getItem('lang'));
@@ -33,10 +34,13 @@ export class DashboardComponent implements OnDestroy, OnInit {
             //     else
             //         this.hideIt[i] = true;
             // }
+
             // for (var i = 0; i < this.hideIt.length; i++) {
             //     console.log(this.hideIt[i]);
             // }
         });
+
+
 
 
 

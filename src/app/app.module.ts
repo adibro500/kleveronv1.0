@@ -38,10 +38,14 @@ import { LoginService } from "./login/login.service";
 import { EscapeJSPipe } from "./createPage/keep-js.pipe";
 import { TextboxComponent } from "./createPage/textbox.component";
 import { NgxDnDModule } from "@swimlane/ngx-dnd";
+import { createPage1Component } from "./createPage/createPage1.component";
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
   {
-    path: 'createPageMenu', component: CreatePageMenuComponent,
+    path: 'createPage', component: CreatePageMenuComponent,
+    children: [
+      { path: 'createPageMenu', component: createPage1Component },
+      { path: 'adminInputMaster', component: AdminInputMaster },]
   },
   {
     path: 'configs', component: ConfigMenuComponent,
@@ -67,7 +71,6 @@ const appRoutes: Routes = [
       { path: 'settingstab3', component: TabThreeComponent },
     ]
   },
-  { path: 'adminInputMaster', component: AdminInputMaster },
   { path: 'appcheck', component: AppCheck },
 
   //AppCheck
@@ -75,12 +78,13 @@ const appRoutes: Routes = [
 
 export function createTranslateLoader(http: HttpClient) {
 
-  return new TranslateHttpLoader(http, 'http://localhost:3000/lang/', '.json');
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 
 @NgModule({
   declarations: [
+    createPage1Component,
     AppComponent,
     LoginComponent,
     DashboardComponent,

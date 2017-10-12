@@ -559,9 +559,9 @@
     .aside {
         width: 0px;
     }
-
+    /* right menu */
     .content_wrap {
-        padding-left: 0px;
+        padding-right: 0px;
         width: 100%;
     }
 
@@ -586,14 +586,14 @@
         .dash_logo img {
             width: 120px;
         }
-
+    /* right menu */
     .hidemenu .bgwhite, .hidemenu footer {
-        padding-left: 185px;
+        padding-right: 15px;
     }
-
+    /* right menu */
     .frame_header {
         position: fixed;
-        left: 0;
+        right: 0;
     }
 
     .bgwhite {
