@@ -1876,3 +1876,83 @@ h6.lbl_name {
     font-size: 16px;
     border: none;
 }
+
+/*  right toggle menu */
+
+#thm_select_box {
+    font-size: 12px;
+    line-height: 20px;
+    position: fixed;
+    right: -172px;
+    top: 30%;
+    width: 211px;
+    z-index: 100;
+}
+
+#thm_tab {
+    float: left;
+    list-style: none outside none;
+    margin: 0;
+    padding: 20px 0;
+    position: relative;
+    z-index: 99;
+}
+
+    #thm_tab li span {
+        display: block;
+        padding: 0 5px;
+        position: relative;
+    }
+
+#thm_control {
+    float: left;
+    padding: 0;
+}
+
+.show, .thm_select {
+    /* we specify the transition length for hiding and showing */
+    transition: margin-right .4s ease-in;
+    -webkit-transition: margin-right .4s ease-in;
+}
+
+.thm_select {
+    margin-right: 0px;
+}
+
+.show {
+    margin-right: 149px;
+}
+
+#tgl_icn, .tgl_menu {
+    cursor: pointer;
+}
+
+.tgl_menu {
+    background: #017db9 none repeat scroll 0 0;
+    border: 1px solid #ccc;
+    margin: -1px;
+    text-align: center;
+    width: 100%;
+}
+.tgl_menu a {
+    line-height: 40px;
+    color: #fff;
+    display: block;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.tgl_menu:hover {
+    transition: background .3s linear;
+    background: #32A3D3;
+    -o-transition: background .3s linear;
+    -moz-transition: background .3s linear;
+    -webkit-transition: background .3s linear;
+}
+
+#thm_para {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+    float: left;
+    width: 150px;
+}
+
