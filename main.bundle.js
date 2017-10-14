@@ -4727,7 +4727,7 @@ var _a;
 /***/ "../../../../../src/app/menuToggle/menuToggle.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"thm_select_box\" class=\"thm_select\">\r\n        <ul id=\"thm_tab\">\r\n            <li>\r\n                <img id=\"tgl_icn\" (click)=\"toggle('thm_select_box');\" src=\"/assets/images/toggle.png\">\r\n            </li>\r\n        </ul>\r\n        <div id=\"thm_control\">\r\n            <div id=\"thm_para\">\r\n                <div class=\"tgl_menu\"><a (click)=\"changeMenu('left')\">Left Menu</a></div>\r\n                <div class=\"tgl_menu\"><a (click)=\"changeMenu('right')\">Right Menu</a></div>\r\n            </div>\r\n        </div>\r\n    </div>"
+module.exports = "<div id=\"thm_select_box\" class=\"thm_select\">\r\n        <ul id=\"thm_tab\">\r\n            <li>\r\n                <img id=\"tgl_icn\" (click)=\"toggle('thm_select_box');\" src=\"./assets/images/toggle.png\">\r\n            </li>\r\n        </ul>\r\n        <div id=\"thm_control\">\r\n            <div id=\"thm_para\">\r\n                <div class=\"tgl_menu\"><a (click)=\"changeMenu('left')\">Left Menu</a></div>\r\n                <div class=\"tgl_menu\"><a (click)=\"changeMenu('right')\">Right Menu</a></div>\r\n            </div>\r\n        </div>\r\n    </div>"
 
 /***/ }),
 
@@ -4775,11 +4775,11 @@ var MenuToggleRightComponent = (function () {
         var box = el.getAttribute("class");
         if (box == "thm_select") {
             el.setAttribute("class", "show");
-            this.delay(img, "/assets/images/toggle.png", 400);
+            this.delay(img, "./assets/images/toggle.png", 400);
         }
         else {
             el.setAttribute("class", "thm_select");
-            this.delay(img, "/assets/images/toggle.png", 400);
+            this.delay(img, "./assets/images/toggle.png", 400);
         }
     };
     MenuToggleRightComponent.prototype.delay = function (elem, src, delayTime) {
