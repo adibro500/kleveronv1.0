@@ -39,14 +39,25 @@ import { EscapeJSPipe } from "./createPage/keep-js.pipe";
 import { TextboxComponent } from "./createPage/textbox.component";
 import { NgxDnDModule } from "@swimlane/ngx-dnd";
 import { createPage1Component } from "./createPage/createPage1.component";
+import { AdminListMasterComponent } from "./admin/admin-list-master.component";
+import { AdminGridMasterComponent } from "./admin/admin-grid-master.component";
+import { DashRecComponent } from "./dashboardrec/dashrec.component";
+import { MenuToggleRightComponent } from "./menuToggle/menuToggle.component";
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
   {
     path: 'createPage', component: CreatePageMenuComponent,
     children: [
       { path: 'createPageMenu', component: createPage1Component },
-      { path: 'adminInputMaster', component: AdminInputMaster },]
+    ]
   },
+  //AdminGridMasterComponent
+  { path: 'adminListMaster', component: AdminListMasterComponent },
+  { path: 'adminGridMaster', component: AdminGridMasterComponent },
+  { path: 'dashboard', component: DashRecComponent },
+
+  { path: 'adminInputMaster', component: AdminInputMaster },
+
   {
     path: 'configs', component: ConfigMenuComponent,
     children: [
@@ -84,6 +95,9 @@ export function createTranslateLoader(http: HttpClient) {
 
 @NgModule({
   declarations: [
+    DashRecComponent,
+    AdminListMasterComponent,
+    AdminGridMasterComponent,
     createPage1Component,
     AppComponent,
     LoginComponent,
@@ -104,6 +118,7 @@ export function createTranslateLoader(http: HttpClient) {
     AppCheck,
     EscapeJSPipe,
     TextboxComponent,
+    MenuToggleRightComponent,
   ],
   imports: [
     NgxDnDModule,

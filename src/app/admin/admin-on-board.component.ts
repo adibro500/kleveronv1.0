@@ -49,7 +49,15 @@ export class AdminInputMaster implements OnInit {
         //     formArray: this.fb.array([])
         // });
 
-
+        var side = localStorage.getItem("side");
+        if (side == "right") {
+            this.document.getElementById("theme").setAttribute("href", "./assets/styles/right-menu.css");
+            this.document.getElementById("theme2").setAttribute("href", "./assets/styles/responsive-right.css");
+        }
+        else {
+            this.document.getElementById("theme").setAttribute("href", "./assets/styles/style.css");
+            this.document.getElementById("theme2").setAttribute("href", "./assets/styles/responsive.css");
+        }
 
 
     }
@@ -1194,7 +1202,7 @@ export class AdminInputMaster implements OnInit {
 
             }
             else {
-                this.str0_noe = ctval;
+                this.str0_noe = ctval.split(",");
                 this.strid0_noe = ctid;
             }
             this.showTextBox_noe = true;
@@ -1236,7 +1244,7 @@ export class AdminInputMaster implements OnInit {
 
             }
             else {
-                this.str0_state = ctval;
+                this.str0_state = ctval.split(",");
                 this.pholder0_state = ctph;
                 this.strid0_state = ctid;
             }
@@ -1257,7 +1265,7 @@ export class AdminInputMaster implements OnInit {
 
             }
             else {
-                this.str0_ctry = ctval;
+                this.str0_ctry = ctval.split(",");
                 this.pholder0_ctry = ctph;
                 this.strid0_ctry = ctid;
             }
@@ -1458,7 +1466,7 @@ export class AdminInputMaster implements OnInit {
 
                 this.jk = parseInt(localStorage.getItem("indexEle"));
                 localStorage.removeItem("indexEle");
-                this.con.JSONarrAOB[this.jk - 1]["value"] = ctval;
+                this.con.JSONarrAOB[this.jk - 1]["values"] = ctval.split(",");
                 this.con.JSONarrAOB[this.jk - 1]["pholder"] = ctph;
                 this.con.JSONarrAOB[this.jk - 1]["id"] = ctid;
                 // this.con.JSONarr[parseInt(localStorage.getItem("indexEle")) - 1]["edited"] = true;
@@ -1467,7 +1475,7 @@ export class AdminInputMaster implements OnInit {
             }
 
             else {
-                this.aob0 = ctval;
+                this.aob0 = ctval.split(",");
                 this.pholder0_aob = ctph;
                 this.strid0_aob = ctid;
             }
@@ -1852,6 +1860,8 @@ export class AdminInputMaster implements OnInit {
                 $('.hide_lbl').hide();
             }
         });
+
+        // right toggle menu
 
 
 

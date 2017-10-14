@@ -19,13 +19,14 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css",
         "./assets/styles/bootstrap.min.css",
         "./assets/styles/font-awesome.min.css",
         "./assets/styles/perfect-scrollbar.css",
         "./assets/styles/bootstrap-datetimepicker.min.css",
         "../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
-        "../node_modules/dragula/dist/dragula.css"
+        "../node_modules/dragula/dist/dragula.css",
+        "./assets/styles/dashboard-new.css",
+        "./assets/styles/dashboard.css"       
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",

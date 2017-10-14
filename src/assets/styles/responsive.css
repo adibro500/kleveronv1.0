@@ -79,16 +79,6 @@
     .admin_onboard .custom_chk_bx [type="checkbox"]:not(:checked) + label, .admin_onboard .custom_chk_bx [type="checkbox"]:checked + label {
         padding-left: 28px;
     }
-    /* Base for label styling */
-
-    .custom_chk_bx [type="checkbox"]:not(:checked) + label,
-    .custom_chk_bx [type="checkbox"]:checked + label {
-        padding-left: 30px;
-    }
-
-    .chk_bx {
-        padding-right: 0;
-    }
 }
 
 @media screen and (max-width: 1440px) {
@@ -356,31 +346,6 @@
     .time_expns_detail .inline_icn {
         padding: 20px 0;
     }
-    /*     admin grid view      */
-    .temp_info {
-        padding: 20px 15px;
-    }
-
-        .temp_info h4 {
-            font-size: 18px;
-        }
-
-        .temp_info p {
-            font-size: 14px;
-        }
-
-    .live_demo_btn .btn {
-        font-size: 12px;
-        margin-bottom: 10px;
-        padding: 6px 0;
-        width: 100px;
-    }
-
-    .view_dtl_btn .btn {
-        font-size: 12px;
-        padding: 6px 0;
-        width: 100px;
-    }
 }
 
 @media screen and (max-width: 1280px) {
@@ -428,11 +393,6 @@
             left: 4px;
             top: 2px;
         }
-
-    .chk_bx {
-        display: block;
-        padding-bottom: 2px;
-    }
 
     .social_icon i {
         font-size: 23px;
@@ -542,15 +502,6 @@
 
         .time_expns_detail .inline_icn span {
             padding: 0 25px;
-        }
-    /*  admin grid view */
-    .cls_job_btn {
-        padding-left: 0;
-    }
-
-        .cls_job_btn .btn {
-            font-size: 12px;
-            padding: 5px 10px;
         }
 }
 
@@ -973,14 +924,10 @@
         padding: 10px 10px;
     }
     /*  my jobs */
-    .grid_hdr {
-        border-bottom: 0 none;
+    .grid_hdr h4 {
+        padding: 28px 0 0;
+        text-align: center;
     }
-
-        .grid_hdr h4 {
-            padding: 28px 0 0;
-            text-align: center;
-        }
 
     .edit_btn {
         padding-bottom: 20px;
@@ -1068,10 +1015,13 @@
         color: #fff;
     }
 
+    .nav_bord {
+        border-bottom: 0 none;
+    }
+
     .post_hdr {
-        background-color: #f9fafc;
-        border-bottom: 2px solid #e0e1f3;
         text-align: center;
+        border-bottom: 1px solid #E0E1F3;
     }
 
     .post_srch {
@@ -1079,7 +1029,7 @@
     }
 
     .post_hdr h4 {
-        padding: 0 0 15px;
+        padding: 0 0 15px 0;
     }
 
     .post_srch label.lbl_hdr {
@@ -1119,41 +1069,6 @@
 
     .time_expns_wrapper .post_hdr {
         border-bottom: 0 none;
-    }
-    /*        framework 1         */
-
-    .frmwrk_btn .action-ui {
-        top: -20px;
-    }
-
-    /* admin grid view */
-    .select_template .grid_hdr {
-        border-bottom: 2px solid #e0e1f3;
-    }
-
-    .tmplt_hdr h4 {
-        padding: 15px 0;
-        text-align: center;
-    }
-
-    .crt_pst_btn {
-        padding-bottom: 15px;
-        padding-top: 0;
-        text-align: center;
-    }
-
-        .crt_pst_btn .btn {
-            font-size: 12px;
-            padding: 5px 10px;
-        }
-
-    .template_wrap {
-        padding: 15px 0;
-    }
-
-    .sub_temp {
-        margin: 0 auto 30px;
-        width: 290px;
     }
 }
 

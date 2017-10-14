@@ -1,0 +1,128 @@
+import { Component, Input, OnInit, AfterViewInit, DoCheck, Inject } from '@angular/core';
+import { DOCUMENT } from "@angular/common";
+declare var $: any;
+declare var perfectScrollbar: any;
+declare var height: any;
+declare var tabs: any;
+
+
+@Component({
+    selector: 'admin-grid-master',
+    templateUrl: './admin-grid-master.html'
+})
+
+export class AdminGridMasterComponent implements OnInit {
+
+
+    constructor( @Inject(DOCUMENT) private document: any) {
+        var side = localStorage.getItem("side");
+        if (side == "right") {
+            this.document.getElementById("theme").setAttribute("href", "./assets/styles/right-menu.css");
+            this.document.getElementById("theme2").setAttribute("href", "./assets/styles/responsive-right.css");
+        }
+        else {
+            this.document.getElementById("theme").setAttribute("href", "./assets/styles/style.css");
+            this.document.getElementById("theme2").setAttribute("href", "./assets/styles/responsive.css");
+        }
+
+    }
+    ngOnInit(): void {
+
+        $('.navbar-header').click(function () {
+            $('.wrapper').toggleClass('hidemenu');
+        });
+
+        if ($(window).width() < 767) {
+            $(document).click(function (e) {
+                if (!$(e.target).closest('.navbar-header, .aside').length) {
+                    $('.wrapper').removeClass('hidemenu');
+                }
+            })
+        }
+
+        $('.aside_nav').perfectScrollbar();
+        $('.drop-content').perfectScrollbar();
+
+        $("#detail_tabs").tabs();
+        $(".tab_no").click(function () {
+            var active = $("#detail_tabs").tabs("option", "active");
+            $("#detail_tabs").tabs("option", "active", active + 1);
+
+        });
+
+        $(window).load(function () {
+            var H = $(window).height();
+            var nH = $('.logo_bar').height();
+            var nD = $('.onboarding_lbl').height();
+            var F = $('footer').height();
+            var C = H - nH - nD - F - 10;
+            $('.detail_wrapper').css('min-height', C);
+            $(window).resize(function () {
+                var H = $(window).height();
+                var nH = $('.logo_bar').height();
+                var nD = $('.onboarding_lbl').height();
+                var F = $('footer').height();
+                var C = H - nH - nD - F - 10;
+                $('.detail_wrapper').css('min-height', C);
+            });
+        });
+
+
+        $(".nx_btn").click(function () {
+            var nextDiv = $(".modal_tabs:visible").next(".modal_tabs");
+            if (nextDiv.length == 0) { // wrap around to beginning
+                nextDiv = $(".modal_tabs:first");
+            }
+            $(".modal_tabs").hide();
+            nextDiv.show();
+        });
+
+        $('#vldtn_btn').on('change', function (e) {
+            if (e.target.checked) {
+                $('.hide_lbl').show();
+            }
+            else {
+                $('.hide_lbl').hide();
+            }
+        });
+
+        $('#lbl_tgl').on('change', function (e) {
+            if (e.target.checked) {
+                $('.hide_lbl_cntrl').show();
+                $('.hide_nxt').show();
+                $('.hide_skip').hide();
+            }
+            else {
+                $('.hide_lbl_cntrl').hide();
+                $('.hide_skip').show();
+                $('.hide_nxt').hide();
+            }
+        });
+
+
+    }
+
+
+    toggle(id) {
+        var el = document.getElementById(id);
+        var img = document.getElementById("tgl_icn");
+        var box = el.getAttribute("class");
+        if (box == "thm_select") {
+            el.setAttribute("class", "show");
+            this.delay(img, "/assets/images/toggle.png", 400);
+        }
+        else {
+            el.setAttribute("class", "thm_select");
+            this.delay(img, "/assets/images/toggle.png", 400);
+        }
+    }
+
+    delay(elem, src, delayTime) {
+        window.setTimeout(function () { elem.setAttribute("src", src); }, delayTime);
+    }
+
+
+
+
+
+}

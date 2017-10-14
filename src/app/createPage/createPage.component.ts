@@ -175,15 +175,15 @@ export class CreatePageMenuComponent implements AfterViewInit, DoCheck, OnChange
     }
 
     changeMenu(side) {
-        localStorage.setItem("side", side);
-        if (side == "right") {
-            this.document.getElementById("theme").setAttribute("href", "./assets/styles/right-menu.css");
-            this.document.getElementById("theme2").setAttribute("href", "./assets/styles/responsive-right.css");
-        }
-        else {
-            this.document.getElementById("theme").setAttribute("href", "./assets/styles/style.css");
-            this.document.getElementById("theme2").setAttribute("href", "./assets/styles/responsive.css");
-        }
+        // localStorage.setItem("side", side);
+        // if (side == "right") {
+        //     this.document.getElementById("theme").setAttribute("href", "./assets/styles/right-menu.css");
+        //     this.document.getElementById("theme2").setAttribute("href", "./assets/styles/responsive-right.css");
+        // }
+        // else {
+        //     this.document.getElementById("theme").setAttribute("href", "./assets/styles/style.css");
+        //     this.document.getElementById("theme2").setAttribute("href", "./assets/styles/responsive.css");
+        // }
 
     }
 
