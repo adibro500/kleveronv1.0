@@ -40,11 +40,11 @@ export class MenuToggleRightComponent implements OnInit {
         var box = el.getAttribute("class");
         if (box == "thm_select") {
             el.setAttribute("class", "show");
-            this.delay(img, "/assets/images/toggle.png", 400);
+            this.delay(img, "./assets/images/toggle.png", 400);
         }
         else {
             el.setAttribute("class", "thm_select");
-            this.delay(img, "/assets/images/toggle.png", 400);
+            this.delay(img, "./assets/images/toggle.png", 400);
         }
     }
 
