@@ -287,6 +287,8 @@
 
 .srch_terms {
     padding: 20px 0 150px;
+    width: 80%;
+    margin: 0 auto;
 }
 
 .srch_btn .btn {
@@ -333,14 +335,31 @@
 
 .setting_widget {
     background-color: #017db9;
-    padding: 20px 5px;
+    padding: 20px;
     border-radius: 0;
+}
+  /* action ui  */
+.hide-action-ui 
+{
+   display:none;
+}
+.show-action-ui {
+    display: block;
 }
 
 .dash_panel {
     margin-bottom: 30px;
+    position: relative;
 }
+    .dash_panel:hover .action-ui {
+        opacity: 1;
+        position: absolute;
+    }
 
+    .dash_panel .action-ui {
+        right: 0px;
+    }
+  /* end action ui */
 .setting_icn {
     text-align: right;
 }
@@ -357,6 +376,7 @@
 
 .sub_info {
     width: 20%;
+    float: left;
 }
 
 .info_no {
@@ -381,10 +401,11 @@
 
 .hdr_typ {
     padding-bottom: 15px;
+    font-weight: 500;
 }
 
-.typ_nm {
-    font-weight: 500;
+.typ_dtl {
+    font-weight: 100;
 }
 
 .opn_typ {
@@ -438,10 +459,6 @@
 .app_section {
     border: 1px solid #ccc;
     padding: 15px;
-}
-
-.app_hdr h4 {
-    padding-bottom: 15px;
 }
 
 .dash_tab_row {
@@ -498,12 +515,12 @@
 
 .usr_rt {
     text-align: center;
+    position: relative;
 }
 
     .usr_rt .fa.fa-star {
         color: #b5b5b5;
         font-size: 40px;
-        position: relative;
     }
 
 .rt_pnt {
@@ -521,7 +538,192 @@
     margin: 0 15px;
     padding: 10px 0;
 }
+
+.usr_pic {
+    text-align: center;
+}
+
+.full_clndr {
+    width: 100%;
+}
+
+.team_cal {
+    border: 1px solid #ccc;
+    padding: 15px 15px 0;
+}
+
+.clndr_control {
+    background-color: #ccc;
+    padding: 10px 0;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.current_month {
+    text-align: center;
+}
+
+.clndr_week {
+    font-size: 16px;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.clndr_nxt_btn {
+    text-align: right;
+}
+
+.clndr_week .clndr_pre_btn {
+    text-align: right;
+}
+
+.clndr_week .clndr_nxt_btn {
+    text-align: left;
+}
+
+.clndr_icon {
+    text-align: right;
+}
+
+.clndr_grid {
+    border-top: 1px solid #ccc;
+    text-align: center;
+    width: 100%;
+    table-layout: fixed;
+}
+
+    .clndr_grid thead {
+        border-bottom: 1px solid #ccc;
+    }
+
+    .clndr_grid th {
+        text-align: center;
+        padding: 10px 0;
+        font-weight: 500;
+    }
+
+    .clndr_grid td {
+        padding: 10px 0;
+    }
+
+.event_listing {
+    border-top: 1px solid #ccc;
+}
+
+.event_item {
+    border-bottom: 1px solid #ccc;
+}
+
+    .event_item:last-child {
+        border-bottom: 0;
+    }
+
+.evnt_tym {
+    padding-top: 10px;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.evnt_dt {
+    font-size: 24px;
+}
+
+.evnt_nm {
+    border-left: 1px solid #ccc;
+}
+
+    .evnt_nm span {
+        display: inline-block;
+        vertical-align: middle;
+        padding-right: 10px;
+    }
+
+.evnt_schdl {
+    padding: 10px 0;
+}
+
+.evnt_nm .circle {
+    background-color: #017DB9;
+    border-radius: 50px;
+    margin-right: 10px;
+    height: 20px;
+    width: 20px;
+    padding-right: 0;
+}
+
+.manager_div {
+    border: 1px solid #ccc;
+    padding: 15px 0 0 0;
+}
+
+.mngr_bx {
+    padding-bottom: 15px;
+}
+
+.mngr_prfl {
+    text-align: center;
+}
+
+.mail_icn {
+    text-align: right;
+}
+
+    .mail_icn i {
+        font-size: 30px;
+        padding: 6px 0;
+    }
+
+.msg_bx .input-group {
+    width: 100%;
+}
+
+    .msg_bx .input-group .cmn_input {
+        -moz-border-bottom-colors: none;
+        -moz-border-left-colors: none;
+        -moz-border-right-colors: none;
+        -moz-border-top-colors: none;
+        border-color: #ccc currentcolor currentcolor;
+        border-image: none;
+        border-radius: 0;
+        border-style: solid none none;
+        border-width: 1px medium medium;
+        border-radius: 0;
+        resize: none;
+    }
+
+.msg_bx .input-group-addon.custom_icn {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: transparent none repeat scroll 0 0;
+    border-color: #ccc currentcolor currentcolor;
+    border-image: none;
+    border-radius: 0;
+    border-style: solid none none;
+    border-width: 1px 0 0;
+}
+
+.msg_bx .input-group-addon {
+    padding: 6px 20px;
+}
+
+.msg_bx .fa.fa-paper-plane {
+    color: #bbb;
+    font-size: 20px;
+}
+
+
 /*  end dashboard inner */
+/* media query */
+@media screen and (max-width: 1600px) {
+    /*  end dashboard inner */
+    .inline_icn span {
+        padding: 0 2px !important;
+    }
+}
+
+
 @media screen and (max-width: 1440px) {
     .dash_header h1 {
         font-size: 24px;
@@ -587,7 +789,29 @@
     }
 
     /*  dashboard inner */
+    .evnt_nm {
+        padding: 0 5px;
+    }
 
+    .progress_ratio p {
+        text-align: center;
+    }
+
+    .evnt_tym {
+        font-size: 14px;
+    }
+
+    .evnt_dt {
+        font-size: 20px;
+    }
+
+    .srch_btn {
+        margin-top: 2px;
+    }
+
+        .srch_btn .btn {
+            padding: 11px 0;
+        }
 }
 
 @media screen and (max-width: 1280px) {
@@ -595,9 +819,29 @@
         padding-left: 10px;
         padding-right: 10px;
     }
+    /* dashboard inner */
+    .evnt_nm .circle {
+        margin-right: 0;
+    }
 }
 
 @media screen and (max-width: 1199px) {
+    /* dashboard inner */
+    .info_no {
+        font-size: 30px;
+    }
+
+    .info_lbl {
+        font-size: 16px;
+    }
+
+    .mngr_prfl {
+        text-align: left;
+    }
+
+    .mngr_info {
+        text-align: center;
+    }
 }
 
 @media screen and (max-width: 1024px) {
@@ -665,10 +909,10 @@
     .upld_btn > a {
         display: block;
     }
-
-    .upld_btn .btn {
-        display: none;
+    .bgwhite.dashboard_wrapper {
+        margin-top: 90px;
     }
+
 
     .dash_header h1 {
         font-size: 18px;
@@ -696,11 +940,56 @@
 
     /*  dashboard inner */
 
+    .upld_btn {
+        text-align: center;
+        padding-bottom: 0;
+    }
 
+    .srch_btn {
+        display: none;
+    }
+
+    .srch_terms {
+        padding: 20px 0;
+    }
+
+    .srch_widget {
+        margin-top: 0;
+        padding: 0;
+        position: inherit;
+        width: auto;
+    }
+
+    .sub_info {
+        width: 100%;
+        text-align: center;
+        padding-bottom: 10px;
+    }
+
+
+    .dash_tab_row {
+        text-align: center;
+    }
+
+    .inline_icn {
+        padding-bottom: 0;
+    }
+
+    .evnt_nm .circle {
+        margin-right: 2px;
+    }
+
+    .evnt_nm span {
+        padding-right: 2px;
+    }
 }
 
 @media screen and (max-width: 480px) {
 }
 
-@media screen and (max-width: 412px) {
+@media screen and (max-width: 320px) {
+    /* dashboard inner */
+    .evnt_nm .circle {
+        display: none;
+    }
 }
