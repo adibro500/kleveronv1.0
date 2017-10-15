@@ -35,28 +35,20 @@ export class AdminInputMaster implements OnInit {
     constructor(public fb: FormBuilder, public con: Control, public ds: DrakeStoreService, private aimp: InputMasterService, @Inject(DOCUMENT) private document: any) {
 
 
-        // this.dragdrop.setOptions('sixth-bag', {
-        //     moves: function (el, container, handle) {
-        //         return handle.className === 'element_box';
-        //     }
-        // });
-        // this.isEdited = false;
-        // if (this.con.JSONarr.length == 0)
-        //     this.showTextBox = false;
-        // else
-        //     this.showTextBox = true;
-        // this.newForm = this.fb.group({
-        //     formArray: this.fb.array([])
-        // });
-
         var side = localStorage.getItem("side");
         if (side == "right") {
             this.document.getElementById("theme").setAttribute("href", "./assets/styles/right-menu.css");
-            this.document.getElementById("theme2").setAttribute("href", "./assets/styles/responsive-right.css");
         }
         else {
-            this.document.getElementById("theme").setAttribute("href", "./assets/styles/style.css");
-            this.document.getElementById("theme2").setAttribute("href", "./assets/styles/responsive.css");
+            this.document.getElementById("theme").setAttribute("href", "./assets/styles/left-menu.css");
+        }
+
+        var color = localStorage.getItem("color");
+        if (color == "pink-blue") {
+            this.document.getElementById("color").setAttribute("href", "./assets/styles/pink-blue.css");
+        }
+        else {
+            this.document.getElementById("color").setAttribute("href", "./assets/styles/orange-blue.css");
         }
 
 

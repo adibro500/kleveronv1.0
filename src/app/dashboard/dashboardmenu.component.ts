@@ -22,11 +22,17 @@ export class DashMenuComponent {
         var side = localStorage.getItem("side");
         if (side == "right") {
             this.document.getElementById("theme").setAttribute("href", "./assets/styles/right-menu.css");
-            this.document.getElementById("theme2").setAttribute("href", "./assets/styles/responsive-right.css");
         }
         else {
-            this.document.getElementById("theme").setAttribute("href", "./assets/styles/style.css");
-            this.document.getElementById("theme2").setAttribute("href", "./assets/styles/responsive.css");
+            this.document.getElementById("theme").setAttribute("href", "./assets/styles/left-menu.css");
+        }
+
+        var color = localStorage.getItem("color");
+        if (color == "pink-blue") {
+            this.document.getElementById("color").setAttribute("href", "./assets/styles/pink-blue.css");
+        }
+        else {
+            this.document.getElementById("color").setAttribute("href", "./assets/styles/orange-blue.css");
         }
 
     }
@@ -35,11 +41,9 @@ export class DashMenuComponent {
         localStorage.setItem("side", side);
         if (side == "right") {
             this.document.getElementById("theme").setAttribute("href", "./assets/styles/right-menu.css");
-            this.document.getElementById("theme2").setAttribute("href", "./assets/styles/responsive-right.css");
         }
         else {
-            this.document.getElementById("theme").setAttribute("href", "./assets/styles/style.css");
-            this.document.getElementById("theme2").setAttribute("href", "./assets/styles/responsive.css");
+            this.document.getElementById("theme").setAttribute("href", "./assets/styles/left-menu.css");
         }
 
     }

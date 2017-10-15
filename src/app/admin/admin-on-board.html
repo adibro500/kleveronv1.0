@@ -3,7 +3,7 @@
         <div class="aside left">
             <div class="dash_logo">
                 <a href="#">
-                    <img src="/assets/images/settings/logo_dashboard.png" alt="kleveron" />
+                    <img id="logo_img" src="/assets/images/settings/logo_dashboard.png" alt="kleveron" />
                 </a>
             </div>
             <div class="aside_nav">
@@ -818,7 +818,7 @@
                                             </div>
                                         </div>
                                         </div>
-<div>
+
                                         <div class="col-md-6 col-sm-6 col-xs-12 element_box ngx-dnd-item ngx-dnd-container" ngxDroppable ngxDraggable>
                                             <div class="action-ui" id="tour-action-ui-id">
                                                 <span class="actions">
@@ -844,10 +844,12 @@
                                             <textarea [id]="strid0_CHA" class="cmn_input" [placeholder]="pholder0_CHA" [value]="str0_CHA"></textarea>
                                             </div>
                                         </div>
-</div>
+
                                             <div *ngFor = "let tb of Textboxes_CHA">
+
                                                 <div *ngIf="showTextBox_CHA && tb!==undefined" >
-                                        <div class="col-md-6 col-sm-6 col-xs-12 element_box ngx-dnd-item" ngxDraggable>
+                                       
+                                                    <div class="col-md-6 col-sm-6 col-xs-12 element_box ngx-dnd-item" ngxDraggable>
                                                 <div class="action-ui" id="tour-action-ui-id">
                                                     <span class="actions">
                                                         <a (click)="cloneElement(tb.idx,'CHA')" class="clone">
@@ -1121,7 +1123,7 @@
                                                 </label>
                                                 </div>
                                             </div>
-                                            </div>
+                                        </div>
                                         </div>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-12 selectdiv element_box ngx-dnd-item" ngxDraggable>

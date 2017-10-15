@@ -24,14 +24,31 @@ export class MenuToggleRightComponent implements OnInit {
         localStorage.setItem("side", side);
         if (side == "right") {
             this.document.getElementById("theme").setAttribute("href", "./assets/styles/right-menu.css");
-            this.document.getElementById("theme2").setAttribute("href", "./assets/styles/responsive-right.css");
         }
         else {
-            this.document.getElementById("theme").setAttribute("href", "./assets/styles/style.css");
-            this.document.getElementById("theme2").setAttribute("href", "./assets/styles/responsive.css");
+            this.document.getElementById("theme").setAttribute("href", "./assets/styles/left-menu.css");
         }
 
     }
+
+    changeColor(color) {
+        localStorage.setItem("color", color);
+        if (color == "pink-blue") {
+            this.document.getElementById("color").setAttribute("href", "./assets/styles/pink-blue.css");
+            this.document.getElementById("logo_img").setAttribute("src", "/assets/images/logo_steer.png");
+            this.document.getElementById("logo_img").setAttribute("width", "500");
+            this.document.getElementById("logo_img").setAttribute("height", "450");
+
+
+        }
+        else {
+            this.document.getElementById("color").setAttribute("href", "./assets/styles/orange-blue.css");
+            this.document.getElementById("logo_img").setAttribute("src", "/assets/images/settings/logo_dashboard.png");
+        }
+
+    }
+
+
 
 
     toggle(id) {

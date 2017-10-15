@@ -1,0 +1,42 @@
+﻿.frame_header {
+    background-color: #f29634;
+}
+
+.detail_nav_menu ul li.ui-tabs-active {
+    border-bottom: 2px solid #0b8fcf;
+}
+
+    .detail_nav_menu ul li.ui-tabs-active a {
+        color: #f29634;
+    }
+
+.save_btn {
+    background-color: #0b8fcf;
+    box-shadow: 0 5px 10px -4px rgb( 240, 149, 55 );
+}
+
+.next_btn {
+    background-color: #f09537;
+    box-shadow: 0 5px 10px -4px rgb( 44, 158, 214 );
+}
+
+.menu li.active {
+    border-left: 3px solid #f09537;
+}
+ 
+    .menu li.active a {
+        color: #f09537;
+    }
+.menu li a:hover {
+    color: #f09537;
+    
+}
+.crt_pst_btn .btn {
+    background-color: #f09537;
+}
+
+.aside {
+     
+    background: #FFF5D5 !important;
+     
+}

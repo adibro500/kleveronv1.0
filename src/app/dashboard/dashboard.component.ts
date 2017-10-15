@@ -25,20 +25,15 @@ export class DashboardComponent implements OnDestroy, OnInit {
 
         Observable.interval(6000).subscribe(x => {
             translate.use(localStorage.getItem('lang'));
-            // this.opts = localStorage.getItem('opts').split(',');
-            //console.log("opts0000", this.opts);
-            // for (var i = 0; i < this.opts.length; i++) {
-            //     if (this.opts[i] != "") {
-            //         this.hideIt[i] = false;
-            //     }
-            //     else
-            //         this.hideIt[i] = true;
-            // }
 
-            // for (var i = 0; i < this.hideIt.length; i++) {
-            //     console.log(this.hideIt[i]);
-            // }
         });
+        var color = localStorage.getItem("color");
+        if (color == "pink-blue") {
+            this.document.getElementById("color").setAttribute("href", "./assets/styles/pink-blue.css");
+        }
+        else {
+            this.document.getElementById("color").setAttribute("href", "./assets/styles/orange-blue.css");
+        }
 
 
 

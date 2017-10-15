@@ -1,9 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from "rxjs/Rx";
 import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl } from "@angular/forms";
 import { AuthGuardService } from "../auth-guard.service";
 import { LoginService } from "./login.service";
+import { DOCUMENT } from "@angular/platform-browser";
 
 @Component({
     selector: 'login',
@@ -23,7 +24,7 @@ export class LoginComponent implements OnDestroy, OnInit {
     public password: AbstractControl;
     uname: string = '';
     pass: string = '';
-    constructor(private fb: FormBuilder, translate: TranslateService, private authguardservice: AuthGuardService, private loginservice: LoginService) {
+    constructor(private fb: FormBuilder, translate: TranslateService, private authguardservice: AuthGuardService, private loginservice: LoginService, @Inject(DOCUMENT) private document: any) {
 
         this.observable = Observable.interval(1000).subscribe(x => {
             translate.use(localStorage.getItem('lang'));
@@ -37,7 +38,13 @@ export class LoginComponent implements OnDestroy, OnInit {
 
         this.username = this.form.controls['username'];
         this.password = this.form.controls['password'];
-
+        var color = localStorage.getItem("color");
+        if (color == "pink-blue") {
+            this.document.getElementById("color").setAttribute("href", "./assets/styles/pink-blue.css");
+        }
+        else {
+            this.document.getElementById("color").setAttribute("href", "./assets/styles/orange-blue.css");
+        }
 
 
         // this language will be used as a fallback when a translation isn't found in the current languag
