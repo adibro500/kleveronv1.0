@@ -290,8 +290,8 @@
     /*     settings      */
 
     .dash_logo {
-        padding: 15px 0;
-        height: 65px;
+        /* padding: 15px 0;
+        height: 65px; */
     }
 
     .frame_header {
@@ -578,12 +578,12 @@
     }
 
     .dash_logo {
-        padding: 15px 0;
-        height: 55px;
+        /* padding: 15px 0;
+        height: 55px; */
     }
 
         .dash_logo img {
-            width: 120px;
+            /* width: 120px; */
         }
 
     .hidemenu footer {

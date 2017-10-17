@@ -2,34 +2,33 @@
     background-color: #2f7ce4;
 }
 
-.detail_nav_menu ul li.ui-tabs-active {
-    border-bottom: 2px solid #f6477e;
+.aside {
+    background: #e6ecfc none repeat scroll 0 0;
 }
 
-    .detail_nav_menu ul li.ui-tabs-active a {
-        color: #f6477e;
-    }
+.menu li.active a, .menu li:hover a {
+    color: #f6477e;
+}
 
-.save_btn {
+
+.menu li.active, .menu li:hover {
+    border-left: 3px solid #f6477e;
+}
+
+.btn1 {
     background-color: #f6477e;
     box-shadow: 0 5px 10px -4px rgb(246, 71, 126);
 }
 
-.next_btn {
+.btn2 {
     background-color: #2f7ce4;
     box-shadow: 0 5px 10px -4px rgb(47, 124, 228);
 }
 
-.menu li.active {
-    border-left: 3px solid #f6477e;
-}
-
-    .menu li.active a{
-        color: #f6477e;
-    }
-.menu li a:hover {
+.detail_nav_menu ul li.ui-tabs-active a, .detail_nav_menu ul li:hover a {
     color: #f6477e;
 }
-.crt_pst_btn .btn {
-    background-color: #f6477e;
+
+.detail_nav_menu ul li.ui-tabs-active, .detail_nav_menu ul li:hover {
+    border-bottom: 2px solid #f6477e;
 }
