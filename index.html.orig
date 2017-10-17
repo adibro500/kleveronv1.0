@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Kleveron1.0</title>
+  <base href="/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="./assets/images/fav.ico" />
+<script src="./assets/js/jquery-1.11.3.min.js"></script>
+<script src="./assets/js/bootstrap.min.js"></script>
+<script src="./assets/js/jquery-ui.js"></script>
+<script src="./assets/js/moment-with-locales.min.js"></script>
+<script src="./assets/js/perfect-scrollbar.js"></script>
+<script src="./assets/js/perfect-scrollbar.jquery.js"></script>
+<script src="./assets/js/bootstrap-datetimepicker.min.js"></script>
+<<<<<<< HEAD
+<link id="theme" href="./assets/styles/style.css" rel="stylesheet" >
+<link id="theme2" href="./assets/styles/responsive.css" rel="stylesheet" > 
+<link id="color" href="./assets/styles/style.css" rel="stylesheet" >
+<link id="logo" href="./assets/styles/default-logo.css" rel="stylesheet">
+=======
+<link id="theme" href="./assets/styles/left-menu.css" rel="stylesheet" >
+<link id="color" href="./assets/styles/orange-blue.css" rel="stylesheet">
+<link id="logo" href="./assets/styles/default-logo.css" rel="stylesheet">
+
+>>>>>>> o3/gh-pages
+</head>
+<body>
+  <app-root></app-root>
+<script type="text/javascript" src="inline.bundle.js"></script><script type="text/javascript" src="polyfills.bundle.js"></script><script type="text/javascript" src="styles.bundle.js"></script><script type="text/javascript" src="vendor.bundle.js"></script><script type="text/javascript" src="main.bundle.js"></script></body>
+</html>
