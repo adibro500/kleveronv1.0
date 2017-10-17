@@ -43,6 +43,9 @@ import { AdminListMasterComponent } from "./admin/admin-list-master.component";
 import { AdminGridMasterComponent } from "./admin/admin-grid-master.component";
 import { DashRecComponent } from "./dashboardrec/dashrec.component";
 import { MenuToggleRightComponent } from "./menuToggle/menuToggle.component";
+import { ColorPickerModule } from 'primeng/primeng';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
   {
@@ -121,6 +124,7 @@ export function createTranslateLoader(http: HttpClient) {
     MenuToggleRightComponent,
   ],
   imports: [
+    BrowserAnimationsModule,
     NgxDnDModule,
     DynamicModule.withComponents([TextboxComponent]),
     NguiDatetimePickerModule,
@@ -137,6 +141,7 @@ export function createTranslateLoader(http: HttpClient) {
       { enableTracing: true } // <-- debugging purposes only
     ),
     BrowserModule,
+    ColorPickerModule,
     TimepickerModule.forRoot(),
     TranslateModule.forRoot({
       loader: {

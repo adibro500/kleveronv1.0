@@ -304,14 +304,7 @@ label {
         cursor: pointer;
     }
 
-        .detail_nav_menu ul li.ui-tabs-active {
-            /*border-bottom: 2px solid #f29634;*/
-        }
-
-            .detail_nav_menu ul li.ui-tabs-active a {
-                /*color: #f29634;*/
-            }
-
+        
         .detail_nav_menu ul li a {
             text-decoration: none;
             line-height: normal;
@@ -553,13 +546,13 @@ select.cmn_input {
         color: #fff;
     }
 
-.save_btn {
+.btn1 {
     /*background-color: #f09537;
     box-shadow: 0 5px 10px -4px rgb( 240, 149, 55 );*/
     margin: 0 10px;
 }
 
-.next_btn {
+.btn2 {
     /*background-color: #0b8fcf;
     box-shadow: 0 5px 10px -4px rgb( 44, 158, 214 );*/
     margin: 0 10px;
@@ -680,7 +673,6 @@ a:hover, a:focus, li:focus {
     position: fixed;
     height: 100%;
     width: 270px;
-    background: #edf2f8;
     transition: all 0.4s ease 0s;
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
@@ -706,13 +698,14 @@ a:hover, a:focus, li:focus {
     transition: all 0.4s ease;
 }
 
-.dash_logo {
-    background: #ffffff;
+/* .dash_logo {
+     background: #ffffff;
     text-align: center;
     margin: 0px auto;
     padding: 20px 0;
-    height: 75px;
-}
+    height: 75px; 
+    display:none;
+} */
 
 .content_wrap {
     width: 100%;

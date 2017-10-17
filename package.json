@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
-    },
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^4.0.0",
@@ -26,6 +26,7 @@
     "@ngx-translate/core": "^8.0.0",
     "@ngx-translate/http-loader": "^2.0.0",
     "@swimlane/ngx-dnd": "^3.0.0",
+    "angular2-color-picker": "^1.3.1",
     "core-js": "^2.4.1",
     "ng-dynamic": "^3.0.2",
     "ng-dynamic-component": "^1.1.0",

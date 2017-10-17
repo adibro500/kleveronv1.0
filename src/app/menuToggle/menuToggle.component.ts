@@ -41,11 +41,43 @@ export class MenuToggleRightComponent implements OnInit {
 
 
         }
-        else {
+        else if (color == "orange-blue") {
             this.document.getElementById("color").setAttribute("href", "./assets/styles/orange-blue.css");
             this.document.getElementById("logo_img").setAttribute("src", "./assets/images/settings/logo_dashboard.png");
-        }
 
+        }
+        else if (color == "pink-blue") {
+            this.document.getElementById("color").setAttribute("href", "./assets/styles/pink-blue.css");
+            this.document.getElementById("logo_img").setAttribute("src", "./assets/images/settings/logo_dashboard.png");
+        }
+        else if (color == "sky-purple") {
+            this.document.getElementById("color").setAttribute("href", "./assets/styles/sky-purple.css");
+            this.document.getElementById("logo_img").setAttribute("src", "./assets/images/settings/logo_dashboard.png");
+        }
+        else if (color == "yellow-navy") {
+            this.document.getElementById("color").setAttribute("href", "./assets/styles/yellow-navy.css");
+            this.document.getElementById("logo_img").setAttribute("src", "./assets/images/settings/logo_dashboard.png");
+        }
+        else if (color == "green-purple") {
+            this.document.getElementById("color").setAttribute("href", "./assets/styles/green-purple.css");
+            this.document.getElementById("logo_img").setAttribute("src", "./assets/images/settings/logo_dashboard.png");
+        }
+        else if (color == "steer-high") {
+            this.document.getElementById("color").setAttribute("href", "./assets/styles/steer-high.css");
+            this.document.getElementById("logo_img").setAttribute("src", "./assets/images/settings/logo_dashboard.png");
+        }
+        else if (color == "logo") {
+            this.document.getElementById("logo").setAttribute("href", "./assets/styles/own-company-logo.css");
+            this.document.getElementById("logo_img").setAttribute("src", "./assets/images/settings/logo_dashboard.png");
+        }
+        else if (color == "default-logo") {
+            this.document.getElementById("logo").setAttribute("href", "./assets/styles/default-logo.css");
+            this.document.getElementById("logo_img").setAttribute("src", "./assets/images/settings/logo_dashboard.png");
+        }
+        else if (color == "secondary-logo") {
+            this.document.getElementById("logo").setAttribute("href", "./assets/styles/secondary-logo.css");
+            this.document.getElementById("logo_img").setAttribute("src", "./assets/images/settings/logo_dashboard.png");
+        }
     }
 
 

@@ -13,6 +13,7 @@ declare var tabs: any;
 @Component({
     selector: 'adminOnBoard',
     templateUrl: './admin-on-board.html',
+    //  styleUrls: ['../../assets/styles/own-cmpny-logo.css'],
     providers: [Control, DrakeStoreService, DroppableDirective, InputMasterService]
 })
 
@@ -47,7 +48,7 @@ export class AdminInputMaster implements OnInit {
         if (color == "pink-blue") {
             this.document.getElementById("color").setAttribute("href", "./assets/styles/pink-blue.css");
         }
-        else {
+        else if (color == "orange-blue") {
             this.document.getElementById("color").setAttribute("href", "./assets/styles/orange-blue.css");
         }
 

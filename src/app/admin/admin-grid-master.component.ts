@@ -1,5 +1,7 @@
 import { Component, Input, OnInit, AfterViewInit, DoCheck, Inject } from '@angular/core';
 import { DOCUMENT } from "@angular/common";
+import { ColorPickerModule } from 'primeng/primeng';
+
 declare var $: any;
 declare var perfectScrollbar: any;
 declare var height: any;
@@ -13,7 +15,7 @@ declare var tabs: any;
 
 export class AdminGridMasterComponent implements OnInit {
 
-
+    color: string;
     constructor( @Inject(DOCUMENT) private document: any) {
         var side = localStorage.getItem("side");
         if (side == "right") {
