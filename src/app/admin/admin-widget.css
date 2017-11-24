@@ -1,0 +1,8 @@
+.pnl_inp
+{
+    border: 0;
+    background: transparent !important;
+}
+.owl-prev, .owl-next{
+display: none;
+}

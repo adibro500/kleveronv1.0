@@ -9,7 +9,6 @@ import { CssClassForDivsService } from "./createPage.service";
 import { Container } from "./container";
 import { TimepickerConfig } from "ngx-bootstrap";
 import { RlTagInputModule } from 'angular2-tag-input';
-import { NgbdDatepickerPopup } from "./Datepicker.component";
 import { getAnnotation } from "./annotations";
 import { TextboxComponent } from "./textbox.component";
 import { Control2 } from "./Controls";
@@ -59,6 +58,38 @@ export class CreatePageMenuComponent implements AfterViewInit, DoCheck, OnChange
 
 
     ngAfterViewInit(): void {
+        $(window).load(function () {
+            var H = $(window).height();
+            var nH = $('.frame_header').height();
+            var nD = $('.dash_logo').height();
+            //var F = $('footer').height();
+            var S = H - nH;
+            //var C = H - nH - F - 60;
+            $('.wrapper ').css('min-height', H);
+            $('.aside_nav ').css('height', S);
+            //$('.bgwhite').css('min-height', C);
+            if ($(window).width() < 767) {
+                $('.aside_nav ').css('min-height', S - nD - 20);
+            }
+            $(window).resize(function () {
+                var H = $(window).height();
+                var nH = $('.frame_header').height();
+                var nD = $('.dash_logo').height();
+                //var F = $('footer').height();
+                var S = H - nH;
+                //var C = H - nH - F - 60;
+                $('.wrapper ').css('min-height', H);
+                $('.aside_nav ').css('height', S);
+                //$('.bgwhite').css('min-height', C);
+                if ($(window).width() < 767) {
+                    $('.aside_nav ').css('min-height', S - nD - 20);
+                }
+            });
+        });
+
+
+
+
         this.containerService.getContainers().subscribe(posts => {
             this.posts = posts;
         });
@@ -119,26 +150,10 @@ export class CreatePageMenuComponent implements AfterViewInit, DoCheck, OnChange
 
     stringjs: string;
     saveFunc() {
-        if (this.myRadio.includes("Date")) {
-            this.alert = NgbdDatepickerPopup;
-            this.isTimePick = true;
-            this.myRadio2 = "";
-            return;
-        }
-        else {
-            this.mainhtml += this.myRadio2;
 
-        }
-
-        this.mainhtml += "</div>";
-        alert("mmmmmm " + this.mainhtml);
-        setTimeout(() => {
-            document.getElementById("displayControls").innerHTML += this.mainhtml;
-            console.log("main html", this.mainhtml);
-            console.log($("#contra").html());
-            // this.showHTML = true;
-        }, 3000);
     }
+    uname = localStorage.getItem("loginname");
+
 
     containers = new Array<Container>();
     constructor(private elRef: ElementRef, private containerService: CssClassForDivsService, translate: TranslateService, private router: Router, private modalRef: BsModalRef, private modalService: BsModalService, @Inject(DOCUMENT) private document: any) {

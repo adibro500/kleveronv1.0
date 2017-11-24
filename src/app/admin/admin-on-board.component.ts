@@ -1,11 +1,13 @@
 import { Component, Input, OnInit, AfterViewInit, DoCheck, Inject } from '@angular/core';
 import { RlTagInputModule } from 'angular2-tag-input';
-import { Control } from "./Control";
 import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
 import { DragulaService } from 'ng2-dragula/ng2-dragula';
 import { DrakeStoreService, DroppableDirective } from "@swimlane/ngx-dnd/release";
-import { InputMasterService } from "./admin-input-master.service";
 import { DOCUMENT } from "@angular/common";
+import { Router } from '@angular/router';
+import { Control } from './Control';
+import { InputMasterService } from './admin-input-master.service';
+import { RenderInputMasterService } from './render-input-master.service';
 declare var $: any;
 declare var perfectScrollbar: any;
 declare var height: any;
@@ -13,7 +15,7 @@ declare var tabs: any;
 @Component({
     selector: 'adminOnBoard',
     templateUrl: './admin-on-board.html',
-    //  styleUrls: ['../../assets/styles/own-cmpny-logo.css'],
+    // styleUrls: ['./stylish.css'],
     providers: [Control, DrakeStoreService, DroppableDirective, InputMasterService]
 })
 
@@ -22,18 +24,18 @@ export class AdminInputMaster implements OnInit {
 
     ListMap: Map<number, string> = new Map<number, string>();
     htmllist: string[];
-
-
+    color: string;
+    uname = localStorage.getItem("loginname");
 
     mainhtml: string = '';
 
-
+    public thisForm: FormGroup;
 
     fgroup: FormGroup;
     newForm: FormGroup;
     // arrayControl = <FormArray>this.newForm.controls['formArray'];
-
-    constructor(public fb: FormBuilder, public con: Control, public ds: DrakeStoreService, private aimp: InputMasterService, @Inject(DOCUMENT) private document: any) {
+    data: any[];
+    constructor(private rims: RenderInputMasterService, public fb: FormBuilder, public con: Control, public ds: DrakeStoreService, private router: Router, private aimp: InputMasterService, private dragulaService: DragulaService, @Inject(DOCUMENT) private document: any) {
 
 
         var side = localStorage.getItem("side");
@@ -44,24 +46,36 @@ export class AdminInputMaster implements OnInit {
             this.document.getElementById("theme").setAttribute("href", "./assets/styles/left-menu.css");
         }
 
-        var color = localStorage.getItem("color");
-        if (color == "pink-blue") {
+        var color1 = localStorage.getItem("color");
+        if (color1 == "pink-blue") {
             this.document.getElementById("color").setAttribute("href", "./assets/styles/pink-blue.css");
         }
-        else if (color == "orange-blue") {
+        else if (color1 == "orange-blue") {
             this.document.getElementById("color").setAttribute("href", "./assets/styles/orange-blue.css");
         }
 
+        // this.dragulaService.setOptions('first-bag', {
+        //     revertOnSpill: true
+        // });
+
+        let color = 'ff0000';
+        this.thisForm = this.fb.group({
+            'colorPick': [color]
+        });
 
     }
 
 
+    nextCall() {
+        // alert("ok");
+    }
 
+    formUrl: string = "";
     j: any;
     str: string = '';
     pholder: string = 'New Company';
     strid0 = "cmn_input0";
-    str0: string = '';
+    str0: string = "";
     pholder0: string = 'New Company';
     strid0_CHA = "Textarea1";
     str0_CHA: string = '';
@@ -105,6 +119,30 @@ export class AdminInputMaster implements OnInit {
     str0_cbox: string[] = ['Compliant With PF(India)', 'Compliant With ESIC(India)'];
     isval0: boolean = false;
     valmsg0: string = "";
+
+    req0 = null;
+    req0_CHA = null;
+    req0_coe = null;
+    req0_noe = null;
+    req0_ll = null;
+    req0_gp = null;
+    req0_fb = null;
+    req0_tw = null;
+    req0_info = null;
+    req0_aob = null;
+    req0_city = null;
+    req0_state = null;
+    req0_ctry = null;
+    req0_cbox = null;
+
+
+
+
+
+
+
+    @Input()
+    name: string;
     @Input()
     value: string;
     @Input()
@@ -115,21 +153,36 @@ export class AdminInputMaster implements OnInit {
     class: string;
 
     json1: any = {};
-    Textboxes: Control[] = this.con.JSONarr;
-    Textboxes_CHA: Control[] = this.con.JSONarrCHA;
-    Textboxes_CEO: Control[] = this.con.JSONarrCEO;
-    Textboxes_city: Control[] = this.con.JSONarrCity;
-    Textboxes_aob: Control[] = this.con.JSONarrAOB;
-    Textboxes_fb: Control[] = this.con.JSONarrFB;
-    Textboxes_tw: Control[] = this.con.JSONarrTW;
-    Textboxes_ll: Control[] = this.con.JSONarrLL;
-    Textboxes_gplus: Control[] = this.con.JSONarrGP;
-    Textboxes_ctry: Control[] = this.con.JSONarrCt;
-    Textboxes_state: Control[] = this.con.JSONarrSt;
-    Textboxes_info: Control[] = this.con.JSONarrIN;
-    Textboxes_NOE: Control[] = this.con.JSONarrNOE;
-    Textboxes_cbox: Control[] = this.con.JSONarrCB;
+    Textboxes = this.con.JSONarr;
+    Textboxes_CHA = this.con.JSONarrCHA;
+    Textboxes_CEO = this.con.JSONarrCEO;
+    Textboxes_city = this.con.JSONarrCity;
+    Textboxes_aob = this.con.JSONarrAOB;
+    Textboxes_fb = this.con.JSONarrFB;
+    Textboxes_tw = this.con.JSONarrTW;
+    Textboxes_ll = this.con.JSONarrLL;
+    Textboxes_gplus = this.con.JSONarrGP;
+    Textboxes_ctry = this.con.JSONarrCt;
+    Textboxes_state = this.con.JSONarrSt;
+    Textboxes_info = this.con.JSONarrIN;
+    Textboxes_NOE = this.con.JSONarrNOE;
+    Textboxes_cbox = this.con.JSONarrCB;
 
+
+    valmsg = "This field is required";
+    valmsg_CHA = "This field is required";
+    valmsg_CEO = "This field is required";
+    valmsg_city = "This field is required";
+    valmsg_aob = "This field is required";
+    valmsg_fb = "This field is required";
+    valmsg_tw = "This field is required";
+    valmsg_ll = "This field is required";
+    valmsg_gplus = "This field is required";
+    valmsg_ctry = "This field is required";
+    valmsg_state = "This field is required";
+    valmsg_info = "This field is required";
+    valmsg_noe = "This field is required";
+    valmsg_cbox = "This field is required";
 
     control: Control;
     control2: Control;
@@ -138,25 +191,43 @@ export class AdminInputMaster implements OnInit {
 
     strop: string;
 
-    showTextBox: boolean;
-    showTextBox_CHA: boolean;
-    showTextBox_CEO: boolean;
-    showTextBox_city: boolean;
-    showTextBox_aob: boolean;
-    showTextBox_fb: boolean;
-    showTextBox_tw: boolean;
-    showTextBox_ll: boolean;
-    showTextBox_gplus: boolean;
-    showTextBox_ctry: boolean;
-    showTextBox_state: boolean;
-    showTextBox_info: boolean;
-    showTextBox_noe: boolean;
-    showTextBox_cbox: boolean;
+    showTextBox: boolean = false;
+    showTextBox_CHA: boolean = false;
+    showTextBox_CEO: boolean = false;
+    showTextBox_city: boolean = false;
+    showTextBox_aob: boolean = false;
+    showTextBox_fb: boolean = false;
+    showTextBox_tw: boolean = false;
+    showTextBox_ll: boolean = false;
+    showTextBox_gplus: boolean = false;
+    showTextBox_ctry: boolean = false;
+    showTextBox_state: boolean = false;
+    showTextBox_info: boolean = false;
+    showTextBox_noe: boolean = false;
+    showTextBox_cbox: boolean = false;
+    showText: boolean = true;
+    showText_CHA: boolean = true;
+    showText_CEO: boolean = true;
+    showText_city: boolean = true;
+    showText_aob: boolean = true;
+    showText_fb: boolean = true;
+    showText_tw: boolean = true;
+    showText_ll: boolean = true;
+    showText_gplus: boolean = true;
+    showText_ctry: boolean = true;
+    showText_state: boolean = true;
+    showText_info: boolean = true;
+    showText_noe: boolean = true;
+    showText_cbox: boolean = true;
 
     isEdited: boolean;
+
+
+
     cloneElement(idx, inp_flag) {
 
-        alert(idx)
+
+        // alert(idx)
         if (inp_flag == undefined) {
             if (idx == 0) {
                 if (this.con.JSONarr.length == 0) {
@@ -173,7 +244,7 @@ export class AdminInputMaster implements OnInit {
                 else {
                     console.log("bfore", this.con.JSONarr);
                     for (var i = 0; i < this.con.JSONarr.length; i++) {
-                        alert(this.con.JSONarr[i].idx++);
+                        // alert(this.con.JSONarr[i].idx++);
                         this.con.JSONarr[i].idx = this.con.JSONarr[i].idx++;
 
                     }
@@ -205,7 +276,7 @@ export class AdminInputMaster implements OnInit {
                 else {
                     console.log("bfore", this.con.JSONarr);
                     for (var j = idx - 1; j < this.con.JSONarr.length; j++) {
-                        alert(this.con.JSONarr[j].idx++);
+                        // alert(this.con.JSONarr[j].idx++);
                         this.con.JSONarr[j].idx = this.con.JSONarr[j].idx++;
                     }
                     //this.con.JSONarr[j].idx = this.con.JSONarr.length;
@@ -225,7 +296,7 @@ export class AdminInputMaster implements OnInit {
 
         } else if (inp_flag == "CHA") {
 
-            alert(idx)
+            // alert(idx)
             if (idx == 0) {
                 if (this.con.JSONarrCHA.length == 0) {
                     //this.Textboxes.push(this.json1);
@@ -241,7 +312,7 @@ export class AdminInputMaster implements OnInit {
                 else {
                     console.log("bfore", this.con.JSONarrCHA);
                     for (var i = 0; i < this.con.JSONarrCHA.length; i++) {
-                        alert(this.con.JSONarrCHA[i].idx++);
+                        // alert(this.con.JSONarrCHA[i].idx++);
                         this.con.JSONarrCHA[i].idx = this.con.JSONarrCHA[i].idx++;
 
                     }
@@ -273,7 +344,7 @@ export class AdminInputMaster implements OnInit {
                 else {
                     console.log("bfore", this.con.JSONarrCHA);
                     for (var j = idx - 1; j < this.con.JSONarrCHA.length; j++) {
-                        alert(this.con.JSONarrCHA[j].idx++);
+                        // alert(this.con.JSONarrCHA[j].idx++);
                         this.con.JSONarrCHA[j].idx = this.con.JSONarrCHA[j].idx++;
                     }
                     //this.con.JSONarr[j].idx = this.con.JSONarr.length;
@@ -295,7 +366,7 @@ export class AdminInputMaster implements OnInit {
             }
         } else if (inp_flag == "CEO") {
 
-            alert(idx)
+            // alert(idx)
             if (idx == 0) {
                 if (this.con.JSONarrCEO.length == 0) {
                     //this.Textboxes.push(this.json1);
@@ -311,7 +382,7 @@ export class AdminInputMaster implements OnInit {
                 else {
                     console.log("bfore", this.con.JSONarrCEO);
                     for (var i = 0; i < this.con.JSONarrCEO.length; i++) {
-                        alert(this.con.JSONarrCEO[i].idx++);
+                        // alert(this.con.JSONarrCEO[i].idx++);
                         this.con.JSONarrCEO[i].idx = this.con.JSONarrCEO[i].idx++;
 
                     }
@@ -343,7 +414,7 @@ export class AdminInputMaster implements OnInit {
                 else {
                     console.log("bfore", this.con.JSONarrCEO);
                     for (var j = idx - 1; j < this.con.JSONarrCEO.length; j++) {
-                        alert(this.con.JSONarrCEO[j].idx++);
+                        // alert(this.con.JSONarrCEO[j].idx++);
                         this.con.JSONarrCEO[j].idx = this.con.JSONarrCEO[j].idx++;
                     }
                     //this.con.JSONarr[j].idx = this.con.JSONarr.length;
@@ -366,7 +437,7 @@ export class AdminInputMaster implements OnInit {
         }
         else if (inp_flag == "city") {
 
-            alert(idx)
+            // alert(idx)
             if (idx == 0) {
                 if (this.con.JSONarrCity.length == 0) {
                     //this.Textboxes.push(this.json1);
@@ -382,7 +453,7 @@ export class AdminInputMaster implements OnInit {
                 else {
                     console.log("bfore", this.con.JSONarrCity);
                     for (var i = 0; i < this.con.JSONarrCity.length; i++) {
-                        alert(this.con.JSONarrCity[i].idx++);
+                        // alert(this.con.JSONarrCity[i].idx++);
                         this.con.JSONarrCity[i].idx = this.con.JSONarrCity[i].idx++;
 
                     }
@@ -414,7 +485,7 @@ export class AdminInputMaster implements OnInit {
                 else {
                     console.log("bfore", this.con.JSONarrCity);
                     for (var j = idx - 1; j < this.con.JSONarrCity.length; j++) {
-                        alert(this.con.JSONarrCity[j].idx++);
+                        // alert(this.con.JSONarrCity[j].idx++);
                         this.con.JSONarrCity[j].idx = this.con.JSONarrCity[j].idx++;
                     }
                     //this.con.JSONarr[j].idx = this.con.JSONarr.length;
@@ -435,7 +506,7 @@ export class AdminInputMaster implements OnInit {
         }
         else if (inp_flag == "aob") {
 
-            alert(idx)
+            // alert(idx)
             if (idx == 0) {
                 if (this.con.JSONarrAOB.length == 0) {
                     //this.Textboxes.push(this.json1);
@@ -451,7 +522,7 @@ export class AdminInputMaster implements OnInit {
                 else {
                     console.log("bfore", this.con.JSONarrAOB);
                     for (var i = 0; i < this.con.JSONarrAOB.length; i++) {
-                        alert(this.con.JSONarrAOB[i].idx++);
+                        // alert(this.con.JSONarrAOB[i].idx++);
                         this.con.JSONarrAOB[i].idx = this.con.JSONarrAOB[i].idx++;
 
                     }
@@ -483,7 +554,7 @@ export class AdminInputMaster implements OnInit {
                 else {
                     console.log("bfore", this.con.JSONarrAOB);
                     for (var j = idx - 1; j < this.con.JSONarrAOB.length; j++) {
-                        alert(this.con.JSONarrAOB[j].idx++);
+                        // alert(this.con.JSONarrAOB[j].idx++);
                         this.con.JSONarrAOB[j].idx = this.con.JSONarrAOB[j].idx++;
                     }
                     //this.con.JSONarr[j].idx = this.con.JSONarr.length;
@@ -504,7 +575,7 @@ export class AdminInputMaster implements OnInit {
         }
         else if (inp_flag == "fbook") {
 
-            alert(idx)
+            // alert(idx)
             if (idx == 0) {
                 if (this.con.JSONarrFB.length == 0) {
                     //this.Textboxes.push(this.json1);
@@ -520,7 +591,7 @@ export class AdminInputMaster implements OnInit {
                 else {
                     console.log("bfore", this.con.JSONarrFB);
                     for (var i = 0; i < this.con.JSONarrFB.length; i++) {
-                        alert(this.con.JSONarrFB[i].idx++);
+                        // alert(this.con.JSONarrFB[i].idx++);
                         this.con.JSONarrFB[i].idx = this.con.JSONarrFB[i].idx++;
 
                     }
@@ -552,7 +623,7 @@ export class AdminInputMaster implements OnInit {
                 else {
                     console.log("bfore", this.con.JSONarrFB);
                     for (var j = idx - 1; j < this.con.JSONarrFB.length; j++) {
-                        alert(this.con.JSONarrFB[j].idx++);
+                        // alert(this.con.JSONarrFB[j].idx++);
                         this.con.JSONarrFB[j].idx = this.con.JSONarrFB[j].idx++;
                     }
                     //this.con.JSONarr[j].idx = this.con.JSONarr.length;
@@ -574,7 +645,7 @@ export class AdminInputMaster implements OnInit {
         }
         else if (inp_flag == "twitter") {
 
-            //alert(idx)
+            //// alert(idx)
             if (idx == 0) {
                 if (this.con.JSONarrTW.length == 0) {
                     //this.Textboxes.push(this.json1);
@@ -590,7 +661,7 @@ export class AdminInputMaster implements OnInit {
                 else {
                     console.log("bfore", this.con.JSONarrTW);
                     for (var i = 0; i < this.con.JSONarrTW.length; i++) {
-                        alert(this.con.JSONarrTW[i].idx++);
+                        // alert(this.con.JSONarrTW[i].idx++);
                         this.con.JSONarrTW[i].idx = this.con.JSONarrTW[i].idx++;
 
                     }
@@ -620,7 +691,7 @@ export class AdminInputMaster implements OnInit {
                 else {
                     console.log("bfore", this.con.JSONarrTW);
                     for (var j = idx - 1; j < this.con.JSONarrTW.length; j++) {
-                        alert(this.con.JSONarrTW[j].idx++);
+                        // alert(this.con.JSONarrTW[j].idx++);
                         this.con.JSONarrTW[j].idx = this.con.JSONarrTW[j].idx++;
                     }
                     //this.con.JSONarr[j].idx = this.con.JSONarr.length;
@@ -640,7 +711,7 @@ export class AdminInputMaster implements OnInit {
         }
         else if (inp_flag == "linkedin") {
 
-            alert(idx)
+            // alert(idx)
             if (idx == 0) {
                 if (this.con.JSONarrLL.length == 0) {
                     //this.Textboxes.push(this.json1);
@@ -655,7 +726,7 @@ export class AdminInputMaster implements OnInit {
                 else {
                     console.log("bfore", this.con.JSONarrLL);
                     for (var i = 0; i < this.con.JSONarrLL.length; i++) {
-                        alert(this.con.JSONarrLL[i].idx++);
+                        // alert(this.con.JSONarrLL[i].idx++);
                         this.con.JSONarrLL[i].idx = this.con.JSONarrLL[i].idx++;
 
                     }
@@ -685,7 +756,7 @@ export class AdminInputMaster implements OnInit {
                 else {
                     console.log("bfore", this.con.JSONarrLL);
                     for (var j = idx - 1; j < this.con.JSONarrLL.length; j++) {
-                        alert(this.con.JSONarrLL[j].idx++);
+                        // alert(this.con.JSONarrLL[j].idx++);
                         this.con.JSONarrLL[j].idx = this.con.JSONarrLL[j].idx++;
                     }
                     //this.con.JSONarr[j].idx = this.con.JSONarr.length;
@@ -705,7 +776,7 @@ export class AdminInputMaster implements OnInit {
         }
         else if (inp_flag == "gplus") {
 
-            alert(idx)
+            // alert(idx)
             if (idx == 0) {
                 if (this.con.JSONarrGP.length == 0) {
                     //this.Textboxes.push(this.json1);
@@ -720,7 +791,7 @@ export class AdminInputMaster implements OnInit {
                 else {
                     console.log("bfore", this.con.JSONarrGP);
                     for (var i = 0; i < this.con.JSONarrGP.length; i++) {
-                        alert(this.con.JSONarrGP[i].idx++);
+                        // alert(this.con.JSONarrGP[i].idx++);
                         this.con.JSONarrGP[i].idx = this.con.JSONarrGP[i].idx++;
 
                     }
@@ -750,7 +821,7 @@ export class AdminInputMaster implements OnInit {
                 else {
                     console.log("bfore", this.con.JSONarrFB);
                     for (var j = idx - 1; j < this.con.JSONarrGP.length; j++) {
-                        alert(this.con.JSONarrGP[j].idx++);
+                        // alert(this.con.JSONarrGP[j].idx++);
                         this.con.JSONarrGP[j].idx = this.con.JSONarrGP[j].idx++;
                     }
                     //this.con.JSONarr[j].idx = this.con.JSONarr.length;
@@ -770,7 +841,7 @@ export class AdminInputMaster implements OnInit {
         }
         else if (inp_flag == "ctry") {
 
-            alert(idx)
+            // alert(idx)
             if (idx == 0) {
                 if (this.con.JSONarrGP.length == 0) {
                     //this.Textboxes.push(this.json1);
@@ -785,7 +856,7 @@ export class AdminInputMaster implements OnInit {
                 else {
                     console.log("bfore", this.con.JSONarrCt);
                     for (var i = 0; i < this.con.JSONarrCt.length; i++) {
-                        alert(this.con.JSONarrCt[i].idx++);
+                        // alert(this.con.JSONarrCt[i].idx++);
                         this.con.JSONarrCt[i].idx = this.con.JSONarrCt[i].idx++;
 
                     }
@@ -815,7 +886,7 @@ export class AdminInputMaster implements OnInit {
                 else {
                     console.log("bfore", this.con.JSONarrCt);
                     for (var j = idx - 1; j < this.con.JSONarrCt.length; j++) {
-                        alert(this.con.JSONarrCt[j].idx++);
+                        // alert(this.con.JSONarrCt[j].idx++);
                         this.con.JSONarrCt[j].idx = this.con.JSONarrCt[j].idx++;
                     }
                     //this.con.JSONarr[j].idx = this.con.JSONarr.length;
@@ -835,7 +906,7 @@ export class AdminInputMaster implements OnInit {
         }
         else if (inp_flag == "state") {
 
-            alert(idx)
+            // alert(idx)
             if (idx == 0) {
                 if (this.con.JSONarrSt.length == 0) {
                     //this.Textboxes.push(this.json1);
@@ -850,7 +921,7 @@ export class AdminInputMaster implements OnInit {
                 else {
                     console.log("bfore", this.con.JSONarrSt);
                     for (var i = 0; i < this.con.JSONarrSt.length; i++) {
-                        alert(this.con.JSONarrSt[i].idx++);
+                        // alert(this.con.JSONarrSt[i].idx++);
                         this.con.JSONarrSt[i].idx = this.con.JSONarrSt[i].idx++;
 
                     }
@@ -880,7 +951,7 @@ export class AdminInputMaster implements OnInit {
                 else {
                     console.log("bfore", this.con.JSONarrSt);
                     for (var j = idx - 1; j < this.con.JSONarrSt.length; j++) {
-                        alert(this.con.JSONarrSt[j].idx++);
+                        // alert(this.con.JSONarrSt[j].idx++);
                         this.con.JSONarrSt[j].idx = this.con.JSONarrSt[j].idx++;
                     }
                     //this.con.JSONarr[j].idx = this.con.JSONarr.length;
@@ -902,7 +973,7 @@ export class AdminInputMaster implements OnInit {
         }
         else if (inp_flag == "info") {
 
-            alert(idx)
+            // alert(idx)
             if (idx == 0) {
                 if (this.con.JSONarrIN.length == 0) {
                     //this.Textboxes.push(this.json1);
@@ -920,7 +991,7 @@ export class AdminInputMaster implements OnInit {
                 else {
                     console.log("bfore", this.con.JSONarrIN);
                     for (var i = 0; i < this.con.JSONarrIN.length; i++) {
-                        alert(this.con.JSONarrIN[i].idx++);
+                        // alert(this.con.JSONarrIN[i].idx++);
                         this.con.JSONarrIN[i].idx = this.con.JSONarrIN[i].idx++;
 
                     }
@@ -956,7 +1027,7 @@ export class AdminInputMaster implements OnInit {
                 else {
                     console.log("bfore", this.con.JSONarrIN);
                     for (var j = idx - 1; j < this.con.JSONarrIN.length; j++) {
-                        alert(this.con.JSONarrIN[j].idx++);
+                        // alert(this.con.JSONarrIN[j].idx++);
                         this.con.JSONarrIN[j].idx = this.con.JSONarrIN[j].idx++;
                     }
                     //this.con.JSONarr[j].idx = this.con.JSONarr.length;
@@ -979,7 +1050,7 @@ export class AdminInputMaster implements OnInit {
         }
         else if (inp_flag == "noe") {
 
-            alert(idx)
+            // alert(idx)
             if (idx == 0) {
                 if (this.con.JSONarrNOE.length == 0) {
                     //this.Textboxes.push(this.json1);
@@ -993,7 +1064,7 @@ export class AdminInputMaster implements OnInit {
                 else {
                     console.log("bfore", this.con.JSONarrNOE);
                     for (var i = 0; i < this.con.JSONarrNOE.length; i++) {
-                        alert(this.con.JSONarrNOE[i].idx++);
+                        // alert(this.con.JSONarrNOE[i].idx++);
                         this.con.JSONarrNOE[i].idx = this.con.JSONarrNOE[i].idx++;
 
                     }
@@ -1021,7 +1092,7 @@ export class AdminInputMaster implements OnInit {
                 else {
                     console.log("bfore", this.con.JSONarrNOE);
                     for (var j = idx - 1; j < this.con.JSONarrNOE.length; j++) {
-                        alert(this.con.JSONarrNOE[j].idx++);
+                        // alert(this.con.JSONarrNOE[j].idx++);
                         this.con.JSONarrNOE[j].idx = this.con.JSONarrNOE[j].idx++;
                     }
                     //this.con.JSONarr[j].idx = this.con.JSONarr.length;
@@ -1040,7 +1111,7 @@ export class AdminInputMaster implements OnInit {
         }
         else if (inp_flag == "cbox") {
 
-            alert(idx)
+            // alert(idx)
             if (idx == 0) {
                 if (this.con.JSONarrCB.length == 0) {
                     //this.Textboxes.push(this.json1);
@@ -1054,7 +1125,7 @@ export class AdminInputMaster implements OnInit {
                 else {
                     console.log("bfore", this.con.JSONarrCB);
                     for (var i = 0; i < this.con.JSONarrCB.length; i++) {
-                        alert(this.con.JSONarrCB[i].idx++);
+                        // alert(this.con.JSONarrCB[i].idx++);
                         this.con.JSONarrCB[i].idx = this.con.JSONarrCB[i].idx++;
 
                     }
@@ -1082,7 +1153,7 @@ export class AdminInputMaster implements OnInit {
                 else {
                     console.log("bfore", this.con.JSONarrCB);
                     for (var j = idx - 1; j < this.con.JSONarrCB.length; j++) {
-                        alert(this.con.JSONarrCB[j].idx++);
+                        // alert(this.con.JSONarrCB[j].idx++);
                         this.con.JSONarrCB[j].idx = this.con.JSONarrCB[j].idx++;
                     }
                     //this.con.JSONarr[j].idx = this.con.JSONarr.length;
@@ -1099,7 +1170,14 @@ export class AdminInputMaster implements OnInit {
             }
 
         }
+
+
     }
+
+    saveModalVals(val) {
+
+    }
+
 
     editElement(idx, inp_flag) {
         if (inp_flag == undefined) {
@@ -1161,9 +1239,10 @@ export class AdminInputMaster implements OnInit {
     num = 0;
     jk: number;
     saveCntrl(ctpar, ctid, ctval, ctph, ctvbx, ctvmsg) {
-        alert(localStorage.getItem("indexEle"));
 
-        alert(ctvmsg);
+        // alert(localStorage.getItem("indexEle"));
+
+        // alert(ctvmsg);
         if (localStorage.getItem("inp_flag") == 'cbox') {
 
             if (localStorage.getItem("indexEle") !== 'fg') {
@@ -1397,6 +1476,7 @@ export class AdminInputMaster implements OnInit {
                 if (this.filter) {
                     this.isval0 = this.filter;
                     this.valmsg0 = ctvmsg;
+                    ``
                 }
                 else {
                     this.isval0 = this.filter;
@@ -1481,12 +1561,71 @@ export class AdminInputMaster implements OnInit {
 
 
 
+
+
     }
 
 
 
     delElement(idx, inp_flag) {
-        if (inp_flag == undefined) {
+        if (inp_flag == undefined && idx == 0) {
+            this.showText = false;
+        }
+
+        else if (inp_flag == "CHA" && idx == 0) {
+
+            this.showText_CHA = false;
+
+        }
+        else if (inp_flag == "CEO" && idx == 0) {
+            this.showText_CEO = false;
+
+        }
+        else if (inp_flag == "aob" && idx == 0) {
+            this.showText_aob = false;
+
+        }
+        else if (inp_flag == "city" && idx == 0) {
+            this.showText_city = false;
+
+        }
+        else if (inp_flag == "ctry" && idx == 0) {
+            this.showText_ctry = false;
+
+        }
+        else if (inp_flag == "noe" && idx == 0) {
+            this.showText_noe = false;
+
+        }
+        else if (inp_flag == "twitter" && idx == 0) {
+            this.showText_tw = false;
+
+        }
+        else if (inp_flag == "info" && idx == 0) {
+            this.showText_info = false;
+
+        }
+        else if (inp_flag == "fbook" && idx == 0) {
+            this.showText_fb = false;
+
+        }
+        else if (inp_flag == "linkedin" && idx == 0) {
+            this.showText_ll = false;
+
+        }
+        else if (inp_flag == "gplus" && idx == 0) {
+            this.showText_gplus = false;
+
+        }
+        else if (inp_flag == "cbox" && idx == 0) {
+            this.showText_cbox = false;
+
+        }
+        else if (inp_flag == "state" && idx == 0) {
+            this.showText_state = false;
+
+        }
+        else if (inp_flag == undefined) {
             delete this.Textboxes[idx - 1];
             this.showTextBox = true;
         }
@@ -1763,34 +1902,148 @@ export class AdminInputMaster implements OnInit {
 
     }
 
+    bool: boolean = false;
     pagehtml: any;
+    jsonUI: any;
+    formName: string;
+    index = 9;
     saveClick() {
-        //console.log($("#contra").html());
-        this.pagehtml = document.getElementById("contra").outerHTML.replace(/"/g, '\\"');
+        $("#input_control_URL").hide();
+        this.jsonUI = {
+            "user": "ravi",
+            "html": {
+                "Textboxes": this.Textboxes,
+                "Textboxes_CHA": this.Textboxes_CHA,
+                "Textboxes_CEO": this.Textboxes_CEO,
+                "Textboxes_city": this.Textboxes_city,
+                "Textboxes_aob": this.Textboxes_aob,
+                "Textboxes_fb": this.Textboxes_fb,
+                "Textboxes_tw": this.Textboxes_tw,
+                "Textboxes_ll": this.Textboxes_ll,
+                "Textboxes_gplus": this.Textboxes_gplus,
+                "Textboxes_ctry": this.Textboxes_ctry,
+                "Textboxes_state": this.Textboxes_state,
+                "Textboxes_info": this.Textboxes_info,
+                "Textboxes_NOE": this.Textboxes_NOE,
+                "Textboxes_cbox": this.Textboxes_cbox,
+                "showTextBox": this.showTextBox,
+                "showTextBox_CHA": this.showTextBox_CHA,
+                "showTextBox_CEO": this.showTextBox_CEO,
+                "showTextBox_city": this.showTextBox_city,
+                "showTextBox_aob": this.showTextBox_aob,
+                "showTextBox_fb": this.showTextBox_fb,
+                "showTextBox_tw": this.showTextBox_tw,
+                "showTextBox_ll": this.showTextBox_ll,
+                "showTextBox_gplus": this.showTextBox_gplus,
+                "showTextBox_ctry": this.showTextBox_ctry,
+                "showTextBox_state": this.showTextBox_state,
+                "showTextBox_info": this.showTextBox_info,
+                "showTextBox_noe": this.showTextBox_noe,
+                "showTextBox_cbox": this.showTextBox_cbox,
+                "showText": this.showText,
+                "showText_CHA": this.showText_CHA,
+                "showText_CEO": this.showText_CHA,
+                "showText_city": this.showText_city,
+                "showText_aob": this.showText_aob,
+                "showText_fb": this.showText_fb,
+                "showText_tw": this.showText_tw,
+                "showText_ll": this.showText_ll,
+                "showText_gplus": this.showText_gplus,
+                "showText_ctry": this.showText_ctry,
+                "showText_state": this.showText_state,
+                "showText_info": this.showText_info,
+                "showText_noe": this.showText_noe,
+                "showText_cbox": this.showText_cbox,
+                "strid0": this.strid0,
+                "str0": this.str0,
+                "pholder0": this.pholder0,
+                "strid0_CHA": this.strid0_CHA,
+                "str0_CHA": this.str0_CHA,
+                "pholder0_CHA": this.pholder0_CHA,
+                "strid0_CEO": this.strid0_CEO,
+                "str0_CEO": this.str0_CEO,
+                "pholder0_CEO": this.pholder0_CEO,
+                "strid0_city": this.str0_city,
+                "str0_city": this.str0_city,
+                "pholder0_city": this.pholder0_city,
+                "strid0_aob": this.strid0_aob,
+                "aob0": this.aob0,
+                "pholder0_aob": this.pholder0_aob,
+                "strid0_fb": this.strid0_fb,
+                "str0_fb": this.str0_fb,
+                "pholder0_fb": this.pholder0_fb,
+                "pholder0_ll": this.pholder0_ll,
+                "strid0_ll": this.strid0_ll,
+                "str0_ll": this.str0_ll,
+                "pholder0_gp": this.pholder0_gp,
+                "strid0_gp": this.strid0_gp,
+                "str0_gp": this.str0_gp,
+                "pholder0_tw": this.pholder0_tw,
+                "strid0_tw": this.strid0_tw,
+                "str0_tw": this.str0_tw,
+                "pholder0_ctry": this.pholder0_ctry,
+                "strid0_ctry": this.strid0_ctry,
+                "str0_ctry": this.str0_ctry,
+                "pholder0_state": this.pholder0_state,
+                "strid0_state": this.strid0_state,
+                "str0_state": this.str0_state,
+                "pholder0_info": this.pholder0_info,
+                "strid0_info": this.strid0_info,
+                "str0_info": this.str0_info,
+                "lid0_info": this.lid0_info,
+                "lname0_info": this.lname0_info,
+                "lclass0_info": this.lclass0_info,
+                "strid0_noe": this.strid0_noe,
+                "str0_noe": this.str0_noe,
+                "strid0_cbox": this.strid0_cbox,
+                "str0_cbox": this.str0_cbox,
 
-        console.log(this.pagehtml);
 
+            },
+            "formURL": this.formUrl,
+            "formName": this.formName
+        }
+        let list = {
+            "user": "ravi",
+            "formName": this.formName
+        };
 
-        this.aimp.putInputData({ "html": this.pagehtml });
+        this.aimp.putInputDataList(list);
+        this.aimp.putInputData(this.jsonUI);
         console.log("doneeee");
+        // alert(" Your template has been successfully saved !!!");
+        this.router.navigate(['/adminPanel']);
+        this.formName = "";
     }
-    ngOnInit(): void {
-        // alert(this.document.getElementById("theme").getAttribute("href"));
-        // alert(this.document.getElementById("theme2").getAttribute("href"));
 
+
+    ngOnInit(): void {
 
         $('.edit_btn').on('click', function () {
-            alert($('.edit_btn').index(this));
+            // alert($('.edit_btn').index(this));
             localStorage.setItem("parent", $('.edit_btn').index(this));
 
         });
+
+        // $(".clone").click(function () {
+        //     $(this).parent().find('.element-box').eq(0).clone().appendTo(this);
+        // });
+
         var num = 0;
+        $(".save_btn").click(function () {
+            console.log($("#contra").html());
 
+        });
 
+        // $(".delel").click(function () {
+        //     $(this).closest(".element_box").remove();
+        // });
 
 
         $('.sv_btn').on('click', function () {
             $("#input_label_Modal").hide();
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').remove();
         })
 
 
@@ -1818,20 +2071,33 @@ export class AdminInputMaster implements OnInit {
 
         $(window).load(function () {
             var H = $(window).height();
-            var nH = $('.logo_bar').height();
-            var nD = $('.onboarding_lbl').height();
-            var F = $('footer').height();
-            var C = H - nH - nD - F - 10;
-            $('.detail_wrapper').css('min-height', C);
+            var nH = $('.frame_header').height();
+            var nD = $('.dash_logo').height();
+            //var F = $('footer').height();
+            var S = H - nH;
+            //var C = H - nH - F - 60;
+            // $('.wrapper ').css('min-height', H);
+            $('.aside_nav ').css('height', S);
+            //$('.bgwhite').css('min-height', C);
+            if ($(window).width() < 767) {
+                $('.aside_nav ').css('min-height', S - nD - 20);
+            }
             $(window).resize(function () {
                 var H = $(window).height();
-                var nH = $('.logo_bar').height();
-                var nD = $('.onboarding_lbl').height();
-                var F = $('footer').height();
-                var C = H - nH - nD - F - 10;
-                $('.detail_wrapper').css('min-height', C);
+                var nH = $('.frame_header').height();
+                var nD = $('.dash_logo').height();
+                //var F = $('footer').height();
+                var S = H - nH;
+                //var C = H - nH - F - 60;
+                // $('.wrapper ').css('min-height', H);
+                $('.aside_nav ').css('height', S);
+                //$('.bgwhite').css('min-height', C);
+                if ($(window).width() < 767) {
+                    $('.aside_nav ').css('min-height', S - nD - 20);
+                }
             });
         });
+
         $("#clone0").click(function () {
             $(this).parent().find('.element-box').eq(0).clone().appendTo(this);
         });
@@ -1854,13 +2120,14 @@ export class AdminInputMaster implements OnInit {
             }
         });
 
-        // right toggle menu
-
-
-
 
     }
 
+    template: string;
+    onSubmit() {
+        this.template = document.getElementById("contra").outerHTML;
+        this.aimp.putInputData(this.template);
+    }
 
 
 }

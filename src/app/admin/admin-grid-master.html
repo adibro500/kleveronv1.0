@@ -19,7 +19,7 @@
                             </h3>
                         </li>
                         <li class="active">
-                            <a routerLink="/createPage/createPageMenu">
+                            <a [routerLink]='["/createPage/createPageMenu",uname]'>
                                 <img src="/assets/images/settings/Job-postings.png" class="icon-img" />
                                 <span>
                                     <label>
@@ -29,7 +29,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/adminInputMaster">
+                            <a [routerLink]='["/adminInputMaster",uname]'>
                                 <img src="/assets/images/settings/Job-postings.png" class="icon-img" />
                                 <span>
                                     <label>
@@ -39,7 +39,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/adminListMaster">
+                            <a [routerLink]='["/adminListMaster",uname]'>
                                 <img src="/assets/images/settings/Job-postings.png" class="icon-img" />
                                 <span>
                                     <label>
@@ -49,7 +49,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/adminGridMaster">
+                            <a [routerLink]='["/adminGridMaster",uname]'>
                                 <img src="/assets/images/settings/Job-postings.png" class="icon-img" />
                                 <span>
                                     <label>

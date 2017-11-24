@@ -201,6 +201,38 @@
         padding-top: 22px;
     }
     /*  end my jobs */
+    /*  all widgets */
+    .mtch_skill highlight {
+        float: left;
+        width: 100%;
+    }
+
+    .temp_time span {
+        display: block;
+    }
+
+    .small_label {
+        font-size: 12px;
+        font-weight: 400;
+    }
+
+        .small_label highlight {
+            font-size: 14px;
+        }
+
+    .app_tab_row h4.lbl_name {
+        font-size: 14px;
+    }
+
+    .app_tab_row .lbl_value label {
+        font-size: 12px;
+    }
+
+    .sub_dtl .title {
+        font-size: 14px;
+    }
+    /*  end all widgets */
+
 }
 
 @media screen and (max-width: 1366px) {
@@ -290,8 +322,8 @@
     /*     settings      */
 
     .dash_logo {
-        /* padding: 15px 0;
-        height: 65px; */
+        padding: 15px 0;
+        height: 65px;
     }
 
     .frame_header {
@@ -312,14 +344,19 @@
         font-size: 22px;
     }
 
-    .page_header, .page_content {
+    .page_header {
         padding: 0px 15px;
     }
 
-        .page_header .icon-img {
-            margin: 10px 0px;
-            width: 30px;
-        }
+    .page_content {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .page_header .icon-img {
+        margin: 10px 0px;
+        width: 30px;
+    }
 
     .menu {
         padding: 4px 0px 10px 0px;
@@ -381,6 +418,98 @@
         padding: 6px 0;
         width: 100px;
     }
+    /*  all widgets */
+    .cmn_card_gjt .hdr_typ {
+        font-size: 16px;
+        padding-bottom: 20px;
+    }
+
+    .cmn_list_gjt .hdr_typ {
+        font-size: 16px;
+        padding-bottom: 20px;
+    }
+
+    .cmn_calender_gjt .hdr_typ {
+        font-size: 16px;
+    }
+
+    .highlight_label {
+        font-size: 16px;
+    }
+
+        .highlight_label highlight {
+            font-size: 28px;
+        }
+
+    .light_label {
+        font-size: 14px;
+    }
+
+        .light_label highlight {
+            font-size: 20px;
+        }
+
+    .lists_tab li {
+        padding: 10px 10px;
+    }
+
+        .lists_tab li a {
+            font-size: 16px;
+        }
+
+    .exp_dtl h4 {
+        font-size: 16px;
+    }
+
+    .wrk_dtl h4 {
+        font-size: 16px;
+    }
+
+    .skl_title h4 {
+        font-size: 16px;
+    }
+
+    .edu_dtl h4 {
+        font-size: 16px;
+    }
+
+    .card_prfl h4 {
+        font-size: 16px;
+    }
+
+    .card_prfl p {
+        font-size: 14px;
+    }
+
+    .app_list_tab li {
+        padding: 10px 10px;
+    }
+
+        .app_list_tab li a {
+            font-size: 16px;
+        }
+
+    .cal_date_label {
+        font-size: 16px;
+    }
+
+    .evnt_nm .circle {
+        height: 10px;
+        margin-right: 3px;
+        width: 10px;
+    }
+
+    .evnt_nm span {
+        padding-right: 2px;
+    }
+
+    .evnt_schdl {
+        font-size: 12px;
+        font-weight: 400;
+    }
+    /*  end all widgets */
+
+
 }
 
 @media screen and (max-width: 1280px) {
@@ -463,6 +592,104 @@
     .control_mdl .modal-dialog {
         width: 90%;
     }
+
+    /*   all widgets */
+    .stng_hdr_typ {
+        font-size: 18px;
+    }
+
+    .info_no {
+        font-size: 30px;
+    }
+
+    .info_lbl {
+        font-size: 16px;
+    }
+
+    .cmn_card_gjt .hdr_typ {
+        font-size: 14px;
+    }
+
+
+    .opn_typ {
+        padding-bottom: 30px;
+    }
+
+    .revenue_card .opn_typ {
+        padding-bottom: 20px;
+    }
+
+    .temp_time {
+        font-size: 12px;
+        font-weight: 400;
+    }
+
+    .mtch_skill {
+        font-size: 12px;
+        font-weight: 400;
+    }
+
+        .mtch_skill highlight {
+            font-size: 24px;
+        }
+
+
+    .esca_list .inline_icn span i {
+        font-size: 16px;
+    }
+
+    .member_list .inline_icn span i {
+        font-size: 16px;
+    }
+
+    .app_tab_row .inline_icn span i {
+        font-size: 16px;
+    }
+
+    .temp_time span i {
+        font-size: 16px;
+    }
+
+    .spoc_dtl .icon i {
+        font-size: 16px;
+    }
+
+    .card_rate i {
+        font-size: 16px;
+    }
+
+    .perfrm_list .inline_icn span i {
+        font-size: 16px;
+    }
+
+    .cal_date_label {
+        font-size: 12px;
+    }
+
+    .evnt_nm .circle {
+        display: none;
+    }
+
+    .progress_ratio .small_label {
+        font-size: 10px;
+        font-weight: 500;
+    }
+
+    /*  end all widgets */
+    /*  add page section  */
+    .add_page_chkbx .chk_bx label {
+        padding-top: 0;
+    }
+
+    .add_page_chkbx.custom_chk_bx [type="checkbox"]:not(:checked) + label::after,
+    .add_page_chkbx.custom_chk_bx [type="checkbox"]:checked + label::after {
+        top: 1px;
+    }
+
+    /*  end add page section  */
+
+
+
 }
 
 
@@ -552,6 +779,21 @@
             font-size: 12px;
             padding: 5px 10px;
         }
+    /*    all widgets    */
+    .user_status {
+        left: 13px;
+    }
+
+    .progress_ratio .small_label {
+        font-size: 12px;
+    }
+
+
+
+
+
+
+    /*    end all widgets    */
 }
 
 @media screen and (max-width: 991px) {
@@ -561,6 +803,7 @@
     }
 
     .content_wrap {
+        padding-left: 0px;
         width: 100%;
     }
 
@@ -578,22 +821,21 @@
     }
 
     .dash_logo {
-        /* padding: 15px 0;
-        height: 55px; */
+        padding: 15px 0;
+        height: 55px;
     }
 
         .dash_logo img {
-            /* width: 120px; */
+            width: 120px;
         }
 
-    .hidemenu footer {
-        padding-left: 185px;
+    .hidemenu .bgwhite, .hidemenu footer {
+        /*padding-left: 185px;*/
     }
-
-
 
     .frame_header {
         position: fixed;
+        left: 0;
     }
 
     .bgwhite {
@@ -620,8 +862,13 @@
         margin: 0 15px;
     }
 
-    .page_header, .page_content {
+    .page_header {
         padding: 0px 10px;
+    }
+
+    .page_content {
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
 
@@ -671,8 +918,16 @@
         margin-bottom: 40px;
     }
 
+    /* footer */
 
-    
+    footer {
+        margin-left: 0;
+    }
+    /*   add page section  */
+    .inner.visible a {
+        font-size: 12px;
+    }
+    /*  end add page section  */
 }
 
 
@@ -1158,6 +1413,180 @@
         margin: 0 auto 30px;
         width: 290px;
     }
+
+    /*   all widgets */
+    .srch_wrap .upld_btn {
+        padding-bottom: 0;
+        text-align: center;
+    }
+
+        .srch_wrap .upld_btn .btn {
+            font-size: 14px;
+        }
+
+    .srch_terms {
+        width: 100%;
+        padding: 20px 0;
+    }
+
+    .srch_btn {
+        margin: 0 auto;
+        padding-top: 10px;
+        width: 40%;
+    }
+
+        .srch_btn .btn {
+            padding: 10px 0;
+        }
+
+    .srch_widget {
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 0;
+        padding: 30px 0;
+        position: relative;
+        width: 100%;
+    }
+
+    .stng_hdr_typ {
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .ratio_1, .ratio_2 {
+        padding-bottom: 10px;
+    }
+
+    .escalation_list .ratio_3 {
+        padding-bottom: 10px;
+    }
+
+    .client_profile {
+        padding-bottom: 10px;
+    }
+
+    .card_prfl .card_pic {
+        width: 100%;
+    }
+
+    .perfrm_list .small_label {
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .spoc_dtl {
+        text-align: center;
+    }
+
+    .opn_typ {
+        text-align: center;
+    }
+
+    .total_amnt {
+        text-align: center;
+    }
+
+    .res_no {
+        text-align: center;
+    }
+
+    .mtch_skill {
+        text-align: center;
+    }
+
+    .fk_sub_info .small_label {
+        text-align: center;
+        padding-bottom: 10px;
+    }
+
+    .esca_list {
+        padding: 0;
+        text-align: center;
+    }
+
+        .esca_list .small_label {
+            padding-bottom: 10px;
+        }
+
+    .skill_info {
+        text-align: center;
+    }
+
+    .skill_hdr {
+        display: none;
+    }
+
+    .wrk_time {
+        padding-bottom: 20px;
+        padding-top: 10px;
+        text-align: center;
+    }
+
+    .wrk_dtl {
+        padding-bottom: 10px;
+    }
+
+    .edu_info {
+        text-align: center;
+    }
+
+    .app_tab_row {
+        text-align: center;
+    }
+
+    .member_list {
+        text-align: center;
+    }
+
+    .prjct_line {
+        text-align: center;
+    }
+
+    .prjct_img {
+        padding-bottom: 10px;
+    }
+
+    .prjct_tym {
+        text-align: center;
+    }
+
+    .prjct_line .small_label label {
+        padding-bottom: 10px;
+    }
+
+    .prjct_status {
+        left: 15%;
+        top: 2px;
+    }
+
+    .lists_tab ul, .app_list_tab ul {
+        text-align: center;
+    }
+
+    .lists_tab li a, .app_list_tab li a {
+        font-size: 14px;
+    }
+
+    .lists_tab li, .app_list_tab li {
+        width: 100%;
+    }
+
+    .lists_tab .grid_hdr, .app_list_tab .grid_hdr {
+        border-bottom: 1px solid #ccc;
+    }
+    /*   end all widgets */
+
+    /*  add page section  */
+    .add_page_chkbx.custom_chk_bx [type="checkbox"]:not(:checked) + label, .add_page_chkbx.custom_chk_bx [type="checkbox"]:checked + label {
+        padding-left: 30px;
+    }
+
+
+    /*  end add page section  */
+
+
+
+
 }
 
 @media screen and (max-width: 480px) {

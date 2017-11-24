@@ -17,7 +17,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="javascript::">
+                            <a [routerLink]='["/adminInputMaster",uname]'>
                                 <img src="/assets/images/settings/organisation.png" class="icon-img" />
                                 <span><label translate>Organisation</label></span>
                             </a>
@@ -141,7 +141,7 @@
 
             </header>
             <div class="container-fluid bgwhite">
-                <div class="row page_header">
+                <div class="row page_header cmn_info_wrap">
                     <div class="col-xs-6">
                         <h2 class="head"><label translate>Personal</label></h2>
                     </div>
@@ -155,9 +155,9 @@
                             <!-- -------------------------tabs --------------------------- -->
                             <div id="detail_tabs" class="detail_nav_menu">
                                 <ul>
-                                    <li><a routerLink="/settingsmenu/settings"><label translate>Account</label></a></li>
-                                    <li><a routerLink="/settingsmenu/settingstab2"><label translate>Notifications</label></a></li>
-                                    <li><a routerLink="/settingsmenu/settingstab3"><label translate>Email Preference</label></a></li>
+                                    <li><a [routerLink]='["/settingsmenu/settings",uname]'><label translate>Account</label></a></li>
+                                    <li><a [routerLink]='["/settingsmenu/settingstab2",uname]'><label translate>Notifications</label></a></li>
+                                    <li><a [routerLink]='["/settingsmenu/settingstab3",uname]'><label translate>Email Preference</label></a></li>
                                 </ul>
                                 <div id="tabs-2">
                                     <div class="company_details">
@@ -206,8 +206,8 @@
                             </div>
                             <!-- -------------------------end tabs --------------------------- -->
                             <div class="detail_btn">
-                                <button type="button" class="btn save_btn add_acnt"><label translate>Add New Account</label></button>
-                                <button type="button" class="btn tab_no next_btn mng_acnt"><label translate>Manage Accounts</label></button>
+                                <button type="button" class="btn btn1 save_btn add_acnt"><label translate>Add New Account</label></button>
+                                <button type="button" class="btn btn2 tab_no next_btn mng_acnt"><label translate>Manage Accounts</label></button>
                             </div>
 
 

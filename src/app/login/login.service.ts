@@ -3,7 +3,6 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Data } from "@angular/router/router";
 import { Observable } from "rxjs/Observable";
-import { options } from "./headers";
 
 @Injectable()
 export class LoginService {
@@ -12,12 +11,10 @@ export class LoginService {
 
     }
 
-    getLogins(logindata) {
+    // getLogins(logindata) {
 
+    //     return this.http.post("http://localhost:5000/api/login", logindata, options).map(res => res.text()).subscribe(data => console.log(data));
 
-        return this.http.post("http://localhost:3000/login-credentials", logindata, options).map(res => res.text()).subscribe(data => console.log(data));
-
-
-    }
+    // }
 
 }

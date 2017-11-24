@@ -17,7 +17,7 @@ declare var tabs: any;
 export class SettingsComponent implements AfterViewInit, OnInit, OnDestroy {
 
     observable: any;
-
+    uname = localStorage.getItem("loginname");
     ngOnInit() {
 
     }
@@ -57,28 +57,31 @@ export class SettingsComponent implements AfterViewInit, OnInit, OnDestroy {
             var H = $(window).height();
             var nH = $('.frame_header').height();
             var nD = $('.dash_logo').height();
-            var F = $('footer').height();
+            //var F = $('footer').height();
             var S = H - nH;
-            var C = H - nH - F - 60;
+            //var C = H - nH - F - 60;
+            $('.wrapper ').css('min-height', H);
             $('.aside_nav ').css('height', S);
-            $('.bgwhite').css('min-height', C);
+            //$('.bgwhite').css('min-height', C);
             if ($(window).width() < 767) {
-                $('.aside_nav ').css('height', S - nD - 20);
+                $('.aside_nav ').css('min-height', S - nD - 20);
             }
             $(window).resize(function () {
                 var H = $(window).height();
                 var nH = $('.frame_header').height();
                 var nD = $('.dash_logo').height();
-                var F = $('footer').height();
+                //var F = $('footer').height();
                 var S = H - nH;
-                var C = H - nH - F - 60;
+                //var C = H - nH - F - 60;
+                $('.wrapper ').css('min-height', H);
                 $('.aside_nav ').css('height', S);
-                $('.bgwhite').css('min-height', C);
+                //$('.bgwhite').css('min-height', C);
                 if ($(window).width() < 767) {
-                    $('.aside_nav ').css('height', S - nD - 20);
+                    $('.aside_nav ').css('min-height', S - nD - 20);
                 }
             });
         });
+
 
         $("#detail_tabs").tabs();
         $(".tab_no").click(function () {

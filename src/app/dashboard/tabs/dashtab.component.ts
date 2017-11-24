@@ -16,7 +16,7 @@ export class DashTabComponent implements AfterViewInit, OnDestroy {
     ngOnDestroy(): void {
         //this.observable.unscubscribe();
     }
-
+    uname = localStorage.getItem("loginname");
     observable: any;
     opts: any[];
 
@@ -54,23 +54,35 @@ export class DashTabComponent implements AfterViewInit, OnDestroy {
             $("#detail_tabs").tabs("option", "active", active + 1);
 
         });
-
         $(window).load(function () {
             var H = $(window).height();
-            var nH = $('.logo_bar').height();
-            var nD = $('.onboarding_lbl').height();
-            var F = $('footer').height();
-            var C = H - nH - nD - F - 10;
-            $('.detail_wrapper').css('min-height', C);
+            var nH = $('.frame_header').height();
+            var nD = $('.dash_logo').height();
+            //var F = $('footer').height();
+            var S = H - nH;
+            //var C = H - nH - F - 60;
+            $('.wrapper ').css('min-height', H);
+            $('.aside_nav ').css('height', S);
+            //$('.bgwhite').css('min-height', C);
+            if ($(window).width() < 767) {
+                $('.aside_nav ').css('min-height', S - nD - 20);
+            }
             $(window).resize(function () {
                 var H = $(window).height();
-                var nH = $('.logo_bar').height();
-                var nD = $('.onboarding_lbl').height();
-                var F = $('footer').height();
-                var C = H - nH - nD - F - 10;
-                $('.detail_wrapper').css('min-height', C);
+                var nH = $('.frame_header').height();
+                var nD = $('.dash_logo').height();
+                //var F = $('footer').height();
+                var S = H - nH;
+                //var C = H - nH - F - 60;
+                $('.wrapper ').css('min-height', H);
+                $('.aside_nav ').css('height', S);
+                //$('.bgwhite').css('min-height', C);
+                if ($(window).width() < 767) {
+                    $('.aside_nav ').css('min-height', S - nD - 20);
+                }
             });
         });
+
 
     }
 

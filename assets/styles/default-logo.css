@@ -1,9 +1,5 @@
 ﻿.dash_logo {
     display: block;
-}
-
-.cmpny_logo {
-    display:none;
     background: #ffffff;
     text-align: center;
     margin: 0px auto;
@@ -11,33 +7,10 @@
     height: 75px;
 }
 
-.cmpny_logo,li.sec-logo {
-    display:none!important;
+.cmpny_logo {
+    display:none;
 }
 
 .menu_footer {
     display:none;
-}
-
-.mob_head h1 {
-    text-align: right;
-}
-
-@media screen and (max-width: 1366px) {
-    .dash_logo {
-        padding: 15px 0;
-        height: 65px;
-    }
-}
-
-@media screen and (max-width: 991px) {
-    .dash_logo {
-        height: 55px;
-    }
-}
-
-@media screen and (max-width: 767px) {
-    .mob_head h1 {
-        text-align: center;
-    }
 }

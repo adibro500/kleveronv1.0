@@ -1,17 +1,19 @@
 import { Component, Input, OnInit, AfterViewInit, DoCheck, Inject } from '@angular/core';
 import { DOCUMENT } from "@angular/common";
+import { Employee, Service } from './grid-master.service';
 declare var $: any;
 declare var perfectScrollbar: any;
 declare var height: any;
 declare var tabs: any;
 @Component({
     selector: "admin-list-master",
-    templateUrl: "./admin-list-master.html"
+    templateUrl: "./admin-list-master.html",
+    styleUrls: ["./list.css"]
 })
 
 export class AdminListMasterComponent implements OnInit {
-
-    constructor( @Inject(DOCUMENT) private document: any) {
+    employees: Employee[];
+    constructor( @Inject(DOCUMENT) private document: any, service: Service) {
         var side = localStorage.getItem("side");
         if (side == "right") {
             this.document.getElementById("theme").setAttribute("href", "./assets/styles/right-menu.css");
@@ -28,7 +30,16 @@ export class AdminListMasterComponent implements OnInit {
             this.document.getElementById("color").setAttribute("href", "./assets/styles/orange-blue.css");
         }
 
+        this.employees = service.getEmployees();
+
     }
+
+
+    calculateCellValue(data) {
+        return [data.Title, data.FirstName, data.LastName].join(" ");
+    }
+
+    uname = localStorage.getItem("loginname");
 
     ngOnInit(): void {
         $('.navbar-header').click(function () {
@@ -50,28 +61,31 @@ export class AdminListMasterComponent implements OnInit {
             var H = $(window).height();
             var nH = $('.frame_header').height();
             var nD = $('.dash_logo').height();
-            var F = $('footer').height();
+            //var F = $('footer').height();
             var S = H - nH;
-            var C = H - nH - F - 60;
+            //var C = H - nH - F - 60;
+            $('.wrapper ').css('min-height', H);
             $('.aside_nav ').css('height', S);
-            $('.bgwhite').css('min-height', C);
+            //$('.bgwhite').css('min-height', C);
             if ($(window).width() < 767) {
-                $('.aside_nav ').css('height', S - nD - 20);
+                $('.aside_nav ').css('min-height', S - nD - 20);
             }
             $(window).resize(function () {
                 var H = $(window).height();
                 var nH = $('.frame_header').height();
                 var nD = $('.dash_logo').height();
-                var F = $('footer').height();
+                //var F = $('footer').height();
                 var S = H - nH;
-                var C = H - nH - F - 60;
+                //var C = H - nH - F - 60;
+                $('.wrapper ').css('min-height', H);
                 $('.aside_nav ').css('height', S);
-                $('.bgwhite').css('min-height', C);
+                //$('.bgwhite').css('min-height', C);
                 if ($(window).width() < 767) {
-                    $('.aside_nav ').css('height', S - nD - 20);
+                    $('.aside_nav ').css('min-height', S - nD - 20);
                 }
             });
         });
+
 
         $("#detail_tabs").tabs();
         $(".tab_no").click(function () {

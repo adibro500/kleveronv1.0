@@ -5,9 +5,9 @@ export let options = new RequestOptions();
 let headers = new Headers();
 headers.append('Content-Type', 'application/json');
 headers.append('Access-Control-Allow-Origin', '*');
-headers.append('Access-Control-Allow-Headers', '*');
-headers.append('Access-Control-Request-Method', '*');
-headers.append('Access-Control-Allow-Methods', 'POST');
+// headers.append('Access-Control-Allow-Headers', '*');
+// headers.append('Access-Control-Request-Method', '*');
+// headers.append('Access-Control-Allow-Methods', 'POST');
 
 //Access-Control-Allow-Methods
 options.headers = headers;

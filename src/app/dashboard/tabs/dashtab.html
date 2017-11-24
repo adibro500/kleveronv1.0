@@ -18,7 +18,7 @@
                             <span>
                                 <label translate>
                                     Personal</label></span> </a></li>
-                        <li><a href="javascript::">
+                        <li><a [routerLink]='["/adminInputMaster",uname]'>
                             <img src="/assets/images/settings/organisation.png" class="icon-img" />
                             <span>
                                 <label translate>
@@ -141,7 +141,7 @@
 
             </header>
             <div class="container-fluid bgwhite">
-                <div class="row page_header">
+                <div class="row page_header cmn_info_wrap">
                     <div class="col-xs-6">
                         <h2 class="head">
                             <label translate>
@@ -157,12 +157,12 @@
                                 <!---------------------------tabs ---------------------------- -->
                                 <div id="detail_tabs" class="detail_nav_menu">
                                     <ul>
-                                        <li><a routerLink="/dash/dashboard">
+                                        <li><a [routerLink]='["/dash/dashboard",uname]'>
                                             <label>
                                                 <div class="tab_no">
                                                     1</div>
                                                 <span translate>Company Details</span></label></a></li>
-                                        <li><a routerLink="/dash/dashtab">
+                                        <li><a [routerLink]='["/dash/dashtab",uname]'>
                                             <label>
                                                 <div class="tab_no">
                                                     2</div>

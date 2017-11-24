@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
 import { Observable } from "rxjs/Rx";
 import { DOCUMENT } from "@angular/platform-browser";
+import { DroppableDirective } from "@swimlane/ngx-dnd";
 declare var $: any;
 declare var perfectScrollbar: any;
 declare var height: any;
@@ -10,7 +11,8 @@ declare var tabs: any;
 @Component({
     selector: 'dashrec',
     templateUrl: './dashrec.component.html',
-    styleUrls: ["./dashrec.scss"]
+    styleUrls: ["./dashrec.scss"],
+    providers: [DroppableDirective]
 })
 
 export class DashRecComponent implements OnInit {
@@ -64,7 +66,6 @@ export class DashRecComponent implements OnInit {
 
         $(function () {
             $("#dash_tabs").tabs();
-
         });
 
 
@@ -75,6 +76,7 @@ export class DashRecComponent implements OnInit {
         //    $("#dash_tabs").tabs("option", "active", active + 1);
 
         //});
+
 
 
         $(".action-ui").addClass("hide-action-ui");
@@ -113,6 +115,7 @@ export class DashRecComponent implements OnInit {
     }
 
     changeMenu(side) {
+
         localStorage.setItem("side", side);
         if (side == "right") {
             this.document.getElementById("theme").setAttribute("href", "./assets/styles/right-menu.css");

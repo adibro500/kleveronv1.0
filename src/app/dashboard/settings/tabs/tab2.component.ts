@@ -17,7 +17,7 @@ declare var tabs: any;
 export class TabTwoComponent implements AfterViewInit, OnInit, OnDestroy {
 
     observable: any;
-
+    uname = localStorage.getItem("loginname");
     constructor(translate: TranslateService) {
         this.observable = Observable.interval(1000).subscribe(x => {
             translate.use(localStorage.getItem('lang'));

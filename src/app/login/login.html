@@ -48,7 +48,7 @@
                     <div class="sign_in">
                         <span class="frgt_pwd left"><a href="#"><label translate>Forgot Password</label></a></span>
                         <span class="btn_sign_in right">
-                            <button type="submit" [disabled]="!form.valid" class="btn sign_in_btn" routerLink="/dash/dashboard">
+                            <button type="submit" [disabled]="!form.valid" class="btn sign_in_btn" (click)="onSubmit()">
                             
                                 <label>
                                     <span translate>Sign In</span><span class="sign_in_img">

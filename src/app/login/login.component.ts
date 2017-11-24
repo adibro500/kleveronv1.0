@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl } from
 import { AuthGuardService } from "../auth-guard.service";
 import { LoginService } from "./login.service";
 import { DOCUMENT } from "@angular/platform-browser";
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'login',
@@ -24,7 +25,7 @@ export class LoginComponent implements OnDestroy, OnInit {
     public password: AbstractControl;
     uname: string = '';
     pass: string = '';
-    constructor(private fb: FormBuilder, translate: TranslateService, private authguardservice: AuthGuardService, private loginservice: LoginService, @Inject(DOCUMENT) private document: any) {
+    constructor(private fb: FormBuilder, translate: TranslateService, private router: Router, private ags: AuthGuardService, private loginservice: LoginService, @Inject(DOCUMENT) private document: any) {
 
         this.observable = Observable.interval(1000).subscribe(x => {
             translate.use(localStorage.getItem('lang'));
@@ -55,19 +56,23 @@ export class LoginComponent implements OnDestroy, OnInit {
     }
 
     res = [];
+
     public onSubmit(): void {
 
-        var json1 = {
+        let json1 = {
             "username": this.uname,
             "password": this.pass
         };
 
-        console.log(JSON.stringify(json1));
+        console.log(json1);
 
-        this.loginservice.getLogins(JSON.stringify(json1));
-
-
-
+        this.ags.isLoggedIn(json1).subscribe((res) => {
+            if (res.data != "invalid") {
+                this.ags.setUserLoggedInStatus();
+                localStorage.setItem("loginname", btoa(this.uname));
+                this.router.navigate(['/dash/dashboard', localStorage.getItem("loginname")]);
+            }
+        });
 
     }
 

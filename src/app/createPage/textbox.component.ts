@@ -1,9 +1,11 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Control2 } from "./Controls";
+
 declare var $: any;
 declare var perfectScrollbar: any;
 declare var height: any;
 declare var tabs: any;
+
 @Component({
     selector: 'textbox',
     templateUrl: './textbox.component.html',
@@ -17,14 +19,26 @@ export class TextboxComponent implements OnInit {
 
     control: Control2;
     showTextBox: boolean;
-    divclass1_tb: string = "col-md-6 col-sm-6 col-xs-12 selectdiv element_box";
-    divclass0_tb: string = "col-md-6 col-sm-6 col-xs-12 klvrn_col dtl_row";
-    pholder0_tb: string = "simple textbox";
-    class0_tb: string = "cmn_input";
-    str0_tb = "text1";
-    strid0_tb = "text1";
-    encodedExampleHtml: string;
+    // divclass1_tb: string = "col-md-6 col-sm-6 col-xs-12 selectdiv element_box";
+    // divclass0_tb: string = "col-md-6 col-sm-6 col-xs-12 klvrn_col dtl_row";
+    // pholder0_tb: string = "simple textbox";
+    // class0_tb: string = "cmn_input";
+    // str0_tb = "text1";
+    // strid0_tb = "text1";
+    // encodedExampleHtml: string;
     showTextBox_tb = false;
+
+    @Input()
+    pholder0_tb: string;
+    @Input()
+    css: string;
+    @Input()
+    str0_tb: string;
+    @Input()
+    strid0_tb: string;
+
+
+
 
 
     ngOnInit(): void {

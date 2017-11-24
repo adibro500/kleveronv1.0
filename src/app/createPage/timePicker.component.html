@@ -1,0 +1,137 @@
+<div class="col-md-6 col-sm-6 element_box">
+    <div class="action-ui" id="tour-action-ui-id">
+        <span class="actions">
+            <a class="" (click)="cloneElement(0)">
+                <i class="fa fa-clone">
+                </i><span class="tooltip">Clone</span>
+            </a>
+        </span> <span class="actions">
+            <a class="" (click)="editElement('fg')" data-target="#input_control_Modal" data-toggle="modal"
+               ><i class="fa fa-edit" ></i><span class="tooltip">Edit</span></a>
+        </span>
+        <span class="actions">
+            <a class="delel">
+                <i class="fa fa-trash-o">
+                </i><span class="tooltip">Delete</span>
+            </a>
+        </span> <span class="actions">
+            <a class=""
+               href="javascript:void(0);"><i class="fa fa-refresh"></i><span class="tooltip">Reset</span></a>
+        </span>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12 dtl_row klvrn_dt_picker">
+        <label class="lbl_hdr">Select Time: </label>
+        <div class='input-group date' id='datetimepicker2'>
+            <input type='text' class="cmn_input" />
+            <span class="input-group-addon">
+                <span class="fa fa-clock-o"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+
+<div *ngFor="let tb of Textboxes">
+    <div *ngIf="showTextBox && tb!==undefined">
+    <div class="col-md-6 col-sm-6 element_box">
+        <div class="action-ui" id="tour-action-ui-id">
+        <span class="actions">
+            <a class="" (click)="cloneElement(tb.idx)">
+                <i class="fa fa-clone">
+                </i><span class="tooltip">Clone</span>
+            </a>
+        </span> <span class="actions">
+            <a  (click)="editElement(tb.idx)" data-target="#input_control_Modal" data-toggle="modal"
+               ><i class="fa fa-edit"></i><span class="tooltip">Edit</span></a>
+        </span>
+        <span class="actions">
+            <a class="delel" (click)="delElement(tb.idx)">
+                <i class="fa fa-trash-o">
+                </i><span class="tooltip">Delete</span>
+            </a>
+        </span> <span class="actions">
+            <a class=""
+               href="javascript:void(0);"><i class="fa fa-refresh"></i><span class="tooltip">Reset</span></a>
+        </span>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12 dtl_row klvrn_dt_picker">
+        <label class="lbl_hdr">Select Time: </label>
+        <div class='input-group date' id='datetimepicker2'>
+            <input type='text' class="cmn_input" />
+            <span class="input-group-addon">
+                <span class="fa fa-clock-o"></span>
+            </span>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="modal fade control_mdl" id="input_control_Modal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            
+            <div class="modal_tabs add_control">
+                <div class="modal-header"> 
+                    <button type="button" class="mdl_close" data-dismiss="modal">
+                        &times;
+                    </button>
+                    <h4>
+                        <label class="modal-title">Edit Control</label>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    
+                    <div class="row col_outer cntrl_info">
+                            <div class="col-md-4 col-xs-12 lbl_cntrl" style="display:none">
+                                    <label class="lbl_hdr">
+                                        Control Parent ID
+                                    </label>
+                                    <input class="cmn_input" type="text" #ctpar>
+                                </div>
+                        <div class="col-md-4 col-xs-12 lbl_cntrl">
+                            <label class="lbl_hdr">
+                                Control Id
+                            </label>
+                            <input class="cmn_input" type="text" #ctid>
+                        </div>
+                        <div class="col-md-4 col-xs-12 lbl_cntrl">
+                            <label class="lbl_hdr">
+                                Control Value
+                            </label>
+                            <input class="cmn_input" type="text" #ctval>
+                        </div>
+                        <div class="col-md-4 col-xs-12 lbl_cntrl">
+                            <label class="lbl_hdr">
+                                Control Placeholder
+                            </label>
+                            <input class="cmn_input" type="text" #ctph>
+                        </div>
+                        <div class="col-md-4 col-xs-12 custom_chk_bx">
+                            <div class="chk_bx chk_top">
+                                <input type="checkbox" id="vldtn_btn1" #ctvbx>
+                                <label for="vldtn_btn1">
+                                    Validation Required
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-12 hide_lbl">
+                            <label class="lbl_hdr">
+                                Validation Message
+                            </label>
+                            <input class="cmn_input" type="text" #ctvmsg>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer modal_btn">
+                    <button type="button" class="btn sv_btn" (click)="saveCntrl(ctpar.value,ctid.value,ctval.value,ctph.value,ctvbx.value,ctvmsg.value)">
+                        <label>
+                            Save
+                        </label>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

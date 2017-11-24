@@ -14,10 +14,16 @@ import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { CssClassForDivsService } from "./createPage.service";
 import { Container } from "./container";
 import { TimepickerConfig } from "ngx-bootstrap";
-import { NgbdDatepickerPopup } from "./Datepicker.component";
+import { DatePickerComponent } from "./Datepicker.component";
 import { getAnnotation } from "./annotations";
 import { TextboxComponent } from "./textbox.component";
 import { DOCUMENT } from "@angular/common";
+import { DocumentComponent } from './addDoc.component';
+import { FieldComponent } from './addField.component';
+import { CheckboxComponent } from './checkBox.component';
+import { PasswordComponent } from './password.component';
+import { RadioComponent } from './radio.component';
+import { TimePickerComponent } from './timePicker.component';
 declare var $: any;
 declare var perfectScrollbar: any;
 declare var height: any;
@@ -31,10 +37,10 @@ declare var tabs: any;
 
 export class createPage1Component implements OnInit {
     components = new Array<any>();
-    inputs = {
-        class: 'world',
-        something: () => 'can be really complex'
-    };
+    // inputs = {
+    //     class: 'world',
+    //     something: () => 'can be really complex'
+    // };
 
     lbls: any = [];
     posts: any = [];
@@ -55,8 +61,53 @@ export class createPage1Component implements OnInit {
 
     alert;
 
+    id;
+    val;
+    ph;
+    msg;
+    arr = new Array<any>();
+
+    inputs = {
+        pholder0_tb: "simple textbox",
+        css: "col-sm-4 col-sd-4 element_box",
+        str0_tb: "text1",
+        strid0_tb: "text1"
+    }
+
+    cols;
+    icontrols;
+
+    saveData(ctid, ctval, ctph, ctmsg) {
+        if (this.icontrols == "Input(Text)") {
+            alert("llllllllll");
+
+        }
+
+        this.arr.push(
+            {
+                class: this.cols,
+                id: ctid,
+                value: ctval,
+                placeholder: ctph
+            }
+        );
+        console.log("arrrrr", this.arr);
+
+    }
+
+
+
 
     ngAfterViewInit(): void {
+        this.components.push(TextboxComponent);
+
+        $('.sv_btn').on('click', function () {
+            $("#control_Modal").hide();
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').remove();
+        })
+
+
         this.containerService.getContainers().subscribe(posts => {
             this.posts = posts;
         });
@@ -117,26 +168,10 @@ export class createPage1Component implements OnInit {
 
     stringjs: string;
     saveFunc() {
-        if (this.myRadio.includes("Date")) {
-            this.alert = NgbdDatepickerPopup;
-            this.isTimePick = true;
-            this.myRadio2 = "";
-            return;
-        }
-        else {
-            this.mainhtml += this.myRadio2;
 
-        }
-
-        this.mainhtml += "</div>";
-        alert("mmmmmm " + this.mainhtml);
-        setTimeout(() => {
-            document.getElementById("displayControls").innerHTML += this.mainhtml;
-            console.log("main html", this.mainhtml);
-            console.log($("#contra").html());
-            // this.showHTML = true;
-        }, 3000);
     }
+    uname = localStorage.getItem("loginname");
+
 
     containers = new Array<Container>();
     constructor(private elRef: ElementRef, private containerService: CssClassForDivsService, translate: TranslateService, private router: Router, private modalRef: BsModalRef, private modalService: BsModalService, @Inject(DOCUMENT) private document: any) {
@@ -144,7 +179,7 @@ export class createPage1Component implements OnInit {
         Observable.interval(1000).subscribe(x => {
             translate.use(localStorage.getItem('lang'));
         });
-        this.components.push(TextboxComponent);
+        // this.components.push(CheckboxComponent, RadioComponent, PasswordComponent, TimePickerComponent, DatePickerComponent);
 
         if (localStorage.getItem("side") == "right") {
             this.document.getElementById("theme").setAttribute("href", "./assets/styles/right-menu.css");
@@ -216,51 +251,50 @@ export class createPage1Component implements OnInit {
         $('.aside_nav').perfectScrollbar();
         $('.drop-content').perfectScrollbar();
 
+        $("#detail_tabs").tabs();
+        $(".tab_no").click(function () {
+            var active = $("#detail_tabs").tabs("option", "active");
+            $("#detail_tabs").tabs("option", "active", active + 1);
+
+        });
+
         $(window).load(function () {
             var H = $(window).height();
             var nH = $('.frame_header').height();
             var nD = $('.dash_logo').height();
-            var F = $('footer').height();
+            //var F = $('footer').height();
             var S = H - nH;
-            var C = H - nH - F - 60;
+            //var C = H - nH - F - 60;
+            $('.wrapper ').css('min-height', H);
             $('.aside_nav ').css('height', S);
-            $('.bgwhite').css('min-height', C);
+            //$('.bgwhite').css('min-height', C);
             if ($(window).width() < 767) {
-                $('.aside_nav ').css('height', S - nD - 20);
+                $('.aside_nav ').css('min-height', S - nD - 20);
             }
             $(window).resize(function () {
                 var H = $(window).height();
                 var nH = $('.frame_header').height();
                 var nD = $('.dash_logo').height();
-                var F = $('footer').height();
+                //var F = $('footer').height();
                 var S = H - nH;
-                var C = H - nH - F - 60;
+                //var C = H - nH - F - 60;
+                $('.wrapper ').css('min-height', H);
                 $('.aside_nav ').css('height', S);
-                $('.bgwhite').css('min-height', C);
+                //$('.bgwhite').css('min-height', C);
                 if ($(window).width() < 767) {
-                    $('.aside_nav ').css('height', S - nD - 20);
+                    $('.aside_nav ').css('min-height', S - nD - 20);
                 }
             });
         });
 
-        $('.delel').on('click', function () {
-            $(this).closest('.element_box').remove();
-        })
-
-        $("#add_btn").click(function () {
-            $(".modal_tabs:first").show();
-            $(".modal_tabs:gt(0)").hide();
-        });
 
         $(".nx_btn").click(function () {
             var nextDiv = $(".modal_tabs:visible").next(".modal_tabs");
             if (nextDiv.length == 0) { // wrap around to beginning
                 nextDiv = $(".modal_tabs:first");
-
             }
             $(".modal_tabs").hide();
             nextDiv.show();
-            $('.modal-backdrop').removeClass("modal-backdrop");
         });
 
         $('#vldtn_btn').on('change', function (e) {
@@ -285,62 +319,45 @@ export class createPage1Component implements OnInit {
             }
         });
 
-        $(".add-more").click(function () {
-            var html = $(".copy-fields").html();
-            $(".add_field").after(html);
-        });
-        $("body").on("click", ".remove", function () {
-            $(this).parents(".remove_field").remove();
-        });
+        // right toggle menu
 
+        function toggle(id) {
+            var el = document.getElementById(id);
+            var img = document.getElementById("tgl_icn");
+            var box = el.getAttribute("class");
+            if (box == "thm_select") {
+                el.setAttribute("class", "show");
+                delay(img, "/assets/images/toggle.png", 400);
+            }
+            else {
+                el.setAttribute("class", "thm_select");
+                delay(img, "/assets/images/toggle.png", 400);
+            }
+        }
 
-        $(".sv_btn").click(function () {
-            $(".modal_tabs:last").hide();
-            $('body').removeClass('modal-open');
-            $('.modal-backdrop').remove();
-        });
+        function delay(elem, src, delayTime) {
+            window.setTimeout(function () { elem.setAttribute("src", src); }, delayTime);
+        }
 
-        $('#control_Modal').on('shown.bs.modal', function (e) {
-            $('.modal-backdrop').css("display", "none");
-        });
-        $('#control_Modal').on('show.bs.modal', function (e) {
-            $('.modal-backdrop').css("display", "none");
-        })
-
-        $('#datetimepicker1').datetimepicker({
-            icons: {
-                time: 'fa fa-clock-o',
-                date: 'fa fa-calendar',
-                up: 'fa fa-chevron-up',
-                down: 'fa fa-chevron-down',
-                previous: 'fa fa-chevron-left',
-                next: 'fa fa-chevron-right',
-                today: 'fa fa-crosshairs',
-                clear: 'fa fa-trash'
-            },
-            format: 'MM/DD/YYYY'
-        });
-
-        $(function () {
-            $('#datetimepicker2').datetimepicker({
-                format: 'LT'
-            });
-        });
-
+        // side sub-menu js
 
         $(document).ready(function () {
-            //here first get the contents of the div with name class copy-fields and add it to after "after-add-more" div class.
-            $(".add-more").click(function () {
-                var html = $(".copy-fields").html();
-                $(".add_field").after(html);
-            });
-            $("body").on("click", ".remove", function () {
-                $(this).parents(".remove_field").remove();
+            $(".inner").css("display", "none");
+            $('.sub_menu_toggle').click(function (e) {
+                e.preventDefault();
+
+                var $this = $(this);
+                if ($this.next().hasClass('visible')) {
+                    $this.next().removeClass('visible');
+                    $this.next().slideUp(350);
+                } else {
+                    $this.parent().parent().find('li .inner').removeClass('show');
+                    $this.parent().parent().find('li .inner').slideUp(350);
+                    $this.next().toggleClass('visible');
+                    $this.next().slideToggle(350);
+                }
             });
         });
-
-        //here first get the contents of the div with name class copy-fields and add it to after "after-add-more" div class.
-
 
 
     }

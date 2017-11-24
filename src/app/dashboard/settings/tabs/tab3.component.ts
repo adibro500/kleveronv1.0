@@ -14,7 +14,7 @@ declare var tabs: any;
 export class TabThreeComponent implements OnInit, AfterViewInit, OnDestroy {
 
     observable: any;
-
+    uname = localStorage.getItem("loginname");
     ngOnInit() {
 
         $('.navbar-header').click(function () {

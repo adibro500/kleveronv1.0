@@ -1,6 +1,7 @@
 export class Control {
 
     idx: number;
+    pos: number;
     ids: string[];
     id: string;
     value: string;
@@ -39,8 +40,11 @@ export class Control {
     JSONarrIN = new Array<Control>();
     JSONarrNOE = new Array<Control>();
     JSONarrCB = new Array<Control>();
+    req: any;
 
-    contructor(idx: number,
+    contructor(
+
+        idx: number,
         id: string,
         value: string,
         pholder: string,
@@ -64,7 +68,10 @@ export class Control {
         formConSt: string,
         formConIN: string,
         formConNOE: string,
-        formConCB: string
+        formConCB: string,
+        pos: number,
+        req: any
+
     ) {
         this.idx = idx;
         this.id = id;
@@ -91,111 +98,91 @@ export class Control {
         this.formConIN = formConIN;
         this.formConNOE = formConNOE;
         this.formConCB = formConCB;
+        this.pos = pos;
+        this.req = req;
     }
     addControlNOE(control: Control) {
         this.JSONarrNOE.push(control);
-
     }
     insertAtNOE(index: number, control: Control) {
         this.JSONarrNOE.splice(index, 0, control);
-    } addControlCB(control: Control) {
+    }
+    addControlCB(control: Control) {
         this.JSONarrCB.push(control);
-
     }
     insertAtCB(index: number, control: Control) {
         this.JSONarrCB.splice(index, 0, control);
     }
     addControlIN(control: Control) {
         this.JSONarrIN.push(control);
-
     }
     insertAtIN(index: number, control: Control) {
         this.JSONarrIN.splice(index, 0, control);
     }
     addControlSt(control: Control) {
         this.JSONarrSt.push(control);
-
     }
     insertAtSt(index: number, control: Control) {
         this.JSONarrSt.splice(index, 0, control);
     }
     addControlCt(control: Control) {
         this.JSONarrCt.push(control);
-
     }
     insertAtCt(index: number, control: Control) {
         this.JSONarrCt.splice(index, 0, control);
     }
-
     addControlTW(control: Control) {
         this.JSONarrTW.push(control);
-
     }
     insertAtTW(index: number, control: Control) {
         this.JSONarrTW.splice(index, 0, control);
     }
     addControlLL(control: Control) {
         this.JSONarrLL.push(control);
-
     }
     insertAtLL(index: number, control: Control) {
         this.JSONarrLL.splice(index, 0, control);
     }
-
     addControlGP(control: Control) {
         this.JSONarrGP.push(control);
-
     }
     insertAtGP(index: number, control: Control) {
         this.JSONarrGP.splice(index, 0, control);
     }
-
     addControl(control: Control) {
         this.JSONarr.push(control);
-
     }
     addControlFB(control: Control) {
         this.JSONarrFB.push(control);
-
     }
     insertAtFB(index: number, control: Control) {
         this.JSONarrFB.splice(index, 0, control);
     }
-
     addControlAOB(control: Control) {
         this.JSONarrAOB.push(control);
-
     }
     insertAtAOB(index: number, control: Control) {
         this.JSONarrAOB.splice(index, 0, control);
     }
-
     addControlCity(control: Control) {
         this.JSONarrCity.push(control);
-
     }
     insertAtCity(index: number, control: Control) {
         this.JSONarrCity.splice(index, 0, control);
     }
-
     addControlCHA(control: Control) {
         this.JSONarrCHA.push(control);
-
     }
     insertAt(index: number, control: Control) {
         this.JSONarr.splice(index, 0, control);
     }
     addControlCEO(control: Control) {
         this.JSONarrCEO.push(control);
-
     }
     insertAtCEO(index: number, control: Control) {
         this.JSONarrCEO.splice(index, 0, control);
     }
-
-
     insertAtCHA(index: number, control: Control) {
-        this.JSONarr.splice(index, 0, control);
+        this.JSONarrCHA.splice(index, 0, control);
     }
-
 }

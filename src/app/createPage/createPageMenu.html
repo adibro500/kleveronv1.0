@@ -1,69 +1,102 @@
 <div id="contra">
 <div class="wrapper">
-        <div class="aside left">
-            <div class="dash_logo">
-                <a href="#">
-                    <img id="logo_img" src="/assets/images/settings/logo_dashboard.png" alt="kleveron" />
-                </a>
-            </div>
-            <div class="aside_nav">
-                <div class="sidebar-menu">
-                    <ul class="menu">
-                        <li>
-                            <h3>
+    <div class="aside left">
+        <div class="dash_logo">
+            <a href="#">
+                <img src="/assets/images/settings/logo_dashboard.png" alt="kleveron" />
+            </a>
+        </div>
+        <div class="aside_nav">
+            <div class="sidebar-menu">
+                <ul class="menu">
+                    <li>
+                        <h3>
+                            <label>
+                                Main
+                            </label>
+                        </h3>
+                    </li>
+                    <li class="active">
+                        <a href="user-panel.html">
+                            <img src="/assets/images/settings/Job-postings.png" class="icon-img" />
+                            <span>
                                 <label>
-                                    Main
+                                    User Panel
                                 </label>
-                            </h3>
-                        </li>
-                        <li class="active">
-                            <!--#control_Modal-->
-                            <a routerLink="/createPage/createPageMenu">
-                                <img src="/assets/images/settings/Job-postings.png" class="icon-img" />
-                                <span>
-                                    <label>
-                                        Admin Panel
-                                    </label>
-                                </span>
-                            </a>
+                            </span>
+                        </a>
 
-                        </li>
-                        <li>
-                            <!--#control_Modal-->
-                            <a routerLink="/adminInputMaster">
-                                <img src="/assets/images/settings/Job-postings.png" class="icon-img" />
-                                <span>
-                                    <label>
-                                        Input Master
-                                    </label>
-                                </span>
-                            </a>
-
-                        </li>
-                        <li>
-                            <a routerLink="/adminListMaster">
-                                <img src="/assets/images/settings/Job-postings.png" class="icon-img" />
-                                <span>
-                                    <label>
-                                        List Master
-                                    </label>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a routerLink="/adminGridMaster">
-                                <img src="/assets/images/settings/Job-postings.png" class="icon-img" />
-                                <span>
-                                    <label>
-                                        Grid Master
-                                    </label>
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                    </li>
+                    <li>
+                        <a class="sub_menu_toggle" href="javascript:void(0);">
+                            <img src="/assets/images/settings/Job-postings.png" class="icon-img" />
+                            <span>
+                                <label>
+                                    Input Master
+                                </label>
+                            </span>
+                        </a>
+                        <ul class="inner visible">
+                            <li><a href="input-master.html">input-form-1.html</a></li>
+                            <li><a href="#">input-form-2.html</a></li>
+                            <li><a href="#">input-form-3.html</a></li>
+                            <li><a href="#">input-form-4.html</a></li>
+                            <li><a href="#">input-form-5.html</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="sub_menu_toggle" href="javascript:void(0);">
+                            <img src="/assets/images/settings/Job-postings.png" class="icon-img" />
+                            <span>
+                                <label>
+                                    Grid Master
+                                </label>
+                            </span>
+                        </a>
+                        <ul class="inner visible">
+                            <li><a href="grid-master.html">grid-form-1.html</a></li>
+                            <li><a href="#">grid-form-2.html</a></li>
+                            <li><a href="#">grid-form-3.html</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="sub_menu_toggle" href="javascript:void(0);">
+                            <img src="/assets/images/settings/Job-postings.png" class="icon-img" />
+                            <span>
+                                <label>
+                                    List Master
+                                </label>
+                            </span>
+                        </a>
+                        <ul class="inner visible">
+                            <li><a href="list-master.html">list-form-1.html</a></li>
+                            <li><a href="#">list-form-2.html</a></li>
+                            <li><a href="#">list-form-3.html</a></li>
+                            <li><a href="#">list-form-4.html</a></li>
+                            <li><a href="#">list-form-5.html</a></li>
+                            <li><a href="#">list-form-6.html</a></li>
+                            <li><a href="#">list-form-7.html</a></li>
+                            <li><a href="#">list-form-8.html</a></li>
+                            <li><a href="#">list-form-9.html</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="sub_menu_toggle" href="javascript:void(0);">
+                            <img src="/assets/images/settings/Job-postings.png" class="icon-img" />
+                            <span>
+                                <label>
+                                    Widget Master
+                                </label>
+                            </span>
+                        </a>
+                        <ul class="inner visible">
+                            <li><a href="widget-master.html">widget-form-1.html</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
+    </div>
         <div class="content_wrap right">
             <header class="frame_header">
 
@@ -171,10 +204,11 @@
 <router-outlet></router-outlet>
                 
         </div>
-
+        <div class="clearfix"></div>
         <footer class="text_center">
             <h4> <label>© 2017 Kleveron. A venture of <a href="#"> SRKay </a> Consulting Group LLP. All Rights Reserved.</label></h4>
         </footer>
+       
 
     </div>
     <div class="clearfix"></div>

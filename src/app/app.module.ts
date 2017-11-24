@@ -28,8 +28,8 @@ import { CssClassForDivsService } from "./createPage/createPage.service";
 import { CalendarModule } from 'primeng/primeng';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RlTagInputModule } from 'angular2-tag-input';
-
-import { NgbdDatepickerPopup } from "./createPage/Datepicker.component";
+import { OwlModule } from 'ngx-owl-carousel';
+import { DatePickerComponent } from "./createPage/Datepicker.component";
 import { EscapeHtmlPipe } from "./createPage/keep-html.pipe";
 import { AdminInputMaster } from "./admin/admin-on-board.component";
 import { AppCheck } from "./createPage/templatecheck.component";
@@ -43,26 +43,69 @@ import { AdminListMasterComponent } from "./admin/admin-list-master.component";
 import { AdminGridMasterComponent } from "./admin/admin-grid-master.component";
 import { DashRecComponent } from "./dashboardrec/dashrec.component";
 import { MenuToggleRightComponent } from "./menuToggle/menuToggle.component";
-import { ColorPickerModule } from 'primeng/primeng';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DocumentComponent } from './createPage/addDoc.component';
+import { FieldComponent } from './createPage/addField.component';
+import { CheckboxComponent } from './createPage/checkBox.component';
+import { PasswordComponent } from './createPage/password.component';
+import { RadioComponent } from './createPage/radio.component';
+import { TimePickerComponent } from './createPage/timePicker.component';
+import { DragulaModule, DragulaService } from "ng2-dragula/ng2-dragula"
+import { RenderInputMaster } from './admin/renderInputMaster.component';
+import { AuthGuard } from './auth-guard';
+import { InputMasterService } from './admin/admin-input-master.service';
+import { RenderInputMasterService } from './admin/render-input-master.service';
+import { RenderInput } from './admin/render-input.component';
+import { AdminPanel } from './admin/admin-panel.component';
+import { AdminWidgetMaster } from './admin/admin-widget-master.component';
+import { TieredMenuModule } from 'primeng/primeng';
+import { ToggleButtonModule } from 'primeng/primeng';
+import { ToolbarModule } from 'primeng/primeng';
+import { TooltipModule } from 'primeng/primeng';
+import { TreeModule } from 'primeng/primeng';
+import { TreeTableModule } from 'primeng/primeng';
+import { ColorPickComponent } from './colorPicker/color-picker.component';
+import { ColorPickerModule } from 'ngx-color-picker';
+import { AdminInput } from './admin/adminInput.component';
+import { OwlCar } from './admin/widgetContent/owl-carousel.component';
+import { DxDataGridModule } from 'devextreme-angular';
+import { Service } from './admin/grid-master.service';
+import { ListComponent } from './admin/listContent/list.component';
+import { ColumnComponent } from './admin/listContent/column.component';
+import { DatatableComponent } from './admin/listContent/datatable.component';
+import { TableSortDirective } from 'ng-table-sort/table-sort.directive';
+import { GridListComponent } from './admin/listContent/gridlist.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
+  { path: 'render/:index', component: RenderInputMaster },
+  { path: 'renderinput', component: RenderInput },
+  { path: 'adminPanel', component: AdminPanel },
+
+  { path: 'colorPick', component: ColorPickComponent },
+  { path: 'adminInput', component: AdminInput },
+  { path: 'List', component: ListComponent },
+
+  { path: 'gridList', component: GridListComponent },
+
   {
     path: 'createPage', component: CreatePageMenuComponent,
     children: [
-      { path: 'createPageMenu', component: createPage1Component },
+      { path: 'createPageMenu/:uname', component: createPage1Component },
     ]
   },
-  //AdminGridMasterComponent
-  { path: 'adminListMaster', component: AdminListMasterComponent },
-  { path: 'adminGridMaster', component: AdminGridMasterComponent },
-  { path: 'dashboard', component: DashRecComponent },
 
-  { path: 'adminInputMaster', component: AdminInputMaster },
+  { path: 'adminListMaster/:uname', component: AdminListMasterComponent },
+  { path: 'adminGridMaster/:uname', component: AdminGridMasterComponent },
+  { path: 'dashboard/:uname', component: DashRecComponent },
+  { path: 'adminWidget', component: AdminWidgetMaster },
+
+
+  { path: 'adminInputMaster/:uname', component: AdminInputMaster },
 
   {
-    path: 'configs', component: ConfigMenuComponent,
+    path: 'configs', component: ConfigMenuComponent, canActivate: [AuthGuard],
     children: [
       { path: 'config1', component: ConfigTab1Component },
       { path: 'config2', component: ConfigTab2Component },
@@ -70,19 +113,19 @@ const appRoutes: Routes = [
 
   },
   {
-    path: 'dash', component: DashMenuComponent,
+    path: 'dash', component: DashMenuComponent, canActivate: [AuthGuard],
     children: [
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'dashtab', component: DashTabComponent },
+      { path: 'dashboard/:uname', component: DashboardComponent },
+      { path: 'dashtab/:uname', component: DashTabComponent },
     ]
 
   },
   {
     path: 'settingsmenu', component: SettingsMenuComponent,
     children: [
-      { path: 'settings', component: SettingsComponent },
-      { path: 'settingstab2', component: TabTwoComponent },
-      { path: 'settingstab3', component: TabThreeComponent },
+      { path: 'settings/:uname', component: SettingsComponent },
+      { path: 'settingstab2/:uname', component: TabTwoComponent },
+      { path: 'settingstab3/:uname', component: TabThreeComponent },
     ]
   },
   { path: 'appcheck', component: AppCheck },
@@ -98,6 +141,11 @@ export function createTranslateLoader(http: HttpClient) {
 
 @NgModule({
   declarations: [
+    ColumnComponent,
+    AdminWidgetMaster,
+    ListComponent,
+    OwlCar,
+    RenderInputMaster,
     DashRecComponent,
     AdminListMasterComponent,
     AdminGridMasterComponent,
@@ -115,17 +163,45 @@ export function createTranslateLoader(http: HttpClient) {
     ConfigTab1Component,
     CreatePageMenuComponent,
     ConfigTab2Component,
-    NgbdDatepickerPopup,
     EscapeHtmlPipe,
     AdminInputMaster,
     AppCheck,
     EscapeJSPipe,
     TextboxComponent,
     MenuToggleRightComponent,
+    DocumentComponent,
+    FieldComponent,
+    CheckboxComponent,
+    PasswordComponent,
+    RadioComponent,
+    TimePickerComponent,
+    DatePickerComponent,
+    AdminInput,
+    RenderInput,
+    AdminPanel,
+    ColorPickComponent,
+    TableSortDirective,
+    DatatableComponent,
+    GridListComponent
   ],
   imports: [
+    DxDataGridModule,
+    NgxDatatableModule,
+    BrowserAnimationsModule,
+    ColorPickerModule,
+    ColorPickerModule,
+    TreeModule,
+    TreeTableModule,
+    TooltipModule,
+    TieredMenuModule,
+    ToggleButtonModule,
+    ToolbarModule,
+    DragulaModule,
     BrowserAnimationsModule,
     NgxDnDModule,
+    BrowserModule,
+    OwlModule,
+    FormsModule,
     DynamicModule.withComponents([TextboxComponent]),
     NguiDatetimePickerModule,
     NgbModule.forRoot(),
@@ -151,10 +227,10 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  exports: [NgxDnDModule],
-  providers: [
-    TranslateService, CssClassForDivsService, AuthGuardService, LoginService],
-  entryComponents: [NgbdDatepickerPopup],
+  exports: [NgxDnDModule, ColorPickerModule],
+  providers: [Service,
+    TranslateService, CssClassForDivsService, AuthGuardService, LoginService, AuthGuard, InputMasterService, RenderInputMasterService],
+  entryComponents: [DatePickerComponent, DocumentComponent, FieldComponent, CheckboxComponent, PasswordComponent, RadioComponent, TimePickerComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

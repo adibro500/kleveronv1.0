@@ -26,7 +26,13 @@
         "../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
         "../node_modules/dragula/dist/dragula.css",
         "./assets/styles/style.css",
-        "./assets/styles/responsive.css"        
+        "./assets/styles/responsive.css",
+        "../node_modules/owl.carousel/dist/assets/owl.carousel.css",
+        "../node_modules/owl.carousel/dist/assets/owl.theme.default.css",
+        "../node_modules/@swimlane/ngx-datatable/release/index.css", 
+        "../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+        "../node_modules/@swimlane/ngx-datatable/release/assets/icons.css"
+        
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
