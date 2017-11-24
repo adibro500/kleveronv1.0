@@ -32,18 +32,7 @@
         "../node_modules/@swimlane/ngx-datatable/release/index.css", 
         "../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
         "../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
-        
-
-        "styles.css",
-        "./assets/styles/bootstrap.min.css",
-        "./assets/styles/font-awesome.min.css",
-        "./assets/styles/style.css",
-        "./assets/styles/responsive.css",
-        "./assets/styles/perfect-scrollbar.css",
-        "./assets/styles/bootstrap-datetimepicker.min.css",
-        "../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
-        "../node_modules/dragula/dist/dragula.css"
-
+        "styles.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
