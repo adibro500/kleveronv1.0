@@ -40,11 +40,9 @@
 /** Evergreen browsers require these. **/
 import 'core-js/es6/reflect';
 import 'core-js/es7/reflect';
-<<<<<<< HEAD
-import "owl.carousel/dist/owl.carousel.min";
-=======
 
->>>>>>> here/master
+import "owl.carousel/dist/owl.carousel.min";
+
 
 /**
  * Required to support Web Animations `@angular/animation`.
