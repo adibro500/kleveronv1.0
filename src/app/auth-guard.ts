@@ -10,12 +10,13 @@ export class AuthGuard implements CanActivate {
     canActivate(
         next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         console.log("inside service auth");
-        const status = this.authGuardService.getUserLoggedInStatus();
-        if (!status) {
-            alert("Please login first");
-            this.router.navigate(['/']);
-        }
-        return status;
+        // const status = this.authGuardService.getUserLoggedInStatus();
+        // if (!status) {
+        //     alert("Please login first");
+        //     this.router.navigate(['/']);
+        // }
+        // return status;
+        return true;
     }
 
 }
