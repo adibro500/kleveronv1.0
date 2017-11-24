@@ -313,7 +313,7 @@
     <div class="table-responsive">
         <table class="grid_table border_top" id="table">
             <tr *ngFor="let emp of emps;let i=index" class="rm_grid border_btm" ngxDraggable>
-                 <ng-container *ngFor="let aproj of emp.ActiveProject"> 
+                 <ng-container *ngFor="let aproj of emp.ActiveProject;let j=index"> 
                         
                                 
                 <td class="padd_btm bord_rt rm_div" (click)="sorting('ap')">
@@ -343,7 +343,7 @@
                             
                         
                     <h4 class="lbl_name">
-                        <label>{{emp.ActiveProject}}</label>
+                        <label><input class="pnl_inp" [(ngModel)]="emp.ActiveProject[j]"/></label>
                     </h4>
                     <div class="lbl_value">
                         <label>Active Project</label>
