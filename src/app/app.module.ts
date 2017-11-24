@@ -28,13 +28,10 @@ import { CssClassForDivsService } from "./createPage/createPage.service";
 import { CalendarModule } from 'primeng/primeng';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RlTagInputModule } from 'angular2-tag-input';
-<<<<<<< HEAD
+
 import { OwlModule } from 'ngx-owl-carousel';
 import { DatePickerComponent } from "./createPage/Datepicker.component";
-=======
 
-import { NgbdDatepickerPopup } from "./createPage/Datepicker.component";
->>>>>>> here/master
 import { EscapeHtmlPipe } from "./createPage/keep-html.pipe";
 import { AdminInputMaster } from "./admin/admin-on-board.component";
 import { AppCheck } from "./createPage/templatecheck.component";
@@ -43,7 +40,7 @@ import { LoginService } from "./login/login.service";
 import { EscapeJSPipe } from "./createPage/keep-js.pipe";
 import { TextboxComponent } from "./createPage/textbox.component";
 import { NgxDnDModule } from "@swimlane/ngx-dnd";
-<<<<<<< HEAD
+
 import { createPage1Component } from "./createPage/createPage1.component";
 import { AdminListMasterComponent } from "./admin/admin-list-master.component";
 import { AdminGridMasterComponent } from "./admin/admin-grid-master.component";
@@ -112,15 +109,7 @@ const appRoutes: Routes = [
 
   {
     path: 'configs', component: ConfigMenuComponent, canActivate: [AuthGuard],
-=======
-const appRoutes: Routes = [
-  { path: '', component: LoginComponent },
-  {
-    path: 'createPageMenu', component: CreatePageMenuComponent,
-  },
-  {
-    path: 'configs', component: ConfigMenuComponent,
->>>>>>> here/master
+
     children: [
       { path: 'config1', component: ConfigTab1Component },
       { path: 'config2', component: ConfigTab2Component },
@@ -128,37 +117,24 @@ const appRoutes: Routes = [
 
   },
   {
-<<<<<<< HEAD
     path: 'dash', component: DashMenuComponent, canActivate: [AuthGuard],
     children: [
       { path: 'dashboard/:uname', component: DashboardComponent },
       { path: 'dashtab/:uname', component: DashTabComponent },
-=======
-    path: 'dash', component: DashMenuComponent,
-    children: [
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'dashtab', component: DashTabComponent },
->>>>>>> here/master
+
     ]
 
   },
   {
     path: 'settingsmenu', component: SettingsMenuComponent,
     children: [
-<<<<<<< HEAD
+
       { path: 'settings/:uname', component: SettingsComponent },
       { path: 'settingstab2/:uname', component: TabTwoComponent },
       { path: 'settingstab3/:uname', component: TabThreeComponent },
     ]
   },
-=======
-      { path: 'settings', component: SettingsComponent },
-      { path: 'settingstab2', component: TabTwoComponent },
-      { path: 'settingstab3', component: TabThreeComponent },
-    ]
-  },
-  { path: 'adminInputMaster', component: AdminInputMaster },
->>>>>>> here/master
+
   { path: 'appcheck', component: AppCheck },
 
   //AppCheck
@@ -166,17 +142,15 @@ const appRoutes: Routes = [
 
 export function createTranslateLoader(http: HttpClient) {
 
-<<<<<<< HEAD
+
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-=======
-  return new TranslateHttpLoader(http, 'http://localhost:3000/lang/', '.json');
->>>>>>> here/master
+
 }
 
 
 @NgModule({
   declarations: [
-<<<<<<< HEAD
+
     ColumnComponent,
     AdminWidgetMaster,
     ListComponent,
@@ -186,8 +160,7 @@ export function createTranslateLoader(http: HttpClient) {
     AdminListMasterComponent,
     AdminGridMasterComponent,
     createPage1Component,
-=======
->>>>>>> here/master
+
     AppComponent,
     LoginComponent,
     DashboardComponent,
@@ -201,16 +174,14 @@ export function createTranslateLoader(http: HttpClient) {
     ConfigTab1Component,
     CreatePageMenuComponent,
     ConfigTab2Component,
-<<<<<<< HEAD
-=======
-    NgbdDatepickerPopup,
->>>>>>> here/master
+
+
     EscapeHtmlPipe,
     AdminInputMaster,
     AppCheck,
     EscapeJSPipe,
     TextboxComponent,
-<<<<<<< HEAD
+
     MenuToggleRightComponent,
     DocumentComponent,
     FieldComponent,
@@ -245,11 +216,7 @@ export function createTranslateLoader(http: HttpClient) {
     BrowserModule,
     OwlModule,
     FormsModule,
-=======
-  ],
-  imports: [
-    NgxDnDModule,
->>>>>>> here/master
+
     DynamicModule.withComponents([TextboxComponent]),
     NguiDatetimePickerModule,
     NgbModule.forRoot(),
@@ -265,10 +232,9 @@ export function createTranslateLoader(http: HttpClient) {
       { enableTracing: true } // <-- debugging purposes only
     ),
     BrowserModule,
-<<<<<<< HEAD
+
     ColorPickerModule,
-=======
->>>>>>> here/master
+
     TimepickerModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
@@ -278,17 +244,12 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-<<<<<<< HEAD
+
   exports: [NgxDnDModule, ColorPickerModule],
   providers: [Service,
     TranslateService, CssClassForDivsService, AuthGuardService, LoginService, AuthGuard, InputMasterService, RenderInputMasterService],
   entryComponents: [DatePickerComponent, DocumentComponent, FieldComponent, CheckboxComponent, PasswordComponent, RadioComponent, TimePickerComponent],
-=======
-  exports: [NgxDnDModule],
-  providers: [
-    TranslateService, CssClassForDivsService, AuthGuardService, LoginService],
-  entryComponents: [NgbdDatepickerPopup],
->>>>>>> here/master
+
   bootstrap: [AppComponent]
 })
 export class AppModule {
