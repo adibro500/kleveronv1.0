@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿.klvrn_col {
     width:100%;
     float:left;
@@ -11,3 +12,18 @@
     width: 93%;
     float: left;
 }
+=======
+﻿.klvrn_col {
+    width:100%;
+    float:left;
+}
+.social_col
+{
+    width:7%;
+    float:left;
+}
+.social_input {
+    width: 93%;
+    float: left;
+}
+>>>>>>> here/master

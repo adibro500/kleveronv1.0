@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -9,4 +10,17 @@ export class EscapeHtmlPipe implements PipeTransform {
     transform(content) {
         return this.sanitizer.bypassSecurityTrustHtml(content);
     }
+=======
+import { Pipe, PipeTransform } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+
+@Pipe({ name: 'keepHtml', pure: false })
+export class EscapeHtmlPipe implements PipeTransform {
+    constructor(private sanitizer: DomSanitizer) {
+    }
+
+    transform(content) {
+        return this.sanitizer.bypassSecurityTrustHtml(content);
+    }
+>>>>>>> here/master
 }

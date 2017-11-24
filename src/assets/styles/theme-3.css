@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿.klvrn_col {
     width: 25%;
     float: left;
@@ -16,4 +17,24 @@
 .onboarding_section .company_details .custom_chk_bx {
     padding-top: 0;
     width: 50%;
+=======
+﻿.klvrn_col {
+    width: 25%;
+    float: left;
+}
+
+.social_col {
+    width: 25%;
+    float: left;
+}
+
+.social_input {
+    width: 75%;
+    float: left;
+}
+
+.onboarding_section .company_details .custom_chk_bx {
+    padding-top: 0;
+    width: 50%;
+>>>>>>> here/master
 }

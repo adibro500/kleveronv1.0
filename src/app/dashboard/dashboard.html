@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div>
     <div class="wrapper">
         <div class="aside left">
@@ -343,3 +344,350 @@
     </div>
 </div>
 
+=======
+<div>
+    <div class="wrapper">
+        <div class="aside left">
+            <div class="dash_logo">
+                <a href="#">
+                    <img src="/assets/images/settings/logo_dashboard.png" alt="kleveron" /></a>
+            </div>
+            <div class="aside_nav">
+                <div class="sidebar-menu">
+                    <ul class="menu">
+                        <li>
+                            <h3>
+                                <label>
+                                    {{ 'Main' | translate:param }} </label></h3>
+                        </li>
+                        <li class="active"><a routerLink="/settingsmenu/settings">
+                            <img src="/assets/images/settings/personal.png" class="icon-img" />
+                            <span>
+                                <label>
+                                    {{ 'Personal' | translate:param }}  </label></span> </a></li>
+                        <li><a href="javascript::">
+                            <img src="/assets/images/settings/organisation.png" class="icon-img" />
+                            <span>
+                                <label>
+                                    {{ 'Organisation' | translate:param }}  </label></span> </a></li>
+                        <li><a href="javascript::">
+                            <img src="/assets/images/settings/appearance.png" class="icon-img" />
+                            <span>
+                                <label>
+                                    {{ 'Appearance' | translate:param }}   </label></span> </a></li>
+                        <li><a href="javascript::">
+                            <img src="/assets/images/settings/apps-nd-plugin.png" class="icon-img" />
+                            <span>
+                                <label>
+                                    {{ 'Apps and Plugins' | translate:param }} </label></span>
+                            <!--<span class="fa fa-angle-right" style="float: right; position: relative;"></span>-->
+                        </a>
+                            <!--<ul id="menu-academico-sub">
+                                <li id="menu-academico-avaliacoes"><a href="404.html">404</a></li>
+                                <li id="menu-academico-boletim"><a href="blank.html">Blank</a></li>
+                            </ul>-->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="content_wrap right">
+            <header class="frame_header">
+
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="navbar-header">
+                            <i class="fa fa-bars"></i>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 text_center mob_head">
+                        <h1><label translate>OnBoarding</label></h1>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="header-rightside">
+                            <ul class="list-inline header-top pull-right navbar-right">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <img src="/assets/images/settings/user.png" alt="" class="user-icon">
+                                        <span><label translate>John Smith</label></span>
+                                        <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="#" class="view btn-sm"><label translate>View Profile</label></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="view btn-sm"><label translate>Logout</label></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="icon-info dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-language" aria-hidden="true"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li>
+                                            <a (click)="changeLang('en')" class="view btn-sm"><label translate>English</label></a>
+                                        </li>
+                                        <li>
+                                            <a (click)="changeLang('hindi')" class="view btn-sm"><label translate>Hindi</label></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="icon-info dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-bell" aria-hidden="true"></i>
+                                    </a>
+                                    <ul class="dropdown-menu notify-drop">
+                                        <div class="notify-drop-title">
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-6 col-xs-6"><label translate>Hiren (<b>2</b>)</label></div>
+                                                <div class="col-md-6 col-sm-6 col-xs-6 text-right"><a href=""><i class="fa fa-dot-circle-o"></i></a></div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                        <div class="drop-content">
+                                            <li>
+                                                <div class="col-md-3 col-sm-3 col-xs-3"><div class="notify-img"><img src="http://placehold.it/45x45" alt=""></div></div>
+                                                <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                                                    <a href=""><label translate>Ahmet</label></a><p><label translate> Lorem ipsum sit dolor amet consilium. Saat önce</label></p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </li>
+                                            <li>
+                                                <div class="col-md-3 col-sm-3 col-xs-3"><div class="notify-img"><img src="http://placehold.it/45x45" alt=""></div></div>
+                                                <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                                                    <a href=""><label translate>Ahmet</label></a><p><label translate> Lorem ipsum sit dolor amet consilium. Saat önce</label></p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </li>
+                                            <li>
+                                                <div class="col-md-3 col-sm-3 col-xs-3"><div class="notify-img"><img src="http://placehold.it/45x45" alt=""></div></div>
+                                                <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                                                    <a href=""><label translate>Ahmet</label></a><p><label translate> Lorem ipsum sit dolor amet consilium. Saat önce</label></p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </li>
+                                            <li>
+                                                <div class="col-md-3 col-sm-3 col-xs-3"><div class="notify-img"><img src="http://placehold.it/45x45" alt=""></div></div>
+                                                <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                                                    <a href=""><label translate>Ahmet</label></a><p><label translate> Lorem ipsum sit dolor amet consilium. Saat önce</label></p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </li>
+                                        </div>
+                                        <div class="notify-drop-footer text-center">
+                                            <a href=""><i class="fa fa-eye"></i> <label translate>View All</label></a>
+                                        </div>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </header>
+            <div class="container-fluid bgwhite">
+                <div class="row page_header">
+                    <div class="col-xs-6">
+                        <h2 class="head">
+                            <label translate>
+                                OnBoarding</label></h2>
+                    </div>
+                    <div class="col-xs-6">
+                        <img src="/assets/images/on-boarding/onbrd-icon.png" class="icon-img pull-right" />
+                    </div>
+                </div>
+                <div class="row page_content">
+                    <div class="onboarding_section">
+                            <div class="detail_wrapper">
+                                <!---------------------------tabs ---------------------------- -->
+                                <div id="detail_tabs" class="detail_nav_menu">
+                                    <ul>
+                                        <li><a routerLink="/dash/dashboard">
+                                            <label>
+                                                <div class="tab_no">
+                                                    1</div>
+                                                <span translate>Company Details</span></label></a></li>
+                                        <li><a routerLink="/dash/dashtab">
+                                            <label>
+                                                <div class="tab_no">
+                                                    2</div>
+                                                <span translate>Admin Details</span></label></a></li>
+                                    </ul>
+                                     <div id="tabs-1">
+                                        <div class="company_details">
+                                            <div class="col-md-6 col-sm-6 col-xs-12 klvrn_col dtl_row">
+                                                <input class="cmn_input" placeholder="{{'Company Name' | translate}}">
+                                            </div>
+                                            <div  class="col-md-6 col-sm-6 col-xs-12 klvrn_col dtl_row">
+                                                <textarea id="Textarea1" class="cmn_input" placeholder="{{'Company Head Office Address' | translate}}"></textarea>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12 klvrn_col dtl_row">
+                                                <input class="cmn_input" placeholder="{{'Chandreshpolra@gmail.com' | translate}}">
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12 klvrn_col dtl_row">
+                                                <input class="cmn_input" placeholder="{{'Surat' | translate}}">
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12 klvrn_col selectdiv dtl_row">
+                                                <label>
+                                                    <select class="cmn_input">
+                                                        <option value="Area of Business" translate>Area of Business</option>
+                                                        <option value="abc" translate>ABC</option>
+                                                        <option value="xyz" translate>XYZ</option>
+                                                    </select>
+                                                </label>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12 klvrn_col selectdiv dtl_row">
+                                                <label>
+                                                    <select class="cmn_input">
+                                                        <option value="Gujarat" translate>Gujarat</option>
+                                                        <option value="Maharashtra" translate>Maharashtra</option>
+                                                        <option value="Bengal" translate>Bengal</option>
+                                                    </select>
+                                                </label>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12 klvrn_col selectdiv dtl_row">
+                                                <label>
+                                                    <select class="cmn_input">
+                                                        <option value="Area of Employess" translate>Area of Employess</option>
+                                                        <option value="abc" translate>ABC</option>
+                                                        <option value="xyz" translate>XYZ</option>
+                                                    </select>
+                                                </label>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12 klvrn_col selectdiv dtl_row">
+                                                <label>
+                                                    <select class="cmn_input">
+                                                        <option value="India" translate>India</option>
+                                                        <option value="SriLanka" translate>SriLanka</option>
+                                                        <option value="China" translate>China</option>
+                                                    </select>
+                                                </label>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12 klvrn_col custom_chk_bx dtl_row">
+                                                <span class="chk_bx">
+                                                    <input type="checkbox" id="Checkbox1" name="" value="">
+                                                    <label for="test1" translate>
+                                                        Compliant With PF(India)</label>
+                                                </span><span class="chk_bx">
+                                                    <input type="checkbox" id="Checkbox2" name="" value="" checked="checked">
+                                                    <label for="test2" translate>
+                                                        With ESIC(India)</label>
+                                                </span>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12 klvrn_col dtl_row">
+                                                <input class="cmn_input" placeholder="{{'Other Information' | translate}}">
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12 klvrn_col dtl_row">
+                                                <div class="row">
+                                                    <div class="col-md-2 col-sm-2 col-xs-2 social_col">
+                                                        <div class="social_icon twitter">
+                                                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-10 col-sm-10 col-xs-10 social_input">
+                                                        <input class="cmn_input" placeholder="{{'Twitter Handle' | translate}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12 klvrn_col dtl_row">
+                                                <div class="row">
+                                                    <div class="col-md-2 col-sm-2 col-xs-2 social_col">
+                                                        <div class="social_icon fb">
+                                                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-10 col-sm-10 col-xs-10 social_input">
+                                                        <input class="cmn_input" placeholder="{{'Facebook Address' | translate}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12 klvrn_col dtl_row">
+                                                <div class="row">
+                                                    <div class="col-md-2 col-sm-2 col-xs-2 social_col">
+                                                        <div class="social_icon linked_in">
+                                                            <i class="fa fa-linkedin" aria-hidden="true"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-10 col-sm-10 col-xs-10 social_input">
+                                                        <input class="cmn_input" placeholder="{{'Linked Address' | translate}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12 klvrn_col dtl_row">
+                                                <div class="row">
+                                                    <div class="col-md-2 col-sm-2 col-xs-2 social_col">
+                                                        <div class="social_icon g__plus">
+                                                            <i class="fa fa-google-plus" aria-hidden="true"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-10 col-sm-10 col-xs-10 social_input">
+                                                        <input class="cmn_input" placeholder="{{'Google Plus Page' | translate}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix">
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <div id="tabs-2">
+                                        <div class="company_details">
+                                            <div class="col-md-6 col-sm-6 col-xs-12 klvrn_col dtl_row">
+                                                <input class="cmn_input" placeholder="{{'Company Name' | translate}}">
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12 klvrn_col dtl_row">
+                                                <textarea id="Textarea2" class="cmn_input" placeholder="{{'Company Head Office Address' | translate}}"></textarea>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12 klvrn_col dtl_row">
+                                                <input class="cmn_input" placeholder="Chandreshpolra@gmail.com">
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12 klvrn_col dtl_row">
+                                                <input class="cmn_input" placeholder="{{'Surat' | translate}}">
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12 klvrn_col selectdiv dtl_row">
+                                                <label>
+                                                    <select class="cmn_input">
+                                                        <option value="Area of Business" translate>Area of Business</option>
+                                                        <option value="abc" translate>ABC</option>
+                                                        <option value="xyz" translate>XYZ</option>
+                                                    </select>
+                                                </label>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12 klvrn_col selectdiv dtl_row">
+                                                <label>
+                                                    <select class="cmn_input">
+                                                        <option value="Gujarat" translate>Gujarat</option>
+                                                        <option value="Maharashtra" translate>Maharashtra</option>
+                                                        <option value="Bengal" translate>Bengal</option>
+                                                    </select>
+                                                </label>
+                                            </div>
+                                            <div class="clearfix">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- -------------------------end tabs ---------------------------- -->
+                                <div class="detail_btn">
+                                    <button type="button" class="btn save_btn">
+                                        <label translate>
+                                            Save</label></button>
+                                    <button type="button" class="btn tab_no next_btn">
+                                        <label translate>
+                                            Next</label></button>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="text_center">
+                <h4> <label translate>© 2017 Kleveron. A venture of <a href="#"> SRKay </a> Consulting Group LLP. All Rights Reserved.</label></h4>
+            </footer>
+        </div>
+        <div class="clearfix">
+        </div>
+    </div>
+</div>
+
+>>>>>>> here/master
