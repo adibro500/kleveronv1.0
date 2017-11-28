@@ -26,6 +26,10 @@ export class TextAreaComponent implements OnInit {
     encodedExampleHtml: string;
     showTextBox_tb = false;
 
+    @Input() id;
+    @Input() value;
+    @Input() pholder;
+    @Input() css;
 
     ngOnInit(): void {
 

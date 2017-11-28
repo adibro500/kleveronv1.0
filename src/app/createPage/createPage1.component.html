@@ -91,15 +91,15 @@
                                     <div class="row col_outer hide_lbl_cntrl">
                                         <div class="col-md-4 lbl_cntrl">
                                             <label class="lbl_hdr">Label ID</label>
-                                            <input class="cmn_input" type="text">
+                                            <input class="cmn_input" type="text" [(ngModel)]="lid">
                                         </div>
                                         <div class="col-md-4 lbl_cntrl">
                                             <label class="lbl_hdr">Label Name</label>
-                                            <input class="cmn_input" type="text">
+                                            <input class="cmn_input" type="text" [(ngModel)]="lname">
                                         </div>
                                         <div class="col-md-4 lbl_cntrl">
                                             <label class="lbl_hdr">Label Class</label>
-                                            <input class="cmn_input" type="text">
+                                            <input class="cmn_input" type="text" [(ngModel)]="lclass">
                                         </div>
                                     </div>
                                 </div>
@@ -261,15 +261,15 @@
                                     <div class="row col_outer cntrl_info">
                                         <div class="col-md-4 col-xs-12 lbl_cntrl">
                                             <label class="lbl_hdr">Control Id</label>
-                                            <input class="cmn_input" type="text" #ctid>
+                                            <input class="cmn_input" type="text" [(ngModel)]="cid">
                                         </div>
                                         <div class="col-md-4 col-xs-12 lbl_cntrl">
                                             <label class="lbl_hdr">Control Value</label>
-                                            <input class="cmn_input" type="text" #ctval>
+                                            <input class="cmn_input" type="text" [(ngModel)]="cval">
                                         </div>
                                         <div class="col-md-4 col-xs-12 lbl_cntrl">
                                             <label class="lbl_hdr">Control Placeholder</label>
-                                            <input class="cmn_input" type="text" #ctph>
+                                            <input class="cmn_input" type="text" [(ngModel)]="cph">
                                         </div>
         
                                         <div class="col-md-4 col-xs-12 custom_chk_bx">
@@ -280,14 +280,14 @@
                                         </div>
                                         <div class="col-md-4 col-xs-12 hide_lbl">
                                             <label class="lbl_hdr">Validation Message</label>
-                                            <input class="cmn_input" type="text" #ctmsg>
+                                            <input class="cmn_input" type="text" [(ngModel)]="cmsg">
                                         </div>
         
                                     </div>
                                 </div>
                                 <div class="modal-footer modal_btn">
         
-                                    <button type="button" class="btn sv_btn" (click)="saveData(ctid.value,ctval.value,ctph.value,ctmsg.value)"><label>Save</label></button>
+                                    <button type="button" class="btn sv_btn" (click)="saveData()"><label>Save</label></button>
                                 </div>
                             </div>
         
@@ -312,7 +312,7 @@
             </div> -->
             <div *ngFor="let component of components;let i=index">
                 <ng-container *ngComponentOutlet="component;
-                ndcDynamicInputs: inputs;
+                ndcDynamicInputs: inputs[i];
                 ndcDynamicOutputs: outputs"
                 ></ng-container>
             </div>

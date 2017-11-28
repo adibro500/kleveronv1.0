@@ -14,7 +14,7 @@ declare var tabs: any;
 
 
 export class DocumentComponent implements OnInit {
-
+    @Input() css: string;
     control: Control2;
     showTextBox: boolean;
     divclass1_tb: string = "col-md-6 col-sm-6 col-xs-12 selectdiv element_box";

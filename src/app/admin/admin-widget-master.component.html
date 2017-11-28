@@ -346,7 +346,33 @@
                             <div class="row sub_widget">
                                 <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 wid_box">
                                     <div class="ongoing_prjct_card dash_panel cmn_card_gjt">
-
+                                            <div class="action-ui" id="tour-action-ui-id">
+                                                    <span class="actions">
+                                                        <a href="javascript:void(0);">
+                                                            <span class="edit_icon"><a [(colorPicker)]="color"><img src="/assets/images/color-picker.png" alt="" /></a></span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a href="javascript:void(0);">
+                                                            <span class="edit_icon"><a (click) = "setRdOnly()"><img src="/assets/images/text.png" alt="" /></a></span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a href="javascript:void(0);">
+                                                            <span class="edit_icon"><a (click)="changeSize('dec')"><img src="/assets/images/font-increase.png" alt="" /></a></span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a href="javascript:void(0);">
+                                                            <span class="edit_icon"><a (click)="changeSize('inc')"><img src="/assets/images/font-decrease.png" alt="" /></a></span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a href="javascript:void(0);">
+                                                            <span class="edit_icon"><img src="/assets/images/move.png" alt="" /></span>
+                                                        </a>
+                                                    </span>
+                                                </div>
                                         <div class="row hdr_typ">
                                             <div class="col-md-6 col-xs-6 typ_nm"><label>Projects</label></div>
                                             <div class="col-md-6 col-xs-6 typ_dtl"><label>Details</label></div>

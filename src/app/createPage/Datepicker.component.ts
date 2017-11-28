@@ -38,8 +38,11 @@ export class DatePickerComponent implements OnInit {
 
     }
     @Input()
-    valueHtml: string = '';
-
+    value;
+    @Input()
+    id;
+    @Input()
+    css;
 
     control: Control2;
     showTextBox: boolean;

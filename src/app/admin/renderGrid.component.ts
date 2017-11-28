@@ -3,20 +3,21 @@ import { DOCUMENT } from "@angular/common";
 import { Employee, Service } from './grid-master.service';
 import { InputMasterService } from './admin-input-master.service';
 import { RenderInputMasterService } from './render-input-master.service';
+import { ActivatedRoute } from '@angular/router';
 declare var $: any;
 declare var perfectScrollbar: any;
 declare var height: any;
 declare var tabs: any;
 @Component({
-    selector: "admin-list-master",
-    templateUrl: "./admin-list-master.html",
-    styleUrls: ["./list.css"]
+    selector: "render-grid-master",
+    templateUrl: "./renderGrid.html",
 })
 
-export class AdminListMasterComponent implements OnInit {
+export class RenderList implements OnInit {
     emps: Employee[];
-    constructor( @Inject(DOCUMENT) private document: any, private service: Service, private ims: InputMasterService) {
-        this.emps = this.service.getEmployees();
+    temp: any[] = [];
+    index;
+    constructor(private rims: RenderInputMasterService, private route: ActivatedRoute, @Inject(DOCUMENT) private document: any, private service: Service, private ims: InputMasterService) {
 
         var side = localStorage.getItem("side");
         if (side == "right") {
@@ -34,6 +35,24 @@ export class AdminListMasterComponent implements OnInit {
             this.document.getElementById("color").setAttribute("href", "./assets/styles/orange-blue.css");
         }
 
+        this.rims.getInputDataGrid().subscribe(data => {
+            this.temp = JSON.parse(JSON.stringify(data));
+            this.route.params.subscribe(params => {
+                this.index = params['id'];
+                if (this.temp && this.temp.length > 0 && this.index)
+                    this.getTemplateByIndex(this.index);
+            }
+            )
+        });
+
+
+
+    }
+    getTemplateByIndex(id) {
+
+        alert(id);
+        console.log(this.temp[id]);
+        this.emps = this.temp[id];
 
     }
 

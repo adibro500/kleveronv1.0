@@ -1,14 +1,17 @@
 import { Http, Response } from '@angular/http';
-import { Injectable, Component } from '@angular/core';
+import { Injectable, Component, ElementRef, ViewChild } from '@angular/core';
 import { Service } from '../grid-master.service';
 import { DatatableComponent } from './datatable.component';
 import { ColumnComponent } from './column.component';
 import { TableSortDirective } from 'ng-table-sort/table-sort.directive';
 import { DroppableDirective } from '@swimlane/ngx-dnd';
+import tableDragger from 'table-dragger'
+import { DragulaService } from 'ng2-dragula/components/dragula.provider';
 @Component({
     selector: 'list',
     templateUrl: `./list.component.html`,
-    providers: [ColumnComponent, DatatableComponent, TableSortDirective, DroppableDirective]
+    providers: [ColumnComponent, DatatableComponent, TableSortDirective, DroppableDirective],
+    styleUrls: ['./list.css']
 
 })
 export class ListComponent {
@@ -16,24 +19,15 @@ export class ListComponent {
     imps: any[] = [];
     options: any;
     sortToggle: boolean = true;
-    constructor(private service: Service) {
+
+    constructor(private service: Service, private dragulaService: DragulaService) {
         this.emps = this.service.getEmployees();
         //this.imps.push("hello");
         this.options = {
-            direction: 'vertical',
+            direction: 'horizontal',
             removeOnSpill: false
         }
 
-        // var el = document.getElementById('table');
-        // var dragger = tableDragger(el, {
-        //     mode: 'column',
-        //     dragHandler: '.handle',
-        //     onlyBody: true,
-        //     animation: 300
-        // });
-        // dragger.on('drop', function (from, to) {
-
-        // });
     }
     ActiveProjects;
 
@@ -119,6 +113,22 @@ export class ListComponent {
             //obj[Object.keys(obj)[1]]
             //  this.emps[j][Object.keys(this.emps[j])[i]].push(this.emps[j][Object.keys(this.emps[j])[i]]);
             this.emps[j][Object.keys(this.emps[j])[i]].push(this.emps[j][Object.keys(this.emps[j])[i]]);
+        }
+
+    }
+
+    editElement(i) {
+
+    }
+
+    delElement(idx, fl) {
+        if (fl == "ap") {
+            for (var i = 0; i < this.emps.length; i++)
+                delete this.emps[i].ActiveProject[idx];
+        }
+        if (fl == "inv") {
+            for (var i = 0; i < this.emps.length; i++)
+                delete this.emps[i].Invoiced[idx];
         }
 
     }

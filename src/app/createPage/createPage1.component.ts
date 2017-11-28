@@ -24,6 +24,10 @@ import { CheckboxComponent } from './checkBox.component';
 import { PasswordComponent } from './password.component';
 import { RadioComponent } from './radio.component';
 import { TimePickerComponent } from './timePicker.component';
+import { TextboxWithLabelComponent } from './textboxwithlbl.component';
+import { SwitchComponent } from './switch.component';
+import { SelectTextComponent } from './selectTextbox.component';
+import { SelectOptionComponent } from './selectOption.component';
 declare var $: any;
 declare var perfectScrollbar: any;
 declare var height: any;
@@ -67,30 +71,72 @@ export class createPage1Component implements OnInit {
     msg;
     arr = new Array<any>();
 
-    inputs = {
-        pholder0_tb: "simple textbox",
-        css: "col-sm-4 col-sd-4 element_box",
-        str0_tb: "text1",
-        strid0_tb: "text1"
-    }
+    inputs = [];
 
     cols;
     icontrols;
+    lid;
+    lname;
+    lclass;
+    cid;
+    cval;
+    cph;
+    cmsg;
 
-    saveData(ctid, ctval, ctph, ctmsg) {
-        if (this.icontrols == "Input(Text)") {
-            alert("llllllllll");
 
+
+
+
+    saveData() {
+        // if (this.icontrols == "Input(Text)") {
+
+
+        // }
+
+
+
+
+        // this.inputs.push(
+        //     {
+
+        //     }
+        // );
+
+        switch (this.icontrols) {
+            case "Input(Text)": this.components.push(TextboxComponent);
+                break;
+            case "Input(Text) With Label": this.components.push(TextboxWithLabelComponent);
+                break;
+            case "Input(Password)": this.components.push(PasswordComponent);
+                break;
+            case "TimePicker": this.components.push(TimePickerComponent);
+                break;
+            case "Input(Checkbox)": this.components.push(CheckboxComponent);
+                break;
+            case "Input(Radio)": this.components.push(RadioComponent);
+                break;
+            case "Toggle Switch": this.components.push(SwitchComponent);
+                break;
+            case "Select": this.components.push(SelectTextComponent);
+                break;
+            case "Select(With Checkbox)": this.components.push(SelectOptionComponent);
+                break;
+            //Date Picker
+            case "Date Picker": this.components.push(DatePickerComponent);
+                break;
         }
+        let props = {
+            id: this.cid,
+            css: this.cols,
+            value: this.cval,
+            pholder: this.cph
+        };
 
-        this.arr.push(
-            {
-                class: this.cols,
-                id: ctid,
-                value: ctval,
-                placeholder: ctph
-            }
-        );
+        this.inputs.push(props);
+
+
+
+
         console.log("arrrrr", this.arr);
 
     }
@@ -99,7 +145,7 @@ export class createPage1Component implements OnInit {
 
 
     ngAfterViewInit(): void {
-        this.components.push(TextboxComponent);
+        // this.components.push(TextboxComponent);
 
         $('.sv_btn').on('click', function () {
             $("#control_Modal").hide();
@@ -286,7 +332,10 @@ export class createPage1Component implements OnInit {
                 }
             });
         });
-
+        $('#add_btn').click(function () {
+            $('.add_label,.add_control').hide();
+            $('.add_div').show();
+        });
 
         $(".nx_btn").click(function () {
             var nextDiv = $(".modal_tabs:visible").next(".modal_tabs");

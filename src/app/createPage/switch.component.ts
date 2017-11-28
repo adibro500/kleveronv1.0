@@ -42,7 +42,10 @@ export class SwitchComponent implements OnInit {
 
 
 
-
+    @Input() id;
+    @Input() value;
+    @Input() pholder;
+    @Input() css;
 
     Textboxes: Control2[] = this.con.JSONarrS;
 

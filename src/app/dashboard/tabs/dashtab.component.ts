@@ -87,5 +87,10 @@ export class DashTabComponent implements AfterViewInit, OnDestroy {
 
     }
 
+    changeLang(lang) {
+        console.log(" lang in tab3 ", lang);
+        localStorage.setItem("lang", lang);
+    }
+
 
 }

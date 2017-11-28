@@ -58,9 +58,12 @@
                             </span>
                         </a>
                         <ul class="inner">
-                            <li><a href="grid-master.html"><span class="input_icon"><img src="/assets/images/grid-icon.png" /></span>grid-form-1.html</a></li>
-                            <li><a href="#"><span class="input_icon"><img src="/assets/images/grid-icon.png" /></span>grid-form-2.html</a></li>
-                            <li><a href="#"><span class="input_icon"><img src="/assets/images/grid-icon.png" /></span>grid-form-3.html</a></li>
+                            <ng-container *ngIf="checkedGrid">
+                            <li><a routerLink="/adminListMaster/uk"><span class="input_icon"><img src="/assets/images/grid-icon.png" /></span>grid-form-1.html</a></li>
+                           </ng-container>
+                           <ng-container *ngFor="let d of data_grid;let i= index">
+                                <li *ngIf="check0_input_grid[i]"><a (click)="redirectToNextGrid(i)"><span class="input_icon"><img src="/assets/images/grid-icon.png" /></span>{{d.Form_Name}}</a></li>
+                                </ng-container>
                         </ul>
                     </li>
                     <li>
@@ -245,13 +248,25 @@
                             <ul>
                                 <li class="add_page_chkbx custom_chk_bx">
                                     <div class="chk_bx">
-                                        <input id="grid-page-1" name="" value="" type="checkbox">
+                                        <input id="grid-page-1" name="" type="checkbox" [checked]="checkedGrid" (change)="checkedGrid = !checkedGrid">
                                         <label for="grid-page-1">
                                             Grid-form-1.html
                                         </label>
                                     </div>
                                 </li>
-                               
+                                <span *ngIf="data_grid.length!==0">
+                                        <span *ngFor="let d of data_grid;let i=index">
+                                        <li class="add_page_chkbx custom_chk_bx">
+                                            <div class="chk_bx">
+                                                <input id="{{'grid-page-' + i}}" name="" value="" type="checkbox" [checked]="check0_input_grid[i]" (change)="check0_input_grid[i] = !check0_input_grid[i]">
+                                                <label for="{{'grid-page-' + i}}">
+                                                    {{d.Form_Name}}
+                                                </label>
+                                            </div>
+                                            
+                                        </li>
+                                    </span>
+                                </span>
                                 
                             </ul>
                         </div>

@@ -3,7 +3,7 @@
 
 
 
-<div class="col-md-6 col-sm-6 element_box">
+<div [class]="css">
     <div class="action-ui" id="tour-action-ui-id">
         <span class="actions">
             <a class="" (click)="cloneElement(0)">
@@ -34,10 +34,10 @@
 
     </div>
     <div class="copy-fields hide">
-        <div class="col-md-6 dtl_row remove_field">
+        <div [class]="css">
             <!-- Copy Fields-These are the fields which we get through jquery and then add after the above input,-->
             <div class="input-group control-group after-add-more">
-                <input type="text" name="addmore[]" class="cmn_input" placeholder="Add Field">
+                <input type="text" name="addmore[]" class="cmn_input" [placeholder]="pholder">
                 <div class="input-group-addon custom_icn">
                     <button class="btn-danger remove" type="button"><i class="fa fa-minus-circle" aria-hidden="true"></i></button>
                 </div>

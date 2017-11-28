@@ -15,6 +15,12 @@ declare var tabs: any;
 
 export class SelectTextComponent implements OnInit {
 
+    @Input() id;
+    @Input() value;
+    @Input() pholder;
+    @Input() css;
+
+
     control: Control2;
     showTextBox: boolean;
     divclass1_tb: string = "col-md-6 col-sm-6 col-xs-12 selectdiv element_box";

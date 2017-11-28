@@ -295,7 +295,7 @@
                                 <form #myForm="ngForm">
                                 <div class="row">
                                       
-                                        <div class="col-md-6 col-sm-6 col-xs-12 element_box" *ngIf="showText"> 
+                                        <div class="col-md-6 col-sm-6 col-xs-12 element_box" *ngIf="showText" [dragula]='"bag-one"'> 
                                         <div class="action-ui" id="tour-action-ui-id">
                                             <span class="actions">
                                                 <a class="clone" (click)="cloneElement(0)">
@@ -321,7 +321,7 @@
                                             </div> -->
                                            
                                     </div>
-                                    <div *ngFor="let tb of Textboxes">
+                                    <div *ngFor="let tb of Textboxes" [dragula]='"bag-one"'>
                                         <div *ngIf="showTextBox && tb!==undefined">
                 <div class="col-md-6 col-sm-6 col-xs-12 element_box">
                         <div class="action-ui" id="tour-action-ui-id">
@@ -354,7 +354,7 @@
 
 
 
-                <div class="col-md-6 col-sm-6 col-xs-12 element_box ngx-dnd-item ngx-dnd-container" ngxDraggable ngxDroppable *ngIf="showText_CHA">
+                <div class="col-md-6 col-sm-6 col-xs-12 element_box ngx-dnd-item ngx-dnd-container" [dragula]='"bag-one"' *ngIf="showText_CHA">
                     <div class="action-ui" id="tour-action-ui-id">
                         <span class="actions">
                             <a class="clone" (click)="cloneElement(0,'CHA')">

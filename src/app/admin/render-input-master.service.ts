@@ -30,6 +30,11 @@ export class RenderInputMasterService {
     }
 
 
+    getInputDataGrid() {
+        console.log("inputdata");
+        return this.http.get("http://localhost:5000/get/admin-grid-master", options).map(res => res.json());
+    }
+
     putFormInputData(inputdata, url) {
 
         console.log("inputdata", inputdata);
@@ -44,6 +49,7 @@ export class RenderInputMasterService {
         return this.http.get('http://localhost:5000/getTemplate', options)
             .map(data => data.json() as IUser[]);
     }
+
 
 
 

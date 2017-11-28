@@ -14,6 +14,10 @@ declare var tabs: any;
 
 
 export class CheckboxComponent implements OnInit {
+    @Input() val;
+    @Input() id;
+    @Input() css;
+
 
     control: Control2;
     showTextBox: boolean;

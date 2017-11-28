@@ -79,9 +79,16 @@ import { DatatableComponent } from './admin/listContent/datatable.component';
 import { TableSortDirective } from 'ng-table-sort/table-sort.directive';
 import { GridListComponent } from './admin/listContent/gridlist.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { RenderList } from './admin/renderGrid.component';
+import { IndexComponent } from './index/index.component';
+import { SwitchComponent } from './createPage/switch.component';
+import { TextboxWithLabelComponent } from './createPage/textboxwithlbl.component';
 
 const appRoutes: Routes = [
+
   { path: '', component: LoginComponent },
+  { path: 'index', component: IndexComponent },
+
   { path: 'render/:index', component: RenderInputMaster },
   { path: 'renderinput', component: RenderInput },
   { path: 'adminPanel', component: AdminPanel },
@@ -89,7 +96,8 @@ const appRoutes: Routes = [
   { path: 'colorPick', component: ColorPickComponent },
   { path: 'adminInput', component: AdminInput },
   { path: 'List', component: ListComponent },
-
+  //RenderList
+  { path: 'renderGrid/:id', component: RenderList },
   { path: 'gridList', component: GridListComponent },
 
   {
@@ -137,20 +145,19 @@ const appRoutes: Routes = [
 
   { path: 'appcheck', component: AppCheck },
 
-  //AppCheck
 ];
 
 export function createTranslateLoader(http: HttpClient) {
 
 
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+  return new TranslateHttpLoader(http, '/assets/i18n/', '.json');
 
 }
 
 
 @NgModule({
   declarations: [
-
+    RenderList,
     ColumnComponent,
     AdminWidgetMaster,
     ListComponent,
@@ -160,7 +167,7 @@ export function createTranslateLoader(http: HttpClient) {
     AdminListMasterComponent,
     AdminGridMasterComponent,
     createPage1Component,
-
+    IndexComponent,
     AppComponent,
     LoginComponent,
     DashboardComponent,
@@ -181,7 +188,7 @@ export function createTranslateLoader(http: HttpClient) {
     AppCheck,
     EscapeJSPipe,
     TextboxComponent,
-
+    SwitchComponent,
     MenuToggleRightComponent,
     DocumentComponent,
     FieldComponent,
@@ -196,7 +203,8 @@ export function createTranslateLoader(http: HttpClient) {
     ColorPickComponent,
     TableSortDirective,
     DatatableComponent,
-    GridListComponent
+    GridListComponent,
+    TextboxWithLabelComponent
   ],
   imports: [
     DxDataGridModule,
@@ -248,7 +256,7 @@ export function createTranslateLoader(http: HttpClient) {
   exports: [NgxDnDModule, ColorPickerModule],
   providers: [Service,
     TranslateService, CssClassForDivsService, AuthGuardService, LoginService, AuthGuard, InputMasterService, RenderInputMasterService],
-  entryComponents: [DatePickerComponent, DocumentComponent, FieldComponent, CheckboxComponent, PasswordComponent, RadioComponent, TimePickerComponent],
+  entryComponents: [TextboxWithLabelComponent, SwitchComponent, DatePickerComponent, DocumentComponent, FieldComponent, CheckboxComponent, PasswordComponent, RadioComponent, TimePickerComponent],
 
   bootstrap: [AppComponent]
 })

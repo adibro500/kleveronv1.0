@@ -46,7 +46,13 @@ export class InputMasterService {
             .map(data => data.json() as IUser[]);
     }
 
+    putData(inputdata) {
 
+        console.log("inputdata", inputdata);
+        return this.http.post("http://localhost:5000/save/admin-list-master", JSON.stringify(inputdata), options).map(res => res.text()).subscribe(data => console.log(data));
+
+
+    }
 
 }
 

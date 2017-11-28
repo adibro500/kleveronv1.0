@@ -179,15 +179,48 @@
                                
                     </div>
                     <right-menu-toggle></right-menu-toggle>
-                    <list></list>
+                   <!-- <div class="dx-viewport">
+        <div class="demo-container">
+<div id="data-grid-demo">
+        <dx-data-grid
+        id="gridContainer"
+        [dataSource]="dataSource"
+        [allowColumnReordering]="true"
+        columnAutoWidth=true
+        headerCellTemplate="titleHeaderTemplate"
+        cellTemplate="cellTemplate">
+    >
+    <dxo-state-storing [enabled]="true" type="localStorage" storageKey="storage"></dxo-state-storing>
+    <dxo-export [enabled]="true" fileName="Employees" [allowExportSelectedData]="true"></dxo-export>
+    <dxo-selection mode="multiple"></dxo-selection>
+    <dxo-group-panel [visible]="true"></dxo-group-panel>
+    <dxo-editing 
+    mode="batch"
+    [allowUpdating]="true">
+</dxo-editing>
+
+<div *dxTemplate="let data of 'titleHeaderTemplate'">
+        <i class="fa fa-clone"></i>
+    </div>
+
+    
+            <div *dxTemplate="let datas of 'cellTemplate'">
                   
 
-                  <button type="button"  class="btn1 btn save_btn" data-toggle="modal" data-target="#input_control_URL">
-                        <label>
-                            Save
-                        </label>
-                    </button>
-                 <!-- <div class="row time_expns_detail">
+            <td class="col-lg-3 col-md-5 col-sm-4 col-xs-12 mob_brd padd_btm bord_rt">
+                    <h4 class="lbl_name"><label>{{datas.data.ActiveProject}}</label></h4>
+                    <div class="lbl_value"><label>Active Project</label></div>
+            </td>        
+                    </div>
+          
+
+</dx-data-grid>
+    </div>
+        </div>
+</div> -->
+<!-- 
+
+        <div class="row time_expns_detail">
                         <div class="col-xs-12 border_top">
                             <div class="row rm_grid border_btm">
                                 <div class="col-lg-3 col-md-5 col-sm-4 col-xs-12 mob_brd padd_btm bord_rt">
@@ -448,9 +481,312 @@
                                 </div>
                             </div>
                         </div>
-                    </div> 
+                    </div> -->
 
-                </div> -->
+<!-- <datatable [dataset]="cities">
+                            <column [value]="'ActiveProject'" [header]="'Active Project'"></column>
+                              <column [value]="'Invoiced'" [header]="'Invoiced'"></column>
+                              <column [value]="'UnInvoiced'" [header]="'UnInvoiced'"></column>
+                              <column [value]="'Members'" [header]="'Members'"></column>
+                         </datatable> -->
+
+<div class="row time_expns_detail">
+        <div class="table-responsive">
+            <table class="grid_table border_top" id="table">
+                <tr *ngFor="let emp of emps;let i=index" class="rm_grid border_btm">
+                     <ng-container *ngFor="let aproj of emp.ActiveProject;let j=index"> 
+                            
+                                    
+                    <td class="padd_btm bord_rt rm_div">
+                            <ng-container *ngIf="i==0">
+                                    
+                                <div class="clone_icon_action" id="tour-action-ui-id">
+                                        <span class="actions">
+                                            <a (click)="cloneElement(i)">
+                                                <i class="fa fa-clone">
+                                                </i>
+                                            </a>
+                                        </span> <span class="actions">
+                                            <a (click)="editElement(i)"><i class="fa fa-edit"></i>
+                                            </a>
+                                        </span>
+                                        <span class="actions">
+                                            <a href="javascript:void(0);">
+                                                <i class="fa fa-trash-o">
+                                                </i>
+                                            </a>
+                                        </span> <span class="actions">
+                                            <a href="javascript:void(0);"><i class="fa fa-refresh"></i>
+                                                </a>
+                                        </span>
+                                    </div>
+                                </ng-container>
+                                
+                            
+                        <h4 class="lbl_name">
+                            <label><input class="pnl_inp" [disabled]="false" [(ngModel)]="emp.ActiveProject[j]"/></label>
+                        </h4>
+                        <div class="lbl_value">
+                            <label>Active Project</label>
+                        </div>
+    
+    
+                    </td>
+                            
+                </ng-container>
+                
+                    <ng-container *ngFor="let aproj of emp.Invoiced">
+                    <td class="padd_btm bord_rt rm_div"  (click)="sorting('inv')">
+                            <ng-container *ngIf="i==0">
+                                    <div class="clone_icon_action" id="tour-action-ui-id">
+                                            <span class="actions">
+                                                <a (click)="cloneElement(i+1)">
+                                                    <i class="fa fa-clone">
+                                                    </i>
+                                                </a>
+                                            </span> <span class="actions">
+                                                <a href="javascript:void(0);"><i class="fa fa-edit"></i>
+                                                </a>
+                                            </span>
+                                            <span class="actions">
+                                                <a href="javascript:void(0);">
+                                                    <i class="fa fa-trash-o">
+                                                    </i>
+                                                </a>
+                                            </span> <span class="actions">
+                                                <a href="javascript:void(0);"><i class="fa fa-refresh"></i>
+                                                    </a>
+                                            </span>
+                                        </div>
+    
+                                    </ng-container>
+                      <h4 class="lbl_name">
+                            <label>{{aproj}}</label>
+                        </h4>
+                        <div class="lbl_value">
+                            <label>Invoiced</label>
+                        </div>
+    
+    
+                    </td>
+                    </ng-container>
+                    <ng-container *ngFor="let aproj of emp.UnInvoiced">
+                    <td class="padd_btm bord_rt rm_div"  (click)="sorting('uninv')">
+                            <ng-container *ngIf="i==0">
+                                    <div class="clone_icon_action" id="tour-action-ui-id">
+                                            <span class="actions">
+                                                <a (click)="cloneElement(i+2)">
+                                                    <i class="fa fa-clone">
+                                                    </i>
+                                                </a>
+                                            </span> <span class="actions">
+                                                <a href="javascript:void(0);"><i class="fa fa-edit"></i>
+                                                </a>
+                                            </span>
+                                            <span class="actions">
+                                                <a href="javascript:void(0);">
+                                                    <i class="fa fa-trash-o">
+                                                    </i>
+                                                </a>
+                                            </span> <span class="actions">
+                                                <a href="javascript:void(0);"><i class="fa fa-refresh"></i>
+                                                    </a>
+                                            </span>
+                                        </div>
+                                    </ng-container>
+                        <h4 class="lbl_name">
+                            <label>{{aproj}}</label>
+                        </h4>
+                        <div class="lbl_value">
+                            <label>Un-Invoiced</label>
+                        </div>
+    
+                    </td>
+                </ng-container>
+                <ng-container *ngFor="let aproj of emp.TotalExpense">
+                    <td class="padd_btm bord_rt rm_div"  (click)="sorting('te')">
+                            <ng-container *ngIf="i==0">
+                                    <div class="clone_icon_action" id="tour-action-ui-id">
+                                            <span class="actions">
+                                                <a (click)="cloneElement(i+3)">
+                                                    <i class="fa fa-clone">
+                                                    </i>
+                                                </a>
+                                            </span> <span class="actions">
+                                                <a href="javascript:void(0);"><i class="fa fa-edit"></i>
+                                                </a>
+                                            </span>
+                                            <span class="actions">
+                                                <a href="javascript:void(0);">
+                                                    <i class="fa fa-trash-o">
+                                                    </i>
+                                                </a>
+                                            </span> <span class="actions">
+                                                <a href="javascript:void(0);"><i class="fa fa-refresh"></i>
+                                                    </a>
+                                            </span>
+                                        </div>
+                                    </ng-container>
+                        <h4 class="lbl_name">
+                            <label>{{aproj}}</label>
+                        </h4>
+                        <div class="lbl_value">
+                            <label>Total Expense</label>
+                        </div>
+    
+                    </td>
+                </ng-container>
+                <ng-container *ngFor="let aproj of emp.Budget">
+                    
+                    <td class="padd_btm bord_rt rm_div"  (click)="sorting('bud')">
+                            <ng-container *ngIf="i==0">
+                                    <div class="clone_icon_action" id="tour-action-ui-id">
+                                            <span class="actions">
+                                                <a (click)="cloneElement(i+4)">
+                                                    <i class="fa fa-clone">
+                                                    </i>
+                                                </a>
+                                            </span> <span class="actions">
+                                                <a href="javascript:void(0);"><i class="fa fa-edit"></i>
+                                                </a>
+                                            </span>
+                                            <span class="actions">
+                                                <a href="javascript:void(0);">
+                                                    <i class="fa fa-trash-o">
+                                                    </i>
+                                                </a>
+                                            </span> <span class="actions">
+                                                <a href="javascript:void(0);"><i class="fa fa-refresh"></i>
+                                                    </a>
+                                            </span>
+                                        </div>
+    
+                                    </ng-container>       
+                        <h4 class="lbl_name">
+                            <label class="green_txt">{{aproj}}</label>
+                        </h4>
+                        <div class="lbl_value">
+                            
+                                <label>Budget</label>
+                            
+                        </div>
+    
+                    </td>
+                </ng-container>
+                <ng-container *ngFor="let aproj of emp.Members">
+                    <td class="padd_btm bord_rt rm_div"  (click)="sorting('mem')">
+                            <ng-container *ngIf="i==0">
+                                    <div class="clone_icon_action" id="tour-action-ui-id">
+                                            <span class="actions">
+                                                <a (click)="cloneElement(i+5)">
+                                                    <i class="fa fa-clone">
+                                                    </i>
+                                                </a>
+                                            </span> <span class="actions">
+                                                <a href="javascript:void(0);"><i class="fa fa-edit"></i>
+                                                </a>
+                                            </span>
+                                            <span class="actions">
+                                                <a href="javascript:void(0);">
+                                                    <i class="fa fa-trash-o">
+                                                    </i>
+                                                </a>
+                                            </span> <span class="actions">
+                                                <a href="javascript:void(0);"><i class="fa fa-refresh"></i>
+                                                    </a>
+                                            </span>
+                                        </div>
+    
+                                    </ng-container>
+                        <h4 class="lbl_name">
+                            <label>{{aproj}}</label>
+                        </h4>
+                        <div class="lbl_value">
+                            <label>Members</label>
+                        </div>
+    
+                    </td>
+                </ng-container>
+                <ng-container *ngFor="let aproj of emp.BilledHours">                    
+                    <td class="padd_btm bord_rt rm_div"  (click)="sorting('bh')">
+                            <ng-container *ngIf="i==0">
+                                    <div class="clone_icon_action" id="tour-action-ui-id">
+                                            <span class="actions">
+                                                <a (click)="cloneElement(i+6)">
+                                                    <i class="fa fa-clone">
+                                                    </i>
+                                                </a>
+                                            </span> <span class="actions">
+                                                <a href="javascript:void(0);"><i class="fa fa-edit"></i>
+                                                </a>
+                                            </span>
+                                            <span class="actions">
+                                                <a href="javascript:void(0);">
+                                                    <i class="fa fa-trash-o">
+                                                    </i>
+                                                </a>
+                                            </span> <span class="actions">
+                                                <a href="javascript:void(0);"><i class="fa fa-refresh"></i>
+                                                    </a>
+                                            </span>
+                                        </div>
+    
+                                    </ng-container>
+                        <h4 class="lbl_name">
+                            <label>{{aproj}}</label>
+                        </h4>
+                        <div class="lbl_value">
+                            <label>BilledHours</label>
+                        </div>
+    
+                    </td>
+                </ng-container>
+                                              
+                    <td class="padd_btm bord_rt rm_div">
+                            <ng-container *ngIf="i==0">
+                                    <div class="clone_icon_action" id="tour-action-ui-id">
+                                            <span class="actions">
+                                                <a (click)="cloneElement(i+7)">
+                                                    <i class="fa fa-clone">
+                                                    </i>
+                                                </a>
+                                            </span> <span class="actions">
+                                                <a href="javascript:void(0);"><i class="fa fa-edit"></i>
+                                                </a>
+                                            </span>
+                                            <span class="actions">
+                                                <a href="javascript:void(0);">
+                                                    <i class="fa fa-trash-o">
+                                                    </i>
+                                                </a>
+                                            </span> <span class="actions">
+                                                <a href="javascript:void(0);"><i class="fa fa-refresh"></i>
+                                                    </a>
+                                            </span>
+                                        </div>
+    
+                                    </ng-container>
+                        <div class="inline_icn">
+                            <span>
+                                <a href="#">
+                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                </a>
+                            </span>
+                            <span>
+                                <a href="#">
+                                    <i class="fa fa-files-o" aria-hidden="true"></i>
+                                </a>
+                            </span>
+                        </div>
+                    </td>
+    
+    
+                </tr>
+    
+            </table>
+        </div>
+    </div>
+    
             </div>
             <!-- <footer class="text_center">
                 <h4> <label>© 2017 Kleveron. A venture of <a href="#"> SRKay </a> Consulting Group LLP. All Rights Reserved.</label></h4>

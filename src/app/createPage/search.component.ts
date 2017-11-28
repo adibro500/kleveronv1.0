@@ -41,7 +41,10 @@ export class SearchComponent implements OnInit {
     }
 
 
-
+    @Input() id;
+    @Input() value;
+    @Input() pholder;
+    @Input() css;
 
 
     Textboxes: Control2[] = this.con.JSONarrSB;

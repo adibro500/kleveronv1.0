@@ -14,7 +14,8 @@ declare var tabs: any;
 
 export class AdminPanel implements OnInit {
     data: any[] = [];
-
+    checkedGrid: boolean;
+    data_grid: any[] = [];
     constructor(private rims: RenderInputMasterService, private router: Router, @Inject(DOCUMENT) private document: any) {
         var side = localStorage.getItem("side");
         if (side == "right") {
@@ -35,18 +36,25 @@ export class AdminPanel implements OnInit {
         this.rims.getInputData().subscribe((data) => {
             this.data = JSON.parse(JSON.stringify(data));
         });
-
+        this.rims.getInputDataGrid().subscribe((data) => {
+            this.data_grid = JSON.parse(JSON.stringify(data));
+        });
 
     }
 
     check0: boolean;
     check0_input: boolean[] = [];
+    check0_input_grid: boolean[] = [];
 
     redirectToNext(id) {
         this.router.navigate(['/render', id]);
 
     }
 
+
+    redirectToNextGrid(i) {
+        this.router.navigate(['/renderGrid', i]);
+    }
 
     ngOnInit(): void {
         // loader js

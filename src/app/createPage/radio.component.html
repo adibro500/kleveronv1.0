@@ -1,6 +1,6 @@
 
 
-<div class="col-md-6 col-sm-6 element_box">
+<div [class]="css">
     <div class="action-ui" id="tour-action-ui-id">
         <span class="actions">
             <a class="" (click)="cloneElement(0)">
@@ -23,8 +23,8 @@
     </div>
     <div class="col-md-6 col-sm-6 col-xs-12 custom_radio_btn dtl_row">
         <div class="custom_radio">
-            <input type="radio" id="test1" name="radio-group" checked>
-            <label for="test1">Radio1</label>
+            <input type="radio" [id]="id" name="radio-group" [checked]="value">
+            <label [for]="id">Radio1</label>
         </div>
     </div>
 </div>

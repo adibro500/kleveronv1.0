@@ -3,7 +3,7 @@
 
 
 
-<div class="col-md-6 col-sm-6 element_box">
+<div [class]="css">
     <div class="action-ui" id="tour-action-ui-id">
         <span class="actions">
             <a class="" (click)="cloneElement(0)">
@@ -27,7 +27,7 @@
     <div class="col-md-12 dtl_row search_div">
         <div class="row">
             <div class="col-md-10">
-                <input type='search' class="cmn_input" placeholder="SEARCH RESOURCES - e.g. Java Developer with 3 Years of experience in Pune" />
+                <input [id]="id" [value]="value" type='search' class="cmn_input" [placeholder]="pholder" />
             </div>
             <div class="col-md-2">
                 <button type="button" class="btn srch_btn">

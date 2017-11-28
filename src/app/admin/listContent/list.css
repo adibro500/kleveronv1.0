@@ -2,4 +2,5 @@
 {
     border: 0;
     background: transparent !important;
+    text-overflow: ellipsis;
 }

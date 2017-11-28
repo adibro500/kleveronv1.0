@@ -63,9 +63,13 @@ export class AdminInputMaster implements OnInit {
         this.thisForm = this.fb.group({
             'colorPick': [color]
         });
+        this.dragulaService.drop.subscribe((value) => {
+            this.onDrop(value.slice(1));
+        });
+    }
+    private onDrop(args) {
 
     }
-
 
     nextCall() {
         // alert("ok");

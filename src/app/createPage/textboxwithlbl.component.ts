@@ -15,6 +15,15 @@ declare var tabs: any;
 
 
 export class TextboxWithLabelComponent implements OnInit {
+
+    @Input() id;
+    @Input() value;
+    @Input() pholder;
+    @Input() css;
+
+
+
+
     ngOnInit(): void {
 
         $('.delel').on('click', function () {
