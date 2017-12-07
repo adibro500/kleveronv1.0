@@ -105,9 +105,10 @@ export class SearchComponent implements OnInit {
 
                     this.control = new Control2();
                     this.control.idx = 1;
-                    this.control.id = this.strid0_tb;
-                    this.control.value = this.str0_tb;
-                    this.control.pholder = this.pholder0_tb;
+                    this.control.id = this.id;
+                    this.control.value = this.value;
+                    this.control.pholder = this.pholder;
+                    this.control.css = this.css;
                     this.con.addControlSB(this.control);
                 }
                 else {
@@ -120,9 +121,10 @@ export class SearchComponent implements OnInit {
                     console.log("after", this.con.JSONarrSB);
                     this.control = new Control2();
                     this.control.idx = 1;
-                    this.control.id = this.strid0_tb;
-                    this.control.value = this.str0_tb;
-                    this.control.pholder = this.pholder0_tb;
+                    this.control.id = this.id;
+                    this.control.value = this.value;
+                    this.control.pholder = this.pholder;
+                    this.control.css = this.css;
                     this.con.insertAtSB(0, this.control);
                 }
                 this.showTextBox = true;
@@ -138,6 +140,7 @@ export class SearchComponent implements OnInit {
                     this.control.id = this.con.JSONarrSB[idx - 1].id;
                     this.control.value = this.con.JSONarrSB[idx - 1].value;
                     this.control.pholder = this.con.JSONarrSB[idx - 1].pholder;
+                    this.control.css = this.con.JSONarrSB[idx - 1].css;
                     this.con.addControlSB(this.control);
                 }
                 else {
@@ -153,6 +156,7 @@ export class SearchComponent implements OnInit {
                     this.control.id = this.con.JSONarrSB[idx - 1].id;
                     this.control.value = this.con.JSONarrSB[idx - 1].value;
                     this.control.pholder = this.con.JSONarrSB[idx - 1].pholder;
+                    this.control.css = this.con.JSONarrSB[idx - 1].css;
                     this.con.insertAtSB(idx - 1, this.control);
                 }
                 this.showTextBox = true;

@@ -1,8 +1,15 @@
-import { Component, Input, OnInit, AfterViewInit, DoCheck, Inject } from '@angular/core';
+import { Input, OnInit, AfterViewInit, DoCheck, Inject } from '@angular/core';
 import { DOCUMENT } from "@angular/common";
 import { Employee, Service } from './grid-master.service';
 import { InputMasterService } from './admin-input-master.service';
 import { RenderInputMasterService } from './render-input-master.service';
+import { Http, Response } from '@angular/http';
+import { Injectable, Component, ElementRef, ViewChild } from '@angular/core';
+import { TableSortDirective } from 'ng-table-sort/table-sort.directive';
+import { DroppableDirective } from '@swimlane/ngx-dnd';
+import tableDragger from 'table-dragger'
+import { DragulaService } from 'ng2-dragula/components/dragula.provider';
+import { Router } from '@angular/router';
 declare var $: any;
 declare var perfectScrollbar: any;
 declare var height: any;
@@ -14,8 +21,13 @@ declare var tabs: any;
 })
 
 export class AdminListMasterComponent implements OnInit {
-    emps: Employee[];
-    constructor( @Inject(DOCUMENT) private document: any, private service: Service, private ims: InputMasterService) {
+    emps: any[];
+    imps: any[] = [];
+    options: any;
+    sortToggle: boolean = true;
+
+
+    constructor(private router: Router, @Inject(DOCUMENT) private document: any, private service: Service, private ims: InputMasterService) {
         this.emps = this.service.getEmployees();
 
         var side = localStorage.getItem("side");
@@ -32,6 +44,13 @@ export class AdminListMasterComponent implements OnInit {
         }
         else {
             this.document.getElementById("color").setAttribute("href", "./assets/styles/orange-blue.css");
+        }
+
+        this.emps = this.service.getEmployees();
+        //this.imps.push("hello");
+        this.options = {
+            direction: 'horizontal',
+            removeOnSpill: false
         }
 
 
@@ -55,17 +74,25 @@ export class AdminListMasterComponent implements OnInit {
             "Form_Url": this.formUrl,
             "data": this.emps
         }
-        this.ims.putData(JSONObj);
+        this.ims.putData(JSON.stringify(JSONObj));
 
+        this.router.navigate(['/adminPanel']);
     }
 
-    cloneElement(i) {
 
-        for (var j = 0; j < this.emps.length; j++) {
-            // this.emps[j]["ActiveProject"].push(this.emps[j].ActiveProject);
-            //obj[Object.keys(obj)[1]]
-            //  this.emps[j][Object.keys(this.emps[j])[i]].push(this.emps[j][Object.keys(this.emps[j])[i]]);
-            this.emps[j][Object.keys(this.emps[j])[i]].push(this.emps[j][Object.keys(this.emps[j])[i]]);
+    // this.emps[j]["ActiveProject"].push(this.emps[j].ActiveProject);
+    //obj[Object.keys(obj)[1]]
+    //  this.emps[j][Object.keys(this.emps[j])[i]].push(this.emps[j][Object.keys(this.emps[j])[i]]);
+    // this.emps[j][Object.keys(this.emps[j])[i]].push(this.emps[j][Object.keys(this.emps[j])[i]]);
+
+
+    cloneElement(i, fl) {
+
+        if (fl == "ap" && i == 0) {
+            for (var j = 0; j < this.emps[0].ActiveProject.length; j++) {
+
+
+            }
         }
 
     }
@@ -73,6 +100,19 @@ export class AdminListMasterComponent implements OnInit {
     editElement(i) {
 
     }
+
+    delElement(idx, fl) {
+        if (fl == "ap") {
+            for (var i = 0; i < this.emps.length; i++)
+                delete this.emps[i].ActiveProject[idx];
+        }
+        if (fl == "inv") {
+            for (var i = 0; i < this.emps.length; i++)
+                delete this.emps[i].Invoiced[idx];
+        }
+
+    }
+
 
     ngOnInit(): void {
 
@@ -150,4 +190,9 @@ export class AdminListMasterComponent implements OnInit {
     }
 
 
+
+
+
+
 }
+

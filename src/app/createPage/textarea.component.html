@@ -21,7 +21,7 @@
                href="javascript:void(0);"><i class="fa fa-refresh"></i><span class="tooltip">Reset</span></a>
         </span>
     </div>
-    <div class="col-md-6 col-sm-6 col-xs-12 klvrn_col dtl_row">
+    <div class="klvrn_col dtl_row">
         <textarea [id]="id" class="cmn_input" [value]="value" [placeholder]="pholder"></textarea>
     </div>
 </div>
@@ -29,7 +29,7 @@
 
 <div *ngFor="let tb of Textboxes">
     <div *ngIf="showTextBox && tb!==undefined">
-    <div class="col-md-6 col-sm-6 element_box">
+    <div [class]="tb.css">
         <div class="action-ui" id="tour-action-ui-id">
         <span class="actions">
             <a class="" (click)="cloneElement(tb.idx)">
@@ -50,8 +50,8 @@
                href="javascript:void(0);"><i class="fa fa-refresh"></i><span class="tooltip">Reset</span></a>
         </span>
     </div>
-    <div class="col-md-6 col-sm-6 col-xs-12 klvrn_col dtl_row">
-        <textarea id="Textarea1" class="cmn_input" placeholder="textarea"></textarea>
+    <div class="klvrn_col dtl_row">
+        <textarea [id]="tb.id" class="cmn_input" [value]="tb.value" [placeholder]="tb.pholder"></textarea>
     </div>
 </div>
 </div>

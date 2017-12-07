@@ -22,21 +22,21 @@
                href="javascript:void(0);"><i class="fa fa-refresh"></i><span class="tooltip">Reset</span></a>
         </span>
     </div>
-    <div class="col-md-6 col-sm-6 col-xs-12 dtl_row">
-        <label class="lbl_hdr">Password</label>
-        <div class="input-group">
-            <input [id]="id" [value]="value" class="cmn_input password" [placeholder]="pholder" type="password">
-            <span class="input-group-addon custom_icn">
-                <span class="fa fa-lock"></span>
-            </span>
+    <div class="dtl_row">
+                <div class="col-md-2 col-sm-2 col-xs-2 custom_chk_bx admi_chk">
+                    <input type="checkbox" [id]="id" name="" [value]="value" class="chk_bx">
+                    <label for="chk1"></label>
+                </div>
+                <div class="col-md-10 col-sm-10 col-xs-10 ">
+                    <input class="cmn_input" [placeholder]="pholder">
+                </div>
         </div>
-    </div>
 </div>
 
 
 <div *ngFor="let tb of Textboxes">
     <div *ngIf="showTextBox && tb!==undefined">
-    <div class="col-md-6 col-sm-6 element_box">
+    <div [class]="tb.css">
         <div class="action-ui" id="tour-action-ui-id">
         <span class="actions">
             <a class="" (click)="cloneElement(tb.idx)">
@@ -57,15 +57,16 @@
                href="javascript:void(0);"><i class="fa fa-refresh"></i><span class="tooltip">Reset</span></a>
         </span>
     </div>
-    <div class="col-md-6 col-sm-6 col-xs-12 dtl_row">
-        <label class="lbl_hdr">Password</label>
-        <div class="input-group">
-            <input class="cmn_input password" placeholder="Password" type="password">
-            <span class="input-group-addon custom_icn">
-                <span class="fa fa-lock"></span>
-            </span>
+    <div class="dtl_row">
+           
+                <div class="col-md-2 col-sm-2 col-xs-2 custom_chk_bx admi_chk">
+                    <input type="checkbox" [id]="tb.id" name="" [value]="tb.value" class="chk_bx">
+                    <label [for]="tb.id"></label>
+                </div>
+                <div class="col-md-10 col-sm-10 col-xs-10 ">
+                    <input class="cmn_input" [placeholder]="pholder">
+                </div>
         </div>
-    </div>
 </div>
 </div>
 </div>

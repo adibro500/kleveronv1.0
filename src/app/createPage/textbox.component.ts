@@ -91,14 +91,15 @@ export class TextboxComponent implements OnInit {
                 this.con.JSONarr[this.jk - 1]["value"] = ctval;
                 this.con.JSONarr[this.jk - 1]["pholder"] = ctph;
                 this.con.JSONarr[this.jk - 1]["id"] = ctid;
+
                 // this.con.JSONarr[parseInt(localStorage.getItem("indexEle")) - 1]["edited"] = true;
                 console.log(this.Textboxes);
 
             }
             else {
-                this.str0_tb = ctval;
-                this.pholder0_tb = ctph;
-                this.strid0_tb = ctid;
+                this.value = ctval;
+                this.pholder = ctph;
+                this.id = ctid;
             }
             this.showTextBox = true;
             localStorage.removeItem("inp_flag");
@@ -123,9 +124,10 @@ export class TextboxComponent implements OnInit {
 
                     this.control = new Control2();
                     this.control.idx = 1;
-                    this.control.id = this.strid0_tb;
-                    this.control.value = this.str0_tb;
-                    this.control.pholder = this.pholder0_tb;
+                    this.control.id = this.id;
+                    this.control.value = this.value;
+                    this.control.pholder = this.pholder;
+                    this.control.css = this.css;
                     this.con.addControl(this.control);
                 }
                 else {
@@ -138,9 +140,10 @@ export class TextboxComponent implements OnInit {
                     console.log("after", this.con.JSONarr);
                     this.control = new Control2();
                     this.control.idx = 1;
-                    this.control.id = this.strid0_tb;
-                    this.control.value = this.str0_tb;
-                    this.control.pholder = this.pholder0_tb;
+                    this.control.id = this.id;
+                    this.control.value = this.value;
+                    this.control.pholder = this.pholder;
+                    this.control.css = this.css;
                     this.con.insertAt(0, this.control);
                 }
                 this.showTextBox = true;
@@ -156,6 +159,7 @@ export class TextboxComponent implements OnInit {
                     this.control.id = this.con.JSONarr[idx - 1].id;
                     this.control.value = this.con.JSONarr[idx - 1].value;
                     this.control.pholder = this.con.JSONarr[idx - 1].pholder;
+                    this.control.css = this.con.JSONarr[idx - 1].css;
                     this.con.addControl(this.control);
                 }
                 else {
@@ -171,6 +175,7 @@ export class TextboxComponent implements OnInit {
                     this.control.id = this.con.JSONarr[idx - 1].id;
                     this.control.value = this.con.JSONarr[idx - 1].value;
                     this.control.pholder = this.con.JSONarr[idx - 1].pholder;
+                    this.control.css = this.con.JSONarr[idx - 1].css;
                     this.con.insertAt(idx - 1, this.control);
                 }
                 this.showTextBox = true;

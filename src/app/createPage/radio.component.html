@@ -32,7 +32,7 @@
 
 <div *ngFor="let tb of Textboxes">
     <div *ngIf="showTextBox && tb!==undefined">
-    <div class="col-md-6 col-sm-6 element_box">
+    <div [class]="tb.css">
         <div class="action-ui" id="tour-action-ui-id">
         <span class="actions">
             <a class="" (click)="cloneElement(tb.idx)">
@@ -53,10 +53,10 @@
                href="javascript:void(0);"><i class="fa fa-refresh"></i><span class="tooltip">Reset</span></a>
         </span>
     </div>
-    <div class="col-md-6 col-sm-6 col-xs-12 custom_radio_btn dtl_row">
+    <div class="custom_radio_btn dtl_row">
         <div class="custom_radio">
-            <input type="radio" id="test1" name="radio-group" checked>
-            <label for="test1">Radio1</label>
+            <input type="radio" [id]="tb.id" name="radio-group" [checked]="tb.value">
+            <label [for]="tb.id">Radio1</label>
         </div>
     </div>
 </div>

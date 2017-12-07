@@ -83,11 +83,19 @@ import { RenderList } from './admin/renderGrid.component';
 import { IndexComponent } from './index/index.component';
 import { SwitchComponent } from './createPage/switch.component';
 import { TextboxWithLabelComponent } from './createPage/textboxwithlbl.component';
+import { SelectOptionComponent } from './createPage/selectOption.component';
+import { SelectTextComponent } from './createPage/selectTextbox.component';
+import { RenderCreateComponent } from './createPage/renderCreate.component';
+import { MaterializeModule } from 'angular2-materialize';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxResizeWatcherDirective } from './admin/listContent/grid.directive';
+import { AdminMaster } from './admin2/admin-input.component';
 
 const appRoutes: Routes = [
 
   { path: '', component: LoginComponent },
   { path: 'index', component: IndexComponent },
+  { path: 'adminMaster', component: AdminMaster },
 
   { path: 'render/:index', component: RenderInputMaster },
   { path: 'renderinput', component: RenderInput },
@@ -99,11 +107,14 @@ const appRoutes: Routes = [
   //RenderList
   { path: 'renderGrid/:id', component: RenderList },
   { path: 'gridList', component: GridListComponent },
-
+  //GridComponent
+  //RenderCreateComponent
   {
     path: 'createPage', component: CreatePageMenuComponent,
     children: [
       { path: 'createPageMenu/:uname', component: createPage1Component },
+      { path: 'renderCreate/:index', component: RenderCreateComponent },
+
     ]
   },
 
@@ -181,7 +192,7 @@ export function createTranslateLoader(http: HttpClient) {
     ConfigTab1Component,
     CreatePageMenuComponent,
     ConfigTab2Component,
-
+    AdminMaster,
 
     EscapeHtmlPipe,
     AdminInputMaster,
@@ -204,9 +215,15 @@ export function createTranslateLoader(http: HttpClient) {
     TableSortDirective,
     DatatableComponent,
     GridListComponent,
-    TextboxWithLabelComponent
+    TextboxWithLabelComponent,
+    SelectOptionComponent,
+    SelectTextComponent,
+    RenderCreateComponent,
+
   ],
   imports: [
+
+    NoopAnimationsModule,
     DxDataGridModule,
     NgxDatatableModule,
     BrowserAnimationsModule,
@@ -224,7 +241,7 @@ export function createTranslateLoader(http: HttpClient) {
     BrowserModule,
     OwlModule,
     FormsModule,
-
+    MaterializeModule,
     DynamicModule.withComponents([TextboxComponent]),
     NguiDatetimePickerModule,
     NgbModule.forRoot(),
@@ -254,9 +271,9 @@ export function createTranslateLoader(http: HttpClient) {
   ],
 
   exports: [NgxDnDModule, ColorPickerModule],
-  providers: [Service,
+  providers: [Service, NgxResizeWatcherDirective,
     TranslateService, CssClassForDivsService, AuthGuardService, LoginService, AuthGuard, InputMasterService, RenderInputMasterService],
-  entryComponents: [TextboxWithLabelComponent, SwitchComponent, DatePickerComponent, DocumentComponent, FieldComponent, CheckboxComponent, PasswordComponent, RadioComponent, TimePickerComponent],
+  entryComponents: [SelectTextComponent, SelectOptionComponent, TextboxWithLabelComponent, SwitchComponent, DatePickerComponent, DocumentComponent, FieldComponent, CheckboxComponent, PasswordComponent, RadioComponent, TimePickerComponent],
 
   bootstrap: [AppComponent]
 })

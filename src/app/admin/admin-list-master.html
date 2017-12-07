@@ -179,14 +179,772 @@
                                
                     </div>
                     <right-menu-toggle></right-menu-toggle>
-                    <list></list>
+                    <!-- <list></list> -->
                   
 
-                  <button type="button"  class="btn1 btn save_btn" data-toggle="modal" data-target="#input_control_URL">
+                    
+
+                    <!-- <div class="dx-viewport">
+        <div class="demo-container">
+<div id="data-grid-demo">
+        <dx-data-grid
+        id="gridContainer"
+        [dataSource]="dataSource"
+        [allowColumnReordering]="true"
+        columnAutoWidth=true
+        headerCellTemplate="titleHeaderTemplate"
+        cellTemplate="cellTemplate">
+    >
+    <dxo-state-storing [enabled]="true" type="localStorage" storageKey="storage"></dxo-state-storing>
+    <dxo-export [enabled]="true" fileName="Employees" [allowExportSelectedData]="true"></dxo-export>
+    <dxo-selection mode="multiple"></dxo-selection>
+    <dxo-group-panel [visible]="true"></dxo-group-panel>
+    <dxo-editing 
+    mode="batch"
+    [allowUpdating]="true">
+</dxo-editing>
+
+<div *dxTemplate="let data of 'titleHeaderTemplate'">
+        <i class="fa fa-clone"></i>
+    </div>
+
+    
+            <div *dxTemplate="let datas of 'cellTemplate'">
+                  
+
+            <td class="col-lg-3 col-md-5 col-sm-4 col-xs-12 mob_brd padd_btm bord_rt">
+                    <h4 class="lbl_name"><label>{{datas.data.ActiveProject}}</label></h4>
+                    <div class="lbl_value"><label>Active Project</label></div>
+            </td>        
+                    </div>
+          
+
+</dx-data-grid>
+    </div>
+        </div>
+</div> -->
+
+
+<!-- <div class="row time_expns_detail">
+                        <div class="col-xs-12 border_top">
+                            <ng-container *ngFor="let emp of emps">
+                            <div class="row rm_grid border_btm" *ngFor="let aproj of emp.ActiveProject" ngxDraggable ngxDraggable>
+                                <div class="col-lg-3 col-md-5 col-sm-4 col-xs-12 mob_brd padd_btm bord_rt" >
+                                    <h4 class="lbl_name"><label>{{aproj}}</label></h4>
+                                    <div class="lbl_value"><label>Active Project</label></div>
+                                </div>
+                                <div class="col-lg-6 col-md-7 col-sm-8 col-xs-12 padd_btm mob_btm">
+                                    <div class="row bord_rt" >
+                                        <div class="col-sm-3 col-xs-12">
+                                            <h6 class="lbl_name"><label>{{aproj}}</label></h6>
+                                            <div class="lbl_value"><label>Invoiced</label></div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12">
+                                            <h6 class="lbl_name"><label>$200.00</label></h6>
+                                            <div class="lbl_value"><label>Un-invoiced</label></div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12">
+                                            <h6 class="lbl_name"><label>$40,200.00</label></h6>
+                                            <div class="lbl_value"><b><label>Total Expense</label></b></div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12">
+                                            <h6 class="lbl_name"><span class="highlight green_txt"><label>$60,000.00</label></span></h6>
+                                            <div class="lbl_value"><label>Budget</label></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-5 col-sm-4 col-xs-6">
+                                    <div class="row bord_rt mob_brd">
+                                        <div class="col-sm-6 col-xs-6 user_dtl">
+                                            <h6 class="lbl_name"><label>23</label></h6>
+                                            <div class="lbl_value"><label>Members</label></div>
+                                        </div>
+                                        <div class="col-sm-6 col-xs-6 user_dtl">
+                                            <h6 class="lbl_name"><label>500.00</label></h6>
+                                            <div class="lbl_value"><label>Billed Hours</label></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1 col-md-7 col-sm-8 col-xs-6 inline_icn">
+                                    <span><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i></a></span>
+                                    <span><a href="#"><i class="fa fa-files-o" aria-hidden="true"></i></a></span>
+
+                                </div>
+                            </div>
+                            </ng-container>
+                            <div class="row rm_grid border_btm">
+                                <div class="col-lg-3 col-md-5 col-sm-4 col-xs-12 mob_brd padd_btm bord_rt">
+                                    <h4 class="lbl_name"><label>Logo Design for New Venture</label></h4>
+                                    <div class="lbl_value"><label>Active Project</label></div>
+                                </div>
+                                <div class="col-lg-6 col-md-7 col-sm-8 col-xs-12 padd_btm mob_btm">
+                                    <div class="row bord_rt">
+                                        <div class="col-sm-3 col-xs-12">
+                                            <h6 class="lbl_name"><label>$2,000.00</label></h6>
+                                            <div class="lbl_value"><label>Invoiced</label></div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12">
+                                            <h6 class="lbl_name"><label>$00.00</label></h6>
+                                            <div class="lbl_value"><label>Un-invoiced</label></div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12">
+                                            <h6 class="lbl_name"><label>$2,000.00</label></h6>
+                                            <div class="lbl_value"><b><label>Total Expense</label></b></div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12">
+                                            <h6 class="lbl_name"><span class="highlight red_txt"><label>$1,500.00</label></span></h6>
+                                            <div class="lbl_value"><label>Budget</label></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-5 col-sm-4 col-xs-6">
+                                    <div class="row bord_rt mob_brd">
+                                        <div class="col-sm-6 col-xs-6 user_dtl">
+                                            <h6 class="lbl_name"><label>2</label></h6>
+                                            <div class="lbl_value"><label>Members</label></div>
+                                        </div>
+                                        <div class="col-sm-6 col-xs-6 user_dtl">
+                                            <h6 class="lbl_name"><label>120.00</label></h6>
+                                            <div class="lbl_value"><label>Billed Hours</label></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1 col-md-7 col-sm-8 col-xs-6 inline_icn">
+                                    <span><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i></a></span>
+                                    <span><a href="#"><i class="fa fa-files-o" aria-hidden="true"></i></a></span>
+
+                                </div>
+                            </div>
+                            <div class="row rm_grid border_btm">
+                                <div class="col-lg-3 col-md-5 col-sm-4 col-xs-12 mob_brd padd_btm bord_rt">
+                                    <h4 class="lbl_name"><label>Design and Develop Websites in PHP</label></h4>
+                                    <div class="lbl_value"><label>Active Project</label></div>
+                                </div>
+                                <div class="col-lg-6 col-md-7 col-sm-8 col-xs-12 padd_btm mob_btm">
+                                    <div class="row bord_rt">
+                                        <div class="col-sm-3 col-xs-12">
+                                            <h6 class="lbl_name"><label>$40,000.00</label></h6>
+                                            <div class="lbl_value"><label>Invoiced</label></div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12">
+                                            <h6 class="lbl_name"><label>$200.00</label></h6>
+                                            <div class="lbl_value"><label>Un-invoiced</label></div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12">
+                                            <h6 class="lbl_name"><label>$40,200.00</label></h6>
+                                            <div class="lbl_value"><b><label>Total Expense</label></b></div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12">
+                                            <h6 class="lbl_name"><span class="green_txt highlight"><label>$60,000.00</label></span></h6>
+                                            <div class="lbl_value"><label>Budget</label></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-5 col-sm-4 col-xs-6">
+                                    <div class="row bord_rt mob_brd">
+                                        <div class="col-sm-6 col-xs-6 user_dtl">
+                                            <h6 class="lbl_name"><label>23</label></h6>
+                                            <div class="lbl_value"><label>Members</label></div>
+                                        </div>
+                                        <div class="col-sm-6 col-xs-6 user_dtl">
+                                            <h6 class="lbl_name"><label>500.00</label></h6>
+                                            <div class="lbl_value"><label>Billed Hours</label></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1 col-md-7 col-sm-8 col-xs-6 inline_icn">
+                                    <span><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i></a></span>
+                                    <span><a href="#"><i class="fa fa-files-o" aria-hidden="true"></i></a></span>
+
+                                </div>
+                            </div>
+                            <div class="row rm_grid border_btm">
+                                <div class="col-lg-3 col-md-5 col-sm-4 col-xs-12 mob_brd padd_btm bord_rt">
+                                    <h4 class="lbl_name"><label>Design and Develop Websites in PHP</label></h4>
+                                    <div class="lbl_value"><label>Active Project</label></div>
+                                </div>
+                                <div class="col-lg-6 col-md-7 col-sm-8 col-xs-12 padd_btm mob_btm">
+                                    <div class="row bord_rt">
+                                        <div class="col-sm-3 col-xs-12">
+                                            <h6 class="lbl_name"><label>$40,000.00</label></h6>
+                                            <div class="lbl_value"><label>Invoiced</label></div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12">
+                                            <h6 class="lbl_name"><label>$200.00</label></h6>
+                                            <div class="lbl_value"><label>Un-invoiced</label></div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12">
+                                            <h6 class="lbl_name"><label>$40,200.00</label></h6>
+                                            <div class="lbl_value"><b><label>Total Expense</label></b></div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12">
+                                            <h6 class="lbl_name"><span class="highlight green_txt"><label>$60,000.00</label></span></h6>
+                                            <div class="lbl_value"><label>Budget</label></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-5 col-sm-4 col-xs-6">
+                                    <div class="row bord_rt mob_brd">
+                                        <div class="col-sm-6 col-xs-6 user_dtl">
+                                            <h6 class="lbl_name"><label>23</label></h6>
+                                            <div class="lbl_value"><label>Members</label></div>
+                                        </div>
+                                        <div class="col-sm-6 col-xs-6 user_dtl">
+                                            <h6 class="lbl_name"><label>500.00</label></h6>
+                                            <div class="lbl_value"><label>Billed Hours</label></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1 col-md-7 col-sm-8 col-xs-6 inline_icn">
+                                    <span><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i></a></span>
+                                    <span><a href="#"><i class="fa fa-files-o" aria-hidden="true"></i></a></span>
+
+                                </div>
+                            </div>
+                            <div class="row rm_grid border_btm">
+                                <div class="col-lg-3 col-md-5 col-sm-4 col-xs-12 mob_brd padd_btm bord_rt">
+                                    <h4 class="lbl_name"><label>Design and Develop Websites in PHP</label></h4>
+                                    <div class="lbl_value"><label>Active Project</label></div>
+                                </div>
+                                <div class="col-lg-6 col-md-7 col-sm-8 col-xs-12 padd_btm mob_btm">
+                                    <div class="row bord_rt">
+                                        <div class="col-sm-3 col-xs-12">
+                                            <h6 class="lbl_name"><label>$40,000.00</label></h6>
+                                            <div class="lbl_value"><label>Invoiced</label></div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12">
+                                            <h6 class="lbl_name"><label>$200.00</label></h6>
+                                            <div class="lbl_value"><label>Un-invoiced</label></div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12">
+                                            <h6 class="lbl_name"><label>$40,200.00</label></h6>
+                                            <div class="lbl_value"><b><label>Total Expense</label></b></div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12">
+                                            <h6 class="lbl_name"><span class="highlight green_txt"><label>$60,000.00</label></span></h6>
+                                            <div class="lbl_value"><label>Budget</label></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-5 col-sm-4 col-xs-6">
+                                    <div class="row bord_rt mob_brd">
+                                        <div class="col-sm-6 col-xs-6 user_dtl">
+                                            <h6 class="lbl_name"><label>23</label></h6>
+                                            <div class="lbl_value"><label>Members</label></div>
+                                        </div>
+                                        <div class="col-sm-6 col-xs-6 user_dtl">
+                                            <h6 class="lbl_name"><label>500.00</label></h6>
+                                            <div class="lbl_value"><label>Billed Hours</label></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1 col-md-7 col-sm-8 col-xs-6 inline_icn">
+                                    <span><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i></a></span>
+                                    <span><a href="#"><i class="fa fa-files-o" aria-hidden="true"></i></a></span>
+
+                                </div>
+                            </div>
+                            <div class="row rm_grid border_btm">
+                                <div class="col-lg-3 col-md-5 col-sm-4 col-xs-12 mob_brd padd_btm bord_rt">
+                                    <h4 class="lbl_name"><label>Design and Develop Websites in PHP</label></h4>
+                                    <div class="lbl_value"><label>Active Project</label></div>
+                                </div>
+                                <div class="col-lg-6 col-md-7 col-sm-8 col-xs-12 padd_btm mob_btm">
+                                    <div class="row bord_rt">
+                                        <div class="col-sm-3 col-xs-12">
+                                            <h6 class="lbl_name"><label>$40,000.00</label></h6>
+                                            <div class="lbl_value"><label>Invoiced</label></div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12">
+                                            <h6 class="lbl_name"><label>$200.00</label></h6>
+                                            <div class="lbl_value"><label>Un-invoiced</label></div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12">
+                                            <h6 class="lbl_name"><label>$40,200.00</label></h6>
+                                            <div class="lbl_value"><b><label>Total Expense</label></b></div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12">
+                                            <h6 class="lbl_name"><span class="highlight green_txt"><label>$60,000.00</label></span></h6>
+                                            <div class="lbl_value"><label>Budget</label></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-5 col-sm-4 col-xs-6">
+                                    <div class="row bord_rt mob_brd">
+                                        <div class="col-sm-6 col-xs-6 user_dtl">
+                                            <h6 class="lbl_name"><label>23</label></h6>
+                                            <div class="lbl_value"><label>Members</label></div>
+                                        </div>
+                                        <div class="col-sm-6 col-xs-6 user_dtl">
+                                            <h6 class="lbl_name"><label>500.00</label></h6>
+                                            <div class="lbl_value"><label>Billed Hours</label></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1 col-md-7 col-sm-8 col-xs-6 inline_icn">
+                                    <span><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i></a></span>
+                                    <span><a href="#"><i class="fa fa-files-o" aria-hidden="true"></i></a></span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+<!-- <datatable [dataset]="cities">
+                            <column [value]="'ActiveProject'" [header]="'Active Project'"></column>
+                              <column [value]="'Invoiced'" [header]="'Invoiced'"></column>
+                              <column [value]="'UnInvoiced'" [header]="'UnInvoiced'"></column>
+                              <column [value]="'Members'" [header]="'Members'"></column>
+                         </datatable> -->
+
+
+<!-- <div class="row time_expns_detail">
+    <div class="table-responsive">
+        <table id="table1" class="grid_table border_top">
+
+            <tbody>
+                <tr  class="rm_grid border_btm" *ngFor="let emp of emps;let i=index" [dragula]='"first-bag"' [dragulaOptions]="options">
+
+
+                    <ng-container *ngFor="let aproj of emp.ActiveProject;let j=index">
+                        <ng-container *ngIf="emp.ActiveProject[j]!==undefined">
+                            <td class="padd_btm bord_rt rm_div">
+
+                                <ng-container *ngIf="i==0">
+
+                                    <div class="clone_icon_action" id="tour-action-ui-id">
+                                        <span class="actions">
+                                            <a (click)="cloneElement(0,'ap')">
+                                                <i class="fa fa-clone">
+                                                </i>
+                                            </a>
+                                        </span>
+                                        <span class="actions">
+                                            <a (click)="editElement(i)">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                        </span>
+                                        <span class="actions">
+                                            <a (click)="delElement(j,'ap')">
+                                                <i class="fa fa-trash-o">
+                                                </i>
+                                            </a>
+                                        </span>
+                                        <span class="actions">
+                                            <a href="javascript:void(0);">
+                                                <i class="fa fa-refresh"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </ng-container>
+
+
+                                <h4 class="lbl_name">
+                                    <label>
+                                        <input class="pnl_inp" [(ngModel)]="emp.ActiveProject[j]" />
+                                    </label>
+                                </h4>
+                                <div class="lbl_value">
+                                    <label>Active Project</label>
+                                </div>
+
+                            </td>
+                        </ng-container>
+                    </ng-container>
+
+                    
+                            <ng-container *ngFor="let act of showActives">
+                    <ng-container *ngFor="let aproj of emp.ActiveProject;let j=index">
+                            <ng-container *ngIf="emp.ActiveProject[j]!==undefined">
+                                <td class="padd_btm bord_rt rm_div">
+    
+                                    <ng-container *ngIf="i==0">
+    
+                                        <div class="clone_icon_action" id="tour-action-ui-id">
+                                            <span class="actions">
+                                                <a (click)="cloneElement(act,'ap')">
+                                                    <i class="fa fa-clone">
+                                                    </i>
+                                                </a>
+                                            </span>
+                                            <span class="actions">
+                                                <a (click)="editElement(i)">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                            </span>
+                                            <span class="actions">
+                                                <a (click)="delElement(j,'ap')">
+                                                    <i class="fa fa-trash-o">
+                                                    </i>
+                                                </a>
+                                            </span>
+                                            <span class="actions">
+                                                <a href="javascript:void(0);">
+                                                    <i class="fa fa-refresh"></i>
+                                                </a>
+                                            </span>
+                                        </div>
+                                    </ng-container>
+    
+    
+                                    <h4 class="lbl_name">
+                                        <label>
+                                            <input class="pnl_inp" [(ngModel)]="emp.ActiveProject[j]" />
+                                        </label>
+                                    </h4>
+                                    <div class="lbl_value">
+                                        <label>Active Project</label>
+                                    </div>
+    
+                                </td>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+
+                    <ng-container *ngFor="let aproj of emp.Invoiced;let j=index">
+                        <ng-container *ngIf="emp.Invoiced[j]!==undefined">
+                            <td class="padd_btm bord_rt rm_div">
+                                <ng-container *ngIf="i==0">
+                                    <div class="clone_icon_action" id="tour-action-ui-id">
+                                        <span class="actions">
+                                            <a (click)="cloneElement(i+1)">
+                                                <i class="fa fa-clone">
+                                                </i>
+                                            </a>
+                                        </span>
+                                        <span class="actions">
+                                            <a href="javascript:void(0);">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                        </span>
+                                        <span class="actions">
+                                            <a (click)="delElement(j,'inv')">
+                                                <i class="fa fa-trash-o">
+                                                </i>
+                                            </a>
+                                        </span>
+                                        <span class="actions">
+                                            <a href="javascript:void(0);">
+                                                <i class="fa fa-refresh"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+
+                                </ng-container>
+                                <h4 class="lbl_name">
+                                    <label>{{aproj}}</label>
+                                </h4>
+                                <div class="lbl_value">
+                                    <label>Invoiced</label>
+                                </div>
+
+
+                            </td>
+                        </ng-container>
+                    </ng-container>
+
+
+
+
+
+                    <ng-container *ngFor="let aproj of emp.UnInvoiced;let j=index">
+                        <ng-container *ngIf="emp.UnInvoiced[j]!==undefined">
+                            <td class="padd_btm bord_rt rm_div">
+                                <ng-container *ngIf="i==0">
+                                    <div class="clone_icon_action" id="tour-action-ui-id">
+                                        <span class="actions">
+                                            <a (click)="cloneElement(i+2)">
+                                                <i class="fa fa-clone">
+                                                </i>
+                                            </a>
+                                        </span>
+                                        <span class="actions">
+                                            <a href="javascript:void(0);">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                        </span>
+                                        <span class="actions">
+                                            <a href="javascript:void(0);">
+                                                <i class="fa fa-trash-o">
+                                                </i>
+                                            </a>
+                                        </span>
+                                        <span class="actions">
+                                            <a href="javascript:void(0);">
+                                                <i class="fa fa-refresh"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </ng-container>
+                                <h4 class="lbl_name">
+                                    <label>{{aproj}}</label>
+                                </h4>
+                                <div class="lbl_value">
+                                    <label>Un-Invoiced</label>
+                                </div>
+
+                            </td>
+                        </ng-container>
+                    </ng-container>
+
+                    <ng-container *ngFor="let aproj of emp.TotalExpense">
+                        <td class="padd_btm bord_rt rm_div" (click)="sorting('te')">
+                            <ng-container *ngIf="i==0">
+                                <div class="clone_icon_action" id="tour-action-ui-id">
+                                    <span class="actions">
+                                        <a (click)="cloneElement(i+3)">
+                                            <i class="fa fa-clone">
+                                            </i>
+                                        </a>
+                                    </span>
+                                    <span class="actions">
+                                        <a href="javascript:void(0);">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                    </span>
+                                    <span class="actions">
+                                        <a href="javascript:void(0);">
+                                            <i class="fa fa-trash-o">
+                                            </i>
+                                        </a>
+                                    </span>
+                                    <span class="actions">
+                                        <a href="javascript:void(0);">
+                                            <i class="fa fa-refresh"></i>
+                                        </a>
+                                    </span>
+                                </div>
+                            </ng-container>
+                            <h4 class="lbl_name">
+                                <label>{{aproj}}</label>
+                            </h4>
+                            <div class="lbl_value">
+                                <label>Total Expense</label>
+                            </div>
+
+                        </td>
+                    </ng-container>
+                    <ng-container *ngFor="let aproj of emp.Budget">
+
+                        <td class="padd_btm bord_rt rm_div" (click)="sorting('bud')">
+                            <ng-container *ngIf="i==0">
+                                <div class="clone_icon_action" id="tour-action-ui-id">
+                                    <span class="actions">
+                                        <a (click)="cloneElement(i+4)">
+                                            <i class="fa fa-clone">
+                                            </i>
+                                        </a>
+                                    </span>
+                                    <span class="actions">
+                                        <a href="javascript:void(0);">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                    </span>
+                                    <span class="actions">
+                                        <a href="javascript:void(0);">
+                                            <i class="fa fa-trash-o">
+                                            </i>
+                                        </a>
+                                    </span>
+                                    <span class="actions">
+                                        <a href="javascript:void(0);">
+                                            <i class="fa fa-refresh"></i>
+                                        </a>
+                                    </span>
+                                </div>
+
+                            </ng-container>
+                            <h4 class="lbl_name">
+                                <label class="green_txt">{{aproj}}</label>
+                            </h4>
+                            <div class="lbl_value">
+
+                                <label>Budget</label>
+
+                            </div>
+
+                        </td>
+                    </ng-container>
+                    <ng-container *ngFor="let aproj of emp.Members">
+                        <td class="padd_btm bord_rt rm_div" (click)="sorting('mem')">
+                            <ng-container *ngIf="i==0">
+                                <div class="clone_icon_action" id="tour-action-ui-id">
+                                    <span class="actions">
+                                        <a (click)="cloneElement(i+5)">
+                                            <i class="fa fa-clone">
+                                            </i>
+                                        </a>
+                                    </span>
+                                    <span class="actions">
+                                        <a href="javascript:void(0);">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                    </span>
+                                    <span class="actions">
+                                        <a href="javascript:void(0);">
+                                            <i class="fa fa-trash-o">
+                                            </i>
+                                        </a>
+                                    </span>
+                                    <span class="actions">
+                                        <a href="javascript:void(0);">
+                                            <i class="fa fa-refresh"></i>
+                                        </a>
+                                    </span>
+                                </div>
+
+                            </ng-container>
+                            <h4 class="lbl_name">
+                                <label>{{aproj}}</label>
+                            </h4>
+                            <div class="lbl_value">
+                                <label>Members</label>
+                            </div>
+
+                        </td>
+                    </ng-container>
+                    <ng-container *ngFor="let aproj of emp.BilledHours">
+                        <td class="padd_btm bord_rt rm_div" (click)="sorting('bh')">
+                            <ng-container *ngIf="i==0">
+                                <div class="clone_icon_action" id="tour-action-ui-id">
+                                    <span class="actions">
+                                        <a (click)="cloneElement(i+6)">
+                                            <i class="fa fa-clone">
+                                            </i>
+                                        </a>
+                                    </span>
+                                    <span class="actions">
+                                        <a href="javascript:void(0);">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                    </span>
+                                    <span class="actions">
+                                        <a href="javascript:void(0);">
+                                            <i class="fa fa-trash-o">
+                                            </i>
+                                        </a>
+                                    </span>
+                                    <span class="actions">
+                                        <a href="javascript:void(0);">
+                                            <i class="fa fa-refresh"></i>
+                                        </a>
+                                    </span>
+                                </div>
+
+                            </ng-container>
+                            <h4 class="lbl_name">
+                                <label>{{aproj}}</label>
+                            </h4>
+                            <div class="lbl_value">
+                                <label>BilledHours</label>
+                            </div>
+
+                        </td>
+                    </ng-container>
+
+                    <td class="padd_btm bord_rt rm_div">
+                        <ng-container *ngIf="i==0">
+                            <div class="clone_icon_action" id="tour-action-ui-id">
+                                <span class="actions">
+                                    <a (click)="cloneElement(i+7)">
+                                        <i class="fa fa-clone">
+                                        </i>
+                                    </a>
+                                </span>
+                                <span class="actions">
+                                    <a href="javascript:void(0);">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                </span>
+                                <span class="actions">
+                                    <a href="javascript:void(0);">
+                                        <i class="fa fa-trash-o">
+                                        </i>
+                                    </a>
+                                </span>
+                                <span class="actions">
+                                    <a href="javascript:void(0);">
+                                        <i class="fa fa-refresh"></i>
+                                    </a>
+                                </span>
+                            </div>
+
+                        </ng-container>
+                        <div class="inline_icn">
+                            <span>
+                                <a href="#">
+                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                </a>
+                            </span>
+                            <span>
+                                <a href="#">
+                                    <i class="fa fa-files-o" aria-hidden="true"></i>
+                                </a>
+                            </span>
+                        </div>
+                    </td>
+                    1
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div> -->
+<gridlist></gridlist>
+
+<!-- <ng-container *ngFor="let emp of emps"> 
+                                <div class="row time_expns_detail">
+                                        <div class="col-xs-12 border_top">
+                                            <div class="row rm_grid border_btm">
+                                                <div class="col-lg-3 col-md-5 col-sm-4 col-xs-12 mob_brd padd_btm bord_rt">
+                                                     </div>
+                                                <div class="col-lg-6 col-md-7 col-sm-8 col-xs-12 padd_btm mob_btm">
+                                                    <div class="row bord_rt">
+                                                        <div class="col-sm-3 col-xs-12">
+                                                            <h6 class="lbl_name"><label>{{emp.Invoiced}}</label></h6>
+                                                            <div class="lbl_value"><label>Invoiced</label></div>
+                                                        </div>
+                                                        <div class="col-sm-3 col-xs-12">
+                                                            <h6 class="lbl_name"><label></label></h6>
+                                                            <div class="lbl_value"><label>Un-invoiced</label></div>
+                                                        </div>
+                                                        <div class="col-sm-3 col-xs-12">
+                                                            <h6 class="lbl_name"><label>$40,200.00</label></h6>
+                                                            <div class="lbl_value"><b><label>Total Expense</label></b></div>
+                                                        </div>
+                                                        <div class="col-sm-3 col-xs-12">
+                                                            <h6 class="lbl_name"><span class="highlight green_txt"><label>$60,000.00</label></span></h6>
+                                                            <div class="lbl_value"><label>Budget</label></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2 col-md-5 col-sm-4 col-xs-6">
+                                                    <div class="row bord_rt mob_brd">
+                                                        <div class="col-sm-6 col-xs-6 user_dtl">
+                                                            <h6 class="lbl_name"><label>23</label></h6>
+                                                            <div class="lbl_value"><label>Members</label></div>
+                                                        </div>
+                                                        <div class="col-sm-6 col-xs-6 user_dtl">
+                                                            <h6 class="lbl_name"><label>500.00</label></h6>
+                                                            <div class="lbl_value"><label>Billed Hours</label></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-1 col-md-7 col-sm-8 col-xs-6 inline_icn">
+                                                    <span><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i></a></span>
+                                                    <span><a href="#"><i class="fa fa-files-o" aria-hidden="true"></i></a></span>
+                
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                                
+                        </ng-container> -->
+                  <!-- <button type="button"  class="btn1 btn save_btn" data-toggle="modal" data-target="#input_control_URL">
                         <label>
                             Save
                         </label>
-                    </button>
+                    </button> -->
                  <!-- <div class="row time_expns_detail">
                         <div class="col-xs-12 border_top">
                             <div class="row rm_grid border_btm">
@@ -458,4 +1216,52 @@
 
         </div>
         <div class="clearfix"></div>
+    </div>
+
+
+    <div class="modal fade control_mdl" id="input_control_URL" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                
+                <div class="modal_tabs add_control">
+                    <div class="modal-header"> 
+                        <button type="button" class="mdl_close" data-dismiss="modal">
+                            &times;
+                        </button>
+                        <h4>
+                            <label class="modal-title">Edit Form URL</label>
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                       
+                     
+                        <div class="row col_outer cntrl_info">
+                            <div class="col-md-4 col-xs-12 lbl_cntrl">
+                                    <label class="lbl_hdr">
+                                      Form Name
+                                    </label>
+                                    <input class="cmn_input" type="text" [(ngModel)]="formName" #formname>
+                                </div>               
+                
+                    
+                        <div class="col-md-4 col-xs-12 lbl_cntrl">
+                                <label class="lbl_hdr">
+                                  Form Submit URL (start with "/")
+                                </label>
+                                <input class="cmn_input" type="text" [(ngModel)]="formUrl" #formurl>
+                            </div>               
+                </div>
+    
+                    </div>
+                    <div class="modal-footer modal_btn">
+                        <button type="button" class="btn sv_btn" (click)="saveClick()">
+                            <label>
+                                Save
+                            </label>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>

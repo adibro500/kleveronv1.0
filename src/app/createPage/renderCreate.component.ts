@@ -33,13 +33,13 @@ declare var perfectScrollbar: any;
 declare var height: any;
 declare var tabs: any;
 @Component({
-    selector: 'createPage1',
-    templateUrl: './createPage1.component.html',
+    selector: 'renderCreatePage',
+    templateUrl: './renderCreate.html',
     providers: [BsModalService, BsModalRef, Control2]
 })
 
 
-export class createPage1Component implements OnInit {
+export class RenderCreateComponent implements OnInit {
     components = new Array<any>();
     // inputs = {
     //     class: 'world',
@@ -123,7 +123,6 @@ export class createPage1Component implements OnInit {
                 break;
             case "Date Picker": this.components.push(DatePickerComponent);
                 break;
-
         }
         let props = {
             id: this.cid,

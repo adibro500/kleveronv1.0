@@ -1,0 +1,136 @@
+<div class="text-right">
+  <button type="button" class="btn1 btn sv_btn" (click)="exportAsCSV()" >
+        <label>
+           Export to CSV
+        </label>
+    </button>
+</div>
+<br/>
+<br/>
+<div class="table-wrapper" #tableWrapper>
+        <ngx-datatable
+        #dataTable
+          class='material'
+          [rows]='rows'
+          [limit]='limit'
+          [columnMode]='"force"'
+          [headerHeight]='50'
+          [footerHeight]='50'
+          [rowHeight]='50'
+          [scrollbarH]="true"
+          (reorder)="onReorder($event)" 
+          [selected]="selected"
+          [selectionType]="'multi'"
+          (activate)="onActivate($event)"
+          (select)='onSelect($event)'
+          [columns]="_internalColumns"
+         >
+         
+       
+        
+
+
+          <ng-container *ngFor="let col of cols;let j=index">
+            <ng-container *ngIf="col!==undefined">
+             
+          <ngx-datatable-column prop={{col}} [sortable]="true" [name]="col"  [resizeable]="true" [canAutoResize]="true">        
+                <ng-template let-column="column" let-i="id" ngx-datatable-header-template>
+              
+
+                  <div class="rm_div datatable-header-cell-wrapper">
+
+                    <div class="clone_icon_action draggable" id="tour-action-ui-id">
+                        <span class="actions">
+                            <a (click)="adding(j)" data-toggle="modal" data-target="#input_control_URL">
+                                <i class="fa fa-clone">
+                                </i>
+                            </a>
+                        </span>
+                        <span class="actions">
+                            <a>
+                                <i class="fa fa-edit"></i>
+                            </a>
+                        </span>
+                        <span class="actions">
+                            <a (click)="delColumn(j)">
+                                <i class="fa fa-trash-o">
+                                </i>
+                            </a>
+                        </span>
+                        <span class="actions">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-refresh"></i>
+                            </a>
+                        </span>
+                    </div>
+                 
+                 
+                  <h4 class="datatable-header-cell-label draggable">{{col}}</h4>
+               
+                
+                  </div>
+                </ng-template>
+                <ng-template let-row="row" let-value="value" let-i="index" ngx-datatable-cell-template>
+                    <h4 class="lbl_name">
+                        <label>
+                           <input class="pnl_inp" [value]="value" />
+                        </label>
+                    </h4>
+                   </ng-template>
+              </ngx-datatable-column>
+             
+            </ng-container>
+            </ng-container>
+        </ngx-datatable>
+        
+        
+    </div>
+    <br/>
+    <br/>
+    <button type="button"  class="btn1 btn save_btn">
+        <label>
+            Save
+        </label>
+    </button>
+
+    <div class="modal fade control_mdl" id="input_control_URL" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                
+                <div class="modal_tabs add_control">
+                    <div class="modal-header"> 
+                        <button type="button" class="mdl_close" data-dismiss="modal">
+                            &times;
+                        </button>
+                        <h4>
+                            <label class="modal-title">Add Column Name</label>
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                       
+                     
+                        <div class="row col_outer cntrl_info">
+                            <div class="col-md-4 col-xs-12 lbl_cntrl">
+                                    <label class="lbl_hdr">
+                                      Column Name/Prop Name
+                                    </label>
+                                    <input class="cmn_input" type="text" [(ngModel)]="columnName">
+                                </div>               
+                
+                    
+                             
+                </div>
+    
+                    </div>
+                    <div class="modal-footer modal_btn">
+                        <button type="button" class="btn sv_btn" (click)="addColumn()">
+                            <label>
+                                Add
+                            </label>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

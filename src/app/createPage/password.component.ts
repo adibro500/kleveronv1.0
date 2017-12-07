@@ -109,9 +109,10 @@ export class PasswordComponent implements OnInit {
 
                     this.control = new Control2();
                     this.control.idx = 1;
-                    this.control.id = this.strid0_tb;
-                    this.control.value = this.str0_tb;
-                    this.control.pholder = this.pholder0_tb;
+                    this.control.id = this.id;
+                    this.control.value = this.value;
+                    this.control.pholder = this.pholder;
+                    this.control.css = this.css;
                     this.con.addControlP(this.control);
                 }
                 else {
@@ -124,9 +125,10 @@ export class PasswordComponent implements OnInit {
                     console.log("after", this.con.JSONarrP);
                     this.control = new Control2();
                     this.control.idx = 1;
-                    this.control.id = this.strid0_tb;
-                    this.control.value = this.str0_tb;
-                    this.control.pholder = this.pholder0_tb;
+                    this.control.id = this.id;
+                    this.control.value = this.value;
+                    this.control.pholder = this.pholder;
+                    this.control.css = this.css;
                     this.con.insertAtP(0, this.control);
                 }
                 this.showTextBox = true;
@@ -142,6 +144,7 @@ export class PasswordComponent implements OnInit {
                     this.control.id = this.con.JSONarrP[idx - 1].id;
                     this.control.value = this.con.JSONarrP[idx - 1].value;
                     this.control.pholder = this.con.JSONarrP[idx - 1].pholder;
+                    this.control.css = this.con.JSONarrP[idx - 1].css;
                     this.con.addControlP(this.control);
                 }
                 else {
@@ -157,6 +160,7 @@ export class PasswordComponent implements OnInit {
                     this.control.id = this.con.JSONarrP[idx - 1].id;
                     this.control.value = this.con.JSONarrP[idx - 1].value;
                     this.control.pholder = this.con.JSONarrP[idx - 1].pholder;
+                    this.control.css = this.con.JSONarrP[idx - 1].css;
                     this.con.insertAtP(idx - 1, this.control);
                 }
                 this.showTextBox = true;

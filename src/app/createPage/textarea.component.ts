@@ -79,9 +79,9 @@ export class TextAreaComponent implements OnInit {
 
             }
             else {
-                this.str0_tb = ctval;
-                this.pholder0_tb = ctph;
-                this.strid0_tb = ctid;
+                this.value = ctval;
+                this.pholder = ctph;
+                this.id = ctid;
             }
             this.showTextBox = true;
             localStorage.removeItem("inp_flag");
@@ -106,9 +106,10 @@ export class TextAreaComponent implements OnInit {
 
                     this.control = new Control2();
                     this.control.idx = 1;
-                    this.control.id = this.strid0_tb;
-                    this.control.value = this.str0_tb;
-                    this.control.pholder = this.pholder0_tb;
+                    this.control.id = this.id;
+                    this.control.value = this.value;
+                    this.control.pholder = this.pholder;
+                    this.control.css = this.css;
                     this.con.addControlTA(this.control);
                 }
                 else {
@@ -121,9 +122,10 @@ export class TextAreaComponent implements OnInit {
                     console.log("after", this.con.JSONarrTA);
                     this.control = new Control2();
                     this.control.idx = 1;
-                    this.control.id = this.strid0_tb;
-                    this.control.value = this.str0_tb;
-                    this.control.pholder = this.pholder0_tb;
+                    this.control.id = this.id;
+                    this.control.value = this.value;
+                    this.control.pholder = this.pholder;
+                    this.control.css = this.css;
                     this.con.insertAtTA(0, this.control);
                 }
                 this.showTextBox = true;
@@ -139,6 +141,7 @@ export class TextAreaComponent implements OnInit {
                     this.control.id = this.con.JSONarrTA[idx - 1].id;
                     this.control.value = this.con.JSONarrTA[idx - 1].value;
                     this.control.pholder = this.con.JSONarrTA[idx - 1].pholder;
+                    this.control.css = this.con.JSONarrTA[idx - 1].css;
                     this.con.addControlTA(this.control);
                 }
                 else {
@@ -154,6 +157,7 @@ export class TextAreaComponent implements OnInit {
                     this.control.id = this.con.JSONarrTA[idx - 1].id;
                     this.control.value = this.con.JSONarrTA[idx - 1].value;
                     this.control.pholder = this.con.JSONarrTA[idx - 1].pholder;
+                    this.control.css = this.con.JSONarrTA[idx - 1].css;
                     this.con.insertAtTA(idx - 1, this.control);
                 }
                 this.showTextBox = true;

@@ -34,7 +34,9 @@
         "../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
         "styles.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/materialize-css/dist/js/materialize.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

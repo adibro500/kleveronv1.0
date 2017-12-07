@@ -9,6 +9,7 @@ export class Control2 {
     lid: string;
     lname: string;
     lclass: string;
+    css: string;
     JSONarr = new Array<Control2>();
     JSONarrTA = new Array<Control2>();
     JSONarrSO = new Array<Control2>();
@@ -34,7 +35,8 @@ export class Control2 {
         values: string[],
         lid: string,
         lname: string,
-        lclass: string
+        lclass: string,
+        css: string
     ) {
         this.idx = idx;
         this.id = id;
@@ -44,6 +46,7 @@ export class Control2 {
         this.lid = lid;
         this.lname = lname;
         this.lclass = lclass;
+        this.css = css;
 
     }
     addControlTA(control: Control2) {

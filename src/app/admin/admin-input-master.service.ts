@@ -49,7 +49,7 @@ export class InputMasterService {
     putData(inputdata) {
 
         console.log("inputdata", inputdata);
-        return this.http.post("http://localhost:5000/save/admin-list-master", JSON.stringify(inputdata), options).map(res => res.text()).subscribe(data => console.log(data));
+        return this.http.post("http://localhost:5000/save/admin-list-master", inputdata, options).map(res => res.text()).subscribe(data => console.log(data));
 
 
     }

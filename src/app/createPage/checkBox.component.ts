@@ -14,7 +14,7 @@ declare var tabs: any;
 
 
 export class CheckboxComponent implements OnInit {
-    @Input() val;
+    @Input() value;
     @Input() id;
     @Input() css;
 
@@ -74,14 +74,14 @@ export class CheckboxComponent implements OnInit {
                 this.con.JSONarrCB[this.jk - 1]["value"] = ctval;
                 this.con.JSONarrCB[this.jk - 1]["pholder"] = ctph;
                 this.con.JSONarrCB[this.jk - 1]["id"] = ctid;
+
                 // this.con.JSONarr[parseInt(localStorage.getItem("indexEle")) - 1]["edited"] = true;
                 console.log(this.Textboxes);
 
             }
             else {
-                this.str0_tb = ctval;
-                this.pholder0_tb = ctph;
-                this.strid0_tb = ctid;
+                this.value = ctval;
+                this.id = ctid;
             }
             this.showTextBox = true;
             localStorage.removeItem("inp_flag");
@@ -106,8 +106,8 @@ export class CheckboxComponent implements OnInit {
 
                     this.control = new Control2();
                     this.control.idx = 1;
-                    this.control.id = this.strid0_tb;
-                    this.control.value = this.str0_tb;
+                    this.control.id = this.id;
+                    this.control.value = this.value;
                     this.control.pholder = this.pholder0_tb;
                     this.con.addControlCB(this.control);
                 }
@@ -121,8 +121,8 @@ export class CheckboxComponent implements OnInit {
                     console.log("after", this.con.JSONarrCB);
                     this.control = new Control2();
                     this.control.idx = 1;
-                    this.control.id = this.strid0_tb;
-                    this.control.value = this.str0_tb;
+                    this.control.id = this.id;
+                    this.control.value = this.value;
                     this.control.pholder = this.pholder0_tb;
                     this.con.insertAtCB(0, this.control);
                 }
@@ -139,6 +139,7 @@ export class CheckboxComponent implements OnInit {
                     this.control.id = this.con.JSONarrCB[idx - 1].id;
                     this.control.value = this.con.JSONarrCB[idx - 1].value;
                     this.control.pholder = this.con.JSONarrCB[idx - 1].pholder;
+                    this.control.css = this.con.JSONarrCB[idx - 1].css;
                     this.con.addControlCB(this.control);
                 }
                 else {
@@ -154,6 +155,7 @@ export class CheckboxComponent implements OnInit {
                     this.control.id = this.con.JSONarrCB[idx - 1].id;
                     this.control.value = this.con.JSONarrCB[idx - 1].value;
                     this.control.pholder = this.con.JSONarrCB[idx - 1].pholder;
+                    this.control.css = this.con.JSONarrCB[idx - 1].css;
                     this.con.insertAtCB(idx - 1, this.control);
                 }
                 this.showTextBox = true;

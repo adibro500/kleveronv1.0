@@ -52,7 +52,7 @@ export class RenderList implements OnInit {
 
         alert(id);
         console.log(this.temp[id]);
-        this.emps = this.temp[id];
+        this.emps = this.temp[id].data;
 
     }
 
@@ -74,7 +74,7 @@ export class RenderList implements OnInit {
             "Form_Url": this.formUrl,
             "data": this.emps
         }
-        this.ims.putData(JSONObj);
+        this.ims.putData(JSON.stringify(JSONObj));
 
     }
 
