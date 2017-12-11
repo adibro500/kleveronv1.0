@@ -43,7 +43,7 @@
                         <ul class="inner">
                             <li *ngIf="check0" ><a routerLink="/adminInputMaster/uk"><span class="input_icon"><img src="/assets/images/input-icon.png" /></span>input-form-1.html</a></li>
                             <ng-container *ngFor="let d of data;let i= index">
-                            <li *ngIf="check0_input[i]"><a (click)="redirectToNext(i)"><span class="input_icon"><img src="/assets/images/input-icon.png" /></span>{{d.formName}}</a></li>
+                            <li *ngIf="check0_input[i]"><a (click)="redirectToNext(i)"><span class="input_icon"><img src="/assets/images/input-icon.png" /></span>{{d.FormName}}</a></li>
                             </ng-container>
                             
                         </ul>
@@ -229,7 +229,7 @@
                                     <div class="chk_bx">
                                         <input id="{{'input-page-' + i}}" name="" value="" type="checkbox" [checked]="check0_input[i]" (change)="check0_input[i] = !check0_input[i]">
                                         <label for="{{'input-page-' + i}}">
-                                            {{d.formName}}
+                                            {{d.FormName}}
                                         </label>
                                     </div>
                                     

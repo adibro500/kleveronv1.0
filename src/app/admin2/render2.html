@@ -339,7 +339,7 @@
                                                                 </span>
                                                             </div>
 
-                                                            <input [name]="tb.id" class="cmn_input" [placeholder]="tb.placeholder" [value]="tb.values[0]" [id]="tb.id" [required]="tb.validation.is_required?true:null">
+                                                            <input [name]="tb.id" class="cmn_input" [placeholder]="tb.placeholder" [value]="tb.values[0]" [(ngModel)]="tb.values[0]" [id]="tb.id" [required]="tb.validation.is_required?true:null">
                                                                 <ng-container *ngIf="tb.values[0]=='' && is_submit && tb.validation.is_required">
                                                                     <div>{{tb.validation.val_msg}}</div>
                                                                 </ng-container>
@@ -381,7 +381,7 @@
                                                             </ng-container>
 
                                                             <label>
-                                                                <select [name]="tb.id" class="cmn_input" [id]="tb.id" [value]="">
+                                                                <select [name]="tb.id" class="cmn_input" [id]="tb.id" [(ngModel)]="selectValues[idx]">
                                                                     <option *ngFor="let aob of tb.values" [ngValue]="aob">{{aob}}</option>
                                                                 </select>
                                                             </label>
@@ -1142,16 +1142,12 @@
                                             </span>
                                         </div>
 
-                                        <button type="button"  class="btn1 btn save_btn" data-toggle="modal" data-target="#input_control_URL">
+                                        <button type="button" class="btn btn1 save_btn"  (click)="sendData()">
                                             <label>
                                                 Save
                                             </label>
                                         </button>
-                                        <button type="submit" class="btn2 btn  next_btn" (click)="nextData()">
-                                            <label>
-                                                Next
-                                            </label>
-                                        </button>
+                                        
 
                                     </div>
                                 <!-- </form> -->

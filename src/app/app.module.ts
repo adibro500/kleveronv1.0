@@ -90,6 +90,10 @@ import { MaterializeModule } from 'angular2-materialize';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxResizeWatcherDirective } from './admin/listContent/grid.directive';
 import { AdminMaster } from './admin2/admin-input.component';
+import { AdminService } from './admin2/admin-input.service';
+import { RenderAdmin2 } from './admin2/renderAdmin.component';
+import { DateTimePickerModule } from 'ngx-datetime-picker';
+
 
 const appRoutes: Routes = [
 
@@ -100,6 +104,8 @@ const appRoutes: Routes = [
   { path: 'render/:index', component: RenderInputMaster },
   { path: 'renderinput', component: RenderInput },
   { path: 'adminPanel', component: AdminPanel },
+  { path: 'render2/:id', component: RenderAdmin2 },
+
 
   { path: 'colorPick', component: ColorPickComponent },
   { path: 'adminInput', component: AdminInput },
@@ -219,10 +225,10 @@ export function createTranslateLoader(http: HttpClient) {
     SelectOptionComponent,
     SelectTextComponent,
     RenderCreateComponent,
-
+    RenderAdmin2
   ],
   imports: [
-
+    DateTimePickerModule,
     NoopAnimationsModule,
     DxDataGridModule,
     NgxDatatableModule,
@@ -252,6 +258,7 @@ export function createTranslateLoader(http: HttpClient) {
     RlTagInputModule,
     HttpClientModule,
     HttpModule,
+
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
@@ -271,7 +278,7 @@ export function createTranslateLoader(http: HttpClient) {
   ],
 
   exports: [NgxDnDModule, ColorPickerModule],
-  providers: [Service, NgxResizeWatcherDirective,
+  providers: [AdminService, Service, NgxResizeWatcherDirective,
     TranslateService, CssClassForDivsService, AuthGuardService, LoginService, AuthGuard, InputMasterService, RenderInputMasterService],
   entryComponents: [SelectTextComponent, SelectOptionComponent, TextboxWithLabelComponent, SwitchComponent, DatePickerComponent, DocumentComponent, FieldComponent, CheckboxComponent, PasswordComponent, RadioComponent, TimePickerComponent],
 

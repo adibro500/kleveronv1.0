@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from "@angular/core";
 import { RenderInputMasterService } from "./render-input-master.service";
 import { Router } from "@angular/router";
 import { DOCUMENT } from "@angular/platform-browser";
+import { AdminService } from "../admin2/admin-input.service";
 declare var $: any;
 declare var perfectScrollbar: any;
 declare var height: any;
@@ -16,7 +17,7 @@ export class AdminPanel implements OnInit {
     data: any[] = [];
     checkedGrid: boolean;
     data_grid: any[] = [];
-    constructor(private rims: RenderInputMasterService, private router: Router, @Inject(DOCUMENT) private document: any) {
+    constructor(private adminServ: AdminService, private rims: RenderInputMasterService, private router: Router, @Inject(DOCUMENT) private document: any) {
         var side = localStorage.getItem("side");
         if (side == "right") {
             this.document.getElementById("theme").setAttribute("href", "./assets/styles/right-menu.css");
@@ -33,7 +34,7 @@ export class AdminPanel implements OnInit {
             this.document.getElementById("color").setAttribute("href", "./assets/styles/orange-blue.css");
         }
 
-        this.rims.getInputData().subscribe((data) => {
+        this.adminServ.getMasterData().subscribe((data) => {
             this.data = JSON.parse(JSON.stringify(data));
         });
         this.rims.getInputDataGrid().subscribe((data) => {
@@ -47,7 +48,7 @@ export class AdminPanel implements OnInit {
     check0_input_grid: boolean[] = [];
 
     redirectToNext(id) {
-        this.router.navigate(['/render', id]);
+        this.router.navigate(['/render2', id]);
 
     }
 
