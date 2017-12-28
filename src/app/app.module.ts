@@ -95,6 +95,7 @@ import { RenderAdmin2 } from './admin2/renderAdmin.component';
 import { DateTimePickerModule } from 'ngx-datetime-picker';
 import { ParentComponent } from './parent-main.component';
 import { SelectControlComponent } from './select-control/select-control.component';
+import { SafePipe } from './admin2/safe-pipe';
 
 
 const appRoutes: Routes = [
@@ -247,6 +248,7 @@ export function createTranslateLoader(http: HttpClient) {
     AdminInput,
     RenderInput,
     AdminPanel,
+    SafePipe,
     ColorPickComponent,
     TableSortDirective,
     DatatableComponent,
