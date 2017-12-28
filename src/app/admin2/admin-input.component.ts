@@ -383,17 +383,17 @@ export class AdminMaster implements OnInit {
     addStyleSheet(order) {
 
         if (order == "cols-1") {
-            this.changeC = '/assets/styles/theme-2.css';
+            this.changeC = './assets/styles/theme-2.css';
         }
         else if (order == "cols-2") {
-            this.changeC = '/assets/styles/theme-1.css';
+            this.changeC = './assets/styles/theme-1.css';
 
         } else if (order == "cols-3") {
 
-            this.changeC = '/assets/styles/theme-4.css';
+            this.changeC = './assets/styles/theme-4.css';
 
         } else if (order == "cols-4") {
-            this.changeC = '/assets/styles/theme-3.css';
+            this.changeC = './assets/styles/theme-3.css';
         }
 
     }
