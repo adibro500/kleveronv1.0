@@ -377,7 +377,7 @@ export class AdminMaster implements OnInit {
         document.getElementById("own_contrl_list").style.width = "0";
         document.getElementById("own_contrl_list").style.opacity = "0";
     }
-    changeC: string;
+    changeC: string = "";
 
 
     addStyleSheet(order) {

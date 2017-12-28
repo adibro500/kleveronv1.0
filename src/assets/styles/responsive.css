@@ -1,4 +1,3 @@
-
 ﻿@media screen and (max-width: 1600px) {
     /*     login      */
     .left_txt h2 {
@@ -510,6 +509,18 @@
     }
     /*  end all widgets */
 
+    /* add control by own */
+    .own_cntrl_list h4 {
+        font-size: 20px;
+        padding-top: 21px;
+        padding-bottom: 22px;
+    }
+    .own_cntrl_list {
+      
+        margin-top: 65px;
+    }
+
+    /* end add control by own */
 
 }
 
@@ -689,7 +700,11 @@
 
     /*  end add page section  */
 
-
+    /* create job */
+    .all_sub_temp {
+        padding: 0 10px;
+    }
+    /* end create job */
 
 }
 
@@ -795,6 +810,31 @@
 
 
     /*    end all widgets    */
+}
+
+@media screen and (max-width: 1080px) {
+
+    /*  add control by own */
+
+    .add_own_cntrl span.col_text {
+        display: none;
+    }
+    .add_col_btn .btn {
+       
+        padding: 10px 15px;
+        
+    }
+        .add_col_btn .btn .col_icon {
+            padding-right: 0;
+            display: inline-block;
+            border-right: 0;
+            margin-right: 0;
+            padding: 0 2px;
+        }
+
+    /*   end add control by own */
+
+
 }
 
 @media screen and (max-width: 991px) {
@@ -929,6 +969,14 @@
         font-size: 12px;
     }
     /*  end add page section  */
+    /*  add control by own */
+    .add_cntrl_hdr h2.head {
+        text-align: center;
+    }
+
+    /*   end add control by own */
+
+
 }
 
 
@@ -1246,12 +1294,14 @@
         text-align: center;
     }
 
-    .crt_job_btn {
-        padding-right: 8px;
+    .my_job_btn {
+        padding-bottom: 15px;
+        padding-top: 15px;
+        text-align: center;
     }
 
-    .my_jobs_wrapper {
-        padding-top: 20px;
+    .crt_job_btn {
+        padding-right: 8px;
     }
 
     .dash_title {
@@ -1288,43 +1338,9 @@
         font-size: 18px;
     }
 
-    .detail_nav_menu ul {
-        display: none;
-    }
-
     .crt_job_btn {
         padding: 15px 0;
         text-align: center;
-    }
-
-    .hide_option {
-        display: block;
-    }
-
-    .show_option {
-        background-color: #333;
-        background-image: none;
-        border: medium none;
-        box-shadow: none;
-        color: #fff;
-        display: block;
-        font-size: 17px;
-        font-weight: 500;
-        height: 44px;
-        line-height: 1.42857;
-        text-align: center;
-        width: 100%;
-        padding: 6px 12px;
-        transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
-    }
-
-    #tab_selector > option {
-        background-color: #f7f7f7;
-        color: #333;
-    }
-
-    .hide_option.selectdiv::after {
-        color: #fff;
     }
 
     .post_hdr {
@@ -1365,6 +1381,12 @@
     .user_dtl {
         text-align: center;
     }
+
+    .detail_nav_menu.my_job_nav ul {
+        border-bottom: 2px solid #e0e1f3;
+    }
+
+
     /*  end my jobs */
 
     /* time & expense */
@@ -1383,6 +1405,14 @@
 
     .frmwrk_btn .action-ui {
         top: -20px;
+    }
+
+    .time_expns_wrapper .edit_btn {
+        padding-bottom: 0;
+    }
+
+    .time_expns_wrapper .upld_btn {
+        text-align: center;
     }
 
     /* admin grid view */
@@ -1414,6 +1444,13 @@
         margin: 0 auto 30px;
         width: 290px;
     }
+
+    /*  list view */
+    .select_template .edit_btn {
+        text-align: center;
+    }
+
+    /*  end list view */
 
     /*   all widgets */
     .srch_wrap .upld_btn {
@@ -1584,10 +1621,37 @@
 
 
     /*  end add page section  */
+    /* create job */
+    .create_jobs_wrapper .edit_btn {
+        text-align: center;
+    }
 
+    .chs_txt span {
+        display: block;
+    }
+    /* end create job */
+    /*  add control by own */
 
+    .add_own_cntrl {
+        text-align: center;
+    }
 
-
+   
+    .add_col_btn .btn {
+        margin-right:0;
+    }
+    .add_own_cntrl span.add_control_btn {
+        padding-right: 0;
+    }
+    .add_control_btn .btn {
+        
+        padding: 10px 15px;
+        
+    }
+    .own_cntrl_list {
+        margin-top: 95px;
+    }
+    /*   end add control by own */
 }
 
 @media screen and (max-width: 480px) {
@@ -1612,6 +1676,8 @@
     }
 
     /*  end my jobs */
+
+
 }
 
 @media screen and (max-width: 412px) {
@@ -1670,4 +1736,11 @@
         font-size: 17px;
         text-align: center;
     }
+    /* my job */
+    .my_job_nav.detail_nav_menu ul li {
+        padding: 13px 0;
+        width: 100%;
+    }
+
+    /* end my job */
 }
