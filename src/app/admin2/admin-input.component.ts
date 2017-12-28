@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { DragulaService } from 'ng2-dragula/components/dragula.provider';
 import { ElementRef } from '@angular/core/src/linker/element_ref';
 import { AdminService } from './admin-input.service';
 import { Router } from '@angular/router';
+import { DOCUMENT } from '@angular/platform-browser';
 declare var $: any;
 declare var perfectScrollbar: any;
 declare var height: any;
@@ -14,50 +15,298 @@ declare var tabs: any;
 })
 
 export class AdminMaster implements OnInit {
-    id: string;
-    order: number;
-    type: string;
-    values: string[];
-    placeholder: string;
-    lnames: string[];
-    lclasses: string[];
-    lids: string[];
+    lbl_choice: boolean = false;
     Textboxes: any[] = [];
     Textboxes_copy: any[] = [];
-
     options: any;
-
     temp2: any;
+    group1: any[] = [];
+    group2: any[] = [];
+    formName;
+    formUrl = "/save/admin2";
+    selectedValue;
+    is_submit: boolean;
+    kdx;
+    dateExample;
+    timeExample;
+    selectedEntry;
 
-    constructor(dragulaService: DragulaService, private adminService: AdminService, private router: Router) {
+    constructor( @Inject(DOCUMENT) private document: any, private dragulaService: DragulaService, private adminService: AdminService, private router: Router) {
 
-        this.options = {
-            revertOnSpill: true
-        };
+        this.group1.push({
+            "validation": {
+                "is_required": false,
+                "is_read_only": false,
+                "min_length": 1,
+                "val_msg": "this field is required"
+            },
+            "id": "text0",
+            "order": 0,
+            "type": "textbox",
+            "values": [""],
+            "placeholder": "New Company",
+            "lnames": [],
+            "lclasses": [],
+            "class": 'col-md-6 col-sm-6 col-xs-12 element_box klvrn_col',
+            "lids": [],
+            "label": "Text-Box",
+            "img": "txt-bx",
+        });
 
-        // dragulaService.out.subscribe((value: any[]) => {
-        //     const [bagName, e, el] = value;
-        //     console.log("ll", e);
-        //     console.log("kk", el);
-        //     console.log('id is:', e.dataset.id);
-        //     this.temp2 = ;
+        this.group1.push({
+            "validation": {
+                "is_required": false,
+                "is_read_only": false,
+                "min_length": 1,
+                "val_msg": "this field is required"
+            },
+            "id": "txtb0",
+            "order": 0,
+            "type": "textarea",
+            "values": [""],
+            "placeholder": "New Company",
+            "lnames": [],
+            "lclasses": [],
+            "lids": [],
+            "label": "Textarea",
+            "img": "txt-bx",
+        });
 
+        this.group1.push({
+            "validation": {
+                "is_required": false,
+                "is_read_only": false,
+                "min_length": 1,
+                "val_msg": "this field is required"
+            },
+            "id": "slct4",
+            "order": 4,
+            "type": "select",
+            "values": ['Area of Business', 'XYz', 'ABC'],
+            "placeholder": "",
+            "lnames": [],
+            "lclasses": [],
+            "lids": [],
+            "label": "Select",
+            "img": "select-option"
+        });
+
+        this.group1.push({
+            "validation": {
+                "is_required": false,
+                "is_read_only": false,
+                "min_length": 1,
+                "val_msg": "this field is required"
+            },
+            "id": "pass8",
+            "order": 8,
+            "type": "password",
+            "values": [''],
+            "placeholder": "Enter Password",
+            "lnames": [],
+            "lclasses": [],
+            "lids": [],
+            "label": "Password",
+            "img": "password"
+        });
+
+        this.group1.push({
+            "validation": {
+                "is_required": false,
+                "is_read_only": false,
+                "min_length": 1,
+                "val_msg": "this field is required"
+            },
+            "id": "sctt",
+            "order": 9,
+            "type": "select_text",
+            "values": [''],
+            "boolvals": [false],
+            "placeholder": "Select Text",
+            "lnames": [],
+            "lclasses": [],
+            "lids": ['slct'],
+            "label": "Select Text",
+            "img": "select-chkbx"
+        });
+
+        this.group1.push({
+            "validation": {
+                "is_required": false,
+                "is_read_only": false,
+                "min_length": 1,
+                "val_msg": "this field is required"
+            },
+            "id": "sltt",
+            "order": 10,
+            "type": "select_options",
+            "values": ['Select Option', 'ABC', 'XYZ'],
+            "boolvals": [false],
+            "placeholder": "",
+            "lnames": [],
+            "lclasses": [],
+            "lids": ['sltt'],
+            "label": "Select Options",
+            "img": "select-option"
+        });
+
+        this.group1.push({
+            "validation": {
+                "is_required": false,
+                "is_read_only": false,
+                "min_length": 1,
+                "val_msg": "this field is required"
+            },
+            "id": "texl11",
+            "order": 11,
+            "type": "text_label",
+            "values": [''],
+            "boolvals": [true],
+            "placeholder": "Enter Something",
+            "lnames": ['Enter Something:'],
+            "lclasses": [],
+            "lids": [],
+            "label": "Text With Label",
+            "img": "lbl-txt-bx"
+        });
+
+        this.group1.push({
+            "validation": {
+                "is_required": false,
+                "is_read_only": false,
+                "min_length": 1,
+                "val_msg": "this field is required"
+            },
+            "id": "date12",
+            "order": 12,
+            "type": "datepicker",
+            "values": [15 / 12 / 17],
+            "boolvals": [true],
+            "placeholder": "",
+            "lnames": ['Enter Date:'],
+            "lclasses": ['lbl_hdr'],
+            "lids": ['datepicker_label'],
+            "label": "Date Picker",
+            "img": "date-pkr"
+        });
+
+        this.group1.push({
+            "validation": {
+                "is_required": false,
+                "is_read_only": false,
+                "min_length": 1,
+                "val_msg": "this field is required"
+            },
+            "id": "time13",
+            "order": 13,
+            "type": "timepicker",
+            "values": [''],
+            "boolvals": [true],
+            "placeholder": "",
+            "lnames": ['Enter Time:'],
+            "lclasses": ['lbl_hdr'],
+            "lids": ['timepicker_label'],
+            "label": "Time Picker",
+            "img": "time-pkr"
+        });
+
+        this.group1.push({
+            "validation": {
+                "is_required": false,
+                "is_read_only": false,
+                "min_length": 1,
+                "val_msg": "this field is required"
+            },
+            "id": "chkx14",
+            "order": 14,
+            "type": "checkbox",
+            "values": [''],
+            "boolvals": [true],
+            "placeholder": "",
+            "lnames": ['Enter Time:'],
+            "lclasses": ['lbl_hdr'],
+            "lids": [''],
+            "label": "Checkbox",
+            "img": "chkbx"
+        });
+
+        this.group1.push({
+            "validation": {
+                "is_required": false,
+                "is_read_only": false,
+                "min_length": 1,
+                "val_msg": "this field is required"
+            },
+            "id": "radi15",
+            "order": 15,
+            "type": "radio",
+            "values": [''],
+            "boolvals": [false],
+            "placeholder": "",
+            "group": "radio-group",
+            "lnames": ['radiooption1'],
+            "lclasses": ['lbl_hdr'],
+            "lids": [''],
+            "label": "Radio Button",
+            "img": "radio"
+        });
+
+        this.group1.push({
+            "validation": {
+                "is_required": false,
+                "is_read_only": false,
+                "min_length": 1,
+                "val_msg": "this field is required"
+            },
+            "id": "swth16",
+            "order": 16,
+            "type": "switch",
+            "values": [''],
+            "boolvals": [true],
+            "placeholder": "",
+            "lnames": [''],
+            "lclasses": [''],
+            "lids": [''],
+            "label": "Switch",
+            "img": "switch"
+        });
+
+        // this.group1.push({
+        //     "validation": {
+        //         "is_required": false,
+        //         "is_read_only": false,
+        //         "min_length": 1,
+        //         "val_msg": "this field is required"
+        //     },
+        //     "id": "tara0",
+        //     "order": 17,
+        //     "type": "textarea",
+        //     "values": [''],
+        //     "boolvals": [true],
+        //     "placeholder": "",
+        //     "lnames": [''],
+        //     "lclasses": [''],
+        //     "lids": [''],
+        //     "label": "Text Area",
+        //     "img": ""
         // });
-        // dragulaService.drop.subscribe((value) => {
 
-        //     console.log("after", value.after);
-        //     console.log("before", value.before);
 
-        //     this.onDrop(value);
 
-        // });
 
-        dragulaService.setOptions('bag-one', {
-            revertOnSpill: true
-        })
+
+
+        dragulaService.drop.subscribe((value) => {
+
+            this.group1.push(this.group2);
+        });
+
+
         dragulaService.dropModel.subscribe((value) => {
+            this.group1.push(this.group2);
             this.onDropModel(value);
         });
+
     }
 
 
@@ -66,16 +315,16 @@ export class AdminMaster implements OnInit {
         for (var k = 0; k < this.Textboxes.length; k++) {
             this.Textboxes[k].order = k;
         }
+
         console.log(this.Textboxes);
     }
 
-    formName;
-    formUrl;
+
 
     nextData() {
 
         this.is_submit = true;
-        alert(this.selectedValue);
+        // alert(this.selectedValue);
     }
 
     clickRad(tb) {
@@ -86,14 +335,13 @@ export class AdminMaster implements OnInit {
 
 
     saveData() {
-        //  this.is_submit = true;
 
         if (this.formName == "") {
-            alert("Please provide a form name");
+            // alert("Please provide a form name");
             return false;
         } else
             if (this.formUrl == "") {
-                alert("Please provide a form submit URL");
+                // alert("Please provide a form submit URL");
                 return false;
             }
             else {
@@ -101,17 +349,58 @@ export class AdminMaster implements OnInit {
                     "User": "Aditya",
                     "FormName": this.formName,
                     "FormURL": this.formUrl,
-                    "controls": this.Textboxes
+                    "controls": this.Textboxes,
+                    "column_config": this.changeC
                 };
                 this.adminService.putMasterData(JSON.stringify(dt));
                 console.log("data sent to server");
                 alert("Template saved successfully");
-                this.router.navigate(['/adminPanel']);
+                //this.router.navigate(['/parent/adminMaster']);
+
+                $("#input_control_URL").hide();
+
             }
 
     }
-    is_submit: boolean;
-    kdx;
+
+
+    // add control list bar
+
+
+
+    SelectControlNav() {
+        document.getElementById("own_contrl_list").style.width = "270px";
+        document.getElementById("own_contrl_list").style.opacity = "1";
+    }
+
+    closeNav() {
+        document.getElementById("own_contrl_list").style.width = "0";
+        document.getElementById("own_contrl_list").style.opacity = "0";
+    }
+    changeC: string;
+
+
+    addStyleSheet(order) {
+
+        if (order == "cols-1") {
+            this.changeC = '/assets/styles/theme-2.css';
+        }
+        else if (order == "cols-2") {
+            this.changeC = '/assets/styles/theme-1.css';
+
+        } else if (order == "cols-3") {
+
+            this.changeC = '/assets/styles/theme-4.css';
+
+        } else if (order == "cols-4") {
+            this.changeC = '/assets/styles/theme-3.css';
+        }
+
+    }
+
+
+
+
     cloneElement(i) {
 
         for (var k = 0; this.Textboxes.length; k++) {
@@ -120,6 +409,7 @@ export class AdminMaster implements OnInit {
                 break;
             }
         }
+
 
 
 
@@ -140,6 +430,7 @@ export class AdminMaster implements OnInit {
             "lnames": this.Textboxes[this.kdx].lnames,
             "lclasses": this.Textboxes[this.kdx].lclasses,
             "lids": this.Textboxes[this.kdx].lids
+
         }
         for (var v = this.kdx + 1; v < this.Textboxes.length; v++) {
 
@@ -154,55 +445,56 @@ export class AdminMaster implements OnInit {
     }
 
     delElement(i) {
-        this.Textboxes = this.Textboxes.filter(function (item) {
-            return item.order !== i;
-        });
-        for (var k = 0; k < this.Textboxes.length; k++) {
-            this.Textboxes[k].order = this.Textboxes[k].order++;
+        if (window.confirm('Are you sure you want to delete this item ?')) {
 
-        }
+            this.Textboxes = this.Textboxes.filter(function (item) {
+
+                return item.order !== i;
+
+            });
+
+
+
+        } else
+
+            return;
 
     }
 
-    editElement(i) {
-        alert(i);
+    editElement(i, inp_flag) {
+
+        // alert(i);
         localStorage.setItem("ele", i);
+        $(".modal_tabs").hide();
+        if (inp_flag == "lbl")
+            $(".modal_tabs.add_label").show();
+        else
+            $(".modal_tabs.add_control").show();
 
     }
 
     saveLabel(labelid, labelnm, labelclass) {
-
-
-
         for (var k = 0; k < this.Textboxes.length; k++) {
             if (parseInt(localStorage.getItem("ele")) == this.Textboxes[k].order)
                 this.idx = k;
         }
 
-
-        //alert(ctid + ctval + ctph + ctvbx + ctvmsg)
         this.Textboxes[this.idx].lids = labelid.split(",");
         this.Textboxes[this.idx].lnames = labelnm.split(",");
         this.Textboxes[this.idx].lclasses = labelclass.split(",");
 
-
-
-        $("#input_label_Modal").hide();
-
-
-
     }
 
     onRadioClick(dt) {
-        alert(dt);
+        // alert(dt);
     }
 
     idx;
-    saveCntrl(ctpar, ctid, ctval, ctph, ctvbx, ctvmsg) {
+    saveCntrl(ctpar, ctid, ctval, ctph) {
 
 
         if (ctid == "") {
-            alert("please enter control id");
+            // alert("please enter control id");
             return false;
         }
 
@@ -212,24 +504,22 @@ export class AdminMaster implements OnInit {
                 this.idx = k;
         }
 
-
-        alert(ctid + ctval + ctph + ctvbx + ctvmsg)
+        localStorage.removeItem("ele");
+        // alert(ctid + ctval + ctph + ctvbx + ctvmsg)
         this.Textboxes[this.idx].id = ctid;
         this.Textboxes[this.idx].values = ctval.split(",");
         this.Textboxes[this.idx].placeholder = ctph;
-        if (ctvmsg !== "") {
-            this.Textboxes[this.idx].validation.is_required = true;
-            this.Textboxes[this.idx].validation.val_msg = ctvmsg;
-        }
 
         $("#input_control_Modal").hide();
 
 
     }
 
-    dateExample;
 
+    openDialog() {
 
+        $(".modal_tabs.add_control").show();
+    }
 
     resetElement(i) {
 
@@ -237,69 +527,18 @@ export class AdminMaster implements OnInit {
 
     }
 
-    // onDrop(args) {
-
-    //     const [el, e, target, source, sibling] = args;
-    //     // console.log("kk", e.dataset.id);
-    //     console.log("kk", el);
-    //     console.log('id is:', source.dataset.id);
-    //     console.log('id is:', target.dataset.id);
-    //     //console.log('id is:', sibling.dataset.id);
-    //     if (sibling !== null && e !== null && this.Textboxes[parseInt(e.dataset.id)] !== undefined) {
-    //         let tmp = this.Textboxes[e.dataset.id];
-    //         this.Textboxes[e.dataset.id] = this.Textboxes[sibling.dataset.id];
-    //         this.Textboxes[sibling.dataset.id] = tmp;
-
-    //         // for (var i = sibling.dataset.id + 1; i < this.Textboxes.length; i++) {
-    //         //     if (this.Textboxes[i] !== undefined) {
-    //         //         alert(this.Textboxes[i].order);
-    //         //         this.Textboxes[i].order = this.Textboxes[i].order++;
-
-
-
-    //         //     }
-
-    //         // }
-    //         //  console.log('id2 is:', args[4].getAttribute("data-id"));
-
-    //         //console.log("other id is", value[4].getAttribute("data-id"));
-
-    //         // console.log(e.type, e);
-    //         // if (args[4] !== null && this.Textboxes[parseInt(args[4].getAttribute("data-id"))] !== undefined) {
-    //         //     console.log("inside condition");
-    //         //     let temp = this.Textboxes[parseInt(e.dataset.id)].order;
-    //         //     this.Textboxes[parseInt(e.dataset.id)].order = this.Textboxes[parseInt(args[4].getAttribute("data-id"))].order;
-    //         //     this.Textboxes[parseInt(args[4].getAttribute("data-id"))].order = temp;
-    //         // this.Textboxes.sort((a, b) => {
-    //         //     if (a.order < b.order) return -1;
-    //         //     else if (a.order > b.order) return 1;
-    //         //     else return 0;
-    //         // });
-    //         console.log(this.Textboxes);
-    //     }
-    //     // }
-    //     // else
-
-    //     //     console.log("outside condition");
-
-
-    // }
-
-
-
-
-    timeExample;
-    selectedEntry;
-
 
     onSelectionChange(entry) {
+
         this.selectedEntry = entry;
+
     }
 
+
+
     radioClick(i) {
-        alert(i);
+        // alert(i);
     }
-    selectedValue;
 
 
     Textboxes_select: any[] = [];
@@ -312,6 +551,15 @@ export class AdminMaster implements OnInit {
             items: this.Textboxes_select
         }
     ]
+
+    showHideControl(link, div) {
+        var left = $(div);
+        var leftShow = $('.own_cntrl_list.show');
+        $(link).click(function () {
+            left.addClass('show');
+            leftShow.removeClass('show');
+        });
+    }
 
     ngOnInit() {
 
@@ -327,10 +575,12 @@ export class AdminMaster implements OnInit {
             "type": "textbox",
             "values": [""],
             "placeholder": "New Company",
+            "show_lbl": true,
             "lnames": [],
             "lclasses": [],
             "lids": []
         });
+
         this.Textboxes.push({
             "validation": {
                 "is_required": false,
@@ -338,15 +588,18 @@ export class AdminMaster implements OnInit {
                 "min_length": 1,
                 "val_msg": "this field is required"
             },
-            "id": "text1",
+            "id": "tara0",
             "order": 1,
-            "type": "textbox",
+            "type": "textarea",
             "values": [''],
+            "show_lbl": true,
+            "boolvals": [true],
             "placeholder": "Company Head Office Address",
-            "lnames": [],
-            "lclasses": [],
-            "lids": []
+            "lnames": [''],
+            "lclasses": [''],
+            "lids": [''],
         });
+
         this.Textboxes.push({
             "validation": {
                 "is_required": false,
@@ -358,11 +611,13 @@ export class AdminMaster implements OnInit {
             "order": 2,
             "type": "textbox",
             "values": [''],
+            "show_lbl": true,
             "placeholder": "Name Of CEO/MD",
             "lnames": [],
             "lclasses": [],
             "lids": []
         });
+
         this.Textboxes.push({
             "validation": {
                 "is_required": false,
@@ -373,6 +628,7 @@ export class AdminMaster implements OnInit {
             "id": "text3",
             "order": 3,
             "type": "textbox",
+            "show_lbl": true,
             "values": [''],
             "placeholder": "City",
             "lnames": [],
@@ -390,6 +646,7 @@ export class AdminMaster implements OnInit {
             "id": "slct4",
             "order": 4,
             "type": "select",
+            "show_lbl": true,
             "values": ['Area of Business', 'XYz', 'ABC'],
             "placeholder": "",
             "lnames": [],
@@ -407,12 +664,14 @@ export class AdminMaster implements OnInit {
             "id": "slct5",
             "order": 5,
             "type": "select",
+            "show_lbl": true,
             "values": ['State', 'Andhra Pradesh', 'Gujarat', 'Maharahtra'],
             "placeholder": "",
             "lnames": [],
             "lclasses": [],
             "lids": []
         });
+
         this.Textboxes.push({
             "validation": {
                 "is_required": false,
@@ -423,12 +682,14 @@ export class AdminMaster implements OnInit {
             "id": "slct6",
             "order": 6,
             "type": "select",
+            "show_lbl": true,
             "values": ['Number of employees', 'ABC', 'XYZ'],
             "placeholder": "",
             "lnames": [],
             "lclasses": [],
             "lids": []
         });
+
         this.Textboxes.push({
             "validation": {
                 "is_required": false,
@@ -439,6 +700,7 @@ export class AdminMaster implements OnInit {
             "id": "slct7",
             "order": 7,
             "type": "select",
+            "show_lbl": true,
             "values": ['Country', 'China', 'Dubai', 'Russia'],
             "placeholder": "",
             "lnames": [],
@@ -456,12 +718,14 @@ export class AdminMaster implements OnInit {
             "id": "pass8",
             "order": 8,
             "type": "password",
+            "show_lbl": true,
             "values": [''],
             "placeholder": "Enter Password",
             "lnames": [],
             "lclasses": [],
             "lids": []
         });
+
         this.Textboxes.push({
             "validation": {
                 "is_required": false,
@@ -469,16 +733,18 @@ export class AdminMaster implements OnInit {
                 "min_length": 1,
                 "val_msg": "this field is required"
             },
-            "id": "sct_t9",
+            "id": "sctt",
             "order": 9,
             "type": "select_text",
             "values": [''],
-            "boolvals": [true],
+            "show_lbl": true,
+            "boolvals": [false],
             "placeholder": "Select Text",
             "lnames": [],
             "lclasses": [],
-            "lids": []
+            "lids": ['slct']
         });
+
         this.Textboxes.push({
             "validation": {
                 "is_required": false,
@@ -486,16 +752,18 @@ export class AdminMaster implements OnInit {
                 "min_length": 1,
                 "val_msg": "this field is required"
             },
-            "id": "slt_o10",
+            "id": "sltt",
             "order": 10,
             "type": "select_options",
             "values": ['Select Option', 'ABC', 'XYZ'],
-            "boolvals": [true],
+            "boolvals": [false],
             "placeholder": "",
+            "show_lbl": true,
             "lnames": [],
             "lclasses": [],
-            "lids": []
+            "lids": ['sltt']
         });
+
         this.Textboxes.push({
             "validation": {
                 "is_required": false,
@@ -508,8 +776,9 @@ export class AdminMaster implements OnInit {
             "type": "text_label",
             "values": [''],
             "boolvals": [true],
+            "show_lbl": true,
             "placeholder": "Enter Something",
-            "lnames": ['Enter Something:'],
+            "lnames": ['Enter Something'],
             "lclasses": [],
             "lids": []
         });
@@ -524,6 +793,7 @@ export class AdminMaster implements OnInit {
             "id": "date12",
             "order": 12,
             "type": "datepicker",
+            "show_lbl": true,
             "values": [15 / 12 / 17],
             "boolvals": [true],
             "placeholder": "",
@@ -531,6 +801,7 @@ export class AdminMaster implements OnInit {
             "lclasses": ['lbl_hdr'],
             "lids": ['datepicker_label']
         });
+
         this.Textboxes.push({
             "validation": {
                 "is_required": false,
@@ -542,11 +813,13 @@ export class AdminMaster implements OnInit {
             "order": 13,
             "type": "timepicker",
             "values": [''],
+            "show_lbl": true,
             "boolvals": [true],
             "placeholder": "",
             "lnames": ['Enter Time:'],
             "lclasses": ['lbl_hdr'],
-            "lids": ['timepicker_label']
+            "lids": ['timepicker_label'],
+
         });
 
         this.Textboxes.push({
@@ -559,6 +832,7 @@ export class AdminMaster implements OnInit {
             "id": "chkx14",
             "order": 14,
             "type": "checkbox",
+            "show_lbl": true,
             "values": [''],
             "boolvals": [true],
             "placeholder": "",
@@ -566,6 +840,7 @@ export class AdminMaster implements OnInit {
             "lclasses": ['lbl_hdr'],
             "lids": ['']
         });
+
         this.Textboxes.push({
             "validation": {
                 "is_required": false,
@@ -577,6 +852,7 @@ export class AdminMaster implements OnInit {
             "order": 15,
             "type": "radio",
             "values": [''],
+            "show_lbl": true,
             "boolvals": [false],
             "placeholder": "",
             "group": "radio-group",
@@ -584,6 +860,7 @@ export class AdminMaster implements OnInit {
             "lclasses": ['lbl_hdr'],
             "lids": ['']
         });
+
         this.Textboxes.push({
             "validation": {
                 "is_required": false,
@@ -596,11 +873,13 @@ export class AdminMaster implements OnInit {
             "type": "switch",
             "values": [''],
             "boolvals": [true],
+            "show_lbl": true,
             "placeholder": "",
             "lnames": [''],
             "lclasses": [''],
             "lids": ['']
         });
+
         this.Textboxes.push({
             "validation": {
                 "is_required": false,
@@ -612,12 +891,14 @@ export class AdminMaster implements OnInit {
             "order": 17,
             "type": "upload",
             "values": [''],
+            "show_lbl": true,
             "boolvals": [true],
             "placeholder": "",
             "lnames": [''],
             "lclasses": [''],
             "lids": ['']
         });
+
         this.Textboxes.push({
             "validation": {
                 "is_required": false,
@@ -630,11 +911,13 @@ export class AdminMaster implements OnInit {
             "type": "twitter",
             "values": [''],
             "boolvals": [true],
+            "show_lbl": true,
             "placeholder": "Twitter Handle",
             "lnames": [''],
             "lclasses": [''],
             "lids": ['']
         });
+
         this.Textboxes.push({
             "validation": {
                 "is_required": false,
@@ -646,12 +929,16 @@ export class AdminMaster implements OnInit {
             "order": 19,
             "type": "fbook",
             "values": [''],
+            "show_lbl": true,
             "boolvals": [true],
             "placeholder": "Facebook address",
             "lnames": [''],
             "lclasses": [''],
             "lids": ['']
         });
+
+
+
         this.Textboxes.push({
             "validation": {
                 "is_required": false,
@@ -659,16 +946,18 @@ export class AdminMaster implements OnInit {
                 "min_length": 1,
                 "val_msg": "this field is required"
             },
-            "id": "llin20",
-            "order": 20,
+            "id": "llin21",
+            "order": 21,
             "type": "linkedin",
             "values": [''],
+            "show_lbl": true,
             "boolvals": [true],
             "placeholder": "Linkedin address",
             "lnames": [''],
             "lclasses": [''],
             "lids": ['']
         });
+
         this.Textboxes.push({
             "validation": {
                 "is_required": false,
@@ -676,10 +965,11 @@ export class AdminMaster implements OnInit {
                 "min_length": 1,
                 "val_msg": "this field is required"
             },
-            "id": "gpls21",
-            "order": 21,
+            "id": "gpls22",
+            "order": 22,
             "type": "gplus",
             "values": [''],
+            "show_lbl": true,
             "boolvals": [true],
             "placeholder": "Google Plus ID",
             "lnames": [''],
@@ -689,18 +979,25 @@ export class AdminMaster implements OnInit {
 
         this.Textboxes_copy.push(this.Textboxes);
 
+        this.dragulaService.setOptions('bag-one', {
+            revertOnSpill: true,
+            copy: function (el, source) {
+                return source.id === 'left';
+            }
+        });
 
-        //display helpers
+
+
+
+        $('.all_con_wrap').perfectScrollbar();
 
         $('.edit_btn').on('click', function () {
-            // alert($('.edit_btn').index(this));
+            // // alert($('.edit_btn').index(this));
             localStorage.setItem("parent", $('.edit_btn').index(this));
 
         });
 
-        // $(".clone").click(function () {
-        //     $(this).parent().find('.element-box').eq(0).clone().appendTo(this);
-        // });
+
 
         var num = 0;
         $(".save_btn").click(function () {
@@ -708,36 +1005,18 @@ export class AdminMaster implements OnInit {
 
         });
 
-        // $(".delel").click(function () {
-        //     $(this).closest(".element_box").remove();
-        // });
-
-
-        // $('#datetimepicker3').datetimepicker({
-        //     icons: {
-        //         time: 'fa fa-clock-o',
-        //         date: 'fa fa-calendar',
-        //         up: 'fa fa-chevron-up',
-        //         down: 'fa fa-chevron-down',
-        //         previous: 'fa fa-chevron-left',
-        //         next: 'fa fa-chevron-right',
-        //         today: 'fa fa-crosshairs',
-        //         clear: 'fa fa-trash'
-        //     },
-        //     format: 'MM/DD/YYYY'
-        // });
-
-        // $(function () {
-        //     $('#datetimepicker1').datetimepicker();
-        // });
 
         $(function () {
             $('#datetimepicker2').datetimepicker({
                 format: 'LT'
             });
         });
+        // 
+
 
         $(document).ready(function () {
+
+
             //here first get the contents of the div with name class copy-fields and add it to after "after-add-more" div class.
             $(".add-more").click(function () {
                 var html = $(".copy-fields").html();
@@ -760,9 +1039,6 @@ export class AdminMaster implements OnInit {
         })
 
 
-        $('.navbar-header').click(function () {
-            $('.wrapper').toggleClass('hidemenu');
-        });
 
         if ($(window).width() < 767) {
             $(document).click(function (e) {
@@ -811,13 +1087,15 @@ export class AdminMaster implements OnInit {
             });
         });
 
-        $("#clone0").click(function () {
-            $(this).parent().find('.element-box').eq(0).clone().appendTo(this);
-        });
+        // $("#clone0").click(function () {
+        //     $(this).parent().find('.element-box').eq(0).clone().appendTo(this);
+        // });
+
+
 
         $(".nx_btn").click(function () {
             var nextDiv = $(".modal_tabs:visible").next(".modal_tabs");
-            if (nextDiv.length == 0) { // wrap around to beginning
+            if (nextDiv.length == 0) {
                 nextDiv = $(".modal_tabs:first");
             }
             $(".modal_tabs").hide();
@@ -833,13 +1111,23 @@ export class AdminMaster implements OnInit {
             }
         });
 
+        $(window).load(function () {
+            var C = $(window).height();
+            var cH = $('.con_hdr').height();
+            var cT = C - cH;
+            $('.all_con_wrap').css('height', cT);
+            $(window).resize(function () {
+                var C = $(window).height();
+                var cH = $('.con_hdr').height();
+                var cT = C - cH;
+                $('.all_con_wrap').css('height', cT);
+            });
+        });
+
+
 
     }
 
-    log(e: any) {
 
-        console.log(e.type, e);
-
-    }
 
 }

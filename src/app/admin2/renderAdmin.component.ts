@@ -1,9 +1,14 @@
-import { Component } from '@angular/core';
-import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { Component, Renderer, Input, Inject } from '@angular/core';
+import { OnInit, AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { DragulaService } from 'ng2-dragula/components/dragula.provider';
 import { ElementRef } from '@angular/core/src/linker/element_ref';
 import { AdminService } from './admin-input.service';
 import { ActivatedRoute } from '@angular/router';
+import { IsMobileService } from 'ngx-datetime-picker/services/isMobile.service';
+import { DateService } from 'ngx-datetime-picker/services/date.service';
+import { DatePipe } from '@angular/common';
+import { DOCUMENT } from '@angular/platform-browser';
+
 declare var $: any;
 declare var perfectScrollbar: any;
 declare var height: any;
@@ -14,7 +19,7 @@ declare var tabs: any;
     templateUrl: './render2.html',
 })
 
-export class RenderAdmin2 implements OnInit {
+export class RenderAdmin2 implements OnInit, AfterViewInit {
     id: string;
     order: number;
     type: string;
@@ -25,64 +30,23 @@ export class RenderAdmin2 implements OnInit {
     lids: string[];
     selectRadio;
 
-    pholder: string = 'New Company';
-    strid0 = "cmn_input0";
-    str0: string = "";
-    pholder0: string = 'New Company';
-    strid0_CHA = "Textarea1";
-    str0_CHA: string = '';
-    pholder0_CHA = "Company Head Office Address";
-    strid0_CEO = "Text";
-    str0_CEO: string = '';
-    pholder0_CEO = "Name Of CEO/MD";
-    strid0_city = "TextCity";
-    str0_city: string = '';
-    pholder0_city = "City";
-    strid0_aob = "Areas";
-    aob0: string[] = ['Area of Business', 'XYz', 'ABC'];
-    pholder0_aob = "Areas of Business";
-    strid0_fb = "Text";
-    str0_fb: string = '';
-    pholder0_fb = "Facebook Address";
-    pholder0_ll = "Linkedin Address";
-    strid0_ll = "Text";
-    str0_ll: string = '';
-    pholder0_gp = "Google Plus Address";
-    strid0_gp = "Text";
-    str0_gp: string = '';
-    pholder0_tw = "Twitter Handle";
-    strid0_tw = "Text";
-    str0_tw: string = '';
-    pholder0_ctry = "Country";
-    strid0_ctry = "Text";
-    str0_ctry: string[] = ['Country', 'China', 'Dubai', 'Russia'];
-    pholder0_state = "Country";
-    strid0_state = "Text";
-    str0_state: string[] = ['State', 'Andhra Pradesh', 'Gujarat', 'Maharahtra'];
-    pholder0_info = "input text for a single line field with a max";
-    strid0_info = "Textarea1";
-    str0_info: string = "";
-    lid0_info = "label";
-    lname0_info = "Other Information";
-    lclass0_info: string = "lbl_hdr";
-    strid0_noe = "Text";
-    str0_noe: string[] = ['Number of employees', 'ABC', 'XYZ'];
-    strid0_cbox: string[] = ["Checkbox1", "checkbox2"];
-    str0_cbox: string[] = ['Compliant With PF(India)', 'Compliant With ESIC(India)'];
-    isval0: boolean = false;
-    valmsg0: string = "";
     Textboxes: any[] = [];
-
+    changeC: string;
     options: any;
 
     temp2: any;
     data: any;
     index;
-    constructor(dragulaService: DragulaService, private route: ActivatedRoute, private adminService: AdminService) {
+
+    filesToUpload: Array<File>;
+
+
+    constructor( @Inject(DOCUMENT) private document: any, dragulaService: DragulaService, private route: ActivatedRoute, private adminService: AdminService) {
 
         this.options = {
             revertOnSpill: true
         };
+        this.filesToUpload = [];
 
         // dragulaService.out.subscribe((value: any[]) => {
         //     const [bagName, e, el] = value;
@@ -97,6 +61,14 @@ export class RenderAdmin2 implements OnInit {
 
         });
 
+
+
+
+    }
+
+
+    ngAfterViewInit() {
+
         this.adminService.getMasterData().subscribe(data => {
             this.data = JSON.parse(JSON.stringify(data));
             this.route.params.subscribe(params => {
@@ -110,12 +82,50 @@ export class RenderAdmin2 implements OnInit {
 
     }
 
+    upload() {
+        this.makeFileRequest("http://localhost:5000/upload", [], this.filesToUpload).then((result) => {
+            console.log(result);
+        }, (error) => {
+            console.error(error);
+        });
+    }
+
+    fileChangeEvent(fileInput: any) {
+        this.filesToUpload = <Array<File>>fileInput.target.files;
+    }
+
+    makeFileRequest(url: string, params: Array<string>, files: Array<File>) {
+        return new Promise((resolve, reject) => {
+            var formData: any = new FormData();
+            var xhr = new XMLHttpRequest();
+            for (var i = 0; i < files.length; i++) {
+                formData.append("uploads[]", files[i], files[i].name);
+            }
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        resolve(JSON.parse(xhr.response));
+                    } else {
+                        reject(xhr.response);
+                    }
+                }
+            }
+            xhr.open("POST", url, true);
+            xhr.send(formData);
+        });
+    }
+
+
+
+
     texts: any[] = [];
 
 
 
     getTemplateByIndex(i) {
         this.Textboxes = this.data[i].controls;
+        this.changeC = this.data[i].column_config;
+        console.log("col-conf", this.changeC);
         for (var k = 0; k < this.Textboxes.length; k++) {
             this.Textboxes[k].order = k;
         }
@@ -187,7 +197,30 @@ export class RenderAdmin2 implements OnInit {
 
     }
 
+    changeCols(order) {
 
+        if (order == "cols-2") {
+            this.document.getElementById("cols").removeAttribute('href');
+            this.document.getElementById("cols").setAttribute("href", "./assets/styles/theme-1.css");
+
+        }
+        else if (order == "cols-1") {
+            this.document.getElementById("cols").removeAttribute('href');
+
+            this.document.getElementById("cols").setAttribute("href", "./assets/styles/theme-2.css");
+        }
+        else if (order == "cols-4") {
+            this.document.getElementById("cols").removeAttribute('href');
+            this.document.getElementById("cols").setAttribute("href", "./assets/styles/theme-3.css");
+        }
+        else {
+            this.document.getElementById("cols").removeAttribute('href');
+
+            this.document.getElementById("cols").setAttribute("href", "./assets/styles/theme-4.css");
+        }
+
+
+    }
 
     nextData() {
         alert(this.selectRadio);
@@ -205,7 +238,11 @@ export class RenderAdmin2 implements OnInit {
         console.log(this.Textboxes);
     }
 
+    defValues;
+    getDef(i) {
+        return this.Textboxes[i].values[0];
 
+    }
 
     // onDrop(args) {
     //     let [e, el, source, target] = args;
@@ -245,6 +282,8 @@ export class RenderAdmin2 implements OnInit {
         // $(function () {
         //     $('#datetimepicker1').datetimepicker();
         // });
+
+
 
         $(function () {
             $('#datetimepicker2').datetimepicker({
@@ -353,50 +392,125 @@ export class RenderAdmin2 implements OnInit {
 
 
     }
-
+    is_submit: boolean;
     jsonObj: any[] = [];
     selectedValues: any[] = [];
     dateValues: any[] = [];
     timeValues: any[] = [];
     checkValues: any[] = [];
     selectValues: any[] = [];
+    selectValues2: any[] = [];
     sendData() {
+
+
+        //this.is_submit = true;
+
 
         let bjson = {};
 
         for (var i = 0; i < this.Textboxes.length; i++) {
-            alert("inside " + this.Textboxes[i].type);
+            var k = 0;
+            // alert("inside " + this.Textboxes[i].type);
+            // alert("more in " + i);
+
+            if (this.Textboxes[i].type === 'textbox' && this.Textboxes[i].values[0] !== "") {
 
 
 
-            alert("more in " + i);
-            if ((this.Textboxes[i].type == 'textbox') && (this.Textboxes[i].order == i)) {
-                alert("text");
-                bjson[this.Textboxes[i].placeholder] = this.Textboxes[i].values[0];
-                this.jsonObj.push(bjson);
-            } else if ((this.Textboxes[i].type == 'select') && (this.Textboxes[i].order == i)) {
-                alert("select");
-                bjson[this.Textboxes[i].values[0]] = this.Textboxes[i].values[1];
-                this.jsonObj.push(bjson);
+                //   bjson["control_id"] = this.Textboxes[i].id;
+                bjson[this.Textboxes[i].placeholder + "_" + i] = this.Textboxes[i].values[0];
+
             }
-            else
-                bjson = {};
+            else if (this.Textboxes[i].type === 'textarea' && this.selectValues[i] !== "") {
+                bjson["control_id"] = this.Textboxes[i].id;
+
+                bjson[this.Textboxes[i].values[0] + "-" + i] = this.selectValues[i];
+
+            }
+
+            else if (this.Textboxes[i].type === 'select' && this.selectValues[i] !== "") {
+                bjson["control_id"] = this.Textboxes[i].id;
+
+                bjson[this.Textboxes[i].values[0] + "-" + i] = this.selectValues[i];
+
+            } else if (this.Textboxes[i].type === 'password' && this.Textboxes[i].values[0] !== "") {
+                bjson["control_id"] = this.Textboxes[i].id;
+
+                bjson[this.Textboxes[i].placeholder + "_" + i] = this.Textboxes[i].values[0];
+
+
+            } else if (this.Textboxes[i].type === 'checkbox' && this.Textboxes[i].boolvals[0] != undefined) {
+                bjson["control_id"] = this.Textboxes[i].id;
+                bjson[this.Textboxes[i].lnames[0] + "_" + i] = this.Textboxes[i].boolvals[0];
+
+
+            } else if (this.Textboxes[i].type === 'radio' && this.selectedValue != undefined) {
+
+                bjson['value'] = this.Textboxes[i].lnames[0];
+                if (this.selectedValue == this.selectedValue)
+                    bjson['selected'] = true;
+                else
+                    bjson['selected'] = false;
+
+
+            } else if (this.Textboxes[i].type === 'switch' && this.Textboxes[i].values[0] !== "") {
+                bjson["control_id"] = this.Textboxes[i].id;
+                bjson[this.Textboxes[i].placeholder + "_" + i] = this.Textboxes[i].values[0];
+
+
+
+            } else if (this.Textboxes[i].type === 'datepicker' && this.dateValues[i] !== undefined) {
+                bjson["control_id"] = this.Textboxes[i].id;
+                bjson[this.Textboxes[i].placeholder] = this.dateValues[i];
+
+            } else if (this.Textboxes[i].type === 'timepicker' && this.timeValues[i] !== undefined) {
+                bjson["control_id"] = this.Textboxes[i].id;
+                bjson[this.Textboxes[i].placeholder] = this.timeValues[i];
+
+            } else if (this.Textboxes[i].type === 'fbook' && this.Textboxes[i].values[0] !== "") {
+                bjson["control_id"] = this.Textboxes[i].id;
+                bjson[this.Textboxes[i].placeholder] = this.Textboxes[i].values[0];
+
+            } else if (this.Textboxes[i].type === 'linkedin' && this.Textboxes[i].values[0] !== "") {
+                bjson["control_id"] = this.Textboxes[i].id;
+                bjson[this.Textboxes[i].placeholder] = this.Textboxes[i].values[0];
+
+            } else if (this.Textboxes[i].type === 'gplus' && this.Textboxes[i].values[0] !== "") {
+                bjson["control_id"] = this.Textboxes[i].id;
+                bjson[this.Textboxes[i].placeholder] = this.Textboxes[i].values[0];
+
+            } else if (this.Textboxes[i].type === 'twitter' && this.Textboxes[i].values[0] !== "") {
+                bjson["control_id"] = this.Textboxes[i].id;
+                bjson[this.Textboxes[i].placeholder] = this.Textboxes[i].values[0];
+            }
+            else if (this.Textboxes[i].type === 'select_text' && this.Textboxes[i].values[0] !== "" && this.Textboxes[i].boolvals[0] !== undefined && this.Textboxes[i].boolvals[0] != false) {
+                bjson["control_id"] = this.Textboxes[i].id;
+                bjson[this.Textboxes[i].placeholder] = this.Textboxes[i].values[0];
+                bjson["active for " + this.Textboxes[i].placeholder] = this.Textboxes[i].boolvals[0];
+            } else if (this.Textboxes[i].type === 'select_options' && this.Textboxes[i].values[0] !== "" && this.Textboxes[i].boolvals[0] !== undefined && this.Textboxes[i].boolvals[0] != false) {
+                bjson["control_id"] = this.Textboxes[i].id;
+                bjson[this.Textboxes[i].placeholder] = this.Textboxes[i].values[0];
+                bjson["active for " + this.Textboxes[i].placeholder] = this.Textboxes[i].boolvals[0];
+            }
 
         }
+        this.jsonObj.push(bjson);
+
+        let Obj = {
+            "formValues": this.jsonObj
+        }
+        this.adminService.putFormData(Obj);
+        alert("Data sent successfully");
+
+
         console.log(this.jsonObj);
-
-
-
-
     }
-
-
-
 
     log(e: any) {
         console.log(e.type, e);
+    }
 
-
+    selectfnValues(idx) {
 
     }
 
