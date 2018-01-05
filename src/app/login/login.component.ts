@@ -70,7 +70,7 @@ export class LoginComponent implements OnDestroy, OnInit {
         this.ags.isLoggedIn(json1).subscribe((res) => {
             if (res.data != "invalid") {
                 this.ags.setUserLoggedInStatus();
-                localStorage.setItem("loginname", btoa(this.uname));
+                localStorage.setItem("loginname", this.uname);
                 this.router.navigate(['/parent/adminWidget']);
             }
         });

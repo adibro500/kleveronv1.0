@@ -12,7 +12,6 @@
         #dataTable
           class='material'
           [rows]='rows'
-          [limit]='limit'
           [columnMode]='"force"'
           [headerHeight]='50'
           [footerHeight]='50'
@@ -23,7 +22,7 @@
           [selectionType]="'multi'"
           (activate)="onActivate($event)"
           (select)='onSelect($event)'
-          [columns]="_internalColumns"
+          [columns]="cols"
          >
          
        

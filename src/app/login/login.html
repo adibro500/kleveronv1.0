@@ -7,16 +7,7 @@
 
             <div class="left_txt">
                 <div class="container-fluid">
-                    <h2>
-                        <label translate>
-                            Lorem ipsum dolor sitame consectetur adipis.
-                        </label>
-                    </h2>
-                    <p>
-                        <label translate>
-                            Duis aute irure dolor in reprehenderit voluptate velitesse cillum dolore eu fugiat nulla pariatur.
-                        </label>
-                    </p>
+                   
                 </div>
             </div>
         </div>
@@ -34,7 +25,7 @@
                     </h2>
                 </div>
                 <div class="login_input">
-                    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" name="form">
+                    <form [formGroup]="form" name="form">
                             <div class="form-group row" [ngClass]="{'has-error': (!username.valid && username.touched), 'has-success': (username.valid && username.touched)}">
                         <div class="field">
                         <input [formControl]="username" type="text" name="username" id="username" class="username" placeholder="{{'Username' | translate}}" [(ngModel)]="uname">

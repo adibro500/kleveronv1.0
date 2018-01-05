@@ -1,4 +1,4 @@
-<div class="wrapper">
+<!-- <div class="wrapper">
         <div class="aside left">
             <div class="dash_logo">
                 <a href="#">
@@ -257,7 +257,7 @@
                 </div>
             </header>
             <div class="container-fluid bgwhite">
-                <!-- Modal -->
+              
               
                 <div class="row page_header">
                     <div class="col-xs-6">
@@ -282,7 +282,7 @@
                                         <div *ngFor="let d of data;let i =index">
                                             <tr (click)="getTemplateByIndex(i)">Template No. {{i}}</tr>
                                         </div>
-                                    </table> -->
+                                    </table> 
 
                                     <form #myForm="ngForm">
                                     <div class="row">
@@ -291,7 +291,7 @@
                                             <input name="first" class="cmn_input" placeholder={{pholder0}} [id]="strid0" [(ngModel)]="str0" (ngModelChange)="str0 = $event" [required]="req0">
                                             <!-- <div *ngIf="strid0?.errors && !strid0?.valid && !(strid0?.dirty || strid0?.touched) && myForm.submitted">
                                                 <div *ngIf="strid0?.errors.required"> {{valmsg}} </div>
-                                                </div> -->
+                                                </div> 
                                                
                                         </div>
                                         <div *ngFor="let tb of Textboxes;let i=index">
@@ -793,7 +793,7 @@
     
     <div class="modal fade control_mdl" id="input_control_URL" role="dialog">
         <div class="modal-dialog">
-            <!-- Modal content-->
+            <!-- Modal content
             <div class="modal-content">
                 
                 <div class="modal_tabs add_control">
@@ -840,7 +840,7 @@
     
     <div class="modal fade control_mdl" id="input_control_Modal" role="dialog">
     <div class="modal-dialog">
-        <!-- Modal content-->
+        <!-- Modal content
         <div class="modal-content">
             
             <div class="modal_tabs add_control">
@@ -907,11 +907,11 @@
     </div>
     </div>
     
-    <!-- label Modal -->
+    <!-- label Modal 
     
     <div class="modal fade control_mdl" id="input_label_Modal" role="dialog">
     <div class="modal-dialog">
-        <!-- Modal content-->
+        <!-- Modal content
         <div class="modal-content">
             
             <div class="modal_tabs add_label">
@@ -939,7 +939,7 @@
                 <div class="modal-footer modal_btn">
                     <button type="button" class="btn nx_btn" (click)="saveLabel(labelid.value,labelnm.value,labelclass.value)"><label>Next</label></button>
                    
-                    <!-- <button type="button" class="btn sv_btn"><label>Save</label></button> -->
+                    <!-- <button type="button" class="btn sv_btn"><label>Save</label></button> 
                 </div>
             </div>
             <div class="modal_tabs add_control">
@@ -995,4 +995,4 @@
     </div>
     </div>
     <div class="clearfix">
-    </div>
+    </div> -->

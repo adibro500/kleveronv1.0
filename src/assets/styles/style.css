@@ -1773,7 +1773,7 @@ h6.lbl_name {
 
     .tooltip::after {
         color: #25282a;
-        content: "ïƒ˜";
+        content: " ";
         font-family: FontAwesome;
         font-size: 28px;
         height: 27px;

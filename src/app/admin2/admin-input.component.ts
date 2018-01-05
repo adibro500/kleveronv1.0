@@ -30,7 +30,18 @@ export class AdminMaster implements OnInit {
     dateExample;
     timeExample;
     selectedEntry;
+    lbl_chk: boolean;
+    temp_name = localStorage.getItem("temp_name");
 
+    lblSet() {
+        this.lbl_chk = !this.lbl_chk;
+        console.log("chk", this.lbl_chk);
+        for (var i = 0; i < this.group1.length; i++) {
+
+            this.group1[i].label_present = this.lbl_chk;
+
+        }
+    }
     constructor( @Inject(DOCUMENT) private document: any, private dragulaService: DragulaService, private adminService: AdminService, private router: Router) {
 
         this.group1.push({
@@ -51,7 +62,50 @@ export class AdminMaster implements OnInit {
             "lids": [],
             "label": "Text-Box",
             "img": "txt-bx",
+            "label_present": this.lbl_chk
         });
+        // this.group1.push({
+        //     "validation": {
+        //         "is_required": false,
+        //         "is_read_only": false,
+        //         "min_length": 1,
+        //         "val_msg": "this field is required"
+        //     },
+        //     "id": "newl0",
+        //     "order": 1,
+        //     "type": "newLine",
+        //     "values": [""],
+        //     "placeholder": "New Company",
+        //     "lnames": [],
+        //     "lclasses": [],
+        //     "class": 'col-md-6 col-sm-6 col-xs-12 element_box klvrn_col',
+        //     "lids": [],
+        //     "label": "New Line",
+        //     "img": "txt-bx",
+        //     "label_present": this.lbl_chk
+        // });
+
+        // this.group1.push({
+        //     "validation": {
+        //         "is_required": false,
+        //         "is_read_only": false,
+        //         "min_length": 1,
+        //         "val_msg": "this field is required"
+        //     },
+        //     "id": "lbla0",
+        //     "order": 1,
+        //     "type": "label",
+        //     "values": [""],
+        //     "placeholder": "New Company",
+        //     "lnames": [],
+        //     "lclasses": [],
+        //     "class": 'col-md-6 col-sm-6 col-xs-12 element_box klvrn_col',
+        //     "lids": [],
+        //     "label": "Label",
+        //     "img": "txt-bx",
+        //     "label_present": this.lbl_chk
+        // });
+
 
         this.group1.push({
             "validation": {
@@ -70,6 +124,7 @@ export class AdminMaster implements OnInit {
             "lids": [],
             "label": "Textarea",
             "img": "txt-bx",
+            "label_present": this.lbl_chk
         });
 
         this.group1.push({
@@ -88,7 +143,8 @@ export class AdminMaster implements OnInit {
             "lclasses": [],
             "lids": [],
             "label": "Select",
-            "img": "select-option"
+            "img": "select-option",
+            "label_present": this.lbl_chk
         });
 
         this.group1.push({
@@ -107,48 +163,12 @@ export class AdminMaster implements OnInit {
             "lclasses": [],
             "lids": [],
             "label": "Password",
-            "img": "password"
+            "img": "password",
+            "label_present": this.lbl_chk
         });
 
-        this.group1.push({
-            "validation": {
-                "is_required": false,
-                "is_read_only": false,
-                "min_length": 1,
-                "val_msg": "this field is required"
-            },
-            "id": "sctt",
-            "order": 9,
-            "type": "select_text",
-            "values": [''],
-            "boolvals": [false],
-            "placeholder": "Select Text",
-            "lnames": [],
-            "lclasses": [],
-            "lids": ['slct'],
-            "label": "Select Text",
-            "img": "select-chkbx"
-        });
 
-        this.group1.push({
-            "validation": {
-                "is_required": false,
-                "is_read_only": false,
-                "min_length": 1,
-                "val_msg": "this field is required"
-            },
-            "id": "sltt",
-            "order": 10,
-            "type": "select_options",
-            "values": ['Select Option', 'ABC', 'XYZ'],
-            "boolvals": [false],
-            "placeholder": "",
-            "lnames": [],
-            "lclasses": [],
-            "lids": ['sltt'],
-            "label": "Select Options",
-            "img": "select-option"
-        });
+
 
         this.group1.push({
             "validation": {
@@ -167,7 +187,8 @@ export class AdminMaster implements OnInit {
             "lclasses": [],
             "lids": [],
             "label": "Text With Label",
-            "img": "lbl-txt-bx"
+            "img": "lbl-txt-bx",
+            "label_present": this.lbl_chk
         });
 
         this.group1.push({
@@ -187,7 +208,8 @@ export class AdminMaster implements OnInit {
             "lclasses": ['lbl_hdr'],
             "lids": ['datepicker_label'],
             "label": "Date Picker",
-            "img": "date-pkr"
+            "img": "date-pkr",
+            "label_present": this.lbl_chk
         });
 
         this.group1.push({
@@ -207,7 +229,8 @@ export class AdminMaster implements OnInit {
             "lclasses": ['lbl_hdr'],
             "lids": ['timepicker_label'],
             "label": "Time Picker",
-            "img": "time-pkr"
+            "img": "time-pkr",
+            "label_present": this.lbl_chk
         });
 
         this.group1.push({
@@ -227,7 +250,8 @@ export class AdminMaster implements OnInit {
             "lclasses": ['lbl_hdr'],
             "lids": [''],
             "label": "Checkbox",
-            "img": "chkbx"
+            "img": "chkbx",
+            "label_present": this.lbl_chk
         });
 
         this.group1.push({
@@ -248,7 +272,8 @@ export class AdminMaster implements OnInit {
             "lclasses": ['lbl_hdr'],
             "lids": [''],
             "label": "Radio Button",
-            "img": "radio"
+            "img": "radio",
+            "label_present": this.lbl_chk
         });
 
         this.group1.push({
@@ -268,7 +293,8 @@ export class AdminMaster implements OnInit {
             "lclasses": [''],
             "lids": [''],
             "label": "Switch",
-            "img": "switch"
+            "img": "switch",
+            "label_present": this.lbl_chk
         });
 
         // this.group1.push({
@@ -335,9 +361,10 @@ export class AdminMaster implements OnInit {
 
 
     saveData() {
-
+        localStorage.setItem("temp_name", this.formName);
         if (this.formName == "") {
             // alert("Please provide a form name");
+
             return false;
         } else
             if (this.formUrl == "") {
@@ -358,6 +385,7 @@ export class AdminMaster implements OnInit {
                 //this.router.navigate(['/parent/adminMaster']);
 
                 $("#input_control_URL").hide();
+                window.location.reload();
 
             }
 
@@ -460,9 +488,37 @@ export class AdminMaster implements OnInit {
             return;
 
     }
+    cntid;
+    cntval;
+    cntph;
+    cntid2;
+    cntval2;
+    cntph2;
+    lblid;
+    lblnm;
+    lblclass;
+    cntrg;
 
     editElement(i, inp_flag) {
 
+        this.cntrg = '';
+        //var h = 0;
+        for (var j = 0; j < this.Textboxes.length; j++) {
+            if (i == this.Textboxes[j].order) {
+                //  h = i;
+                break;
+            }
+        }
+
+
+        this.cntid = this.Textboxes[j].id;
+        this.cntval = this.Textboxes[j].values[0];
+        this.cntph = this.Textboxes[j].placeholder;
+        if (this.Textboxes[j].group !== undefined)
+            this.cntrg = this.Textboxes[j].group;
+        this.lblid = this.Textboxes[j].lids[0];
+        this.lblnm = this.Textboxes[j].lnames[0];
+        this.lblclass = this.Textboxes[j].lclasses[0];
         // alert(i);
         localStorage.setItem("ele", i);
         $(".modal_tabs").hide();
@@ -490,9 +546,11 @@ export class AdminMaster implements OnInit {
     }
 
     idx;
-    saveCntrl(ctpar, ctid, ctval, ctph) {
+    saveCntrl(ctpar, ctid, ctval, ctph, ctrg) {
 
-
+        this.cntid = "";
+        this.cntval = "";
+        this.cntph = "";
         if (ctid == "") {
             // alert("please enter control id");
             return false;
@@ -509,9 +567,8 @@ export class AdminMaster implements OnInit {
         this.Textboxes[this.idx].id = ctid;
         this.Textboxes[this.idx].values = ctval.split(",");
         this.Textboxes[this.idx].placeholder = ctph;
-
+        this.Textboxes[this.idx].group = ctrg;
         $("#input_control_Modal").hide();
-
 
     }
 
@@ -578,7 +635,8 @@ export class AdminMaster implements OnInit {
             "show_lbl": true,
             "lnames": [],
             "lclasses": [],
-            "lids": []
+            "lids": [],
+            "label_present": false
         });
 
         this.Textboxes.push({
@@ -598,6 +656,8 @@ export class AdminMaster implements OnInit {
             "lnames": [''],
             "lclasses": [''],
             "lids": [''],
+            "label_present": false
+
         });
 
         this.Textboxes.push({
@@ -615,7 +675,8 @@ export class AdminMaster implements OnInit {
             "placeholder": "Name Of CEO/MD",
             "lnames": [],
             "lclasses": [],
-            "lids": []
+            "lids": [],
+            "label_present": false
         });
 
         this.Textboxes.push({
@@ -633,7 +694,8 @@ export class AdminMaster implements OnInit {
             "placeholder": "City",
             "lnames": [],
             "lclasses": [],
-            "lids": []
+            "lids": [],
+            "label_present": false
         });
 
         this.Textboxes.push({
@@ -651,7 +713,8 @@ export class AdminMaster implements OnInit {
             "placeholder": "",
             "lnames": [],
             "lclasses": [],
-            "lids": []
+            "lids": [],
+            "label_present": false
         });
 
         this.Textboxes.push({
@@ -669,7 +732,8 @@ export class AdminMaster implements OnInit {
             "placeholder": "",
             "lnames": [],
             "lclasses": [],
-            "lids": []
+            "lids": [],
+            "label_present": false
         });
 
         this.Textboxes.push({
@@ -687,7 +751,8 @@ export class AdminMaster implements OnInit {
             "placeholder": "",
             "lnames": [],
             "lclasses": [],
-            "lids": []
+            "lids": [],
+            "label_present": false
         });
 
         this.Textboxes.push({
@@ -705,7 +770,8 @@ export class AdminMaster implements OnInit {
             "placeholder": "",
             "lnames": [],
             "lclasses": [],
-            "lids": []
+            "lids": [],
+            "label_present": false
         });
 
         this.Textboxes.push({
@@ -723,46 +789,10 @@ export class AdminMaster implements OnInit {
             "placeholder": "Enter Password",
             "lnames": [],
             "lclasses": [],
-            "lids": []
+            "lids": [],
+            "label_present": false
         });
 
-        this.Textboxes.push({
-            "validation": {
-                "is_required": false,
-                "is_read_only": false,
-                "min_length": 1,
-                "val_msg": "this field is required"
-            },
-            "id": "sctt",
-            "order": 9,
-            "type": "select_text",
-            "values": [''],
-            "show_lbl": true,
-            "boolvals": [false],
-            "placeholder": "Select Text",
-            "lnames": [],
-            "lclasses": [],
-            "lids": ['slct']
-        });
-
-        this.Textboxes.push({
-            "validation": {
-                "is_required": false,
-                "is_read_only": false,
-                "min_length": 1,
-                "val_msg": "this field is required"
-            },
-            "id": "sltt",
-            "order": 10,
-            "type": "select_options",
-            "values": ['Select Option', 'ABC', 'XYZ'],
-            "boolvals": [false],
-            "placeholder": "",
-            "show_lbl": true,
-            "lnames": [],
-            "lclasses": [],
-            "lids": ['sltt']
-        });
 
         this.Textboxes.push({
             "validation": {
@@ -780,7 +810,9 @@ export class AdminMaster implements OnInit {
             "placeholder": "Enter Something",
             "lnames": ['Enter Something'],
             "lclasses": [],
-            "lids": []
+            "lids": [],
+            "label_present": true
+
         });
 
         this.Textboxes.push({
@@ -799,7 +831,8 @@ export class AdminMaster implements OnInit {
             "placeholder": "",
             "lnames": ['Enter Date:'],
             "lclasses": ['lbl_hdr'],
-            "lids": ['datepicker_label']
+            "lids": ['datepicker_label'],
+            "label_present": false
         });
 
         this.Textboxes.push({
@@ -819,7 +852,7 @@ export class AdminMaster implements OnInit {
             "lnames": ['Enter Time:'],
             "lclasses": ['lbl_hdr'],
             "lids": ['timepicker_label'],
-
+            "label_present": true
         });
 
         this.Textboxes.push({
@@ -838,7 +871,8 @@ export class AdminMaster implements OnInit {
             "placeholder": "",
             "lnames": ['Enter Time:'],
             "lclasses": ['lbl_hdr'],
-            "lids": ['']
+            "lids": [''],
+            "label_present": true
         });
 
         this.Textboxes.push({
@@ -858,7 +892,8 @@ export class AdminMaster implements OnInit {
             "group": "radio-group",
             "lnames": ['radiooption1'],
             "lclasses": ['lbl_hdr'],
-            "lids": ['']
+            "lids": [''],
+            "label_present": false
         });
 
         this.Textboxes.push({
@@ -877,7 +912,8 @@ export class AdminMaster implements OnInit {
             "placeholder": "",
             "lnames": [''],
             "lclasses": [''],
-            "lids": ['']
+            "lids": [''],
+            "label_present": false
         });
 
         this.Textboxes.push({
@@ -896,8 +932,10 @@ export class AdminMaster implements OnInit {
             "placeholder": "",
             "lnames": [''],
             "lclasses": [''],
-            "lids": ['']
+            "lids": [''],
+            "label_present": false
         });
+
 
         this.Textboxes.push({
             "validation": {
@@ -906,8 +944,28 @@ export class AdminMaster implements OnInit {
                 "min_length": 1,
                 "val_msg": "this field is required"
             },
-            "id": "twit18",
+            "id": "newl18",
             "order": 18,
+            "type": "newLine",
+            "show_lbl": true,
+            "values": ['Number of employees', 'ABC', 'XYZ'],
+            "placeholder": "",
+            "lnames": [],
+            "lclasses": [],
+            "lids": [],
+            "label_present": false
+        });
+
+
+        this.Textboxes.push({
+            "validation": {
+                "is_required": false,
+                "is_read_only": false,
+                "min_length": 1,
+                "val_msg": "this field is required"
+            },
+            "id": "twit19",
+            "order": 19,
             "type": "twitter",
             "values": [''],
             "boolvals": [true],
@@ -915,8 +973,10 @@ export class AdminMaster implements OnInit {
             "placeholder": "Twitter Handle",
             "lnames": [''],
             "lclasses": [''],
-            "lids": ['']
+            "lids": [''],
+            "label_present": false
         });
+
 
         this.Textboxes.push({
             "validation": {
@@ -925,8 +985,8 @@ export class AdminMaster implements OnInit {
                 "min_length": 1,
                 "val_msg": "this field is required"
             },
-            "id": "fbok19",
-            "order": 19,
+            "id": "fbok20",
+            "order": 20,
             "type": "fbook",
             "values": [''],
             "show_lbl": true,
@@ -934,8 +994,10 @@ export class AdminMaster implements OnInit {
             "placeholder": "Facebook address",
             "lnames": [''],
             "lclasses": [''],
-            "lids": ['']
+            "lids": [''],
+            "label_present": false
         });
+
 
 
 
@@ -955,8 +1017,10 @@ export class AdminMaster implements OnInit {
             "placeholder": "Linkedin address",
             "lnames": [''],
             "lclasses": [''],
-            "lids": ['']
+            "lids": [''],
+            "label_present": false
         });
+
 
         this.Textboxes.push({
             "validation": {
@@ -974,8 +1038,10 @@ export class AdminMaster implements OnInit {
             "placeholder": "Google Plus ID",
             "lnames": [''],
             "lclasses": [''],
-            "lids": ['']
+            "lids": [''],
+            "label_present": false
         });
+
 
         this.Textboxes_copy.push(this.Textboxes);
 

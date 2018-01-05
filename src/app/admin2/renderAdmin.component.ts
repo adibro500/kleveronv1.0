@@ -37,6 +37,7 @@ export class RenderAdmin2 implements OnInit, AfterViewInit {
     temp2: any;
     data: any;
     index;
+    temp_name = localStorage.getItem("temp_name");
 
     filesToUpload: Array<File>;
 
@@ -406,7 +407,8 @@ export class RenderAdmin2 implements OnInit, AfterViewInit {
         //this.is_submit = true;
 
 
-        let bjson = {};
+        let bjson: any = {};
+        let rad = {};
 
         for (var i = 0; i < this.Textboxes.length; i++) {
             var k = 0;
@@ -418,79 +420,68 @@ export class RenderAdmin2 implements OnInit, AfterViewInit {
 
 
                 //   bjson["control_id"] = this.Textboxes[i].id;
-                bjson[this.Textboxes[i].placeholder + "_" + i] = this.Textboxes[i].values[0];
+                bjson[this.Textboxes[i].placeholder] = this.Textboxes[i].values[0];
 
             }
             else if (this.Textboxes[i].type === 'textarea' && this.selectValues[i] !== "") {
-                bjson["control_id"] = this.Textboxes[i].id;
 
-                bjson[this.Textboxes[i].values[0] + "-" + i] = this.selectValues[i];
+                bjson[this.Textboxes[i].placeholder] = this.Textboxes[i].values[0];
 
             }
 
             else if (this.Textboxes[i].type === 'select' && this.selectValues[i] !== "") {
-                bjson["control_id"] = this.Textboxes[i].id;
 
-                bjson[this.Textboxes[i].values[0] + "-" + i] = this.selectValues[i];
+                bjson[this.Textboxes[i].values[0]] = this.selectValues[i];
 
             } else if (this.Textboxes[i].type === 'password' && this.Textboxes[i].values[0] !== "") {
-                bjson["control_id"] = this.Textboxes[i].id;
 
-                bjson[this.Textboxes[i].placeholder + "_" + i] = this.Textboxes[i].values[0];
+                bjson[this.Textboxes[i].placeholder] = this.Textboxes[i].values[0];
 
 
             } else if (this.Textboxes[i].type === 'checkbox' && this.Textboxes[i].boolvals[0] != undefined) {
-                bjson["control_id"] = this.Textboxes[i].id;
-                bjson[this.Textboxes[i].lnames[0] + "_" + i] = this.Textboxes[i].boolvals[0];
+                bjson[this.Textboxes[i].lnames[0]] = this.Textboxes[i].boolvals[0];
 
 
-            } else if (this.Textboxes[i].type === 'radio' && this.selectedValue != undefined) {
+            } else if (this.Textboxes[i].type === 'radio' && this.selectedValue == this.Textboxes[i].lnames[0]) {
 
-                bjson['value'] = this.Textboxes[i].lnames[0];
-                if (this.selectedValue == this.selectedValue)
-                    bjson['selected'] = true;
-                else
-                    bjson['selected'] = false;
+
+                alert(this.selectedValue);
+
+                rad['value'] = this.Textboxes[i].lnames[0];
+                // if (this.selectedValue === this.Textboxes[i].lnames[0])
+                rad['selected'] = true;
+                // else
+                //     rad['selected'] = false;
+                bjson["Other info"] = rad;
+
 
 
             } else if (this.Textboxes[i].type === 'switch' && this.Textboxes[i].values[0] !== "") {
-                bjson["control_id"] = this.Textboxes[i].id;
-                bjson[this.Textboxes[i].placeholder + "_" + i] = this.Textboxes[i].values[0];
+                bjson[this.Textboxes[i].placeholder] = this.Textboxes[i].values[0];
 
 
 
             } else if (this.Textboxes[i].type === 'datepicker' && this.dateValues[i] !== undefined) {
-                bjson["control_id"] = this.Textboxes[i].id;
-                bjson[this.Textboxes[i].placeholder] = this.dateValues[i];
+                bjson[this.Textboxes[i].lnames[0]] = this.dateValues[i];
 
             } else if (this.Textboxes[i].type === 'timepicker' && this.timeValues[i] !== undefined) {
-                bjson["control_id"] = this.Textboxes[i].id;
-                bjson[this.Textboxes[i].placeholder] = this.timeValues[i];
+                bjson[this.Textboxes[i].lnames[0]] = this.timeValues[i];
 
             } else if (this.Textboxes[i].type === 'fbook' && this.Textboxes[i].values[0] !== "") {
-                bjson["control_id"] = this.Textboxes[i].id;
+
                 bjson[this.Textboxes[i].placeholder] = this.Textboxes[i].values[0];
 
             } else if (this.Textboxes[i].type === 'linkedin' && this.Textboxes[i].values[0] !== "") {
-                bjson["control_id"] = this.Textboxes[i].id;
+
                 bjson[this.Textboxes[i].placeholder] = this.Textboxes[i].values[0];
 
             } else if (this.Textboxes[i].type === 'gplus' && this.Textboxes[i].values[0] !== "") {
-                bjson["control_id"] = this.Textboxes[i].id;
+
                 bjson[this.Textboxes[i].placeholder] = this.Textboxes[i].values[0];
 
             } else if (this.Textboxes[i].type === 'twitter' && this.Textboxes[i].values[0] !== "") {
-                bjson["control_id"] = this.Textboxes[i].id;
+
                 bjson[this.Textboxes[i].placeholder] = this.Textboxes[i].values[0];
-            }
-            else if (this.Textboxes[i].type === 'select_text' && this.Textboxes[i].values[0] !== "" && this.Textboxes[i].boolvals[0] !== undefined && this.Textboxes[i].boolvals[0] != false) {
-                bjson["control_id"] = this.Textboxes[i].id;
-                bjson[this.Textboxes[i].placeholder] = this.Textboxes[i].values[0];
-                bjson["active for " + this.Textboxes[i].placeholder] = this.Textboxes[i].boolvals[0];
-            } else if (this.Textboxes[i].type === 'select_options' && this.Textboxes[i].values[0] !== "" && this.Textboxes[i].boolvals[0] !== undefined && this.Textboxes[i].boolvals[0] != false) {
-                bjson["control_id"] = this.Textboxes[i].id;
-                bjson[this.Textboxes[i].placeholder] = this.Textboxes[i].values[0];
-                bjson["active for " + this.Textboxes[i].placeholder] = this.Textboxes[i].boolvals[0];
             }
 
         }

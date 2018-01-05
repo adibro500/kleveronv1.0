@@ -43,21 +43,17 @@ export class ParentComponent implements OnInit {
 
     checks: boolean[] = [];
 
-
-
+    template_name = "Kleveron";
+    temp_no;
+    arr;
+    username;
     constructor(private adminServ: AdminService, translate: TranslateService, private router: Router) {
-        this.router.events.subscribe((res) => {
-            if (!this.router.url.includes("/")) {
-                this.hideMenu = true;
-            }
-            else
-                this.hideMenu = false;
-            console.log(this.router.url, "Current URL");
-        })
 
 
 
-        Observable.interval(6000).subscribe(x => {
+        const sub = Observable.interval(3000).subscribe(x => {
+            this.template_name = localStorage.getItem("temp_name");
+            this.username = localStorage.getItem("loginname");
             translate.use(localStorage.getItem('lang'));
         });
 
