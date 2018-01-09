@@ -22,14 +22,19 @@
                 [selectionType]="'multi'"
                 (activate)="onActivate($event)"
                 (select)='onSelect($event)'
-                [columns]="columns"
                >
                
-             
+               <ng-container *ngFor="let col of cols;let j=index">
+                    <ng-container *ngIf="col!==undefined">
+                     
+                  <ngx-datatable-column prop={{col}} [sortable]="true" [name]="col"  [resizeable]="true" [canAutoResize]="true">        
+                  </ngx-datatable-column>
+                    </ng-container>
+               </ng-container>  
               
       
       
-                <ng-container *ngFor="let col of cols;let j=index">
+                <!-- <ng-container *ngFor="let col of cols;let j=index">
                   <ng-container *ngIf="col!==undefined">
                    
                 <ngx-datatable-column prop={{col}} [sortable]="true" [name]="col"  [resizeable]="true" [canAutoResize]="true">        
@@ -79,7 +84,7 @@
                     </ngx-datatable-column>
                    
                   </ng-container>
-                  </ng-container>
+                  </ng-container> -->
               </ngx-datatable>
               
               
