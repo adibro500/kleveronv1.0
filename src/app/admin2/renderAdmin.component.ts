@@ -75,6 +75,8 @@ export class RenderAdmin2 implements OnInit, AfterViewInit {
 
     }
 
+
+
     upload() {
         this.makeFileRequest("http://localhost:5000/upload", [], this.filesToUpload).then((result) => {
             console.log(result);
