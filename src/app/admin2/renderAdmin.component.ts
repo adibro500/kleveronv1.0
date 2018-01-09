@@ -70,15 +70,7 @@ export class RenderAdmin2 implements OnInit, AfterViewInit {
 
     ngAfterViewInit() {
 
-        this.adminService.getMasterData().subscribe(data => {
-            this.data = JSON.parse(JSON.stringify(data));
-            this.route.params.subscribe(params => {
-                this.index = params['id'];
-                if (this.data && this.data.length > 0 && this.index)
-                    this.getTemplateByIndex(this.index);
-            }
-            )
-        });
+
 
 
     }
@@ -121,16 +113,21 @@ export class RenderAdmin2 implements OnInit, AfterViewInit {
 
     texts: any[] = [];
 
-
+    selectedOpts: any[] = [];
+    selectOptions2: any[] = [];
 
     getTemplateByIndex(i) {
         this.Textboxes = this.data[i].controls;
         this.changeC = this.data[i].column_config;
         console.log("col-conf", this.changeC);
         for (var k = 0; k < this.Textboxes.length; k++) {
+            // if (this.Textboxes[k].type == 'select') {
+            //     this.selectOptions2.push({ 'id': k, 'selected': '', 'values': this.Textboxes[k].values });
+            // }
             this.Textboxes[k].order = k;
         }
         console.log("textboxes", this.Textboxes);
+        console.log("select", this.selectOptions2);
     }
 
 
@@ -253,7 +250,28 @@ export class RenderAdmin2 implements OnInit, AfterViewInit {
     //     console.log(target);
     // }
 
+    equals(o1, o2) {
+        return o1 === o2;
+    }
+    selectOptions: any[] = [];
+
+    // updateArr(a) {
+    //     this.selectedValues.push(a);
+    //     console.log(this.selectedValues);
+    // }
+
     ngOnInit() {
+
+        this.adminService.getMasterData().subscribe(data => {
+            this.data = JSON.parse(JSON.stringify(data));
+            this.route.params.subscribe(params => {
+                this.index = params['id'];
+                if (this.data && this.data.length > 0 && this.index)
+                    this.getTemplateByIndex(this.index);
+            }
+            )
+        });
+
 
         var num = 0;
         $(".save_btn").click(function () {

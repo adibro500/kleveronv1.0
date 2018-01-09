@@ -361,7 +361,30 @@ export class AdminMaster implements OnInit {
 
 
     saveData() {
+
         localStorage.setItem("temp_name", this.formName);
+
+
+        // let str = '';
+        // for (var l = 0; l < this.Textboxes.length; l++) {
+        //     if (this.Textboxes[l].type == 'textbox') {
+        //         str += `
+        //       <div class="col-md-6 col-sm-6 col-xs-12 element_box klvrn_col">
+
+        //                                                         <div class="col-md-6 col-sm-6 col-xs-12 label_element">
+        //                                                             <label class="lbl_hdr">Enter ${this.Textboxes[l].placeholder}</label>
+
+        //                                                         </div>
+        //                                             <input [name]="tb.id" class="cmn_input" placeholder="${this.Textboxes[l].placeholder}" value="${this.Textboxes[l].values[0]}" id="${this.Textboxes[l].id}">
+        //                                         </div>`;
+
+        //     }
+        // }
+
+
+
+
+
         if (this.formName == "") {
             // alert("Please provide a form name");
 
@@ -463,7 +486,10 @@ export class AdminMaster implements OnInit {
         for (var v = this.kdx + 1; v < this.Textboxes.length; v++) {
 
             this.Textboxes[v].order = parseInt(this.Textboxes[v].order) + 1;
-            this.Textboxes[v].id = this.Textboxes[v].id.slice(0, 4) + (parseInt(this.Textboxes[v].id.slice(4)) + 1);
+
+            if (isNaN(this.Textboxes[v].id.slice(0, 4)))
+                this.Textboxes[v].id = this.Textboxes[v].id.slice(0, 4) + (parseInt(this.Textboxes[v].id.slice(4)) + 1);
+            this.Textboxes[v].id = this.Textboxes[v].id.replace(/[^0-9]/g, '') + this.retnum(this.Textboxes[v].id) + 1;
 
         }
         this.Textboxes.splice(this.kdx + 1, 0, tb);
@@ -471,6 +497,12 @@ export class AdminMaster implements OnInit {
 
         console.log(this.Textboxes);
     }
+
+    retnum(str) {
+        var num = str.replace(/[^0-9]/g, '');
+        return num;
+    }
+
 
     delElement(i) {
         if (window.confirm('Are you sure you want to delete this item ?')) {
@@ -712,6 +744,7 @@ export class AdminMaster implements OnInit {
             "values": ['Area of Business', 'XYz', 'ABC'],
             "placeholder": "",
             "lnames": [],
+            "selected": '',
             "lclasses": [],
             "lids": [],
             "label_present": false
@@ -733,6 +766,7 @@ export class AdminMaster implements OnInit {
             "lnames": [],
             "lclasses": [],
             "lids": [],
+            "selected": '',
             "label_present": false
         });
 
@@ -751,6 +785,7 @@ export class AdminMaster implements OnInit {
             "placeholder": "",
             "lnames": [],
             "lclasses": [],
+            "selected": '',
             "lids": [],
             "label_present": false
         });
@@ -766,11 +801,12 @@ export class AdminMaster implements OnInit {
             "order": 7,
             "type": "select",
             "show_lbl": true,
-            "values": ['Country', 'China', 'Dubai', 'Russia'],
+            "values": ['Country', 'India', 'China', 'Dubai', 'Russia'],
             "placeholder": "",
             "lnames": [],
             "lclasses": [],
             "lids": [],
+            "selected": '',
             "label_present": false
         });
 
@@ -916,25 +952,6 @@ export class AdminMaster implements OnInit {
             "label_present": false
         });
 
-        this.Textboxes.push({
-            "validation": {
-                "is_required": false,
-                "is_read_only": false,
-                "min_length": 1,
-                "val_msg": "this field is required"
-            },
-            "id": "upld17",
-            "order": 17,
-            "type": "upload",
-            "values": [''],
-            "show_lbl": true,
-            "boolvals": [true],
-            "placeholder": "",
-            "lnames": [''],
-            "lclasses": [''],
-            "lids": [''],
-            "label_present": false
-        });
 
 
         this.Textboxes.push({
@@ -1041,6 +1058,28 @@ export class AdminMaster implements OnInit {
             "lids": [''],
             "label_present": false
         });
+
+
+        this.Textboxes.push({
+            "validation": {
+                "is_required": false,
+                "is_read_only": false,
+                "min_length": 1,
+                "val_msg": "this field is required"
+            },
+            "id": "upld17",
+            "order": 17,
+            "type": "upload",
+            "values": [''],
+            "show_lbl": true,
+            "boolvals": [true],
+            "placeholder": "",
+            "lnames": [''],
+            "lclasses": [''],
+            "lids": [''],
+            "label_present": false
+        });
+
 
 
         this.Textboxes_copy.push(this.Textboxes);

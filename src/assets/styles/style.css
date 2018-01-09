@@ -3355,7 +3355,41 @@ my addition
 }
 
 
+/*   */
+.Uploadbtn {
+    background: #b0b9ca none repeat scroll 0 0;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    overflow: hidden;
+    padding: 40px;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    width: 110px;
+}
 
+    .Uploadbtn .input-upload {
+        height: 20%;
+        margin: 0;
+        opacity: 0;
+        padding: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+    }
+
+.Uploadbtn .fa-upload {
+    font-size: 24px;
+}
+.upld_lbl {
+    color: #333;
+    font-size: 16px;
+    padding-top: 10px;
+    font-weight:500;
+}
+/*  */
 
 
 

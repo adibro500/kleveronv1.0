@@ -161,15 +161,12 @@
                                                                         
                                                                     </div>
                                                                 </ng-container>
-                                                            <ng-container *ngIf="tb.type == 'textbox'">
-                                                                <input [name]="tb.id" class="cmn_input" [placeholder]="tb.placeholder" [value]="tb.values[0]" [id]="tb.id">
-                                                            </ng-container>
+                                                            
 
                                                             <label>
                                                                 <select [name]="tb.id" class="cmn_input" [id]="tb.id" [(ngModel)]="selectValues[idx]">
-                                                                    <option [value]="tb.values[0]" selected="selected" disabled>{{tb.values[0]}}</option>
-                                                                    <option *ngFor="let aob of tb.values | slice:1;let i=index" [value]="aob" [selected]="i==0">{{aob}}</option>
-
+                                                                        <option value="undefined" selected disabled>{{tb.values[0]}}</option>
+                                                                    <option *ngFor="let aob of tb.values | slice:1;let i=index" [value]="aob">{{aob}}</option>
                                                                 </select>
                                                             </label>
                                                             <ng-container *ngIf="tb.values[0]=='' && is_submit && tb.validation.is_required">

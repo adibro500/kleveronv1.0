@@ -60,6 +60,7 @@ export class ParentComponent implements OnInit {
         //console.log(translate);
         this.adminServ.getMasterData().subscribe((data) => {
             this.data = JSON.parse(JSON.stringify(data));
+
             // console.log(this.data[0].FormName);
             console.log()
 
@@ -67,7 +68,9 @@ export class ParentComponent implements OnInit {
         });
 
     }
-
+    setTemp(d) {
+        localStorage.setItem("temp_name", d.FormName);
+    }
 
     changeLang(lang) {
         localStorage.setItem('lang', lang);

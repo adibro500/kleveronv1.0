@@ -7,7 +7,13 @@
     <div class="dash_logo">           
             <img src="./assets/images/settings/logo_dashboard.png" alt="kleveron" />            
     </div>
+    
 </a>
+<div class="cmpny_logo">
+        <a href="#">
+            <img src="./assets/images/settings/Steer-high-logo.png" alt="" />
+        </a>
+    </div>
 
     <div class="aside_nav">
         <div class="sidebar-menu">
@@ -48,7 +54,7 @@
                         <li><a [routerLink]="['../parent/adminGridMaster/uk']"><span class="input_icon"><img src="./assets/images/input-icon.png" /></span>admin-list-master.html</a></li>
                         <ng-container *ngFor="let d of data;let idx=index">
                             <ng-container *ngIf="checks[idx] !== false && d!==null">
-                        <li><a [routerLink]="['../parent/render2/',idx]"><span class="input_icon"><img src="./assets/images/input-icon.png" /></span>{{d.FormName}}</a></li>
+                        <li><a (click)="setTemp(d)" [routerLink]="['../parent/render2/',idx]"><span class="input_icon"><img src="./assets/images/input-icon.png" /></span>{{d.FormName}}</a></li>
                         </ng-container>
                         </ng-container>
                     </ul>
@@ -135,6 +141,13 @@
 
                 </li>
             </ul>
+            <div class="menu_footer">
+                    <p>
+                        <label>
+                            Powered By <b>Kleveron</b>
+                        </label>
+                    </p>
+                </div>
           
         </div>
 
