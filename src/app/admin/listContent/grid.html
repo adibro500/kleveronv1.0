@@ -1,15 +1,9 @@
-<div class="text-right">
-        <button type="button" class="btn1 btn sv_btn" (click)="exportAsCSV()" >
-              <label>
-                 Export to CSV
-              </label>
-          </button>
-      </div>
+
       <br/>
       <br/>
       <div class="table-wrapper" #tableWrapper>
               <ngx-datatable
-              #dataTable
+                #dataTable
                 class='material'
                 [rows]='rows'
                 [columnMode]='"force"'
@@ -86,15 +80,27 @@
                   </ng-container>
                   </ng-container> -->
               </ngx-datatable>
-              
+              <div class="pull-right">
+                    <button type="button" class="btn1 btn save_btn" (click)="exportAsCSV()" >
+                          <label>
+                             Export to CSV
+                          </label>
+                      </button>
+                  </div>
+                  <div class="text-right">
+                        <button type="button" class="btn1 btn save_btn">
+                              <label>
+                                 Import CSV
+                              </label>
+                          </button>
+                      </div>      
               
           </div>
-          <br/>
-          <br/>
-          <button type="button"  class="btn1 btn save_btn">
+         
+          <!-- <button type="button"  class="btn1 btn save_btn">
               <label>
                   Save
               </label>
-          </button>
-      
+          </button> -->
+        
      

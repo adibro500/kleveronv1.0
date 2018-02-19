@@ -61,7 +61,7 @@ import { RenderList } from './admin/renderGrid.component';
 import { IndexComponent } from './index/index.component';
 
 import { MaterializeModule } from 'angular2-materialize';
-//import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxResizeWatcherDirective } from './admin/listContent/grid.directive';
 import { AdminMaster } from './admin2/admin-input.component';
 import { AdminService } from './admin2/admin-input.service';
@@ -70,6 +70,14 @@ import { DateTimePickerModule } from 'ngx-datetime-picker';
 import { ParentComponent } from './parent-main.component';
 import { SelectControlComponent } from './select-control/select-control.component';
 import { SafePipe } from './admin2/safe-pipe';
+import { Keep } from './admin2/keep-pipe';
+import { ContenteditableModel } from './admin/ContentEditableModel';
+import { GridsterModule } from 'angular-gridster2';
+import { NgGridModule } from 'angular2-grid';
+import { RenderWidget } from './admin/renderWidget.component';
+import { ContenteditableDirective } from 'ng-contenteditable';
+import { DraggableDirective } from './admin/drag.directive';
+import { TabsComponent } from './tabbed/tabs.component';
 
 
 const appRoutes: Routes = [
@@ -88,6 +96,7 @@ const appRoutes: Routes = [
       { path: 'adminMaster', component: AdminMaster },
       { path: 'adminWidget', component: AdminWidgetMaster },
       { path: 'adminGridMaster/:uname', component: AdminGridMasterComponent },
+      { path: 'tabs', component: TabsComponent },
 
       {
         path: 'configs', component: ConfigMenuComponent,
@@ -100,6 +109,7 @@ const appRoutes: Routes = [
       },
 
       { path: 'render2/:id', component: RenderAdmin2 },
+      { path: 'renderWidget/:id', component: RenderWidget },
       { path: 'adminListMaster/:uname', component: AdminListMasterComponent },
       { path: 'adminPanel', component: AdminPanel },
 
@@ -147,10 +157,14 @@ export function createTranslateLoader(http: HttpClient) {
 
 @NgModule({
   declarations: [
+    TabsComponent,
+    DraggableDirective,
     RenderList,
+    RenderWidget,
     SelectControlComponent,
     ColumnComponent,
     AdminWidgetMaster,
+    ContenteditableDirective,
     ListComponent,
     OwlCar,
     RenderInputMaster,
@@ -161,18 +175,18 @@ export function createTranslateLoader(http: HttpClient) {
     IndexComponent,
     AppComponent,
     LoginComponent,
-
     ConfigMenuComponent,
     ConfigTab1Component,
-
     ConfigTab2Component,
     AdminMaster,
+    ContenteditableModel,
     ParentComponent,
     MenuToggleRightComponent,
     AdminInput,
     RenderInput,
     AdminPanel,
     SafePipe,
+    Keep,
     ColorPickComponent,
     TableSortDirective,
     DatatableComponent,
@@ -180,8 +194,12 @@ export function createTranslateLoader(http: HttpClient) {
     RenderAdmin2,
   ],
   imports: [
+    NgxDnDModule,
+    NoopAnimationsModule,
+    NgGridModule,
     DateTimePickerModule,
     DxDataGridModule,
+    GridsterModule,
     NgxDatatableModule,
     ColorPickerModule,
     ColorPickerModule,
@@ -231,6 +249,7 @@ export function createTranslateLoader(http: HttpClient) {
 
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
 
 

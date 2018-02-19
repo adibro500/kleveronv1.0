@@ -16,6 +16,8 @@ declare var Modernizr: any;
 })
 
 export class OwlCar implements OnInit {
+    @Input() dat: any[];
+
     size = 25;
     color: string = "#017DB9";
     // changeFont(flag) {
@@ -50,9 +52,9 @@ export class OwlCar implements OnInit {
         this.wid = new widget(['240$', 'Avg Hourly Rate'], [], this.index++);
         this.wids.push(this.wid);
     }
-    // @ViewChild('owlElement') owlElement: OwlCarousel;
+    //@ViewChild('owlElement') owlElement: OwlCarousel;
 
-    constructor(private cd: ChangeDetectorRef) {
+    constructor() {
 
 
 
@@ -115,6 +117,7 @@ export class OwlCar implements OnInit {
 
 
         // }).owlCarousel('refresh');
+
         console.log("str", this.str);
 
         $('.navbar-header').click(function () {
@@ -260,23 +263,24 @@ export class OwlCar implements OnInit {
 
         // side sub-menu js
 
-        $(document).ready(function () {
-            $(".inner").css("display", "none");
-            $('.sub_menu_toggle').click(function (e) {
-                e.preventDefault();
+        // $(document).ready(function () {
+        //     $(".inner").css("display", "none");
+        //     $('.sub_menu_toggle').click(function (e) {
+        //         e.preventDefault();
 
-                var $this = $(this);
-                if ($this.next().hasClass('visible')) {
-                    $this.next().removeClass('visible');
-                    $this.next().slideUp(350);
-                } else {
-                    $this.parent().parent().find('li .inner').removeClass('show');
-                    $this.parent().parent().find('li .inner').slideUp(350);
-                    $this.next().toggleClass('visible');
-                    $this.next().slideToggle(350);
-                }
-            });
-        });
+        //         var $this = $(this);
+        //         if ($this.next().hasClass('visible')) {
+        //             $this.next().removeClass('visible');
+        //             $this.next().slideUp(350);
+        //         } else {
+        //             $this.parent().parent().find('li .inner').removeClass('show');
+        //             $this.parent().parent().find('li .inner').slideUp(350);
+        //             $this.next().toggleClass('visible');
+        //             $this.next().slideToggle(350);
+        //         }
+        //     });
+        // });
+
     }
 
 

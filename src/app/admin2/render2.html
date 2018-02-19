@@ -24,8 +24,12 @@
                 <div class="detail_nav_menu">
                     <div class="company_details">
 
+
                         <form #myForm="ngForm">
                             <div class="row">
+
+<!-- <div [innerHTML]="html_temp | keep"></div> -->
+
 
 
                                 <div [dragula]='"bag-one"' [dragulaModel]="Textboxes">
@@ -549,7 +553,7 @@
                                                             <div class="col-md-6 col-sm-6 col-xs-12 dtl_row">
                                                                 <div class="upload">
                                                                     <div class="Uploadbtn">
-                                                                        <input type="file" class="input-upload" (change)="fileChangeEvent($event)" />
+                                                                        <input type="file" class="input-upload" (change)="fileEvent($event)"/>
                                                                         <span>
                                                                             <i class="fa fa-upload" aria-hidden="true"></i>
                                                                         </span>

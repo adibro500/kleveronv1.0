@@ -53,63 +53,16 @@
                                         <span class="edit_icon"><img src="/assets/images/move.png" alt="" /></span>
                                     </div> -->
                     <div class="col-md-6 col-xs-6 setting_icn user_edit">
-                        <i (click)="show_action = !show_action" class="fa fa-cog" aria-hidden="true" title="Customize the Widget"></i>
-                        <div *ngIf="show_action" class="action-ui" id="tour-action-ui-id">
-                            <span class="actions">
-                                <a href="javascript:void(0);">
-                                    <span class="edit_icon">
-                                        <a [(colorPicker)]="wid_get.bgColor">
-                                            <img src="/assets/images/color-picker.png" alt="" />
-                                        </a>
-                                    </span>
-                                </a>
-                            </span>
-                            <!-- <span class="actions">
-                                <a href="javascript:void(0);">
-                                    <span class="edit_icon">
-                                        <a (click)="cloneElement(idx)">
-                                            <i class="fa fa-clone">
-                                            </i>
-                                        </a>
-                                    </span>
-                                </a>
-                            </span> -->
-                            <span class="actions">
-                                <a href="javascript:void(0);">
-                                    <span class="edit_icon">
-                                        <a (click)="wid_get.font = changeSize('dec',wid_get.font)">
-                                            <img src="/assets/images/font-increase.png" alt="" />
-                                        </a>
-                                    </span>
-                                </a>
-                            </span>
-                            <span class="actions">
-                                <a href="javascript:void(0);">
-                                    <span class="edit_icon">
-                                        <a (click)="wid_get.font = changeSize('inc',wid_get.font)">
-                                            <img src="/assets/images/font-decrease.png" alt="" />
-                                        </a>
-                                    </span>
-                                </a>
-                            </span>
-                            <!-- <span class="actions">
-                                <a (click)="delElement(idx)">
-                                    <span class="edit_icon">
-                                        <i class="fa fa-trash-o">
-                                        </i>
-                                    </span>
-                                </a>
-                            </span> -->
-                        </div>
+                       
                     </div>
                 </div>
 
                 <owl-car>
                     <div *ngFor="let wid of wids;let i=index">
                         <div class="sub_info item">
-                            <a class="remove_clone_action" (click)="cloneCarousel(i)">
+                            <!-- <a class="remove_clone_action" (click)="cloneCarousel(i)">
                                 <i class="fa fa-clone"></i>
-                            </a>
+                            </a> -->
 
                             <div class="up_dwn_arw">
                                 <i class="fa fa-long-arrow-up" aria-hidden="true"></i>
@@ -132,66 +85,14 @@
             <!--  card wid  -->
             <div class="row sub_widget">
         
-                <div [dragula]='"first-bag"' [dragulaModel]="widgets">
+                <div>
                 <div *ngFor="let wid of widgets;let idx=index;trackBy:trackBywids">
-                   <ng-container *ngIf="wid !== undefined">
+                   <ng-container *ngIf="wid !== undefined && wid !== null">
                     <ng-container *ngIf="wid.type == 'widget2'">
                         <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 wid_box">
 
                             <div class="ongoing_prjct_card dash_panel cmn_card_gjt" [style.background]="wid.bgColor">
-                                <div *ngIf="show_action" class="action-ui" id="tour-action-ui-id">
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a [(colorPicker)]="wid.bgColor">
-                                                    <img src="/assets/images/color-picker.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                 
-                                <!-- <span class="actions">
-                                        <a (click)="mkrd(idx)">
-                                    <i class="fa fa-edit"></i><span class="tooltip">Edit</span></a>
-                                    </span> -->
-                                   
-                                    <span class="actions">
-                                            <a href="javascript:void(0);">
-                                                <span class="edit_icon">
-                                                    <a (click)="cloneElement(idx)">
-                                                        <i class="fa fa-clone">
-                                                        </i>
-                                                    </a>
-                                                </span>
-                                            </a>
-                                        </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('dec',wid.font)">
-                                                    <img src="/assets/images/font-increase.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('inc',wid.font)">
-                                                    <img src="/assets/images/font-decrease.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a (click)="delElement(idx)">
-                                            <span class="edit_icon">
-                                                <i class="fa fa-trash-o">
-                                                </i>
-                                            </span>
-                                        </a>
-                                    </span>
-                                </div>
+                             
                                 <div class="row hdr_typ">
                                     <div class="col-md-6 col-xs-6 typ_nm">
                                         <label [ngStyle]="{'font-size': wid.font+'px'}"><input name="wh{{idx}}" type="text" class="pnl_inp" [(ngModel)]="widgets[idx].headings[0]"></label>
@@ -228,53 +129,7 @@
                         <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 wid_box">
 
                             <div class="revenue_card dash_panel cmn_card_gjt" [style.background]="wid.bgColor">
-                                <div *ngIf="show_action" class="action-ui" id="tour-action-ui-id">
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a [(colorPicker)]="wid.bgColor">
-                                                    <img src="/assets/images/color-picker.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="cloneElement(idx)">
-                                                    <i class="fa fa-clone">
-                                                    </i>
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('dec',wid.font)">
-                                                    <img src="/assets/images/font-increase.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('inc',wid.font)">
-                                                    <img src="/assets/images/font-decrease.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a (click)="delElement(idx)">
-                                            <span class="edit_icon">
-                                                <i class="fa fa-trash-o">
-                                                </i>
-                                            </span>
-                                        </a>
-                                    </span>
-                                </div>
+                               
                                 <div class="row hdr_typ">
                                     <div class="col-md-6 col-xs-6 typ_nm">
                                         <label [ngStyle]="{'font-size': wid.font+'px'}"><input type="text" class="pnl_inp" [(ngModel)]="wid.headings[0]"></label>
@@ -306,53 +161,7 @@
                         <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 wid_box">
 
                             <div class="total_resourses dash_panel cmn_card_gjt" [style.background]="wid.bgColor">
-                                <div *ngIf="show_action" class="action-ui" id="tour-action-ui-id">
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a [(colorPicker)]="wid.bgColor">
-                                                    <img src="/assets/images/color-picker.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="cloneElement(idx)">
-                                                    <i class="fa fa-clone">
-                                                    </i>
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('dec',wid.font)">
-                                                    <img src="/assets/images/font-increase.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('inc',wid.font)">
-                                                    <img src="/assets/images/font-decrease.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a (click)="delElement(idx)">
-                                            <span class="edit_icon">
-                                                <i class="fa fa-trash-o">
-                                                </i>
-                                            </span>
-                                        </a>
-                                    </span>
-                                </div>
+                               
                                 <div class="row res_no">
                                     <div class="col-md-12 col-xs-12 highlight_label">
                                         <label [ngStyle]="{'font-size': wid.font+'px'}">
@@ -368,53 +177,7 @@
                         <div class="col-lg-4 col-md-12  col-sm-12 col-xs-12 wid_box">
 
                             <div class="opportunities_card dash_panel cmn_card_gjt" [style.background]="wid.bgColor">
-                                <div *ngIf="show_action" class="action-ui" id="tour-action-ui-id">
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a [(colorPicker)]="wid.bgColor">
-                                                    <img src="/assets/images/color-picker.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="cloneElement(idx)">
-                                                    <i class="fa fa-clone">
-                                                    </i>
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('dec',wid.font)">
-                                                    <img src="/assets/images/font-increase.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('inc',wid.font)">
-                                                    <img src="/assets/images/font-decrease.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a (click)="delElement(idx)">
-                                            <span class="edit_icon">
-                                                <i class="fa fa-trash-o">
-                                                </i>
-                                            </span>
-                                        </a>
-                                    </span>
-                                </div>
+                               
                                 <div class="row hdr_typ">
                                     <div class="col-md-12 col-xs-12 typ_nm">
                                         <label>Opportunities</label>
@@ -423,27 +186,9 @@
                                 <ng-container *ngFor="let item of wid.data;let g=index">
                                     <ng-container *ngIf="item !== undefined && item !== null">
                                 <div class="row app_result">
-                                        <div *ngIf="show_action" class="action-ui" id="tour-action-ui-id" style="top:40px">
+                                      
                                                 
-                                                <span class="actions">
-                                                    <a href="javascript:void(0);">
-                                                        <span class="edit_icon">
-                                                            <a (click)="cloneDataElement(idx,g)">
-                                                                <i class="fa fa-clone">
-                                                                </i>
-                                                            </a>
-                                                        </span>
-                                                    </a>
-                                                </span>
-                                                <span class="actions">
-                                                    <a (click)="delDataElement(idx,g)">
-                                                        <span class="edit_icon">
-                                                            <i class="fa fa-trash-o">
-                                                            </i>
-                                                        </span>
-                                                    </a>
-                                                </span>
-                                            </div>
+                                              
                                     <div class="app_view">
                                         <span class="app_name" [ngStyle]="{'font-size': wid.font+'px'}">
                                             <span class="total_app" [ngStyle]="{'font-size': wid.font+'px'}"><input class="pnl_inp" [(ngModel)] = "item.number"></span><input class="pnl_inp" [(ngModel)] = "item.desc"></span>
@@ -468,53 +213,7 @@
                         <div *ngIf="wid !== undefined && wid.type=='widget6'" class="col-lg-4 col-md-12  col-sm-12 col-xs-12 wid_box">
 
                             <div class="tech_job_card dash_panel cmn_card_gjt" [style.background]="wid.bgColor">
-                                <div *ngIf="show_action" class="action-ui" id="tour-action-ui-id">
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a [(colorPicker)]="wid.bgColor">
-                                                    <img src="/assets/images/color-picker.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="cloneElement(idx)">
-                                                    <i class="fa fa-clone">
-                                                    </i>
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('dec',wid.font)">
-                                                    <img src="/assets/images/font-increase.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('inc',wid.font)">
-                                                    <img src="/assets/images/font-decrease.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a (click)="delElement(idx)">
-                                            <span class="edit_icon">
-                                                <i class="fa fa-trash-o">
-                                                </i>
-                                            </span>
-                                        </a>
-                                    </span>
-                                </div>
+                              
                                 <div class="row job_typ">
                                     <div class="col-md-12 col-xs-12 light_label">
                                         <label [ngStyle]="{'font-size': wid.font+'px'}">
@@ -526,28 +225,7 @@
                                 <div class="row job_kywrd">
                                     <ng-container *ngFor="let item of wid.tags;let g=index">
                                         <ng-container *ngIf="item!==undefined && item!==null">
-                                            <div *ngIf="show_action" style="top:40px" class="action-ui" id="tour-action-ui-id">
-                                                    
-                                                    <span class="actions">
-                                                        <a href="javascript:void(0);">
-                                                            <span class="edit_icon">
-                                                                <a (click)="cloneTagElement(idx,g)">
-                                                                    <i class="fa fa-clone">
-                                                                    </i>
-                                                                </a>
-                                                            </span>
-                                                        </a>
-                                                    </span>
                                           
-                                                    <span class="actions">
-                                                        <a (click)="delTagElement(idx,g)">
-                                                            <span class="edit_icon">
-                                                                <i class="fa fa-trash-o">
-                                                                </i>
-                                                            </span>
-                                                        </a>
-                                                    </span>
-                                                </div>
                                     <div class="sub_kywrd">
                                         <label [ngStyle]="{'font-size': wid.font+'px'}"><input type="text" class="pnl_inp" [(ngModel)]="wid.tags[g]"></label>
                                     </div>
@@ -589,53 +267,7 @@
                         <div *ngIf="wid !== undefined && wid.type=='widget7'" class="col-lg-4 col-md-12  col-sm-12 col-xs-12 wid_box">
 
                             <div class="client_card dash_panel cmn_card_gjt" [style.background]="wid.bgColor">
-                                <div *ngIf="show_action" class="action-ui" id="tour-action-ui-id">
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a [(colorPicker)]="wid.bgColor">
-                                                    <img src="/assets/images/color-picker.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="cloneElement(idx)">
-                                                    <i class="fa fa-clone">
-                                                    </i>
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('dec',wid.font)">
-                                                    <img src="/assets/images/font-increase.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('inc',wid.font)">
-                                                    <img src="/assets/images/font-decrease.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a (click)="delElement(idx)">
-                                            <span class="edit_icon">
-                                                <i class="fa fa-trash-o">
-                                                </i>
-                                            </span>
-                                        </a>
-                                    </span>
-                                </div>
+                              
                                 <div class="row hdr_typ">
                                     <div class="col-md-12 col-xs-12 typ_nm">
                                         <label><input type="text" class="pnl_inp" [(ngModel)]="wid.heading"></label>
@@ -643,17 +275,7 @@
                                 </div>
                                 <div class="row spoc_dtl">
                                     <div class="col-md-3 col-sm-3 col-xs-12" *ngIf="wid.disp_img">
-                                            <div *ngIf="show_action" class="action-ui" id="tour-action-ui-id">
-                                         
-                                                    <span class="actions">
-                                                        <a (click)="wid.disp_img = !wid.disp_img">
-                                                            <span class="edit_icon">
-                                                                <i class="fa fa-trash-o">
-                                                                </i>
-                                                            </span>
-                                                        </a>
-                                                    </span>
-                                                </div>
+                                          
                                         <div class="client_profile">
                                             <img src="/assets/images/user-big.png" alt=""/>
                                         </div>
@@ -662,29 +284,7 @@
                                             <ng-container *ngFor="let d of wid.data;let ii=index">
                                                 <ng-container *ngIf="d !== undefined">
                                         <div class="spoc_rw small_label">
-                                                <div *ngIf="show_action" class="action-ui" id="tour-action-ui-id">
-                                                       
-                                                        <span class="actions">
-                                                            <a href="javascript:void(0);">
-                                                                <span class="edit_icon">
-                                                                    <a (click)="cloneDataElement(idx,ii)">
-                                                                        <i class="fa fa-clone">
-                                                                        </i>
-                                                                    </a>
-                                                                </span>
-                                                            </a>
-                                                        </span>
-                                                        <span class="actions">
-                                                                <a href="javascript:void(0);">
-                                                                    <span class="edit_icon">
-                                                                        <a (click)="delDataElement(idx,ii)">
-                                                                            <i class="fa fa-trash-o">
-                                                                            </i>
-                                                                        </a>
-                                                                    </span>
-                                                                </a>
-                                                            </span>    
-                                                </div>
+                                               
                                             <label>
                                                 <span class="highlight" [ngStyle]="{'font-size': wid.font+'px'}"><input type="text" class="pnl_inp" [(ngModel)]="d.name"></span>
                                             </label>
@@ -702,17 +302,9 @@
                                         <div class="icon" *ngIf="wid.disp_img2">
                                                
                                             <span>
-                                                    <div *ngIf="show_action" class="action-ui" id="tour-action-ui-id">
+                                                   
                                          
-                                                            <span class="actions">
-                                                                <a (click)="wid.disp_img2 = !wid.disp_img2">
-                                                                    <span class="edit_icon">
-                                                                        <i class="fa fa-trash-o">
-                                                                        </i>
-                                                                    </span>
-                                                                </a>
-                                                            </span>
-                                                        </div>
+                                                          
                                                 <i class="fa fa-envelope" aria-hidden="true"></i>
                                             </span>
                                             <span>
@@ -730,53 +322,7 @@
                         <div *ngIf="wid !== undefined && wid.type=='widget8'" class="col-lg-4 col-md-12  col-sm-12 col-xs-12 wid_box">
 
                             <div class="flipkart_card dash_panel cmn_card_gjt" [style.background]="wid.bgColor">
-                                <div *ngIf="show_action" class="action-ui" id="tour-action-ui-id">
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a [(colorPicker)]="wid.bgColor">
-                                                    <img src="/assets/images/color-picker.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="cloneElement(idx)">
-                                                    <i class="fa fa-clone">
-                                                    </i>
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('dec',wid.font)">
-                                                    <img src="/assets/images/font-increase.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('inc',wid.font)">
-                                                    <img src="/assets/images/font-decrease.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a (click)="delElement(idx)">
-                                            <span class="edit_icon">
-                                                <i class="fa fa-trash-o">
-                                                </i>
-                                            </span>
-                                        </a>
-                                    </span>
-                                </div>
+                               
                                 <div class="row hdr_typ">
                                     <div class="col-md-12 col-xs-12 typ_nm">
                                         <label [ngStyle]="{'font-size': wid.font+'px'}"><input type="text" class="pnl_inp" [(ngModel)]="wid.heading"></label>
@@ -820,53 +366,7 @@
                         <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 wid_box wid9">
 
                             <div class="re_logo_card dash_panel cmn_card_gjt" [style.background]="wid.bgColor">
-                                <div *ngIf="show_action" class="action-ui" id="tour-action-ui-id">
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a [(colorPicker)]="wid.bgColor">
-                                                    <img src="/assets/images/color-picker.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="cloneElement(idx)">
-                                                    <i class="fa fa-clone">
-                                                    </i>
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('dec',wid.font)">
-                                                    <img src="/assets/images/font-increase.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('inc',wid.font)">
-                                                    <img src="/assets/images/font-decrease.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a (click)="delElement(idx)">
-                                            <span class="edit_icon">
-                                                <i class="fa fa-trash-o">
-                                                </i>
-                                            </span>
-                                        </a>
-                                    </span>
-                                </div>
+                              
                                 <div class="row lg_hdr">
                                     <div class="col-md-12 col-xs-12 light_label">
                                         <label>
@@ -914,53 +414,7 @@
                         <div *ngIf="wid !== undefined && wid.type=='widget10'" class="col-lg-6 col-md-12 col-sm-12 col-xs-12 wid_box">
 
                             <div class="usr_prfl_card dash_panel cmn_card_gjt" [style.background]="wid.bgColor">
-                                <div *ngIf="show_action" class="action-ui" id="tour-action-ui-id">
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a [(colorPicker)]="wid.bgColor">
-                                                    <img src="/assets/images/color-picker.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="cloneElement(idx)">
-                                                    <i class="fa fa-clone">
-                                                    </i>
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('dec',wid.font)">
-                                                    <img src="/assets/images/font-increase.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('inc',wid.font)">
-                                                    <img src="/assets/images/font-decrease.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a (click)="delElement(idx)">
-                                            <span class="edit_icon">
-                                                <i class="fa fa-trash-o">
-                                                </i>
-                                            </span>
-                                        </a>
-                                    </span>
-                                </div>
+                                
                                 <div class="row card_prfl">
                                     <div class="col-md-12 col-sm-12 col-xs-12">
                                         <div class="card_pic">
@@ -1049,53 +503,7 @@
 
 
                             <div class="top_prjct_list dash_panel cmn_list_gjt" [style.background]="wid.bgColor">
-                                <div *ngIf="show_action" class="action-ui" id="tour-action-ui-id">
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a [(colorPicker)]="wid.bgColor">
-                                                    <img src="/assets/images/color-picker.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="cloneElement(idx)">
-                                                    <i class="fa fa-clone">
-                                                    </i>
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('dec',wid.font)">
-                                                    <img src="/assets/images/font-increase.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('inc',wid.font)">
-                                                    <img src="/assets/images/font-decrease.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a (click)="delElement(idx)">
-                                            <span class="edit_icon">
-                                                <i class="fa fa-trash-o">
-                                                </i>
-                                            </span>
-                                        </a>
-                                    </span>
-                                </div>
+                              
                                 <div class="row hdr_typ">
                                     <div class="col-md-6 col-xs-6 typ_nm">
                                         <label [ngStyle]="{'font-size': wid.font+'px'}">Top 5 Projects</label>
@@ -1108,29 +516,7 @@
                                     
                                     <div class="table-responsive">
                                         <table class="table table-bordered">
-                                                <div *ngIf="show_action" class="action-ui" id="tour-action-ui-id" style="top:10px">
-                                                       
-                                                        <span class="actions">
-                                                            <a href="javascript:void(0);">
-                                                                <span class="edit_icon">
-                                                                    <a (click)="cloneDataElement(idx,ii)">
-                                                                        <i class="fa fa-clone">
-                                                                        </i>
-                                                                    </a>
-                                                                </span>
-                                                            </a>
-                                                        </span>
-                                                        <span class="actions">
-                                                                <a href="javascript:void(0);">
-                                                                    <span class="edit_icon">
-                                                                        <a (click)="delDataElement(idx,ii)">
-                                                                            <i class="fa fa-trash-o">
-                                                                            </i>
-                                                                        </a>
-                                                                    </span>
-                                                                </a>
-                                                            </span>    
-                                                </div>      
+                                              
                                             <tbody>
                                                 <!-- <tr class="tbl_lst_hdr">
                                                        
@@ -1152,30 +538,7 @@
                                                     
                                                 <tr *ngFor="let item of wid.data;let ii=index">
                                                         <ng-container *ngIf="item !== undefined && item !== null">
-                                                    <div *ngIf="show_action" class="action-ui" id="tour-action-ui-id" style="top:50px">
-                                                       
-                                                                <span class="actions">
-                                                                    <a href="javascript:void(0);">
-                                                                        <span class="edit_icon">
-                                                                            <a (click)="cloneDataElement(idx,ii)">
-                                                                                <i class="fa fa-clone">
-                                                                                </i>
-                                                                            </a>
-                                                                        </span>
-                                                                    </a>
-                                                                </span>
-                                                                <span class="actions">
-                                                                        <a href="javascript:void(0);">
-                                                                            <span class="edit_icon">
-                                                                                <a (click)="delDataElement(idx,ii)">
-                                                                                    <i class="fa fa-trash-o">
-                                                                                    </i>
-                                                                                </a>
-                                                                            </span>
-                                                                        </a>
-                                                                    </span>    
-                                                        </div>      
-                                                    
+                                                  
                                                     <td [ngStyle]="{'font-size': wid.font+'px'}" draggable>
                                                            
                                                    <input type="text" class="pnl_inp" [(ngModel)]="item.account">
@@ -1209,53 +572,7 @@
                         <div *ngIf="wid !== undefined && wid.type=='widget12'" class="col-lg-5 col-md-12 col-sm-12 col-xs-12 wid_box">
 
                             <div class="top_performer_list dash_panel cmn_list_gjt" [style.background]="wid.bgColor">
-                                <div *ngIf="show_action" class="action-ui" id="tour-action-ui-id">
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a [(colorPicker)]="wid.bgColor">
-                                                    <img src="/assets/images/color-picker.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="cloneElement(idx)">
-                                                    <i class="fa fa-clone">
-                                                    </i>
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('dec',wid.font)">
-                                                    <img src="/assets/images/font-increase.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('inc',wid.font)">
-                                                    <img src="/assets/images/font-decrease.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a (click)="delElement(idx)">
-                                            <span class="edit_icon">
-                                                <i class="fa fa-trash-o">
-                                                </i>
-                                            </span>
-                                        </a>
-                                    </span>
-                                </div>
+                               
                                 <div class="row hdr_typ">
                                     <div class="col-md-6 col-xs-6 typ_nm">
                                         <label [ngStyle]="{'font-size': wid.font+'px'}"><input class="pnl_inp" type="text" [(ngModel)]="wid.heading[0]"></label>
@@ -1268,47 +585,10 @@
 
                                 <ng-container *ngFor="let item of wid.data;let g=index">
                                     <ng-container *ngIf="item!== undefined && item!== null">
-                                        <div *ngIf="show_action" class="action-ui" id="tour-action-ui-id" style="top:40px">
-                        
-                                                <span class="actions">
-                                                    <a href="javascript:void(0);">
-                                                        <span class="edit_icon">
-                                                            <a (click)="cloneDataElement(idx,g)">
-                                                                <i class="fa fa-clone">
-                                                                </i>
-                                                            </a>
-                                                        </span>
-                                                    </a>
-                                                </span>
-                                  
-                                     
-                                                <span class="actions">
-                                                    <a (click)="delDataElement(idx,g)">
-                                                        <span class="edit_icon">
-                                                            <i class="fa fa-trash-o">
-                                                            </i>
-                                                        </span>
-                                                    </a>
-                                                </span>
-                                            </div>
+                                      
                                 <div class="row perfrm_list">
                                     <div class="col-md-3 col-sm-3 col-xs-12" *ngIf="item.show_pic">
-                                            <div *ngIf="show_action" class="action-ui" id="tour-action-ui-id" style="top:30px">
-                        
-                                                    <span class="actions">
-                                                        <a href="javascript:void(0);">
-                                                            <span class="edit_icon">
-                                                                <a (click)="item.show_pic = !item.show_pic">
-                                                                    <i class="fa fa-clone">
-                                                                    </i>
-                                                                </a>
-                                                            </span>
-                                                        </a>
-                                                    </span>
-                                      
-                                         
-                                                  
-                                                </div>
+                                           
                                         <div class="usr_pic">
                                             <a href="#">
                                                 <img src="/assets/images/settings/user-1.png" alt="" class="user-icon">
@@ -1351,53 +631,7 @@
                         <div *ngIf="wid !== undefined && wid.type=='widget13'" class="col-lg-4 col-md-12 col-sm-12 col-xs-12 wid_box">
 
                             <div class="escalation_list dash_panel cmn_list_gjt" [style.background]="wid.bgColor">
-                                <div *ngIf="show_action" class="action-ui" id="tour-action-ui-id">
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a [(colorPicker)]="wid.bgColor">
-                                                    <img src="/assets/images/color-picker.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="cloneElement(idx)">
-                                                    <i class="fa fa-clone">
-                                                    </i>
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('dec',wid.font)">
-                                                    <img src="/assets/images/font-increase.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('inc',wid.font)">
-                                                    <img src="/assets/images/font-decrease.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a (click)="delElement(idx)">
-                                            <span class="edit_icon">
-                                                <i class="fa fa-trash-o">
-                                                </i>
-                                            </span>
-                                        </a>
-                                    </span>
-                                </div>
+                               
                                 <div class="row hdr_typ">
                                     <div class="col-md-12 col-xs-12 typ_nm">
                                         <label [ngStyle]="{'font-size': wid.font+'px'}"><input type="text" class="pnl_inp" [(ngModel)]="wid.heading"></label>
@@ -1435,29 +669,7 @@
                                 </div>
                                 <ng-container *ngFor="let ws of wid.data;let g=index">
                                     <ng-container *ngIf="ws !== undefined && ws!==null">
-                                        <div *ngIf="show_action" class="action-ui" id="tour-action-ui-id" style="top:40px">
-                        
-                                                <span class="actions">
-                                                    <a href="javascript:void(0);">
-                                                        <span class="edit_icon">
-                                                            <a (click)="cloneDataElement(idx,g)">
-                                                                <i class="fa fa-clone">
-                                                                </i>
-                                                            </a>
-                                                        </span>
-                                                    </a>
-                                                </span>
-                                  
-                                     
-                                                <span class="actions">
-                                                    <a (click)="delDataElement(idx,g)">
-                                                        <span class="edit_icon">
-                                                            <i class="fa fa-trash-o">
-                                                            </i>
-                                                        </span>
-                                                    </a>
-                                                </span>
-                                            </div>
+                                       
                                 <div class="row esca_list">
                                     <div class="col-md-2 col-sm-2 col-xs-12 small_label">
                                         <label [ngStyle]="{'font-size': wid.font+'px'}">
@@ -1493,53 +705,7 @@
                         <div *ngIf="wid !== undefined && wid.type=='widget14'" class="col-lg-8 col-md-12 col-sm-12 col-xs-12 wid_box">
 
                             <div class="basic_info_tabs dash_panel cmn_list_gjt" [style.background]="wid.bgColor">
-                                <div *ngIf="show_action" class="action-ui" id="tour-action-ui-id">
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a [(colorPicker)]="wid.bgColor">
-                                                    <img src="/assets/images/color-picker.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="cloneElement(idx)">
-                                                    <i class="fa fa-clone">
-                                                    </i>
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('dec',wid.font)">
-                                                    <img src="/assets/images/font-increase.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('inc',wid.font)">
-                                                    <img src="/assets/images/font-decrease.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a (click)="delElement(idx)">
-                                            <span class="edit_icon">
-                                                <i class="fa fa-trash-o">
-                                                </i>
-                                            </span>
-                                        </a>
-                                    </span>
-                                </div>
+                              
                                 <div class="list_large_tab">
                                     <div class="detail_wrapper">
                                         <!-- -------------------------tabs --------------------------- -->
@@ -1548,13 +714,13 @@
                                             <div class="row grid_hdr">
                                                 <div class="col-lg-12">
                                                     <ul>
-                                                        <ng-container *ngFor="let d of tabs.tabs1;let idx=index">
+                                                        <!-- <ng-container *ngFor="let d of tabs.tabs1;let idx=index">
                                                         <li>
                                                             <a href="#info-tabs-{{idx+1}}">
                                                                 <label>{{d}}</label>
                                                             </a>
                                                         </li>
-                                                    </ng-container>
+                                                    </ng-container> -->
                                                         <!-- <li>
                                                             <a href="#info-tabs-2">
                                                                 <label>Professional Info</label>
@@ -1587,17 +753,17 @@
                                                             <div class="row skill_info skill_hdr">
                                                                 <div class="col-md-3 col-sm-3 col-xs-12">
                                                                     <h6>
-                                                                        <label><input type="text" class="pnl_inp" [(ngModel)]="wid.skill_heading[0]"></label>
+                                                                        <label>Professional Skills</label>
                                                                     </h6>
                                                                 </div>
                                                                 <div class="col-md-5 col-sm-5 col-xs-12 skill_level">
                                                                     <h6>
-                                                                        <label><input type="text" class="pnl_inp" [(ngModel)]="wid.skill_heading[1]"></label>
+                                                                        <label>Expertise Level</label>
                                                                     </h6>
                                                                 </div>
                                                                 <div class="col-md-4 col-sm-4 col-xs-12 skill_yr">
                                                                     <h6>
-                                                                        <label><input type="text" class="pnl_inp" [(ngModel)]="wid.skill_heading[2]"></label>
+                                                                        <label>Experience</label>
                                                                     </h6>
                                                                 </div>
                                                             </div>
@@ -1622,7 +788,46 @@
                                                             </div>
                                                             </ng-container>                 
                                                         </div>
-                                                        
+                                                        <div class="skill_typ">
+                                                            <div class="row skill_info skill_hdr">
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <h6>
+                                                                        <label>Professional Skills</label>
+                                                                    </h6>
+                                                                </div>
+                                                                <div class="col-md-5 col-sm-5 col-xs-12 skill_level">
+                                                                    <h6>
+                                                                        <label>Expertise Level</label>
+                                                                    </h6>
+                                                                </div>
+                                                                <div class="col-md-4 col-sm-4 col-xs-12 skill_yr">
+                                                                    <h6>
+                                                                        <label>Experience</label>
+                                                                    </h6>
+                                                                </div>
+                                                            </div>
+                                                            <ng-container *ngFor="let ds of wid.data">
+                                                                <div class="row skill_info">
+                                                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                        <h5>
+                                                                            <label><input type="text" class="pnl_inp" [(ngModel)]="ds.info"></label>
+                                                                        </h5>
+                                                                    </div>
+                                                                    <div class="col-md-5 col-sm-5 col-xs-12 skill_level">
+                                                                        <div class="progress-bar-wrapper">
+                                                                            <progress class="progress_bar" id="progressbar" value="0" max="100"></progress>
+                                                                            <span class="progress-value">100%</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4 col-sm-4 col-xs-12 skill_yr">
+                                                                        <h5>
+                                                                            <label><input type="text" class="pnl_inp" [(ngModel)]="ds.exp"></label>
+                                                                        </h5>
+                                                                    </div>
+                                                                </div>
+                                                                </ng-container>           
+                                                            
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div id="info-tabs-2" class="mobtab">
@@ -1680,10 +885,361 @@
                                                                     </label>
                                                                 </div>
                                                             </div>
-                                                           
+                                                            <div class="row exp_info">
+                                                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                                                    <div class="wrk_dtl">
+                                                                        <h4>
+                                                                            Adobe - Banglore
+                                                                        </h4>
+                                                                        <div class="row sub_dtl">
+                                                                            <div class="col-md-2 title">
+                                                                                <label>Position</label>
+                                                                            </div>
+                                                                            <div class="col-md-10 info">
+                                                                                <span class="highlight">Sr Java Developer-On Site Manager</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row sub_dtl">
+                                                                            <div class="col-md-2 title">
+                                                                                <label>Role</label>
+                                                                            </div>
+                                                                            <div class="col-md-10 info">
+                                                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+                                                                                text ever since the 1500s.
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row sub_dtl">
+                                                                            <div class="col-md-2 title">
+                                                                                <label>Domain</label>
+                                                                            </div>
+                                                                            <div class="col-md-10 info">
+                                                                                <span class="highlight">Consumer, Mobile, Android</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4 col-sm-4 col-xs-12 wrk_time small_label">
+                                                                    <label>
+                                                                        <span class="highlight">31 Dec,2015 - Present</span>
+                                                                    </label>
+                                                                    <label>
+                                                                        <span class="highlight">Full Time - Onsite</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row exp_info">
+                                                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                                                    <div class="wrk_dtl">
+                                                                        <h4>
+                                                                            Adobe - Banglore
+                                                                        </h4>
+                                                                        <div class="row sub_dtl">
+                                                                            <div class="col-md-2 title">
+                                                                                <label>Position</label>
+                                                                            </div>
+                                                                            <div class="col-md-10 info">
+                                                                                <span class="highlight">Sr Java Developer-On Site Manager</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row sub_dtl">
+                                                                            <div class="col-md-2 title">
+                                                                                <label>Role</label>
+                                                                            </div>
+                                                                            <div class="col-md-10 info">
+                                                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+                                                                                text ever since the 1500s.
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row sub_dtl">
+                                                                            <div class="col-md-2 title">
+                                                                                <label>Domain</label>
+                                                                            </div>
+                                                                            <div class="col-md-10 info">
+                                                                                <span class="highlight">Consumer, Mobile, Android</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4 col-sm-4 col-xs-12 wrk_time small_label">
+                                                                    <label>
+                                                                        <span class="highlight">31 Dec,2015 - Present</span>
+                                                                    </label>
+                                                                    <label>
+                                                                        <span class="highlight">Full Time - Onsite</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row exp_info">
+                                                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                                                    <div class="wrk_dtl">
+                                                                        <h4>
+                                                                            Adobe - Banglore
+                                                                        </h4>
+                                                                        <div class="row sub_dtl">
+                                                                            <div class="col-md-2 title">
+                                                                                <label>Position</label>
+                                                                            </div>
+                                                                            <div class="col-md-10 info">
+                                                                                <span class="highlight">Sr Java Developer-On Site Manager</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row sub_dtl">
+                                                                            <div class="col-md-2 title">
+                                                                                <label>Role</label>
+                                                                            </div>
+                                                                            <div class="col-md-10 info">
+                                                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+                                                                                text ever since the 1500s.
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row sub_dtl">
+                                                                            <div class="col-md-2 title">
+                                                                                <label>Domain</label>
+                                                                            </div>
+                                                                            <div class="col-md-10 info">
+                                                                                <span class="highlight">Consumer, Mobile, Android</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4 col-sm-4 col-xs-12 wrk_time small_label">
+                                                                    <label>
+                                                                        <span class="highlight">31 Dec,2015 - Present</span>
+                                                                    </label>
+                                                                    <label>
+                                                                        <span class="highlight">Full Time - Onsite</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+
                                                         </div>
                                                     </div>
-                                                    
+                                                    <div class="skill_tb">
+                                                        <div class="row skl_title">
+                                                            <div class="col-md-12 col-xs-12">
+                                                                <h4>Skills</h4>
+                                                            </div>
+                                                        </div>
+                                                        <div class="skill_typ">
+                                                            <div class="row skill_info skill_hdr">
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <h6>
+                                                                        <label>Professional Skills</label>
+                                                                    </h6>
+                                                                </div>
+                                                                <div class="col-md-5 col-sm-5 col-xs-12 skill_level">
+                                                                    <h6>
+                                                                        <label>Expertise Level</label>
+                                                                    </h6>
+                                                                </div>
+                                                                <div class="col-md-4 col-sm-4 col-xs-12 skill_yr">
+                                                                    <h6>
+                                                                        <label>Experience</label>
+                                                                    </h6>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row skill_info">
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <h5>
+                                                                        <label>User Experience Design</label>
+                                                                    </h5>
+                                                                </div>
+                                                                <div class="col-md-5 col-sm-5 col-xs-12 skill_level">
+                                                                    <div class="progress-bar-wrapper">
+                                                                        <progress class="progress_bar" id="progressbar" value="0" max="100"></progress>
+                                                                        <span class="progress-value">100%</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4 col-sm-4 col-xs-12 skill_yr">
+                                                                    <h5>
+                                                                        <label>12 Year</label>
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row skill_info">
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <h5>
+                                                                        <label>Design Research</label>
+                                                                    </h5>
+                                                                </div>
+                                                                <div class="col-md-5 col-sm-5 col-xs-12 skill_level">
+                                                                    <div class="progress-bar-wrapper">
+                                                                        <progress class="progress_bar" id="progressbar" value="0" max="100"></progress>
+                                                                        <span class="progress-value">100%</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4 col-sm-4 col-xs-12 skill_yr">
+                                                                    <h5>
+                                                                        <label>10 Year</label>
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row skill_info">
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <h5>
+                                                                        <label>Interaction Design</label>
+                                                                    </h5>
+                                                                </div>
+                                                                <div class="col-md-5 col-sm-5 col-xs-12 skill_level">
+                                                                    <div class="progress-bar-wrapper">
+                                                                        <progress class="progress_bar" id="progressbar" value="0" max="100"></progress>
+                                                                        <span class="progress-value">100%</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4 col-sm-4 col-xs-12 skill_yr">
+                                                                    <h5>
+                                                                        <label>12 Year</label>
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row skill_info">
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <h5>
+                                                                        <label>Visual Design</label>
+                                                                    </h5>
+                                                                </div>
+                                                                <div class="col-md-5 col-sm-5 col-xs-12 skill_level">
+                                                                    <div class="progress-bar-wrapper">
+                                                                        <progress class="progress_bar" id="progressbar" value="0" max="100"></progress>
+                                                                        <span class="progress-value">100%</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4 col-sm-4 col-xs-12 skill_yr">
+                                                                    <h5>
+                                                                        <label>05 Year</label>
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row skill_info">
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <h5>
+                                                                        <label>Interaction Design</label>
+                                                                    </h5>
+                                                                </div>
+                                                                <div class="col-md-5 col-sm-5 col-xs-12 skill_level">
+                                                                    <div class="progress-bar-wrapper">
+                                                                        <progress class="progress_bar" id="progressbar" value="0" max="100"></progress>
+                                                                        <span class="progress-value">100%</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4 col-sm-4 col-xs-12 skill_yr">
+                                                                    <h5>
+                                                                        <label>12 Year</label>
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row skill_info">
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <h5>
+                                                                        <label>Visual Design</label>
+                                                                    </h5>
+                                                                </div>
+                                                                <div class="col-md-5 col-sm-5 col-xs-12 skill_level">
+                                                                    <div class="progress-bar-wrapper">
+                                                                        <progress class="progress_bar" id="progressbar" value="0" max="100"></progress>
+                                                                        <span class="progress-value">100%</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4 col-sm-4 col-xs-12 skill_yr">
+                                                                    <h5>
+                                                                        <label>12 Year</label>
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="skill_typ">
+                                                            <div class="row skill_info skill_hdr">
+                                                                <div class="col-md-3 col-sm-3 col-xs-12 ">
+                                                                    <h6>
+                                                                        <label>Professional Skills</label>
+                                                                    </h6>
+                                                                </div>
+                                                                <div class="col-md-5 col-sm-5 col-xs-12 skill_level">
+                                                                    <h6>
+                                                                        <label>Expertise Level</label>
+                                                                    </h6>
+                                                                </div>
+                                                                <div class="col-md-4 col-sm-4 col-xs-12 skill_yr">
+                                                                    <h6>
+                                                                        <label>Experience</label>
+                                                                    </h6>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row skill_info">
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <h5>
+                                                                        <label>Communication</label>
+                                                                    </h5>
+                                                                </div>
+                                                                <div class="col-md-5 col-sm-5 col-xs-12 skill_level">
+                                                                    <div class="progress-bar-wrapper">
+                                                                        <progress class="progress_bar" id="progressbar" value="0" max="100"></progress>
+                                                                        <span class="progress-value">100%</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4 col-sm-4 col-xs-12 skill_yr">
+                                                                    <h5>
+                                                                        <label>12 Year</label>
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row skill_info">
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <h5>
+                                                                        <label>Leadership</label>
+                                                                    </h5>
+                                                                </div>
+                                                                <div class="col-md-5 col-sm-5 col-xs-12 skill_level">
+                                                                    <div class="progress-bar-wrapper">
+                                                                        <progress class="progress_bar" id="progressbar" value="0" max="100"></progress>
+                                                                        <span class="progress-value">100%</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4 col-sm-4 col-xs-12 skill_yr">
+                                                                    <h5>
+                                                                        <label>10 Year</label>
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row skill_info">
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <h5>
+                                                                        <label>Learnability</label>
+                                                                    </h5>
+                                                                </div>
+                                                                <div class="col-md-5 col-sm-5 col-xs-12 skill_level">
+                                                                    <div class="progress-bar-wrapper">
+                                                                        <progress class="progress_bar" id="progressbar" value="0" max="100"></progress>
+                                                                        <span class="progress-value">100%</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4 col-sm-4 col-xs-12 skill_yr">
+                                                                    <h5>
+                                                                        <label>12 Year</label>
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row skill_info">
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <h5>
+                                                                        <label>Attitude</label>
+                                                                    </h5>
+                                                                </div>
+                                                                <div class="col-md-5 col-sm-5 col-xs-12 skill_level">
+                                                                    <div class="progress-bar-wrapper">
+                                                                        <progress class="progress_bar" id="progressbar" value="0" max="100"></progress>
+                                                                        <span class="progress-value">100%</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4 col-sm-4 col-xs-12 skill_yr">
+                                                                    <h5>
+                                                                        <label>05 Year</label>
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
                                                     <div class="edu_tb">
                                                         <div class="row edu_dtl">
                                                             <div class="col-md-12 col-sm-12 col-xs-12">
@@ -1790,13 +1346,15 @@
                                                         <div class="experience_tb">
                                                             <div class="row exp_dtl">
                                                                 <div class="col-md-12 col-xs-12">
-                                                                    <h4 contenteditable="true"
-                                                                    [(ngModel)]="wid.nextdata[0].exp_name">
-                                                                        
+                                                                    <h4>
+                                                                        Experience
                                                                     </h4>
-                                                                    <p  contenteditable="true"
-                                                                    [(ngModel)]="wid.nextdata[0].exp">
-                                                                        
+                                                                    <p>
+                                                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+                                                                        text ever since the 1500s, when an unknown printer
+                                                                        took a galley of type and scrambled it to make a
+                                                                        type specimen book. It has survived not only five
+                                                                        centuries.
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -1984,53 +1542,7 @@
                         <div *ngIf="wid !== undefined && wid.type=='widget15'" class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
 
                             <div class="application_tab_list dash_panel cmn_list_gjt" [style.background]="wid.bgColor">
-                                <div *ngIf="show_action" class="action-ui" id="tour-action-ui-id">
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a [(colorPicker)]="wid.bgColor">
-                                                    <img src="/assets/images/color-picker.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="cloneElement(idx)">
-                                                    <i class="fa fa-clone">
-                                                    </i>
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('dec',wid.font)">
-                                                    <img src="/assets/images/font-increase.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('inc',wid.font)">
-                                                    <img src="/assets/images/font-decrease.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a (click)="delElement(idx)">
-                                            <span class="edit_icon">
-                                                <i class="fa fa-trash-o">
-                                                </i>
-                                            </span>
-                                        </a>
-                                    </span>
-                                </div>
+                             
                                 <div class="row hdr_typ">
                                     <div class="col-md-12 col-xs-12 typ_nm">
                                         <label>Application</label>
@@ -2822,53 +2334,7 @@
                         <div *ngIf="wid !== undefined && wid.type=='widget16'" class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
 
                             <div class="other_client_list dash_panel cmn_list_gjt" [style.background]="wid.bgColor">
-                                <div *ngIf="show_action" class="action-ui" id="tour-action-ui-id">
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a [(colorPicker)]="wid.bgColor">
-                                                    <img src="/assets/images/color-picker.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="cloneElement(idx)">
-                                                    <i class="fa fa-clone">
-                                                    </i>
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('dec',wid.font)">
-                                                    <img src="/assets/images/font-increase.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('inc',wid.font)">
-                                                    <img src="/assets/images/font-decrease.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a (click)="delElement(idx)">
-                                            <span class="edit_icon">
-                                                <i class="fa fa-trash-o">
-                                                </i>
-                                            </span>
-                                        </a>
-                                    </span>
-                                </div>
+                            
                                 <div class="row hdr_typ">
                                     <div class="col-md-12 col-xs-12 typ_nm">
                                         <label>Other Client Members</label>
@@ -3050,53 +2516,7 @@
                         <div *ngIf="wid !== undefined && wid.type=='widget17'" class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
 
                             <div class="prjct_timeline_list dash_panel cmn_list_gjt" [style.background]="wid.bgColor">
-                                <div *ngIf="show_action" class="action-ui" id="tour-action-ui-id">
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a [(colorPicker)]="wid.bgColor">
-                                                    <img src="/assets/images/color-picker.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="cloneElement(idx)">
-                                                    <i class="fa fa-clone">
-                                                    </i>
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('dec',wid.font)">
-                                                    <img src="/assets/images/font-increase.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('inc',wid.font)">
-                                                    <img src="/assets/images/font-decrease.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a (click)="delElement(idx)">
-                                            <span class="edit_icon">
-                                                <i class="fa fa-trash-o">
-                                                </i>
-                                            </span>
-                                        </a>
-                                    </span>
-                                </div>
+                               
                                 <div class="row hdr_typ">
                                     <div class="col-md-12 col-xs-12 typ_nm">
                                         <label>Projects (4)</label>
@@ -3241,53 +2661,7 @@
                         <div *ngIf="wid !== undefined && wid.type=='widget18'" class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
 
                             <div class="team_cal dash_panel cmn_calender_gjt" [style.background]="wid.bgColor">
-                                <div *ngIf="show_action" class="action-ui" id="tour-action-ui-id">
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a [(colorPicker)]="wid.bgColor">
-                                                    <img src="/assets/images/color-picker.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="cloneElement(idx)">
-                                                    <i class="fa fa-clone">
-                                                    </i>
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('dec',wid.font)">
-                                                    <img src="/assets/images/font-increase.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a href="javascript:void(0);">
-                                            <span class="edit_icon">
-                                                <a (click)="wid.font = changeSize('inc',wid.font)">
-                                                    <img src="/assets/images/font-decrease.png" alt="" />
-                                                </a>
-                                            </span>
-                                        </a>
-                                    </span>
-                                    <span class="actions">
-                                        <a (click)="delElement(idx)">
-                                            <span class="edit_icon">
-                                                <i class="fa fa-trash-o">
-                                                </i>
-                                            </span>
-                                        </a>
-                                    </span>
-                                </div>
+                               
                                 <div class="row hdr_typ">
                                     <div class="col-md-12 col-xs-12 typ_nm">
                                         <label>Team Calender</label>

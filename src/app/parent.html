@@ -49,7 +49,7 @@
                     </a>
                     <ul class="inner">
                         <li><a [routerLink]="['../parent/adminMaster']"><span class="input_icon"><img src="./assets/images/input-icon.png" /></span>admin-input.html</a></li>
-                        <li><a [routerLink]="['../parent/adminWidget']"><span class="input_icon"><img src="./assets/images/input-icon.png" /></span>admin-widget.html</a></li>
+                        <li><a [routerLink]="['/parent/adminWidget']"><span class="input_icon"><img src="./assets/images/input-icon.png" /></span>admin-widget.html</a></li>
                         <li><a [routerLink]="['../parent/adminListMaster/uk']"><span class="input_icon"><img src="./assets/images/input-icon.png" /></span>admin-grid-master.html</a></li>
                         <li><a [routerLink]="['../parent/adminGridMaster/uk']"><span class="input_icon"><img src="./assets/images/input-icon.png" /></span>admin-list-master.html</a></li>
                         <ng-container *ngFor="let d of data;let idx=index">
@@ -57,6 +57,11 @@
                         <li><a (click)="setTemp(d)" [routerLink]="['../parent/render2/',idx]"><span class="input_icon"><img src="./assets/images/input-icon.png" /></span>{{d.FormName}}</a></li>
                         </ng-container>
                         </ng-container>
+                        <ng-container *ngFor="let d of widdata;let idx=index">
+                                <ng-container *ngIf="checks[idx] !== false && d!==null">
+                            <li><a (click)="setTemp(d)" [routerLink]="['../parent/renderWidget/',idx]"><span class="input_icon"><img src="./assets/images/input-icon.png" /></span>{{d.formName}}</a></li>
+                            </ng-container>
+                            </ng-container>
                     </ul>
                 </li>
                 <li>

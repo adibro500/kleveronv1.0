@@ -110,6 +110,7 @@
                                             </div> -->
     
     
+                                            
                             <div [dragula]='"bag-one"' [dragulaModel]="Textboxes" id="right">
                                 <div *ngFor="let tb of Textboxes;let idx=index">
                                     <ng-container *ngIf="tb!==undefined">
@@ -660,7 +661,7 @@
                                                 <div class="col-md-6 col-sm-6 col-xs-12 dtl_row">
                                                     <div class="upload">
                                                         <div class="Uploadbtn">
-                                                            <input type="file" class="input-upload" />
+                                                            <input type="file" class="input-upload" (change)="fileEvent($event)" />
                                                             <span>
                                                                 <i class="fa fa-upload" aria-hidden="true"></i>
                                                             </span>

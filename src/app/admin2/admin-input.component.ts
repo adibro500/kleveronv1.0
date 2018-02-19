@@ -1,4 +1,14 @@
-import { Component, Inject } from '@angular/core';
+/*
+author:aditya ammanabrolu
+implementation: this class is to satisfy the following:
+1. create default controls in the form
+2. facilitate drag and drop
+3. the the json created for the contarol both before and after drag and drop
+4. the json created is stored in database on server
+status of code: (in progress)
+*/
+/* import libraries and dependencies */
+import { Component, Inject, OnDestroy } from '@angular/core';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { DragulaService } from 'ng2-dragula/components/dragula.provider';
 import { ElementRef } from '@angular/core/src/linker/element_ref';
@@ -9,12 +19,15 @@ declare var $: any;
 declare var perfectScrollbar: any;
 declare var height: any;
 declare var tabs: any;
+/* imports end */
 @Component({
     selector: 'app-root',
     templateUrl: './admin-input.html',
 })
 
-export class AdminMaster implements OnInit {
+export class AdminMaster implements OnInit, OnDestroy {
+
+    //variable declarations
     lbl_choice: boolean = false;
     Textboxes: any[] = [];
     Textboxes_copy: any[] = [];
@@ -32,6 +45,26 @@ export class AdminMaster implements OnInit {
     selectedEntry;
     lbl_chk: boolean;
     temp_name = localStorage.getItem("temp_name");
+    cntid;
+    cntval;
+    cntph;
+    cntid2;
+    cntval2;
+    cntph2;
+    lblid;
+    lblnm;
+    lblclass;
+    cntrg;
+
+
+    ngOnDestroy() {
+        this.dragulaService.destroy("bag-one");
+    }
+
+
+
+    /* this method sets the label and no label when check and unchecked of the label checkbox under add controls menu */
+
 
     lblSet() {
         this.lbl_chk = !this.lbl_chk;
@@ -42,8 +75,12 @@ export class AdminMaster implements OnInit {
 
         }
     }
+    /* method ends */
+
+    /* constructor begins */
     constructor( @Inject(DOCUMENT) private document: any, private dragulaService: DragulaService, private adminService: AdminService, private router: Router) {
 
+        /* creating the initial default controls in the add control menu */
         this.group1.push({
             "validation": {
                 "is_required": false,
@@ -64,48 +101,6 @@ export class AdminMaster implements OnInit {
             "img": "txt-bx",
             "label_present": this.lbl_chk
         });
-        // this.group1.push({
-        //     "validation": {
-        //         "is_required": false,
-        //         "is_read_only": false,
-        //         "min_length": 1,
-        //         "val_msg": "this field is required"
-        //     },
-        //     "id": "newl0",
-        //     "order": 1,
-        //     "type": "newLine",
-        //     "values": [""],
-        //     "placeholder": "New Company",
-        //     "lnames": [],
-        //     "lclasses": [],
-        //     "class": 'col-md-6 col-sm-6 col-xs-12 element_box klvrn_col',
-        //     "lids": [],
-        //     "label": "New Line",
-        //     "img": "txt-bx",
-        //     "label_present": this.lbl_chk
-        // });
-
-        // this.group1.push({
-        //     "validation": {
-        //         "is_required": false,
-        //         "is_read_only": false,
-        //         "min_length": 1,
-        //         "val_msg": "this field is required"
-        //     },
-        //     "id": "lbla0",
-        //     "order": 1,
-        //     "type": "label",
-        //     "values": [""],
-        //     "placeholder": "New Company",
-        //     "lnames": [],
-        //     "lclasses": [],
-        //     "class": 'col-md-6 col-sm-6 col-xs-12 element_box klvrn_col',
-        //     "lids": [],
-        //     "label": "Label",
-        //     "img": "txt-bx",
-        //     "label_present": this.lbl_chk
-        // });
-
 
         this.group1.push({
             "validation": {
@@ -316,11 +311,7 @@ export class AdminMaster implements OnInit {
         //     "label": "Text Area",
         //     "img": ""
         // });
-
-
-
-
-
+        /* end of default add controls */
 
         dragulaService.drop.subscribe((value) => {
 
@@ -334,8 +325,9 @@ export class AdminMaster implements OnInit {
         });
 
     }
+    /* constructor ends */
 
-
+    /* this method is called when any for control is dropped */
     onDropModel(args) {
 
         for (var k = 0; k < this.Textboxes.length; k++) {
@@ -346,45 +338,16 @@ export class AdminMaster implements OnInit {
     }
 
 
-
-    nextData() {
-
-        this.is_submit = true;
-        // alert(this.selectedValue);
-    }
-
     clickRad(tb) {
 
         this.selectedValue = tb;
 
     }
 
-
+    /* send and save data on server */
     saveData() {
 
         localStorage.setItem("temp_name", this.formName);
-
-
-        // let str = '';
-        // for (var l = 0; l < this.Textboxes.length; l++) {
-        //     if (this.Textboxes[l].type == 'textbox') {
-        //         str += `
-        //       <div class="col-md-6 col-sm-6 col-xs-12 element_box klvrn_col">
-
-        //                                                         <div class="col-md-6 col-sm-6 col-xs-12 label_element">
-        //                                                             <label class="lbl_hdr">Enter ${this.Textboxes[l].placeholder}</label>
-
-        //                                                         </div>
-        //                                             <input [name]="tb.id" class="cmn_input" placeholder="${this.Textboxes[l].placeholder}" value="${this.Textboxes[l].values[0]}" id="${this.Textboxes[l].id}">
-        //                                         </div>`;
-
-        //     }
-        // }
-
-
-
-
-
         if (this.formName == "") {
             // alert("Please provide a form name");
 
@@ -400,15 +363,16 @@ export class AdminMaster implements OnInit {
                     "FormName": this.formName,
                     "FormURL": this.formUrl,
                     "controls": this.Textboxes,
-                    "column_config": this.changeC
+                    "column_config": this.changeC,
+
                 };
                 this.adminService.putMasterData(JSON.stringify(dt));
                 console.log("data sent to server");
                 alert("Template saved successfully");
-                //this.router.navigate(['/parent/adminMaster']);
+                this.router.navigate(['/parent/adminMaster']);
 
                 $("#input_control_URL").hide();
-                window.location.reload();
+                //  window.location.reload();
 
             }
 
@@ -520,16 +484,7 @@ export class AdminMaster implements OnInit {
             return;
 
     }
-    cntid;
-    cntval;
-    cntph;
-    cntid2;
-    cntval2;
-    cntph2;
-    lblid;
-    lblnm;
-    lblclass;
-    cntrg;
+
 
     editElement(i, inp_flag) {
 
@@ -541,7 +496,6 @@ export class AdminMaster implements OnInit {
                 break;
             }
         }
-
 
         this.cntid = this.Textboxes[j].id;
         this.cntval = this.Textboxes[j].values[0];
@@ -623,6 +577,13 @@ export class AdminMaster implements OnInit {
 
     }
 
+    fileEvent(fileInput: Event) {
+        let file = (<HTMLInputElement>fileInput.target).files[0];
+        let fileName = file.name;
+        console.log(fileName);
+        console.log(file.webkitRelativePath);
+    }
+
 
 
     radioClick(i) {
@@ -651,7 +612,7 @@ export class AdminMaster implements OnInit {
     }
 
     ngOnInit() {
-
+        /* default  controls */
         this.Textboxes.push({
             "validation": {
                 "is_required": false,
@@ -1091,7 +1052,7 @@ export class AdminMaster implements OnInit {
             }
         });
 
-
+        /* helper code for UI and nothing else */
 
 
         $('.all_con_wrap').perfectScrollbar();
@@ -1228,7 +1189,7 @@ export class AdminMaster implements OnInit {
                 $('.all_con_wrap').css('height', cT);
             });
         });
-
+        /* UI helper code ends */
 
 
     }

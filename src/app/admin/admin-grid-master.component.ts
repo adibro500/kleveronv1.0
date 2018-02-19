@@ -18,21 +18,21 @@ export class AdminGridMasterComponent implements OnInit {
     color: string;
     uname = localStorage.getItem("loginname");
     constructor( @Inject(DOCUMENT) private document: any) {
-        var side = localStorage.getItem("side");
-        if (side == "right") {
-            this.document.getElementById("theme").setAttribute("href", "./assets/styles/right-menu.css");
-        }
-        else {
-            this.document.getElementById("theme").setAttribute("href", "./assets/styles/left-menu.css");
-        }
+        // var side = localStorage.getItem("side");
+        // if (side == "right") {
+        //     this.document.getElementById("theme").setAttribute("href", "./assets/styles/right-menu.css");
+        // }
+        // else {
+        //     this.document.getElementById("theme").setAttribute("href", "./assets/styles/left-menu.css");
+        // }
 
-        var color = localStorage.getItem("color");
-        if (color == "pink-blue") {
-            this.document.getElementById("color").setAttribute("href", "./assets/styles/pink-blue.css");
-        }
-        else {
-            this.document.getElementById("color").setAttribute("href", "./assets/styles/orange-blue.css");
-        }
+        // var color = localStorage.getItem("color");
+        // if (color == "pink-blue") {
+        //     this.document.getElementById("color").setAttribute("href", "./assets/styles/pink-blue.css");
+        // }
+        // else {
+        //     this.document.getElementById("color").setAttribute("href", "./assets/styles/orange-blue.css");
+        // }
 
     }
     ngOnInit(): void {

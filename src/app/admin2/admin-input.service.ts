@@ -16,7 +16,7 @@ export class AdminService {
     putMasterData(inputdata) {
 
         console.log("inputdata", inputdata);
-        return this.http.post("https://kleveron-backend.herokuapp.com/save/admin-input2", inputdata, options).map(res => res.text()).subscribe(data => console.log(data));
+        return this.http.post("http://localhost:5000/download1", inputdata, options).map(res => res.text()).subscribe(data => console.log(data));
 
 
     }
@@ -26,7 +26,20 @@ export class AdminService {
         return this.http.get("https://kleveron-backend.herokuapp.com/get/admin2", options).map(res => res.json());
 
 
+
     }
+    getInitialWidgetData() {
+
+        console.log("inputdata");
+        return this.http.get("https://kleveron-backend.herokuapp.com/get/initial/widgets", options).map(res => res.json());
+
+
+
+    }
+    getWidgetData() {
+        return this.http.get("https://kleveron-backend.herokuapp.com/get/widgets", options).map(res => res.json());
+    }
+
 
     putFormData(inputdata) {
 

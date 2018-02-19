@@ -22,7 +22,13 @@ export class InputMasterService {
 
 
     }
+    putWidData(inputdata) {
 
+        console.log("inputdata", inputdata);
+        return this.http.post("https://kleveron-backend.herokuapp.com/save/widgets", inputdata, options).map(res => res.text()).subscribe(data => console.log(data));
+
+
+    }
     putInputDataList(inputdata) {
 
         console.log("inputdata", inputdata);

@@ -2,12 +2,13 @@ import { Component, Renderer, Input, Inject } from '@angular/core';
 import { OnInit, AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { DragulaService } from 'ng2-dragula/components/dragula.provider';
 import { ElementRef } from '@angular/core/src/linker/element_ref';
-import { AdminService } from './admin-input.service';
+
 import { ActivatedRoute } from '@angular/router';
 import { IsMobileService } from 'ngx-datetime-picker/services/isMobile.service';
 import { DateService } from 'ngx-datetime-picker/services/date.service';
 import { DatePipe } from '@angular/common';
 import { DOCUMENT } from '@angular/platform-browser';
+import { AdminService } from '../admin2/admin-input.service';
 
 declare var $: any;
 declare var perfectScrollbar: any;
@@ -15,11 +16,12 @@ declare var height: any;
 declare var tabs: any;
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './render2.html',
+    selector: 'render-widget',
+    templateUrl: './render-widget.html',
+    styleUrls: ['./admin-widget.css']
 })
 
-export class RenderAdmin2 implements OnInit, AfterViewInit {
+export class RenderWidget implements OnInit, AfterViewInit {
     id: string;
     order: number;
     type: string;
@@ -30,6 +32,7 @@ export class RenderAdmin2 implements OnInit, AfterViewInit {
     lids: string[];
     selectRadio;
 
+    wids: any[] = [];
     Textboxes: any[] = [];
     changeC: string;
     options: any;
@@ -111,7 +114,7 @@ export class RenderAdmin2 implements OnInit, AfterViewInit {
         });
     }
 
-
+    wid_get: any;
 
 
     texts: any[] = [];
@@ -119,19 +122,18 @@ export class RenderAdmin2 implements OnInit, AfterViewInit {
     selectedOpts: any[] = [];
     selectOptions2: any[] = [];
 
+    widgets: any[] = [];
+
+
     getTemplateByIndex(i) {
-        this.html_temp = this.data[i].html;
-        this.Textboxes = this.data[i].controls;
-        this.changeC = this.data[i].column_config;
-        console.log("col-conf", this.changeC);
-        for (var k = 0; k < this.Textboxes.length; k++) {
-            // if (this.Textboxes[k].type == 'select') {
-            //     this.selectOptions2.push({ 'id': k, 'selected': '', 'values': this.Textboxes[k].values });
-            // }
-            this.Textboxes[k].order = k;
-        }
-        console.log("textboxes", this.Textboxes);
-        console.log("select", this.selectOptions2);
+
+
+        this.wid_get = this.data[i].wids1;
+        this.widgets = this.data[i].widgets;
+
+        this.wids = this.data[i].carousel;
+        console.log("widgets", this.widgets);
+        // console.log("select", this.selectOptions2);
     }
 
 
@@ -181,7 +183,7 @@ export class RenderAdmin2 implements OnInit, AfterViewInit {
             //     else if (a.order > b.order) return 1;
             //     else return 0;
             // });
-            console.log(this.Textboxes);
+            //  console.log(this.Textboxes);
         }
         // }
         // else
@@ -266,7 +268,7 @@ export class RenderAdmin2 implements OnInit, AfterViewInit {
 
     ngOnInit() {
 
-        this.adminService.getMasterData().subscribe(data => {
+        this.adminService.getWidgetData().subscribe(data => {
             this.data = JSON.parse(JSON.stringify(data));
             this.route.params.subscribe(params => {
                 this.index = params['id'];

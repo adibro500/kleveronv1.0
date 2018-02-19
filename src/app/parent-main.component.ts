@@ -40,7 +40,7 @@ export class ParentComponent implements OnInit {
     @Input()
     hideMenu = false;
     data: any[] = [];
-
+    widdata: any[] = [];
     checks: boolean[] = [];
 
     template_name = "Kleveron";
@@ -66,10 +66,21 @@ export class ParentComponent implements OnInit {
 
 
         });
+        this.adminServ.getWidgetData().subscribe((widdata) => {
+            this.widdata = JSON.parse(JSON.stringify(widdata));
+
+            // console.log(this.data[0].FormName);
+            console.log()
+
+
+        });
 
     }
     setTemp(d) {
-        localStorage.setItem("temp_name", d.FormName);
+        if (d.formName == undefined)
+            localStorage.setItem("temp_name", d.FormName);
+        else
+            localStorage.setItem("temp_name", d.formName);
     }
 
     changeLang(lang) {
@@ -141,7 +152,7 @@ export class ParentComponent implements OnInit {
                     $this.next().removeClass('visible');
                     $this.next().slideUp(350);
                 } else {
-                    $this.parent().parent().find('li .inner').removeClass('show');
+                    $this.parent().parent().find('li .inner').removeClass('visible');
                     $this.parent().parent().find('li .inner').slideUp(350);
                     $this.next().toggleClass('visible');
                     $this.next().slideToggle(350);
